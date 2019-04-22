@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+% draft rauslöschen, für releases (Sonst wird an manchen Stellen schwarze Balken gerendert und
+% Bilder laden nicht)
+
+% Vorlage für chapter[x].tex:
+%
+% \documentclass[../ana2.tex]{subfiles}
+%%%Optional%%
+% \onlyinsubfile{\sectionNumbering} %Use numbering relative to sections and not subsection
+%
+%%%
+% \begin{document}
+% \setcounter{section}{[x - 1]}
+% \section{[chaptername]}
+% ...
+% \end{document}
+
+\newcommand{\chapteramount}{1}
+\IfFileExists{skript.sty}{\usepackage{skript}}{\usepackage{../skript}}
+
+%Metadaten
+\hypersetup{
+	pdftitle = {Analysis II Vorlesungsmitschrieb (SS 19)},
+	pdfauthor = {Pavel Zwerschke}
+}
+
+\begin{document}
+
+\title{\Huge Analysis II \textendash{} SS 19\\ {\Large Vorlesungsmitschrieb}}
+\date{\today}
+\maketitle
+
+\section*{Disclaimer}  
+Bei diesem Skript handelt es sich um einen inoffiziellen Mitschrieb 
+\gqq{Analysis II} von Prof.\ Dr.\ Dirk Hundertmark im Sommersemester 2019
+am Karlsruher Institut für Technologie (KIT). Die 
+Mitschriebe der Vorlesung wurden mit ausdrücklicher
+Genehmigung der Dozenten von Pavel Zwerschke erstellt und veröffentlicht.
+Weder Prof.\ Hundertmark noch Dr.\ Lange sind für den Inhalt 
+verantwortlich.
+\newpage
+
+%Listenstil
+%Itemize   [-]
+%Enumerate [(a)] Für Sätze und Bemerkungen
+%		   [(1)] Für Beispiele
+%		   [(i)] Für Voraussetzungen in Bemerkungen/Sätzen die nummeriert sind. Zusammengehörige
+%                Aussagen die aus mehreren teilaussagen bestehen
+
+\foreach\c in {1,...,\chapteramount} {
+	\subfile{chapters/chapter\c.tex}
+}
+
+\end{document}
+
+
+
