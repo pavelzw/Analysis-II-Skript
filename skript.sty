@@ -7,35 +7,19 @@
 \RequirePackage{nicefrac}
 \RequirePackage{marvosym}[Lightning]
 \RequirePackage{array}
-\RequirePackage{dsfont} %statt \mathbb{1}
 \RequirePackage{tikz}
-\RequirePackage{pgfplots}
-\pgfplotsset{compat=1.14}
-\RequirePackage[nottoc]{tocbibind}
-\RequirePackage{aligned-overset}
 \usetikzlibrary{cd}
-\usetikzlibrary{babel}
 \usetikzlibrary{tikzmark}
+\usetikzlibrary{matrix}
+\RequirePackage{hyperref} %Hyperlinks in pdf
+\RequirePackage{subfiles}
 
 \let\oldforall\forall
 \renewcommand{\forall}{\oldforall \,}
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists \,}
-\usetikzlibrary{matrix}
-\RequirePackage{xr}
-% \RequirePackage{xr-hyper}
-\RequirePackage{zref-xr}
-\RequirePackage{hyperref} %Hyperlinks in pdf
-\RequirePackage{subfiles}
-\RequirePackage[shortlabels]{enumitem}
-\RequirePackage{mathtools}
-\RequirePackage{booktabs}
-\RequirePackage{thmtools}
-\RequirePackage{float}
-\RequirePackage{mwe}
-\RequirePackage{subfig}
-\RequirePackage{bm}
-\restylefloat{table}
+
+\newenvironment{bew}{\begin{proof}[Beweis]}{\end{proof}}
 
 \theoremstyle{definition}
 \newtheorem{satz}{Satz}[subsection]
@@ -53,46 +37,7 @@
 \newtheorem{bsp}[bem]{Beispiel}
 \newtheorem{bspe}[bem]{Beispiele}
 
-\declaretheoremstyle[%
-  spaceabove=0pt,%
-  spacebelow=6pt,%
-  headfont=\normalfont\itshape,%
-  postheadspace=1em,%
-  qed=\qedsymbol%
-]{bewstyle} 
-\declaretheorem[name={Beweis},style=bewstyle,unnumbered,
-]{bew}
 
-\newenvironment{prosa}{}{}
-
-\RequirePackage{etoolbox}
-\RequirePackage{versions}
-
-\newtoggle{short}
-
-\DeclareOption{short}{
-	\excludeversion{notation}
-	\excludeversion{beh}
-	\excludeversion{bem}
-	\excludeversion{bsp}
-	\excludeversion{bspe}
-	\excludeversion{bew}
-	\excludeversion{prosa}
-
-	\toggletrue{short}
-}
-
-\DeclareOption{long}{
-	\togglefalse{short}
-}
-
-\ExecuteOptions{long}
-\ProcessOptions
-
-\newenvironment{alignenum}[2]{\provideFormat{#1}\begin{enumerate}[#2]}{\end{enumerate}}
-\newenvironment{faelle}{\begin{description}[font=\normalfont]}{\end{description}}
-\newenvironment{lrcases}{\left\{\!\begin{aligned}}{\end{aligned}\right\}}
-\newenvironment{aitem}{\item \(\begin{aligned}[t]}{\end{aligned}\)}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -100,8 +45,6 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\F}{\mathbb{F}}
-\newcommand{\PO}{\mathcal{P}}
-\newcommand{\1}{\mathds{1}}
 \newcommand{\obda}{o.\ B.\ d.\ A.}
 \newcommand{\Obda}{O.\ B.\ d.\ A.}
 \newcommand{\dphp}{d.\ h.}
@@ -109,8 +52,6 @@
 \newcommand{\zB}{z.\ B.}
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\Re}{\operatorname{{Re}}}
-\newcommand{\minus}{\scalebox{0.75}[1.0]{\(-\)}}
-\newcommand{\shortminus}{\scalebox{0.5}[1.0]{\(-\)}}
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\gqq}[1]{\glqq{}#1\grqq{}}
 \newcommand{\limes}[1]{\lim\limits_{#1\rightarrow\infty}}
@@ -121,51 +62,24 @@
 \newcommand{\inverse}[1]{{#1}^{\minus 1}}
 \newcommand{\abb}[3]{\ensuremath{#1:#2\rightarrow #3}}
 
-\newcommand{\ifequals}[4]{%
-  \ifnum\pdfstrcmp{#1}{#2}=0
-  #3%
-  \else
-  #4%
-  \fi
-}
-
 \newcommand{\overunderset}[3]{\overset{#1}{\underset{#2}{#3}}}
 \newcommand{\overref}[3]{\overset{\hyperref[#1]{\text{#2}}}{#3}}
 \newcommand{\oversett}[2]{\overset{\text{#1}}{#2}}
 \newcommand{\undersett}[2]{\underset{\text{#1}}{#2}}
 \newcommand{\overunderref}[4]{\overundersett{\hyperref[#1]{\text{#2}}}{\hyperref[#1]{\text{#3}}}{#4}}
 \newcommand{\overundersett}[3]{\overunderset{\text{#1}}{\text{#2}}{#3}}
-\newcommand{\onlyinsubfile}[1]{#1}
-\newcommand{\notinsubfile}[1]{}
-\newcommand{\subgraphic}[2]{
-	\onlyinsubfile{\includegraphics[width=#1\textwidth]{images/#2}}
-	\notinsubfile{\includegraphics[width=#1\textwidth]{chapters/images/#2}}
-}
-\newcommand{\induktion}[3]{%
+
+\newcommand{\onlyinsubfile}[1]{#1} %maybe?
+\newcommand{\notinsubfile}[1]{} %maybe?
+\newcommand{\induktion}[3]{
 	\begin{enumerate}
 		\item[IA:]#1
 		\item[IV:]#2
 		\item[IS:]#3
 	\end{enumerate}
 }
-\newcommand{\equilr}[2]{
-	\gqq{\ensuremath{\Leftarrow}}\ensuremath{\colon}#1\newline
-	\gqq{\ensuremath{\Rightarrow}}\ensuremath{\colon}#2
-}
-\newcommand{\equirl}[2]{
-	\gqq{\ensuremath{\Rightarrow}}\ensuremath{\colon}#1\newline
-	\gqq{\ensuremath{\Leftarrow}}\ensuremath{\colon}#2
-}
-\newcommand\longeq{\mathrel{\Longleftrightarrow}}
+
 \newcommand{\set}[1]{\{#1\}}
-\newcommand{\provideFormat}[1]{\def\Format##1{\makebox[\widthof{\ensuremath{#1}}][r]{\ensuremath{##1}}}}
-\newcommand{\case}[2]{\begin{tabular}{rl}#1: #2\end{tabular}}
-\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
-  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
-  #1 % the function
-  \vphantom{\big|} % pretend it's a little taller at normal size
-  \right|_{#2} % this is the delimiter
-}}
 
 \DeclareMathOperator{\IV}{(IV)}
 \DeclareMathOperator{\injektiv}{injektiv}
