@@ -3,8 +3,210 @@
 \begin{document}
 
 \setcounter{section}{0}
-\section{Was ist Analysis?}
+\section{Der Satz von Taylor}
 
-Hallo Welt
+Ist \( \abb{f}{I = (c,d)}{\R} \) differenzierbar in 
+\( a \in I \) \\
+\[ \Leftrightarrow f(x) = f(a) + f'(a)(x-a) + R(x), 
+\limesx{x}{a} \frac{R(x)}{x-a} = 0. \]
+Frage: geht dies besser? \( \abb{f}{I}{\R} \) 
+\gqq{nette} Funktion, \( a \in I \).
+Existiert ein Polynom \( p \) vom Grad \( n\in\N \) 
+so, dass 
+\[ f(x) = p(x) + R(x), 
+\limesx{x}{a} \frac{R(x)}{{(x-a)}^n} = 0? \]
+Falls ja, wie bezeichnet man \( p \)?
 
+Spezialfall: \(f\) ist ein Polynom. 
+\( f(x) = \sum_{k=0}^n b_k x^k \). \\
+\( f \) ist umschreibbar in ein Polynom von \( x-a \). \\
+\begin{align*}
+    f(x) &= \sum_{k=0}^n b_k \underbrace{{(x - a + a)}^k}_{
+        = \sum_{l=0}^k \binom{k}{l} {(x-a)}^l a^{k-l}
+    } \\
+    &= \sum_{\substack{0 \leq k \leq n \\ 0 \leq l \leq k}} %Indizes?
+    b_k \binom{k}{l} a^{k-l} {(x-a)}^l \\
+    &= \sum_{l=0}^n \left( \sum_{k=l}^n 
+    b_k \binom{k}{l} a^{k-l} \right) {(x-a)}^l \\
+    &= \sum_{l=0}^n c_l {(x-a)}^l.\\
+    &= \sum_{l=0}^n \frac{f^{(l)}(a)}{l!} {(x-a)}^l 
+    \text{ umentwickeltes Polynom}. \\
+\end{align*}
+\begin{align*}
+    c_0 &= \sum_{k=0}^n b_k a^k = f(a) \\
+    c_1 &= \sum_{k=1}^n b_k k a^{k-1} = f'(a) \\
+    c_2 &= \sum_{k=2}^n b_k \frac{k(k-1)}{2} a^{k-2} 
+    = \frac{1}{2} f''(a) \\
+    c_3 &= \sum_{k=3}^n b_k 
+    \underbrace{\binom{k}{3}}_{
+        \substack{= \frac{k!}{3!(k-3)!} 
+        \\= \frac{k(k-1)(k-2)}{3 \cdot 2} }
+    } a^{k-3}
+    = \frac{1}{3!} f''(a)
+\end{align*}
+\[ \oversett{Induktion}{\Rightarrow} c_l 
+= \frac{1}{l!} f^{(l)}(a) 
+\Leftrightarrow f^{(l)}(a) = l!c_l \]
+
+\begin{lem}[Erste Version von Taylor]
+    Sei \(n \in \N, \abb{f}{I=(c,d)}{\R}\) \((n+1)\)-mal 
+    differenzierbar. Dann gibt es zu jedem 
+    \( a \in I \) und \( x\in I \) ein 
+    \( \zeta \) zwischen \(a\) und \(x\) 
+    (d.\ h.\ ist \( a < x \Rightarrow a < \zeta < x, 
+    x < a \Rightarrow x < \zeta < a \)) so, dass 
+    \[ f(x) = \sum_{l=0}^n \frac{f^{(l)}(a)}{l!} {(x-a)}^l 
+    + \underbrace{ \frac{f^{(n+1)}(\zeta)}{(n+1)!} {(x-a)}^{n+1} 
+    }_{ \text{\gqq{Fehler}} }. \]
+\end{lem}
+\begin{bew}
+    Folgt aus Satz von Rolle! \\
+    Hilfsfunktion: Sei \( a \leq t \leq x \) 
+    (oder \( x \leq t \leq a \)), \( m \in \R \). 
+    \begin{align*}
+        g(t) &:= f(x) - f(t) - f'(t)(x-t) - \cdots 
+        - \frac{ f^{(n)}(t) }{ n! } {(x-t)}^n - m 
+        \frac{ {(x-t)}^{n+1} }{ (n+1)! } \\
+        &= f(x) - \sum_{l=0}^{n} 
+        \frac{ f^{(l)}(t) }{ l! }{(x-t)}^l
+        - m \frac{ {(x-t)}^{n+1} }{ (n+1)! }
+    \end{align*}
+
+    \( \Rightarrow g(x) = 0 \) legen \( m\in \R \) so fest, 
+    dass auch \( g(a) = 0 \) ist. \\
+    \( \oversett{Rolle}{\Rightarrow} \exists \zeta \) zwischen 
+    \(a\) und \(x\) mit \( g'(\zeta) = 0 \). \\
+    \[ g'(t) = 0 - \underbrace{ 
+        f'(t) - \sum_{l=1}^n \left( 
+        \frac{ f^{(l+1)}(t) }{ l! } {(x-t)}^l 
+        - \frac{ f^{(l)}(t) }{ (l-1)! } {(x-t)}^{l-1}
+    \right) }_{\text{Teleskopsumme}}
+    + \frac{ m {(x-t)}^{n} }{ n! }. \]
+    \[ \Rightarrow g'(t) = -\frac{ f^{(n+1)}(t) }{ n! } {(x - \zeta)}^n
+    + m \frac{ {(x-t)}^n }{ n! } \]
+    Mit Rolle:
+    \[ 0 = g'(\zeta) = -\frac{ f^{(n+1)}(\zeta){(x-\zeta)}^n }{ n! } 
+    + \frac{ m{(x-\zeta)}^n }{ n! } \]
+    \[ \Rightarrow m = f^{(n+1)}(\zeta) \]
+    \[ \Rightarrow g(t) = f(x) - \sum_{l=0}^{n} \frac{ f^{(l)}(t) }{ (l)! }
+    \cdot {(x-t)}^l - \frac{ f^{(l+1)}(\zeta) }{ (n+1)! } {(x-t)}^{n+1} \]
+    Setze \( t=a \Rightarrow g(a) = 0 \), löse nach \(f(x)\) auf.
+\end{bew} 
+\begin{defi}
+    Sei \( \abb{f}{(c,d)}{\R} \) \(n\)-mal differenzierbar, 
+    \( a \in (c,d) \). Dann heißt 
+    \[ T_n(f,a)(x) := \sum_{l=0}^n 
+    \frac{f^{(l)}(a)}{l!} {(x-a)}^l \]
+    das \(n\)-te Taylorpolynom von \(f\) an der Stelle \(a\) 
+    und \[ R_n(f,a) := f - T_n(f,a) \] heißt Restglied.
+\end{defi}
+\begin{satz}[Taylor]
+    Sei \( \abb{f}{I}{\R} \) \( n \)-mal differenzierbar. Dann gibt es zu
+    \( a \in I \) eine Funktion \( \abb{R_n(f,a)}{I}{\R} \) mit
+    \[ f = T_n(f, a) + R_n(f,a) \]
+    und \( R_n(f,a) \) ist gegeben durch
+    \[ R_n(f,a)(x) = \frac{1}{n!} 
+    \left( f^{(n)}(\zeta) - f^{(n)}(a) \right) {(x-a)}^n \]
+    für ein \( \zeta \) zwischen \( a \) und \( x \). \\
+    \( \zeta = \zeta(x) \)
+\end{satz}
+\begin{bew}
+    Lemma 1
+    \begin{align*}
+        \Rightarrow f(x) &= T_{n-1}(f, a)(x) +
+        \frac{ f^{(n)}(\zeta){(x-a)}^n }{ n! } \\
+        &= T_n(f,a)(x) - \frac{ f^{(n)}(a) }{n!} {(x-a)}^n 
+        + \frac{f^{(n)}(\zeta)}{n!} {(x-a)}^n.
+    \end{align*}
+\end{bew}
+\begin{bem}
+    Ist \( f^{(n)} \) stetig in \( a \). \\
+    \( \zeta = \zeta(x), a < \zeta(x) < x \) oder \( x < \zeta(x) < a \)
+    \[ \Rightarrow \abs{ \frac{ R_n(f,a)(x) }{ {(x-a)}^n } } 
+    = \frac{1}{n!} \abs{ f^{(n)}(\zeta) - f^{(n)}(a) } 
+    \rightarrow 0, x \rightarrow a. \]
+    \[ \limesx{x}{a} \frac{ R_n(f,a)(x) }{ {(x-a)}^n } = 0. \]
+    Fehler geht schneller als \( {(x-a)}^n \) gegen Null.
+\end{bem}
+\begin{defi}[Landau Symbole]
+    \( I = (a,b) \) \\
+    \( \abb{g,h}{I}{\R}, h > 0\) (\(a=-\infty, b=\infty \) erlaubt.)
+    Dann heißt \( g = o(h), x \rightarrow a \) 
+    (oder \( x \rightarrow b \)), falls 
+    \[ \limesx{x}{a} \frac{g(x)}{h(x)} = 0. \]
+    \zB{} \[ g = o(|x-a|^n), x \rightarrow a 
+    \Leftrightarrow \limesx{x}{a} 
+    \frac{g(x)}{|x-a|^n} = 0 \]
+
+    \[ g = O(n), x \rightarrow a \]
+    falls \[ \limessupx{x}{a} \abs{\frac{g(x)}{h(x)}} < \infty. \]
+    \( \Leftrightarrow \exists \delta > 0, C < \infty: 
+    \abs{ \frac{g(x)}{h(x)} } \leq C 
+    \;\forall x \in (a - \delta, a + \delta) \)
+
+    \[ g = o(1) \Leftrightarrow \limes{x} g(x) = 0 \]
+    Satz von Taylor: Ist \( f^{(n)} \) in \( a \) stetig, so ist
+    \( R_n(f,a) = o(|x-a|^n) \)
+\end{defi}
+\begin{kor}
+    \(I\) offenes Intervall, \( \abb{f}{I}{\R} \) 
+    \(n\)-mal stetig differenzierbar und \(a\in I\). 
+    Dann gilt 
+    \[ f(x) = T_n(f,a)(x) + o(\abs{x-a}^n). \]
+\end{kor}
+\begin{bsp}
+    Logarithmus: \( f(x) = \ln(1+x) \). \\
+    \( f'(x) = \frac{1}{x+1}, f''(x) = -(x+1)^{-2} \)
+    \[ \oversett{Induktion}{\Rightarrow} f^{(n)}(x) 
+    = {(-1)}^{n-1} (n-1)! {(1+x)}^{-n}. \]
+    \begin{align*}
+        \Rightarrow T_n(f,0)(x) &= \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!}x^k \\
+        &= \sum_{k=0}^n \frac{{(-1)}^{k-1}}{k} x^k
+    \end{align*}
+    \[ \Rightarrow \ln(x+1) = \sum_{k=0}^n 
+    \frac{ {(-1)}^{k-1} }{k} x^k + R_n(x) \]
+    und 
+    \[ R_n(x) = \frac{1}{n!} 
+    \left(
+        f^{(n)}(\zeta) - f^{(n)}(a)
+    \right) x^n = \frac{{(-1)}^{n-1}}{n} 
+    \left( (1 + \zeta)^{-n} - 1 \right) x^n. \]
+    Oder (Lemma 1).
+    \[ \ln(x+1) = \sum_{k=0}^{n} \frac{(-1)^k}{k!} x^k
+    + R_{n+1}(x) \]   
+    \begin{align*}
+        R_{n+1}(x) &= \frac{f^{(n+1)}(\zeta)}{(n+1)!} x^{n+1} \\
+        &= \frac{(-1)^n}{n+1} \cdot \frac{x^{n+1}}{(1+ \zeta)^{n+1}} \\
+        &= \frac{(-1)^n}{n+1} 
+        \cdot \left( \frac{x}{1+ \zeta} \right)^{n+1}
+    \end{align*} 
+    \( \zeta \) ist zwischen \(0\) und \(1\), \( x > -1 \).\\
+    \( f(0) = \ln 1 = 0 \).\\
+    \( n = 1 \): \( \ln(1+x) = x + R_2(x) 
+    = x - \frac{1}{2} \frac{x^2}{(1+\zeta)^2} \).\\
+    Ist \( 0 < x \leq 1 \): 
+    \[ \abs{ R_{n+1}(x) } = \frac{1}{n+1} 
+    \abs{\frac{x}{1+\zeta}}^n \leq \frac{1}{n+1} \rightarrow 0, 
+    n\rightarrow \infty. \]
+    \[ \Rightarrow \ln(1+x) = \limes{n} \sum_{k=1}^n 
+    \frac{ {(-1)}^{k-1} }{ k } x^k 
+    = \sum_{k=1}^\infty \frac{ {(-1)}^{k-1} }{k} x^k. \]
+    \( -1 < x < 0 \):
+    \begin{align*}
+        \abs{ R_{n+1}(x) }
+        &= \abs{ \frac{(-1)^n}{n+1} \cdot 
+        \left( \frac{x}{1+\zeta} \right)^{n+1} } \\
+        &= \frac{1}{n+1} \abs{\frac{x}{1+\zeta}}^{n+1} 
+    \end{align*}
+    brauchen: \( \abs{\frac{x}{1+\zeta}} \leq 1 \). \\
+    Sei \( -\frac{1}{2} \leq x < 0: -\frac{1}{2} < \zeta < 0 \)    
+    \[ \Rightarrow \frac{\abs{x}}{\abs{1+\zeta}} \leq \frac{\abs{x}}{1-\abs{\zeta}}
+      \leq \frac{\frac{1}{2}}{1 - \frac{1}{2}} = 1. \]
+
+    \[ \abs{ R_{n+1}(x) } \leq \frac{1}{n+1} 
+    \rightarrow 0, n \rightarrow \infty. \]
+    Folgerung: für \( -\frac{1}{2} \leq x \leq 1 \) ist 
+    \[ \ln(1+x) = \sum_{k=1}^\infty 
+    \frac{ {(-1)}^{k-1} }{k} x^k. \]
+\end{bsp}
 \end{document}
