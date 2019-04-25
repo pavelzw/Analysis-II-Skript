@@ -1,0 +1,163 @@
+%25.04.2019
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{1}
+\section{Zweiter Mittelwertsatz und Anwendungen (l'Hospital, Restglieddarstellung Taylor)}
+
+Erster Mittelwertsatz: \( f: [a,b] \rightarrow \R \) 
+stetig und differenzierbar in \( (a,b) \).
+\[ \Rightarrow \exists a < \zeta < b : 
+f(b) - f(a) = f'(\zeta)(b-a). \]
+\begin{satz}{Zweiter Mittelwertsatz}
+    Seien \(\abb{f,g}{[a,b]}{\R} \) stetig und 
+    differenzierbar auf \( (a,b) \).
+    \[ \exists \zeta \in (a,b): g'(\zeta)(f(b) - f(a)) 
+    = f'(\zeta) (g(b) - g(a)). \]
+\end{satz}
+\begin{bew}
+    Hilfsfunktion: 
+    \[ h(x) := (f(b) - f(a))(g(x) - g(a)) 
+    - (f(x) - f(a))(g(b) - g(a)) \]
+    \[ \Rightarrow h(a) = 0 = h(b). \]
+    \( h \) ist differenzierbar auf \( (a,b) \).
+    \( \oversett{Rolle}{\Rightarrow} 
+    \exists a < \zeta < b : 0 = h'(\zeta) 
+    = (f(b) - f(a))g'(\zeta) - f'(\zeta)(g(b) - g(a)) \).
+\end{bew}
+\begin{bem}
+    Ist \( g(x) = x \) so folgt der erste Mittelwertsatz
+\end{bem}
+\begin{kor}
+    Bedingung wie in Satz 1. 
+    Ist \( g'(x) \neq 0 \forall x\in (a,b) \), 
+    so ist \( g(b) - g(a) \neq 0 \) und 
+    \[ \frac{f(b)-f(a)}{g(b)-g(a)} 
+    = \frac{f'(\zeta)}{g'(\zeta)} \]
+    für ein \( a < \zeta < b \).
+\end{kor}
+\large{Die Regeln von l'Hospital}
+Wir wissen: es existieren \( \limesx{x}{a} f(x) \) und 
+\( \limesx{x}{a} g(x) \neq 0 \), so existiert 
+\[ \limesx{x}{a} \frac{f(x)}{g(x)} 
+= \frac{ \limesx{x}{a}f(x) }{ \limesx{x}{a}g(x) }. \]
+Ist \( \limesx{x}{a} g(x) = 0, \limesx{x}{a} f(x) \neq 0 \), 
+so existiert
+\[ \limesx{x}{a} \frac{f(x)}{g(x)} \text{nicht.} \]
+Frage: Was ist, wenn \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) ?
+
+\begin{satz}[Erste Regel von l'Hospital]
+    \( \abb{f,g}{[a,b]}{\R} \) differenzierbar
+    \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) und
+    \( g(x) \neq 0 \forall x \in (a,b) \) (oder \( x > a \) nahe bei \(a\))
+    Existiert 
+    \[ \limesx{x}{a} \frac{f'(x)}{g'(x)} 
+    \text{ in } \bar{\R} = \R \cup \set{-\infty, \infty}, \]
+    so existiert auch \( \limesx{x}{a} \frac{f(x)}{g(x)} \)
+    und es gilt
+    \[ \limesx{x}{a} \frac{f(x)}{g(x)} 
+    = \limesx{x}{a} \frac{f'(x)}{g'(x)}. \]
+\end{satz}
+\begin{bew}
+    Setzen \(f,g\) stetig auf das \( [a,b) \) fort mit
+    \[ g(a) = \limesx{x}{a+} g(x) = 0 \]
+    \[ f(a) := 0 = \limesx{x}{a} f(x) \]
+    \[ \frac{f(x)}{g(x)} = \frac{f(x) -f(a)}{g(x)-g(a)} 
+    \oversett{2. MWS}{=} \frac{f'(\zeta)}{g'(\zeta)} \]
+    für ein \( a < \zeta < x \)
+    Also ist \( a < x_n < b \) Folge 
+    \[ x_n \rightarrow a, n \rightarrow \infty \]
+    \[ \Rightarrow \zeta_n : a < \zeta_n < x_n \text{ mit } 
+    \frac{ f(x_n) }{ g(x_n) } 
+    = \frac{ f'(\zeta_n) }{ g'(\zeta_n) } \]
+    auch \( \zeta_n \rightarrow a \) \\
+    \( \Rightarrow \) da \( \limes{n} 
+    \frac{f'(\zeta_n)}{g'(\zeta_n)} \) existiert, existiert 
+    auch 
+    \[ \limes{n} \frac{f(x_n)}{g(x_n)} = \limes{n} 
+    \frac{f'(\zeta_n)}{g'(\zeta_n)}. \]
+    \( \overundersett{Folgenkrit.}{v.\ Grenzwerten}{\Rightarrow} \)
+    \( \limesx{x}{a} \frac{f(x)}{g(x)} \) existiert und 
+    \( = \limesx{x}{a} \frac{f'(x)}{g'(x)} \)
+\end{bew}
+\begin{bsp}
+    Seien \(m,n \in \N, a \in \R \)
+    \[ \limesx{x}{a+} \frac{x^n -a^n}{x^m-a^m} =    
+    \limesx{x}{a+} \frac{nx^{n-1}}{mx^{m-1}} 
+    = \frac{n}{m}a^{n-m} \]    
+\end{bsp}
+\begin{bem}
+    Satz 3 gilt auch \( \limesx{x}{b-} \frac{f(x)}{g(x)},
+    a=-\infty, b=+\infty \) ist erlaubt. (scharfes hinschauen
+    auf den Beweis)
+\end{bem}
+\begin{bem}
+    Ist \( \limesx{x}{a} \frac{1}{g(x)} = 0 \) und \( \limessupx{x}{a}
+    \abs{f(x)} < \infty \Rightarrow \limesx{x}{a} \frac{f(x)}{g(x)} = 0 \)
+    Der Fall \( \limesx{x}{a} \frac{1}{g(x)} = 0 
+    = \limesx{x}{a} \frac{1}{f(x)} \) fehlt noch.
+\end{bem}
+\begin{satz}[Zweiter Satz von l'Hospital]
+    Seien \( f,g : (a.b) \rightarrow \R \) differenzierbar,
+    \( g(x) \neq 0 \;\forall x  \) (\(a = -\infty\) erlaubt).
+    Ist \( \limesx{x}{a+} \frac{1}{g(x)} = 0 \), so folgt aus der 
+    Existenz von 
+    \[ \limesx{x}{a+} \frac{f'(x)}{g'(x)} \] 
+    die Existenz von
+    \[ \limesx{x}{a+} \frac{f(x)}{g(x)} \]
+    und es gilt
+    \[ \limesx{x}{a+} \frac{f(x)}{g(x)} 
+    = \limesx{x}{a+} \frac{f'(x)}{g'(x)} \]
+\end{satz}
+\begin{bew}
+    für \( a < x < y < b \)
+    \[ \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) -g(y)} 
+    \cdot \frac{f(x)}{f(x)-f(y)} \cdot \frac{g(x)-g(y)}{g(x)} \]
+    \[ = \frac{f'(\zeta)}{g'(\zeta)} \cdot 
+    \frac{1}{1-\frac{f(y)}{f(x)}} \cdot 
+    \left(1 - \frac{g(y)}{g(x)} \right) \cdot %TODO
+    \frac{g(x)-g(y)}{g(x)} \]
+    für ein \( x < \zeta < y \).
+    Sei \( \alpha := \limesx{x}{a+} \frac{f'(x)}{g'(x)} \).
+    \( \Rightarrow \) zu \( \alpha_1 > \alpha \exists 
+    x_1 > \alpha : \frac{f'(x)}{g'(x)} < \alpha_1 
+    \;\forall a < x < x_1 \).
+    Sei \( a < y < x_1 \) und \(a < x < y \). \\
+    \(x\) nahe bei \(a\) so, dass
+    \[ f(x) \neq f(y), g(x) \neq g(y). \]
+    \[ \Rightarrow \frac{f(x)}{g(x)} 
+    = \underbrace{\frac{f(x)-f(y)}{g(x)-g(y)}}_{
+        \oversett{ZMWS}{=} \frac{f'(\zeta)}{g'(\zeta)} < \alpha_1
+    }
+    \cdot \underbrace{\frac{1}{1-\frac{f(y)}{f(x)}} }_{
+        \rightarrow 1, \;x\rightarrow a+}
+    \cdot \underbrace{(1- \frac{g(y)}{g(x)})}_{
+        \rightarrow 1, \;x\rightarrow a+} \]
+    \[ \Rightarrow \limessupx{x}{a+} \frac{f(x)}{g(x)} 
+    \leq \alpha_1, \forall \alpha_1 > \alpha \]
+    \[ \Rightarrow \limessupx{x}{a+} \frac{f(x)}{g(x)} \leq \alpha. \]
+    \( \Rightarrow \) ist \( \alpha = -\infty \), so folgt 
+    \[ \limesx{x}{a+} \frac{f(x)}{g(x)} = -\infty. \]
+    Der Fall \( \alpha \in (-\infty, \infty]: \) \\
+    Genauso zu \( \alpha_1 < \alpha \exists a < x_1: \)
+    \[ \frac{f(x)}{g(x)} > \alpha_0, \forall a < x < x_1 \]
+    \( \Rightarrow \limesinfx{x}{a+} \frac{f(x)}{g(x)} 
+    \geq \alpha_0\;\forall \alpha_0 < \alpha \\
+    \Rightarrow \limesinfx{x}{a+} \frac{f(x)}{g(x)} \geq \alpha \).\\
+    Ist \( \alpha = +\infty \Rightarrow \limesx{x}{a+} 
+    \frac{f(x)}{g(x)} = +\infty \).    
+    für \( -\infty < \alpha < +\infty \)
+    \[ \Rightarrow \alpha \leq \limesinfx{x}{a+} \frac{f(x)}{g(x)} 
+    \leq \limessupx{x}{a+} \frac{f(x)}{g(x)} \leq \alpha \]
+    \[ \limesx{x}{a} \frac{f(x)}{g(x)} = \alpha \]
+\end{bew}
+\begin{bsp}%2
+    \( n\in\N, a_1, a_2, \ldots, a_n \geq 0 \).
+    \[ \limes{x} \sqrt[n]{x^n + a_1 x^{n-1} + \cdots + a_n} - x 
+    \qquad y = \frac{1}{x} \]
+    \[ = \limesx{y}{0+} \frac{ \sqrt[n]{1 + a_1 y + \cdots + a_n y^n} }{y} \]
+    \[ = \limesx{y}{0+} \frac{ \frac{1}{n} 
+    (1 + a_1 y + \cdots + a_n y^n)^{\frac{1}{n} - 1} 
+    (a_1 + 2a_2 y + \cdots + n a_n y^{n-1}) }{ 1 } = \frac{a-1}{n} \]
+\end{bsp}
+\end{document}

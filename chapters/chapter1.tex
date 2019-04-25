@@ -1,4 +1,4 @@
-%17.10.2018
+%23.04.2019
 \documentclass[../ana2.tex]{subfiles}
 \begin{document}
 
@@ -209,4 +209,40 @@ Spezialfall: \(f\) ist ein Polynom.
     \[ \ln(1+x) = \sum_{k=1}^\infty 
     \frac{ {(-1)}^{k-1} }{k} x^k. \]
 \end{bsp}
+\( \abb{f}{I}{\R}, I = [c,d], a \in I. \)
+\[ T_n(f,a) = \sum_{k=0}^n \frac{f^{(k)}(a)}{ k! } 
+(x-a)^k \text{ Taylorpolynom } n\text{-ter Ordnung} \]
+
+\[ R_n(f,a) := f - T_n(f, a) \]
+\[ \oversett{immer}{\Rightarrow} f = T_n(f,a) + R_n(f,a) \]
+
+
+
+%Zusatz?
+\( \oversett{Lemma 1}{\Rightarrow} \exists \zeta(f,n,a,x) \)
+\[ \frac{ R_n(f,g)(x) }{(x-a)^n} = \frac{1}{n!} 
+[f^{(n)}(\zeta) - f^{(n)}(a)] (x-a)^n \]
+\( \Rightarrow \frac{ \abs{R_n(f, x)} }{ \abs{x-a}^n } 
+\leq \frac{1}{n!} \abs{ f^{(n)}(\zeta(x)) - f^{(n)}(a) } \)
+mit \( R_n(f,a)(x) = \frac{1}{(n+1)!} 
+f^{(n+1)}(\zeta(f,n,a,x)) (x-a)^{n+1} \) eine Darstellung 
+des Fehlers (Lagrange).
+
+Aus dem Satz: (eine andere Fehlerdarstellung)
+\( R_n(f,x) = \frac{1}{n!} [f^{(n)}(\zeta(x)) - f^{(n)}(a)] \)
+\[ \exists \zeta = \zeta(x) = \zeta(x,f,n,a) \]
+
+\begin{bsp}
+    \begin{align*}
+        f(x) &= \ln(1+x), -1 < x < \infty
+        f^{(j)}(x) &= (-1)^{j-1}(j-1)!(1+1)^{-j}        
+    \end{align*}    
+    \[ \overundersett{Fehlerdarstellung}{aus Lemma 1}{\Rightarrow} 
+    \exists \zeta(x) \text{zwischen } 0 \text{ und } x: \]
+    \[ R_n(\ln(1+x),0) = \frac{(-1)^n}{(n+1)!} \cdot n! 
+    \cdot (1+\zeta)^{-(n+1)}x^{n+1} \]
+    leztes Mal war \( -\frac{1}{2} \leq x \leq 1 \)
+    \[ \abs{R_n(f, 0)} \leq \frac{1}{n+1} \overset{n \rightarrow \infty}{\rightarrow} 0\]
+\end{bsp}
+
 \end{document}
