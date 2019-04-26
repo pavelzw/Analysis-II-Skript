@@ -1,0 +1,40 @@
+%26.04.2019
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{1}
+\section{Ein paar Eigenschaften elementarer Funktionen}
+\( e^z = \exp z := \sum_{n=0}^\infty \frac{z^n}{n!} \), 
+konvergiert absolut \( \forall z\in\C \). \( z = x + iy, x,y \in \R \). \\
+\( \exp(z + w) = \exp z \exp w \) (schon bekannt).
+\[ \exp(it) = \cos(t) + i\sin(t) \]
+\[ \cos t = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} \cdot t^{2n} \]
+\[ \sin t = \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} t^{2k+1}. \]
+\begin{satz}
+    \begin{enumerate}%[label=(\alph*)]
+        \item \( \forall z \in \C \) ist \( \exp(z) \neq 0 \)
+        \item \( \frac{d}{dx} \exp(ax) = a \exp(ax) 
+        \;\forall a\in \C \).\\ \( \exp(t)^i = \exp(t) \).
+        \item \( \abb{\exp}{\R}{(0,\infty)} \) strikt wachsend, \\
+            \( e^x \rightarrow \infty, x \rightarrow \infty \) \\
+            \( e^x \rightarrow 0, x \rightarrow -\infty \)
+        \item \( \exists \) pos. Zahl \( \pi \): 
+        \( e^{\frac{i\pi}{2}} = i \) und 
+        \[ e^z = 1 \Leftrightarrow \frac{z}{2\pi i} \in \Z. \]
+        \item \( \abb{\exp}{\C}{\C} \) ist periodisch mit 
+        Periode \( 2\pi i \). \\
+        \Dphp{} \( \exp(z +2\pi i) = \exp(z) \; \forall z\in\C \)
+        und es gibt kein \( 0 < d < 2\pi \): 
+        \[ \exp(z + di) = \exp(z)\; \forall z \in \C. \]
+        \item \( \R \ni t \rightarrow \exp(it) = e^{it} \) bildet 
+        \( \R \) auf den Einheitskreis in \( \C \) ab.
+        \item Ist \( w \in \C, w \neq 0 \) dann gibt es ein \( z \in \C \)
+        mit \( \exp(z) = w \)
+        \begin{align*}
+            \exp(\underbrace{it + 2\pi i}_{i(t+2\pi)}) &= \exp(it) = \cos(t) + i\sin(t) \\
+            &= \exp(i(t+2\pi)) = \cos(t+2\pi) + i\sin(t+2\pi)
+            &\Rightarrow \cos(t + 2\pi) = \cos(t), \sin(t + 2\pi) = \sin(t)
+        \end{align*}
+    \end{enumerate}
+\end{satz}
+\end{document}
