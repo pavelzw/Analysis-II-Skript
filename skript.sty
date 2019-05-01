@@ -13,6 +13,7 @@
 \usetikzlibrary{matrix}
 \RequirePackage{hyperref} %Hyperlinks in pdf
 \RequirePackage{subfiles}
+\RequirePackage{enumitem}
 
 \let\oldforall\forall
 \renewcommand{\forall}{\oldforall \,}
@@ -22,7 +23,7 @@
 \newenvironment{bew}{\begin{proof}[Beweis]}{\end{proof}}
 
 \theoremstyle{definition}
-\newtheorem{satz}{Satz}[subsection]
+\newtheorem{satz}{Satz}[section]
 \newtheorem*{satz*}{Satz}
 \newtheorem{kor}[satz]{Korollar}
 \newtheorem{lem}[satz]{Lemma}
@@ -58,6 +59,7 @@
 \newcommand{\limesx}[2]{\lim\limits_{#1\rightarrow{}#2}}
 \newcommand{\limessup}[1]{\limsup\limits_{#1\rightarrow\infty}}
 \newcommand{\limessupx}[2]{\limsup\limits_{#1\rightarrow{}#2}}
+\newcommand{\limesinfx}[2]{\liminf\limits_{#1\rightarrow{}#2}}
 \newcommand{\limesinf}[1]{\liminf\limits_{#1\rightarrow\infty}}
 \newcommand{\existse}{\exists!}
 \newcommand{\inverse}[1]{{#1}^{\minus 1}}

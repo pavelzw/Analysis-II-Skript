@@ -1,0 +1,300 @@
+%25.04.2019
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{1}
+\section{Zweiter Mittelwertsatz und Anwendungen (l'Hospital, Restglieddarstellung Taylor)}
+
+Erster Mittelwertsatz: \( f: [a,b] \rightarrow \R \) 
+stetig und differenzierbar in \( (a,b) \).
+\[ \Rightarrow \exists a < \zeta < b : 
+f(b) - f(a) = f'(\zeta)(b-a). \]
+\begin{satz}{Zweiter Mittelwertsatz}
+    Seien \(\abb{f,g}{[a,b]}{\R} \) stetig und 
+    differenzierbar auf \( (a,b) \).
+    \[ \exists \zeta \in (a,b): g'(\zeta)(f(b) - f(a)) 
+    = f'(\zeta) (g(b) - g(a)). \]
+\end{satz}
+\begin{bew}
+    Hilfsfunktion: 
+    \[ h(x) := (f(b) - f(a))(g(x) - g(a)) 
+    - (f(x) - f(a))(g(b) - g(a)) \]
+    \[ \Rightarrow h(a) = 0 = h(b). \]
+    \( h \) ist differenzierbar auf \( (a,b) \).
+    \( \oversett{Rolle}{\Rightarrow} 
+    \exists a < \zeta < b : 0 = h'(\zeta) 
+    = (f(b) - f(a))g'(\zeta) - f'(\zeta)(g(b) - g(a)) \).
+\end{bew}
+\begin{bem}
+    Ist \( g(x) = x \) so folgt der erste Mittelwertsatz
+\end{bem}
+\begin{kor}
+    Bedingung wie in Satz 1. 
+    Ist \( g'(x) \neq 0 \forall x\in (a,b) \), 
+    so ist \( g(b) - g(a) \neq 0 \) und 
+    \[ \frac{f(b)-f(a)}{g(b)-g(a)} 
+    = \frac{f'(\zeta)}{g'(\zeta)} \]
+    für ein \( a < \zeta < b \).
+\end{kor}
+\large{Die Regeln von l'Hospital}
+Wir wissen: es existieren \( \limesx{x}{a} f(x) \) und 
+\( \limesx{x}{a} g(x) \neq 0 \), so existiert 
+\[ \limesx{x}{a} \frac{f(x)}{g(x)} 
+= \frac{ \limesx{x}{a}f(x) }{ \limesx{x}{a}g(x) }. \]
+Ist \( \limesx{x}{a} g(x) = 0, \limesx{x}{a} f(x) \neq 0 \), 
+so existiert
+\[ \limesx{x}{a} \frac{f(x)}{g(x)} \text{nicht.} \]
+Frage: Was ist, wenn \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) ?
+
+\begin{satz}[Erste Regel von l'Hospital]
+    \( \abb{f,g}{[a,b]}{\R} \) differenzierbar
+    \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) und
+    \( g(x) \neq 0 \; \forall x \in (a,b) \) (oder \( x > a \) nahe bei \(a\)) \\
+    Existiert
+    \[ \limesx{x}{a} \frac{f'(x)}{g'(x)} 
+    \text{ in } \bar{\R} = \R \cup \set{-\infty, \infty}, \]
+    so existiert auch \( \limesx{x}{a} \frac{f(x)}{g(x)} \)
+    und es gilt
+    \[ \limesx{x}{a} \frac{f(x)}{g(x)} 
+    = \limesx{x}{a} \frac{f'(x)}{g'(x)}. \]
+\end{satz}
+\begin{bew}
+    Setzen \(f,g\) stetig auf das \( [a,b) \) fort mit
+    \[ g(a) = \limesx{x}{a+} g(x) = 0 \]
+    \[ f(a) := 0 = \limesx{x}{a} f(x) \]
+    \[ \frac{f(x)}{g(x)} = \frac{f(x) -f(a)}{g(x)-g(a)} 
+    \overundersett{2.}{MWS}{=} \frac{f'(\zeta)}{g'(\zeta)} \]
+    für ein \( a < \zeta < x \)
+    Also ist \( a < x_n < b \) \\
+    Definiere: 
+    \[ x_n \rightarrow a, n \rightarrow \infty \]
+    \[ \Rightarrow \zeta_n : a < \zeta_n < x_n \text{ mit } 
+    \frac{ f(x_n) }{ g(x_n) } 
+    = \frac{ f'(\zeta_n) }{ g'(\zeta_n) } \]
+    auch \( \zeta_n \rightarrow a \) \\
+    \( \Rightarrow \) da \( \limes{n} 
+    \frac{f'(\zeta_n)}{g'(\zeta_n)} \) existiert, existiert 
+    auch 
+    \[ \limes{n} \frac{f(x_n)}{g(x_n)} = \limes{n} 
+    \frac{f'(\zeta_n)}{g'(\zeta_n)}. \]
+    \( \overundersett{Folgenkrit.}{v.\ Grenzwerten}{\Rightarrow} \)
+    \( \limesx{x}{a} \frac{f(x)}{g(x)} \) existiert und 
+    \( = \limesx{x}{a} \frac{f'(x)}{g'(x)} \)
+\end{bew}
+\begin{bsp}
+    Seien \(m,n \in \N, a \in \R \)
+    \[ \limesx{x}{a+} \frac{x^n -a^n}{x^m-a^m} =    
+    \limesx{x}{a+} \frac{nx^{n-1}}{mx^{m-1}} 
+    = \frac{n}{m}a^{n-m} \]    
+\end{bsp}
+\begin{bem}
+    Satz 3 gilt auch \( \limesx{x}{b-} \frac{f(x)}{g(x)},
+    a=-\infty, b=+\infty \) ist erlaubt. (scharfes hinschauen
+    auf den Beweis)
+\end{bem}
+\begin{bem}
+    Ist \( \limesx{x}{a} \frac{1}{g(x)} = 0 \) und \( \limessupx{x}{a}
+    \abs{f(x)} < \infty \Rightarrow \limesx{x}{a} \frac{f(x)}{g(x)} = 0 \)
+    Der Fall \( \limesx{x}{a} \frac{1}{g(x)} = 0 
+    = \limesx{x}{a} \frac{1}{f(x)} \) fehlt noch.
+\end{bem}
+\begin{satz}[Zweiter Satz von l'Hospital]
+    Seien \( f,g : (a.b) \rightarrow \R \) differenzierbar,
+    \( g(x) \neq 0 \;\forall x  \) (\(a = -\infty\) erlaubt).
+    Ist \( \limesx{x}{a+} \frac{1}{g(x)} = 0 \), so folgt aus der 
+    Existenz von 
+    \[ \limesx{x}{a+} \frac{f'(x)}{g'(x)} \] 
+    die Existenz von
+    \[ \limesx{x}{a+} \frac{f(x)}{g(x)} \]
+    und es gilt
+    \[ \limesx{x}{a+} \frac{f(x)}{g(x)} 
+    = \limesx{x}{a+} \frac{f'(x)}{g'(x)} \]
+\end{satz}
+\begin{bew}
+    für \( a < x < y < b \)
+    \[ \frac{f(x)}{g(x)} = \frac{f(x) - f(y)}{g(x) -g(y)} 
+    \cdot \frac{f(x)}{f(x)-f(y)} \cdot \frac{g(x)-g(y)}{g(x)} \]
+    \[ = \frac{f'(\zeta)}{g'(\zeta)} \cdot 
+    \frac{1}{1-\frac{f(y)}{f(x)}} \cdot 
+    \underbrace{\left(1 - \frac{g(y)}{g(x)} \right)}_
+    {\frac{g(x)-g(y)}{g(x)}} \]
+    für ein \( x < \zeta < y \).
+    Sei \( \alpha := \limesx{x}{a+} \frac{f'(x)}{g'(x)} \)
+    \( \Rightarrow \) zu \( \alpha_1 > \alpha \; \exists 
+    x_1 > \alpha : \frac{f'(x)}{g'(x)} < \alpha_1 
+    \;\forall \alpha < x < x_1 \).
+    Sei \( \alpha < y < x_1 \) und \(\alpha < x < y \). \\
+    \(x\) nahe bei \(\alpha\) so, dass
+    \[ f(x) \neq f(y), g(x) \neq g(y). \]
+    \[ \Rightarrow \frac{f(x)}{g(x)} 
+    = \underbrace{\frac{f(x)-f(y)}{g(x)-g(y)}}_{
+        \overundersett{2.}{MWS}{=} \frac{f'(\zeta)}{g'(\zeta)} < \alpha_1
+    }
+    \cdot \underbrace{\frac{1}{1-\frac{f(y)}{f(x)}} }_{
+        \rightarrow 1, \;x\rightarrow \alpha+}
+    \cdot \underbrace{(1- \frac{g(y)}{g(x)})}_{
+        \rightarrow 1, \;x\rightarrow \alpha+} \]
+    \[ \Rightarrow \limessupx{x}{\alpha+} \frac{f(x)}{g(x)} 
+    \leq \alpha_1, \forall \alpha_1 > \alpha \]
+    \[ \Rightarrow \limessupx{x}{\alpha+} \frac{f(x)}{g(x)} \leq \alpha. \]
+    \( \Rightarrow \) ist \( \alpha = -\infty \), so folgt 
+    \[ \limesx{x}{\alpha+} \frac{f(x)}{g(x)} = -\infty. \]
+    Der Fall \( \alpha \in (-\infty, \infty]: \) \\
+    Genauso zu \( \alpha_1 < \alpha \; \exists \alpha < x_1: \)
+    \[ \frac{f(x)}{g(x)} > \alpha_0, \forall \alpha < x < x_1 \]
+    \( \Rightarrow \limesinfx{x}{\alpha+} \frac{f(x)}{g(x)} 
+    \geq \alpha_0\;\forall \alpha_0 < \alpha \\
+    \Rightarrow \limesinfx{x}{\alpha+} \frac{f(x)}{g(x)} \geq \alpha \).\\
+    Ist \( \alpha = +\infty \Rightarrow \limesx{x}{\alpha+} 
+    \frac{f(x)}{g(x)} = +\infty \).    
+    für \( -\infty < \alpha < +\infty \)
+    \[ \Rightarrow \alpha \leq \limesinfx{x}{\alpha+} \frac{f(x)}{g(x)} 
+    \leq \limessupx{x}{\alpha+} \frac{f(x)}{g(x)} \leq \alpha \]
+    \[ \limesx{x}{\alpha} \frac{f(x)}{g(x)} = \alpha \]
+\end{bew}
+\begin{bsp}%2 %FEHLER
+    \( n\in\N, a_1, a_2, \ldots, a_n \geq 0 \).
+    \[ \limes{x} \sqrt[n]{x^n + a_1 x^{n-1} + \cdots + a_n} - x 
+    \qquad y = \frac{1}{x} \]
+    \[ = \limesx{y}{0+} \frac{ \sqrt[n]{1 + a_1 y + \cdots + a_n y^n} }{y} \]
+    \[ = \limesx{y}{0+} \frac{ \frac{1}{n} 
+    (1 + a_1 y + \cdots + a_n y^n)^{\frac{1}{n} - 1} 
+    (a_1 + 2a_2 y + \cdots + n a_n y^{n-1}) }{ 1 } = \frac{a-1}{n} \]
+\end{bsp}
+\begin{bsp}
+    \begin{align*}
+        \limesx{x}{0} \frac{1 - \cos(ax)}{1 - \cos x} 
+        &= \limesx{x}{0} \frac{a \sin(ax)}{\sin x} \\
+        &= \limesx{x}{0} \frac{a^2 \cos(ax)}{\cos x} \\
+        &= a^2.
+    \end{align*}
+    \begin{align*}
+        \limes{x} x e^{-x} &= \limes{x} \frac{x}{e^x} \\
+        &= \limes{x} \frac{1}{e^x} = 0
+    \end{align*}    
+    \begin{align*}
+        \frac{x^{2019}}{e^x} 
+        &= \frac{x^{2019}}{\sum_{n=0}^{\infty} \frac{x^n}{n!}} 
+        = \frac{x^{2019}}{\frac{x^{2020}}{2020!} + \text{pos. Terme}} \\
+        &< \frac{x^{2019}}{\frac{x^{2020}}{2020!}}
+        = \frac{2020!}{x} \overset{\infty}{\rightarrow} 0
+    \end{align*}
+    \[ \Rightarrow \limes{x} x^{2019} e^{-x} 
+    = \limes{x} \frac{x^{2019}}{e^x} = 0 \]
+\end{bsp}
+
+\subsection{Restglieddarstellung bei Taylor}
+
+\[ f(x) = T_n(f,a) + R_n(f,a)(x) = \sum_{k=0}^{n} 
+\frac{f^{(k)}(a)}{k!}(x-a)^k + R_n(f,a)(x) \]
+\[ \ln(1+x) = \sum_{k=1}^{\infty} \frac{(-1)^{k-1}}{k} x^k \]
+mit \( \ln -\frac{1}{2} \leq x \leq 1 \)
+\[ \sum_{k=1}^{\infty} \frac{(-1)^{k-1}}{k} = \ln 2 \]
+
+\begin{satz}[Restglieddarstellung von Schlömilch]
+    Sei \(I = [c,d], \\
+    a \in I, p > 0, n \in \N, 
+    \abb{f}{I}{\R}\ n\)-mal stetig differenzierbar 
+    (\( f \in C^n(I,\R) \)) und \( f^{(n+1)} \) 
+    existiere auf \( \dot{I} = (c,d) \). Dann existiert für 
+    jedes \( x\in I \setminus \set{a} \) ein 
+    \( \zeta = \zeta(x) \in J := (\min(a,x), \max(a,x)) \) 
+    so, dass     
+    \[ R_n(f,a)(x) = \frac{f^{(n+1)}(\zeta)}{ pn! } 
+    \left( \frac{x - \zeta}{x - a} \right)^{n-p+1} (x-a)^{n+1}. \]
+\end{satz}
+\begin{bew}
+    Hilfsfunktion: 
+    \[ \abb{g,h}{[\min(a,x), \max(a,x)]}{\R}, x,a \text{ fest} \]
+    \[ g(t) := \sum_{k=0}^n \frac{f^{(k)}(t)}{k!} (x-t)^k, 
+    h(t) := (x-t)^p \]
+    \[ g(t) = f(t) + \sum_{k=1}^n \frac{f^{(k)}(t)}{k!} (x-t)^k \]
+    \[ \Rightarrow g(x) = f(x), 
+    g(a) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!} 
+    (x-a)^k = T_n(f,a)(x).\]
+    \( g, h \) sind stetig auf \( [\min(a,x), \max(a,x)] \) und
+    differenzierbar in \( (\min(a,x), \max(a,x)) \).
+    \[ h'(t) = \frac{d}{dt} h(t) = -p(x-t)^{p-1} \]
+    \[ g'(t) = f'(t) + \sum_{k=1}^{n} 
+    \underbrace{\left( \frac{f^{(k+1)}(t)}{k!} (x-t)^k
+    - \frac{f^{(k)}(t)}{(k-1)!} (x-t)^{k-1} \right)}_{\text{Teleskopsumme}} \]
+    \[ = \frac{f^{n+1}(t)}{n!}(x-t)^n \]
+
+    Zweiter MWS: \( \exists \zeta = \zeta(x) 
+    \in (\min(a,x), \max(a,x)) \):
+    \[ h'(\zeta)(g(x) - g(a)) = g'(\zeta)(h(x) - h(a))) \]
+    \[ h(x) - h(a) = 0 - (x-a)^p = -(x-a)^p \]
+    \[ g(x) - g(a) = f(x) - T_n(f,a)(x) = R_n(f,a)(x) \]
+    \begin{align*}
+        &\Rightarrow \underbrace{R_n(f,a)(x)}_{g(x)-g(a)} \\
+        &= \frac{g'(\zeta)}{h'(\zeta)}(h(x)-h(a)) \\
+        &= \frac{f^{(n+1)}(\zeta)}{n!}
+        \underbrace{(x-\zeta)^n \cdot \frac{(x-a)^p}{p(x-\zeta)^{p-1}}}_
+        {= \frac{f^{(n+1)}}{p \cdot n!} 
+        \cdot \underbrace{(x-\zeta)^{n-p+1}(x-a)^p}_
+        {= \left( \frac{x-\zeta}{x-a} \right)^{n-p+1} (x-a)^{n+1}}}.
+    \end{align*}
+\end{bew}
+\begin{kor}[Lagrange und Cauchy Restglieddarstellungen]
+    Unter der Bedingung von Satz 5 gilt 
+    \[ R_n(f,a)(x) = \frac{f^{(n+1)}(\zeta)}{(n+1)!} (x-a)^{n+1} \text{ (Lagrange)} \]
+    \[ R_n(f,a)(x) = \frac{f^{(n+1)}(\zeta)}{n!} 
+    \left( \frac{x- \zeta}{x-a} \right)^n (x-a)^{n+1} \text{ (Cauchy)} \]
+\end{kor}
+\begin{bew}
+    Man setze \( p=1 \) oder \( p=n+1 \) in Satz 5 ein.
+\end{bew}
+\begin{bsp}
+    \[ \forall -1 < x \leq 1: \ln(1+x) 
+    = \sum_{k=1}^\infty \frac{(-1)^{k-1}}{k} x^k. \]
+\end{bsp}
+\begin{bew}
+    Für \( 0 \leq x \leq 1 \) schon gemacht.
+    \[ f(x) = \ln(1+x), f'(x) = \frac{1}{1+x} 
+    = (1+x)^{-1} \]
+    \[ \oversett{Induktion}{\Rightarrow} f^{(n)}(x) 
+    = (-1)^{n-1}(n-1)!(1+x)^{-n} \]
+    \( a=0 \):
+    \begin{align*}
+        T_n(f,0)(x) &= \sum_{k=1}^{n} \frac{f^{(k)}(0)}{k!} x^k \\
+        &= \sum_{k=1}^{n} \frac{(-1)^{k-1}}{k} x^k         
+    \end{align*}
+    \begin{align*}
+        \ln(1+x) &= f(x) = T_n(f,0)(x) + R_n(f,0)(x) \\
+        &= \sum_{k=1}^{n} \frac{(-1)^{k-1}}{k} x^k + R_n(f, 0)(x)
+    \end{align*}
+    Ist \( 0 \leq x \leq 1 \): Nehme Lagrange. 
+    \( \exists \zeta = \zeta(x) = \zeta(x,n) \): 
+    \[ R_n(f,0)(x) = \frac{ f^{(n+1)}(\zeta) }{ (n+1)! } 
+    x^{n+1} = \frac{(-1)^n}{n+1} \underbrace{(1 + \zeta)^{-n}}_{
+        \leq 1
+    } \underbrace{x^{n+1}}_{\leq 1} \leq \frac{1}{n+1} \]
+    
+    \[ \Rightarrow \ln(1+x) 
+    = \limes{n} T_n(f,0)(x) + \underbrace{\lim R_n(f,0)(x) }_{=c} \]
+    \[ = \sum_{k=1}^\infty \frac{(-1)^{k-1}}{k} x^k. \]
+    Ist \( -1 < x < 0 \): Nehme Cauchy. \\
+    \( \exists \zeta = \zeta(x,n) = \zeta_n \).
+    \[ R_n(f,0)(x) = (-1)^n (1+ \zeta_n)^{-n} 
+    \left( \frac{x - \zeta_n}{x} \right)^n x^{n+1}. \]
+    \[ \abs{R_n(f,0)(x)} = (1 + \zeta_n)^{-n} 
+    \abs{ \frac{x - \zeta_n}{x} }^n \abs{x}^{n+1} 
+    = \left( \frac{ \abs{x - \zeta_n}^n }{1 + \zeta_n} 
+    \right)^n \abs{x} \]
+    \( 1 + \zeta_n > 1 + x > 0, x > -1 \)
+    haben \( -1 < x < \zeta_n < 0, 0 < 1+\zeta_n < 1, x+1 > 0 \) 
+    \[ \Rightarrow \abs{x-\zeta_n} = \zeta_n - x 
+    = \zeta_n + 1 - (x+1) \]
+    \[ \Rightarrow \frac{ \abs{x - \zeta_n} }{ 1 + \zeta_n } 
+    = \frac{ 1 + \zeta_n - (x+1) }{ 1 + \zeta_n } 
+    = 1 - \frac{x + 1}{1 + \zeta_n} < 1 - (x-1) = -x 
+    = \abs{x} < 1. \]
+    \[ \Rightarrow  \abs{R_n(f,0)(x)} 
+    \leq \abs{x}^n \abs{x} = \abs{x}^{n+1} \rightarrow 0 
+    \text{, da } -1 < x < 0. \]
+    \[ \Rightarrow \forall -1 < x < 0: \ln(1+x) 
+    = \limes{n} \sum_{k=1}^{n} \frac{(-1)^{k-1}}{k} x^k
+    = \sum_{k=0}^{\infty} \frac{(-1)^{k-1}}{k} x^k \]
+\end{bew}
+
+\end{document}
