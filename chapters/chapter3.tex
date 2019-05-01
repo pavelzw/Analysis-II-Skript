@@ -1,0 +1,244 @@
+%26.04.2019
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{2}
+\section{Ein paar Eigenschaften elementarer Funktionen}
+\( e^z = \exp z := \sum_{n=0}^\infty \frac{z^n}{n!} \), 
+konvergiert absolut \( \forall z\in\C \). \( z = x + iy, x,y \in \R \). \\
+\( \exp(z + w) = \exp z \exp w \) (schon bekannt).
+\[ \exp(it) = \cos(t) + i\sin(t) \]
+\[ \cos t = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} \cdot t^{2n} \]
+\[ \sin t = \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} t^{2k+1}. \]
+\begin{satz}
+    \begin{enumerate}[label=(\alph*)]
+        \item \( \forall z \in \C \) ist \( \exp(z) \neq 0 \)
+        \item \( \frac{d}{dx} \exp(ax) = a \exp(ax) 
+        \;\forall a\in \C \).\\ \( \exp(t)^i = \exp(t) \).
+        \item \( \abb{\exp}{\R}{(0,\infty)} \) strikt wachsend, \\
+            \( e^x \rightarrow \infty, x \rightarrow \infty \) \\
+            \( e^x \rightarrow 0, x \rightarrow -\infty \)
+        \item \( \exists \) pos. Zahl \( \pi \): 
+        \( e^{\frac{i\pi}{2}} = i \) und 
+        \[ e^z = 1 \Leftrightarrow \frac{z}{2\pi i} \in \Z. \]
+        \item \( \abb{\exp}{\C}{\C} \) ist periodisch mit 
+        Periode \( 2\pi i \). \\
+        \Dphp{} \( \exp(z +2\pi i) = \exp(z) \; \forall z\in\C \)
+        und es gibt kein \( 0 < d < 2\pi \): 
+        \[ \exp(z + di) = \exp(z)\; \forall z \in \C. \]
+        \item \( \R \ni t \rightarrow \exp(it) = e^{it} \) bildet 
+        \( \R \) auf den Einheitskreis in \( \C \) ab.
+        \item Ist \( w \in \C, w \neq 0 \) dann gibt es ein \( z \in \C \)
+        mit \( \exp(z) = w \)
+        \begin{align*}
+            \exp(\underbrace{it + 2\pi i}_{i(t+2\pi)}) &= \exp(it) = \cos(t) + i\sin(t) \\
+            &= \exp(i(t+2\pi)) = \cos(t+2\pi) + i\sin(t+2\pi)
+            &\Rightarrow \cos(t + 2\pi) = \cos(t), \sin(t + 2\pi) = \sin(t)
+        \end{align*}
+    \end{enumerate}
+\end{satz}
+Erinnerung: Cauchy-Produktformel: 
+\begin{align*}
+    e^z e^w &= \sum_{k=0}^\infty \frac{z^k}{k!} 
+    \sum_{k=0}^\infty \frac{w^m}{m!} \\
+    &= \sum_{k=0}^\infty \frac{1}{n!} 
+    \sum_{k=0}^n \frac{z^k}{k!} \frac{w^{n-k}}{(n-k)!} \\
+    &= \sum_{k=0}^\infty \frac{1}{n!} 
+    \sum_{k=0}^n \binom{n}{k} z^k w^{n-k} \\
+    &= \sum_{k=0}^\infty \frac{1}{n!} (z + w)^n
+\end{align*}
+\begin{satz}\leavevmode
+    \begin{enumerate}[label=(\alph*)]
+        \item \( \forall z \in \C: e^z \neq 0 \)
+        \item \( \exp(z)' = \frac{d}{dz} \exp(z) = \exp(z) 
+        := \limesx{h}{0} \frac{\exp(z+h) - \exp(z)}{h} \), erlauben 
+        \( z,h \in \C \)
+        \item \( \abb{\exp}{\R}{\R} \) strikt wachsend. 
+        \( e^x \rightarrow \infty, x \rightarrow \infty, \quad
+        e^x \rightarrow 0, x\rightarrow -\infty \). \\
+        \( \abb{\exp}{\R}{(0,\infty)} \) ist bijektiv.
+        \item \( \exists \pi > 0: e^{\frac{\pi}{2}i} = i \) und
+        \( e^{iz} = 1 \Leftrightarrow \frac{z}{2\pi i} \in \Z
+        = \set{0, \pm 1, \pm 2, \dots} \)
+        \item \( \abb{\exp}{\C}{\C} \) ist periodisch mit 
+        der Periode \( 2\pi i \). 
+        \( \exp(z + 2\pi i) = \exp(z) \;\forall z\in\C \).
+        \item \( \abb{e^i}{\R}{S}, t \mapsto e^{it}
+        = \set{z \in \C: \abs{z} = 1} \) ist surjektiv.
+        \item Ist \( w \in \C \setminus \set{0}: 
+        \exists z \in \C: w = e^z \).
+    \end{enumerate}
+\end{satz}
+\begin{bew}\leavevmode
+    \begin{enumerate}[label=(\alph*)]
+        \item \( e^z \cdot e^{-z} = e^{z-z} = e^0 = 1 
+        \Rightarrow e^z \neq 0 \;\forall z\in\C, 
+        (e^z)^{-1} = e^{-z} \).
+        \item \( \frac{\exp(h) - \exp(0)}{h} = \frac{\exp(h) - 1}{h},
+        \frac{\exp(h) - 1}{h} - 1 = \frac{\exp(h) -1-h}{h} \)
+        \begin{align*}
+            &\Rightarrow \abs{\frac{\exp(h) - 1}{h} - 1} 
+            = \abs{\sum_{n=1}^{\infty} \frac{h^n}{(n+1)!}} \\
+            &= \abs{h}\abs{\frac{h^{n-1}}{(n+1)!}} 
+            = \frac{\sum_{n=1}^{\infty} \frac{h^n}{n!} -1 -h }{h} \\
+            &= \frac{\sum_{n=2}^{\infty} \frac{h^n}{n!}}{h} 
+            = \sum_{n=1}^{\infty} \frac{h^n}{(n+1)!} \\
+            &\leq \abs{h} \sum_{n=0}^{\infty} 
+            \underbrace{\frac{\abs{h}^n}{(n+2)!}}_{\leq \frac{\abs{h}^n}{n!}} 
+            \leq \abs{h} \sum_{n=0}^{\infty} \frac{\abs{h}^n}{n!} \\
+            &= \abs{h} \exp(\abs{h}) \overset{h \rightarrow 0}{\rightarrow} 0.
+        \end{align*}
+        \[ \exp'(0) = 1. \]
+        \begin{align*}
+            \frac{ \exp(z + h) - \exp z }{h} 
+            &= \frac{ \exp(z)\exp(h) - \exp(h) }{h} \\
+            &= \exp(z) \frac{\exp(h) - 1}{h} \\
+            &\Rightarrow \limesx{h}{0} 
+            \frac{\exp(z + h) - \exp(z)}{h} \\
+            &= \exp(z) \limesx{h}{0} \frac{\exp(h) - 1}{h} \\
+            &= \exp(z) \cdot 1 = \exp(z) \\
+            &\Rightarrow \exp'(z) = \frac{d}{dz} \exp(z) = \exp(z).
+        \end{align*}
+        \item \( 0 \leq x \mapsto \exp(x) 
+        = \sum_{n=0}^\infty \frac{x^n}{n!} \) 
+        ist strikt wachsend.
+        \[ \exp(x) \geq 1 + x \rightarrow \infty, 
+        x\rightarrow \infty \] 
+        \[ \limesx{x}{-\infty} \exp(x) 
+        = \limes{x} \exp(-x) = \limes{x} \frac{1}{\exp(x)} = 0. \]
+    
+Beobachtung: \( t \in \R \)
+\[ \overline{e^{it}} = \overline{\sum_{n=0}^{\infty} \frac{(it)^n}{n!}}
+= \sum_{n=0}^{\infty} \frac{(-it)^n}{n!} = e^{-it} \]
+\[ \Rightarrow \abs{e^{it}}^z = \overline{e^{it}}e^{it} = e^{-it} e^{it}
+= e^0 = 1 \Rightarrow e^{it} \in S = \set{z \in \C: \abs{z} = 1} \forall t \in \R \]
+Auch: Euler:
+\[ e^{it} = \cos t + i\sin t \]
+\begin{align*}
+    &= \sum_{n=0}^{\infty} \frac{(it)^n}{n!} \\
+    &\overundersett{abs.}{konv.}{=}
+    \sum_{n \text{ ungerade}} \frac{(it)^n}{n!} + \sum_{n \text{ ungerade}} \frac{(it)^n}{n!} \\
+    &= \sum_{k=0}^{\infty} \frac{(it)^{2k}}{(2k)!} 
+    + \sum_{k=0}^{\infty} \frac{(it)^{2k + 1}}{(2k + 1)!} \\
+    &= \sum_{k=0}^{\infty} \frac{(-1)^k t^{2k}}{(2k)!} 
+    + i \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!}t^{2k+1}
+\end{align*}
+\begin{align*}
+    \frac{d}{dt} (\cos t + i \sin t) &= \cos'(t) + i \sin'(t) \\
+    &= \frac{d}{dt} e^{it} = e^{it} i(\cos t + i \sin t) \\
+    &= -\sin t + i \cos t \\
+    &= \cos'(t) + i \sin'(t)
+\end{align*}
+\[ \Rightarrow \cos' = -\sin, \sin' = \cos. \]
+Auch 
+\begin{align*}
+    1 &= \abs{ e^{it} }^2 = \overline{e^{it}} e^{it} \\
+    &= (\cos t - i \sin t)(\cos t + i \sin t) \\
+    &= \cos^2 t + \sin^2 t.
+\end{align*}
+% Bild
+Einschließungen von \( \cos, \sin \):
+\[ 0 \leq t \leq 2: \cos t = \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!}t^{2k}
+= 1 - t^2 + \frac{t^4}{4!} -+ \ = \sum_{n=0}^{\infty} (-1)^n a_n \]
+beachte: Ist \( 0 \leq t \leq 2 \): 
+\[ a_n := \frac{t^{2n}}{(2n)!} n\in\N, a_0 = 1. \]
+\[ \cos t = \sum_{n=0}^\infty (-1)^n a_n 
+= 1 - a_1 + \sum_{n=2}^\infty (-1)^n a_n 
+\leq 1 - a_1 + a_2 = 1 - \frac{t^2}{2} + \frac{t^4}{4!}. \]
+und für \( t\in [0,2] \) gilt: 
+\[ \cos t \geq 1 - \frac{t^2}{2}. \] 
+Genauso gilt: 
+\[ t-\frac{t^3}{3!} \leq \sin t \leq t. \]
+Bild:\\
+% Bild
+\( \cos(2) \leq 1 - \frac{2^2}{2} + \frac{2^4}{4!} 
+= -1 + \frac{16}{24} < 0 \) \\
+Zwischenwertsatz: \( \exists \) kleinste \( t_0 > 0 \): 
+\[ \cos(t_0) = 0. \]
+\( \sin \) Bild:
+% Bild
+\( \Rightarrow \sin t > 0 \) auf \( (0,2] 
+\Rightarrow \cos \) ist auf \( [0,2] \) strikt fallend. \\
+\( \Rightarrow \existse 0 < t_0 < 2: \cos t_0 = 0 \).\\
+\item \item Wir definieren:
+\[ \pi := 2 t_0. \]
+\( \frac{\pi}{2} \) ist die einzige Nullstelle 
+von \( \cos \) auf \( [0,2] \).\\
+\[ \Rightarrow \cos^2(t) + \sin^2(t) = 1 
+\Rightarrow \sin(\frac{\pi}{2}) \in \set{-1, 1}. \]
+Da \( \sin > 0 \) auf \( (0, 2] \Rightarrow \sin(\frac{\pi}{2}) = 1 \)
+\[ \Rightarrow e^{\frac{pi}{2} i} 
+= \cos(\frac{\pi}{2}) + i \sin(\frac{\pi}{2}) = i \tag{4} \]
+\begin{align*}
+    \Rightarrow e^{i\pi} &= (e^{\frac{\pi}{2}i})^2 \\
+    &= i^2 = -1 = \cos(\pi) + i\sin (\pi) \\
+    &\Leftrightarrow \cos(\pi) = -1, \sin(\pi) = 0
+\end{align*}
+\begin{align*}
+    \Rightarrow e^{2i\pi} &= (e^{\pi i})^2 \\
+    &= (-1)^2 = 1 = \cos(2\pi) + i\sin(2\pi) \\ 
+    &\Leftrightarrow \cos(2\pi) = 1, \sin(2\pi) = 0
+\end{align*}
+\begin{align*}
+    &\oversett{Induktion}{\Rightarrow} e^{2 \pi i n} = 1^n 
+    = 1 \forall n\in\N_0 \\
+    &\Rightarrow e^{-2\pi i n} = \frac{1}{e^{2 \pi i n}} 
+    = 1 \forall n\in\N \\
+    &\Rightarrow e^{2 \pi i n} = 1 \forall n \in \Z \\
+    &\Rightarrow e^{z + 2 \pi i} = e^z e^{2\pi i} 
+    = e^z \forall z\in\C \tag{5} \\
+    &\Rightarrow \text{ (e)}
+\end{align*}
+Sei \( z = x + iy, x,y \in\R \).
+\[ e^z = e^{x+iy} = e^x e^{iy} = e^x(\cos y + i \sin y) \]
+\[ \Rightarrow \abs{e^z} = e^x \abs{e^{iy}} = e^x. \]
+Also: \( e^z = 1 \Rightarrow x = \Re(z) = 0 \).\\
+\Dphp{} aus \( e^z = 1 \) folgt \(x = \Re(z) = 0 \).\\
+Sei \( e^{iy} = 1 \). Wollen \( \frac{y}{2\pi} \in \Z \).\\
+Zu zeigen: Aus \( 0 < y < 2\pi \) folgt \( e^{iy} \neq 1 \).\\
+Ang. \( 0 < y < 2\pi \). \\
+Schreibe \( e^{i \frac{y}{4}} = u + iv, \quad u,v\in\R \).\\
+\[ 0 < \frac{y}{4} < \frac{\pi}{2} \]
+\[ \Rightarrow u,v > 0, u^2 + v^2 \neq 1. \]
+Angenommen \( e^{iy} = 1 \) (oder nur \( e^{iy} \in \R \))
+\[ e^{iy} = \left( e^{i \frac{y}{4}} \right)^4 
+= (u+iv)^4 = \underbrace{u^4 - 6u^2 v^2 + v^4 + 4iuv(u^2 - v^2)}_{
+    \in \R \Leftrightarrow u^2 = v^2 
+} \tag{7} \]
+\[ \Rightarrow u^2 = v^2 \text{ und } u^2+v^2 
+= 1 \Rightarrow u^2 = v^2 = \frac{1}{2} \]
+\[ \Rightarrow e^{iy} = u^4 - 6u^2v^2+v^4 
+= \left(\frac{1}{2}\right)^2 - 6 \cdot \frac{1}{2} \cdot \frac{1}{2}
++ \left(\frac{1}{2}\right)^2 = -1 \neq 1 \]
+\Dphp{} ist \( 0 < y < 2\pi \) und \( e^{iy} \in \R \), 
+dann ist \( e^{iy} = -1 \). Dann ist aber \( y = \pi \).
+\item Wir wissen schon \( \abs{e^{it}} = 1 \;\forall t \in\R \).\\
+Sei \( w\in\C, \abs{w} = 1 \), Frage: \( \exists t \in \R: e^{it} = w \)?\\
+\[ w = u + iv, u^2 + v^2 = 1. \]
+1. Fall: 
+\( u, v \geq 0 \). Da \( u \leq 1 \Rightarrow 
+\exists 0 \leq t \leq \frac{\pi}{2}: \cos t = u. \)
+\[ \sin^2 t = 1 - \cos^2 t = 1 - u^2 = v^2, v \geq 0 
+\Rightarrow \sin t = v. \]
+\[ \Rightarrow e^{it} = \cos t + i \sin t = u + iv = w. \]
+2. Fall: 
+\( u < 0, v \geq 0 \). 
+\[ \Rightarrow -i w = -i (u + iv) = v + i(-u). \]
+\[ \oversett{1. Fall}{\Rightarrow} \exists t \in \R: 
+-i w = e^{it} \Rightarrow w = i e^{it} < e^{i \frac{\pi}{2}} e^{it} 
+= e^{i(t + \frac{\pi}{2})} \]
+3. Fall: \( v < 0 \)
+\[ \overundersett{1. und 2.}{Fall}{\Rightarrow} \exists t \in \R: -w = e^{it} \]
+\[ \Rightarrow w = -e^{it} = e^{i\pi + it} = e^{i(t+\pi)} \]
+
+\item Sei \( w \in \C \setminus \set{0} \).
+\[ \Rightarrow w = \abs{w} \underbrace{\frac{w}{\abs{w}}}_{
+    =e^{iy}, y\in\R}, 
+\abs{\frac{w}{\abs{w}}} = 1 \]
+\[ \Rightarrow w = \abs{w} e^{iy} \]
+\[ e^{x_1} < \abs{w} < e^{x_2} \]
+\[ \abs{w} > 0 \oversett{ZWS}{\Rightarrow} \exists x \in \R, \abs{w} = e^x \]
+\[ \Rightarrow w = e^x e^{iy} = e^{x + iy} = e^z, z = x + iy. \]
+\end{enumerate}
+\end{bew}
+\end{document}
