@@ -116,43 +116,43 @@ Frage: Was ist, wenn \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) ?
     \cdot \frac{f(x)}{f(x)-f(y)} \cdot \frac{g(x)-g(y)}{g(x)} \]
     \[ = \frac{f'(\zeta)}{g'(\zeta)} \cdot 
     \frac{1}{1-\frac{f(y)}{f(x)}} \cdot 
-    \left(1 - \frac{g(y)}{g(x)} \right) \cdot %TODO
-    \frac{g(x)-g(y)}{g(x)} \]
+    \underbrace{\left(1 - \frac{g(y)}{g(x)} \right)}_
+    {\frac{g(x)-g(y)}{g(x)}} \]
     für ein \( x < \zeta < y \).
-    Sei \( \alpha := \limesx{x}{a+} \frac{f'(x)}{g'(x)} \).
-    \( \Rightarrow \) zu \( \alpha_1 > \alpha \exists 
+    Sei \( \alpha := \limesx{x}{a+} \frac{f'(x)}{g'(x)} \)
+    \( \Rightarrow \) zu \( \alpha_1 > \alpha \; \exists 
     x_1 > \alpha : \frac{f'(x)}{g'(x)} < \alpha_1 
-    \;\forall a < x < x_1 \).
-    Sei \( a < y < x_1 \) und \(a < x < y \). \\
-    \(x\) nahe bei \(a\) so, dass
+    \;\forall \alpha < x < x_1 \).
+    Sei \( \alpha < y < x_1 \) und \(\alpha < x < y \). \\
+    \(x\) nahe bei \(\alpha\) so, dass
     \[ f(x) \neq f(y), g(x) \neq g(y). \]
     \[ \Rightarrow \frac{f(x)}{g(x)} 
     = \underbrace{\frac{f(x)-f(y)}{g(x)-g(y)}}_{
-        \oversett{ZMWS}{=} \frac{f'(\zeta)}{g'(\zeta)} < \alpha_1
+        \overundersett{2.}{MWS}{=} \frac{f'(\zeta)}{g'(\zeta)} < \alpha_1
     }
     \cdot \underbrace{\frac{1}{1-\frac{f(y)}{f(x)}} }_{
-        \rightarrow 1, \;x\rightarrow a+}
+        \rightarrow 1, \;x\rightarrow \alpha+}
     \cdot \underbrace{(1- \frac{g(y)}{g(x)})}_{
-        \rightarrow 1, \;x\rightarrow a+} \]
-    \[ \Rightarrow \limessupx{x}{a+} \frac{f(x)}{g(x)} 
+        \rightarrow 1, \;x\rightarrow \alpha+} \]
+    \[ \Rightarrow \limessupx{x}{\alpha+} \frac{f(x)}{g(x)} 
     \leq \alpha_1, \forall \alpha_1 > \alpha \]
-    \[ \Rightarrow \limessupx{x}{a+} \frac{f(x)}{g(x)} \leq \alpha. \]
+    \[ \Rightarrow \limessupx{x}{\alpha+} \frac{f(x)}{g(x)} \leq \alpha. \]
     \( \Rightarrow \) ist \( \alpha = -\infty \), so folgt 
-    \[ \limesx{x}{a+} \frac{f(x)}{g(x)} = -\infty. \]
+    \[ \limesx{x}{\alpha+} \frac{f(x)}{g(x)} = -\infty. \]
     Der Fall \( \alpha \in (-\infty, \infty]: \) \\
-    Genauso zu \( \alpha_1 < \alpha \exists a < x_1: \)
-    \[ \frac{f(x)}{g(x)} > \alpha_0, \forall a < x < x_1 \]
-    \( \Rightarrow \limesinfx{x}{a+} \frac{f(x)}{g(x)} 
+    Genauso zu \( \alpha_1 < \alpha \; \exists \alpha < x_1: \)
+    \[ \frac{f(x)}{g(x)} > \alpha_0, \forall \alpha < x < x_1 \]
+    \( \Rightarrow \limesinfx{x}{\alpha+} \frac{f(x)}{g(x)} 
     \geq \alpha_0\;\forall \alpha_0 < \alpha \\
-    \Rightarrow \limesinfx{x}{a+} \frac{f(x)}{g(x)} \geq \alpha \).\\
-    Ist \( \alpha = +\infty \Rightarrow \limesx{x}{a+} 
+    \Rightarrow \limesinfx{x}{\alpha+} \frac{f(x)}{g(x)} \geq \alpha \).\\
+    Ist \( \alpha = +\infty \Rightarrow \limesx{x}{\alpha+} 
     \frac{f(x)}{g(x)} = +\infty \).    
     für \( -\infty < \alpha < +\infty \)
-    \[ \Rightarrow \alpha \leq \limesinfx{x}{a+} \frac{f(x)}{g(x)} 
-    \leq \limessupx{x}{a+} \frac{f(x)}{g(x)} \leq \alpha \]
-    \[ \limesx{x}{a} \frac{f(x)}{g(x)} = \alpha \]
+    \[ \Rightarrow \alpha \leq \limesinfx{x}{\alpha+} \frac{f(x)}{g(x)} 
+    \leq \limessupx{x}{\alpha+} \frac{f(x)}{g(x)} \leq \alpha \]
+    \[ \limesx{x}{\alpha} \frac{f(x)}{g(x)} = \alpha \]
 \end{bew}
-\begin{bsp}%2
+\begin{bsp}%2 %FEHLER
     \( n\in\N, a_1, a_2, \ldots, a_n \geq 0 \).
     \[ \limes{x} \sqrt[n]{x^n + a_1 x^{n-1} + \cdots + a_n} - x 
     \qquad y = \frac{1}{x} \]
@@ -171,16 +171,16 @@ Frage: Was ist, wenn \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) ?
     \begin{align*}
         \limes{x} x e^{-x} &= \limes{x} \frac{x}{e^x} \\
         &= \limes{x} \frac{1}{e^x} = 0
-    \end{align*}
-    \[ \limes{x} x^{2019} e^{-x} 
-    = \limes{x} \frac{x^{2019}}{e^x} \]
+    \end{align*}    
     \begin{align*}
-        &\frac{x^{2019}}{e^x} \\
-        &= \frac{x^{2019}}{\sum_{n=0}^{\infty} \frac{x^n}{n!}} \\
-        &= \frac{x^{2019}}{\frac{x^{2020}}{2020!} + \text{pos. Terme}}\\
-        &< \frac{x^{2019}}{\frac{x^{2020}}{2020!}}\\
-        &= \frac{2020!}{x} \overset{\infty}{\rightarrow} 0
+        \frac{x^{2019}}{e^x} 
+        &= \frac{x^{2019}}{\sum_{n=0}^{\infty} \frac{x^n}{n!}} 
+        = \frac{x^{2019}}{\frac{x^{2020}}{2020!} + \text{pos. Terme}} \\
+        &< \frac{x^{2019}}{\frac{x^{2020}}{2020!}}
+        = \frac{2020!}{x} \overset{\infty}{\rightarrow} 0
     \end{align*}
+    \[ \Rightarrow \limes{x} x^{2019} e^{-x} 
+    = \limes{x} \frac{x^{2019}}{e^x} = 0 \]
 \end{bsp}
 
 \subsection{Restglieddarstellung bei Taylor}
@@ -192,7 +192,8 @@ mit \( \ln -\frac{1}{2} \leq x \leq 1 \)
 \[ \sum_{k=1}^{\infty} \frac{(-1)^{k-1}}{k} = \ln 2 \]
 
 \begin{satz}[Restglieddarstellung von Schlömilch]
-    Sei \(I = [c,d], a\in I, p > 0, n\in\N, 
+    Sei \(I = [c,d], \\
+    a \in I, p > 0, n \in \N, 
     \abb{f}{I}{\R}\ n\)-mal stetig differenzierbar 
     (\( f \in C^n(I,\R) \)) und \( f^{(n+1)} \) 
     existiere auf \( \dot{I} = (c,d) \). Dann existiert für 
@@ -207,21 +208,21 @@ mit \( \ln -\frac{1}{2} \leq x \leq 1 \)
     \[ \abb{g,h}{[\min(a,x), \max(a,x)]}{\R}, x,a \text{ fest} \]
     \[ g(t) := \sum_{k=0}^n \frac{f^{(k)}(t)}{k!} (x-t)^k, 
     h(t) := (x-t)^p \]
-    \[ g(t) = f(t) - \sum_{k=1}^n \frac{f^{(k)}(t)}{k!} (x-t)^k \]
+    \[ g(t) = f(t) + \sum_{k=1}^n \frac{f^{(k)}(t)}{k!} (x-t)^k \]
     \[ \Rightarrow g(x) = f(x), 
-    g(a) = \sum_{k=0}^n \frac{k=0}{n} \frac{f^{(k)}(a)}{k!} 
+    g(a) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!} 
     (x-a)^k = T_n(f,a)(x).\]
     \( g, h \) sind stetig auf \( [\min(a,x), \max(a,x)] \) und
     differenzierbar in \( (\min(a,x), \max(a,x)) \).
     \[ h'(t) = \frac{d}{dt} h(t) = -p(x-t)^{p-1} \]
-    \[ g'(t) = f'(t) + \sum_{n=0}^{n} 
+    \[ g'(t) = f'(t) + \sum_{k=1}^{n} 
     \underbrace{\left( \frac{f^{(k+1)}(t)}{k!} (x-t)^k
     - \frac{f^{(k)}(t)}{(k-1)!} (x-t)^{k-1} \right)}_{\text{Teleskopsumme}} \]
     \[ = \frac{f^{n+1}(t)}{n!}(x-t)^n \]
 
     Zweiter MWS: \( \exists \zeta = \zeta(x) 
     \in (\min(a,x), \max(a,x)) \):
-    \[ h'(\zeta)(g(x) - g(a)) = g'(\zeta)(h(x - h(a))) \]
+    \[ h'(\zeta)(g(x) - g(a)) = g'(\zeta)(h(x) - h(a))) \]
     \[ h(x) - h(a) = 0 - (x-a)^p = -(x-a)^p \]
     \[ g(x) - g(a) = f(x) - T_n(f,a)(x) = R_n(f,a)(x) \]
     \begin{align*}
