@@ -9,8 +9,8 @@ konvergiert absolut \( \forall z\in\C \). \( z = x + iy, x,y \in \R \). \\
 \( \exp(z + w) = \exp z \exp w \) (schon bekannt).
 \[ \exp(it) = \cos(t) + i\sin(t) \]
 \[ \cos t = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} \cdot t^{2n} \]
-\[ \sin t = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} t^{2n+1}. \]
-\begin{satz}
+\[ \sin t = \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} t^{2k+1}. \]
+\begin{satz*}
     \begin{enumerate}[label=(\alph*)]
         \item \( \forall z \in \C \) ist \( \exp(z) \neq 0 \)
         \item \( \frac{d}{dx} \exp(ax) = a \exp(ax) 
@@ -36,7 +36,7 @@ konvergiert absolut \( \forall z\in\C \). \( z = x + iy, x,y \in \R \). \\
             &\Rightarrow \cos(t + 2\pi) = \cos(t), \sin(t + 2\pi) = \sin(t)
         \end{align*}
     \end{enumerate}
-\end{satz}
+\end{satz*}
 Erinnerung: Cauchy-Produktformel: 
 \begin{align*}
     e^z e^w &= \sum_{k=0}^\infty \frac{z^k}{k!} 
@@ -49,23 +49,22 @@ Erinnerung: Cauchy-Produktformel:
 \end{align*}
 \begin{satz}\leavevmode
     \begin{enumerate}[label=(\alph*)]
-        \item \( \forall z \in \C: e^z \neq 0 \)
+        \item \( \forall z \in \C: e^z \neq 0 \).
         \item \( \exp(z)' = \frac{d}{dz} \exp(z) = \exp(z) 
         := \limesx{h}{0} \frac{\exp(z+h) - \exp(z)}{h} \), erlauben 
-        \( z,h \in \C \)
+        \( z,h \in \C \).
         \item \( \abb{\exp}{\R}{\R} \) strikt wachsend. 
         \( e^x \rightarrow \infty, x \rightarrow \infty, \quad
         e^x \rightarrow 0, x\rightarrow -\infty \). \\
         \( \abb{\exp}{\R}{(0,\infty)} \) ist bijektiv.
         \item \( \exists \pi > 0: e^{\frac{\pi}{2}i} = i \) und
-        \( e^{iz} = 1 \Leftrightarrow \frac{z}{2\pi i} \in \Z
-        = \set{0, \pm 1, \pm 2, \dots} \)
+        \( e^{iz} = 1 \Leftrightarrow \frac{z}{2\pi i} \in \Z \).
         \item \( \abb{\exp}{\C}{\C} \) ist periodisch mit 
         der Periode \( 2\pi i \). 
         \( \exp(z + 2\pi i) = \exp(z) \;\forall z\in\C \).
-        \item \( \abb{e^i}{\R}{S}, t \mapsto e^{it}
-        = \set{z \in \C: \abs{z} = 1} \) ist surjektiv.
-        \item Ist \( w \in \C \setminus \set{0}: 
+        \item \( \abb{e^i}{\R}{S = \set{z \in \C: \abs{z} = 1}}, 
+        t \mapsto e^{it} \) ist surjektiv.
+        \item Ist \( w \in \C \setminus \set{0} \Rightarrow 
         \exists z \in \C: w = e^z \).
     \end{enumerate}
 \end{satz}
@@ -238,8 +237,249 @@ Sei \( w\in\C, \abs{w} = 1 \), Frage: \( \exists t \in \R: e^{it} = w \)?\\
 \abs{\frac{w}{\abs{w}}} = 1 \]
 \[ \Rightarrow w = \abs{w} e^{iy} \]
 \[ e^{x_1} < \abs{w} < e^{x_2} \]
-\[ \abs{w} > 0 \oversett{ZWS}{\Rightarrow} \exists x \in \R, \abs{w} = e^x \]
-\[ \Rightarrow w = e^x e^{iy} = e^{x + iy} = e^z, z = x + iy. \]
+\[ \abs{w} > 0 \oversett{ZWS}{\Rightarrow} 
+\exists x \in \R, \abs{w} = e^x \]
+\[ \Rightarrow w = e^x e^{iy} = e^{x + iy} = e^z, 
+z = x + iy. \]
 \end{enumerate}
+\end{bew}
+\begin{bem}
+    \( \R \ni t \mapsto e^{it} = \cos t + i \sin t \).\\
+    \( e^{i t_1} = e^{i t_2} 
+    \Leftrightarrow e^{i(t_1 - t_2)} = 1 \)
+    \[ \overundersett{Satz 1}{d)}{\Leftrightarrow} 
+    i (t_1 - t_2) = 2 \pi i k, k\in\Z \]
+    \[ t_1 = t_2 + 2\pi k, k\in\Z. \]
+\end{bem}
+\begin{kor}
+    Gleichung \( w^n = 1, n \in \N \) hat 
+    genau \(n\) Lösungen.
+    \[ \zeta_k = e^{\frac{ik2\pi}{n}} 
+    = \cos(\frac{2\pi k}{n}) + i \sin(\frac{2\pi k}{n}) \]
+    (Einheitswurzeln).
+\end{kor}
+\begin{bew}
+    \gqq{\(\Leftarrow \)}: 
+    \[ (e^{\frac{i k 2 \pi}{n}})^n 
+    = (e^{\frac{i k 2 \pi}{n} \cdot n}) 
+    = (e^{i k 2 \pi} \oversett{Satz 1 (e)}{=} = e^0 = 1 \]
+    \gqq{\( \Rightarrow \)}: \\
+    Sei \( w^n = 1 \Rightarrow w \neq 0 \)
+    \[ \overundersett{Satz 1}{g)}{\Rightarrow} \exists z \in \C: w = e^z. \]
+    \[ \Rightarrow 1 = w^n = (e^z)^n = e^{nz} \]
+    \[ \oversett{Satz 1 (d)}{\Rightarrow} n z = 2 \pi i k, k\in\Z \]
+    \[ \Rightarrow z = \frac{2 \pi i k}{n}, k\in\Z. \]
+
+    \begin{align*}
+        e^{ \frac{i 2 \pi (n + 1)}{n} } 
+        &= e^{i 2\pi + i \frac{2\pi}{n}} \\
+        &= e^{i 2\pi} e^{i \frac{2\pi}{n}} \\
+        &= e^{i \frac{2\pi}{n}}.
+    \end{align*}
+    \( \Rightarrow \) Nur die Terme 
+    \( \zeta_k = e^{\frac{2\pi ik}{n}}, k=1,2,\dots,n \)
+    sind verschieden.
+    Außerdem gilt \( \zeta_k = \zeta_1^k \), da
+    \[ \zeta_k = e^{\frac{2\pi ik}{n}} = \left(e^{\frac{2\pi i}{n}}\right)^k 
+    = \zeta_1^k \]
+\end{bew}
+\subsection*{Polarkoordinaten}
+Sei \( w\in\C \setminus \set{0} \). 
+\[ \oversett{Satz 1}{\Rightarrow} \exists \varphi \in \R: 
+\frac{w}{\abs{w}} = e^{i \varphi}. \]
+\[ \Rightarrow w = \abs{w} e^{i\varphi} \]
+D.\ h.\ \( w = r e^{i\varphi}, r = \abs{w} \), 
+\[ w = x +iy = r(e^{i\varphi}) = r(\cos \varphi + i\sin \varphi) \]
+%Bild
+\[ \Rightarrow x = r\cos \varphi, y = r\sin \varphi \]
+Winkel \( \varphi \) bis auf ganzzahlige Vielfache von 
+\( 2\pi \) bestimmt.
+\subsection*{Cosinus und Sinus}
+\[ \text{Euler: } e^{it} = \cos t + i \sin t, t\in\R. \]
+\[ \Rightarrow \cos t = \frac{1}{2}(e^{it} + e^{-it}) \]
+\[ \Rightarrow \sin t = \frac{1}{2i}(e^{it} - e^{-it}) \]
+\begin{defi}
+    \( \forall z\in\C \) setzen wir 
+    \[ \cos z = \frac{1}{2} (e^{iz} + e^{-iz}). \]
+    \[ \sin z = \frac{1}{2i} (e^{iz} - e^{-iz}). \]
+    Insbesondere ist auch 
+    \[ e^{iz} = \cos z + i \sin z \]
+\end{defi}
+\begin{satz}[Additionstheoreme]
+    \[ \cos(z+w) = \cos z \cos w - \sin z \sin w \]
+    \[ \sin(z+w) = \cos z \sin w + \sin z \cos w \]
+\end{satz}
+\begin{bew}
+    \begin{align*}
+        e^{i(z+w)} &= e^{iz} e^{iw} = (\cos z + i \sin z)(\cos w + i \sin w) \\
+        &= \cos (z+w) + i \sin(z+w) \\
+        &= \cos z \cos w - \sin z \sin w + i(\cos z \sin w + \sin z \cos w) \\
+    \end{align*}
+
+    Analog für \( e^{-i (z + w)} = \ldots \) 
+    dann addieren und subtrahieren.
+\end{bew}
+\begin{bem}
+    \begin{enumerate}
+        \item Satz 4 \( \Rightarrow \cos(2z) 
+        = \cos^2 z - \sin^2 z \) \\
+        \( \sin(2z) = 2 \sin z \cos z \).
+        \item Haben \( \limesx{z}{0} \frac{e^z - 1}{z} = 1 
+        \Rightarrow \limesx{z}{0} \frac{\sin z}{z} = 1 \).
+    \end{enumerate}
+\end{bem}
+\begin{kor}
+    \( \forall z \in \C \) gilt 
+    \[ \cos \left( z+\frac{\pi}{2}\right) = -\sin z, \cos (z + \pi) 
+    = \cos z, \cos(z + 2\pi) = \cos z \]
+    
+    \[ \sin\left(z + \frac{\pi}{2}\right) = \cos z, 
+    \sin(z + \pi) = -\sin z, \sin(z + 2\pi) = \sin z \]
+\end{kor}
+\begin{bem}
+    Also haben \( \cos, \sin \) die reelle Periode \( 2\pi \).
+\end{bem}
+\begin{bew}
+    Haben \( e^{i\frac{\pi}{2}} = i \)
+    %Tabelle
+    \[ \cos \left(x + \frac{\pi}{2}\right) 
+    = \cos z \cos \frac{\pi}{2} - \sin z \sin \frac{\pi}{2} = -\sin z \]
+    u.s.w.
+\end{bew}
+\begin{satz}
+    \( \cos \) hat auf \( \C \) genau die Nullstellen 
+    \( \frac{\pi}{2} + k \pi, k\in\Z \).\\
+    \( \sin \) hat auf \( \C \) genau die Nullstellen 
+    \( k \pi, k\in\Z \).
+\end{satz}
+\begin{bew}
+    \begin{align*}
+        \sin z &= 0 \Leftrightarrow e^{iz} = e^{-iz} \\
+        &\Leftrightarrow e^{2iz} = 1 \\
+        &\oversett{Satz 1}{\Leftrightarrow} 2iz = 2\pi ik, k \in \Z 
+        \Leftrightarrow z = k\pi, k \in \Z
+    \end{align*}
+    \begin{align*}
+        \cos z = 0 \Leftrightarrow e^{iz}
+        &= -e^{-iz} \Leftrightarrow e^{2iz} = -1 = e^{i\pi} \\
+        \Leftrightarrow e^{2\pi iz - i\pi} 
+        &= 1 \Leftrightarrow 2\pi iz - i\pi \\
+        &= 2\pi ik, k \in \Z \\
+        &\Leftrightarrow z = \Leftrightarrow + k \pi, k \in \Z
+    \end{align*}
+\end{bew}
+\subsection*{Logarithmus}
+Wir hatten \( \abb{\exp}{\R}{(0,\infty)} \) ist strikt 
+wachsend und bijektiv.
+\[ \Rightarrow \forall x > 0 \existse y \in \R: e^y = x. \]
+Nennen \( y = \ln x, \abb{\ln}{(0,\infty)}{\R}, 
+y = \ln x \Leftrightarrow e^y = x \).
+\( \ln \) ist die Umkehrfunktion von \( \exp \). \\
+\( \ln \) ist strikt wachsend auf \( (0,\infty) \).\\
+\( \ln \) ist stetig und differenzierbar. \\
+Satz von der Umkehrfunktion: 
+\[ (\ln x)' = \frac{d}{dx} \ln x = \frac{1}{\exp'(\ln x)} 
+= \frac{1}{\exp(\ln x)} = \frac{1}{x}. \]
+\begin{satz}[Funktionalgleichung des natürlichen Logarithmus]
+    \( \forall x, y > 0: \)
+    \[ \ln(x \cdot y) = \ln x + \ln y. \]
+\end{satz}
+\begin{bew}
+    \( \exp(\ln(x y)) = x y = \exp(\ln x) \exp(\ln y) 
+    = \exp(\ln x + \ln y) \\
+    \Leftrightarrow \ln(x \cdot y) = \ln x + \ln y \).
+\end{bew}
+%Bild 
+\begin{satz}
+    \( \limes{x} \ln x = \infty, \limesx{x}{0+} \ln x 
+    = -\infty \Rightarrow \text{Bild} \) \\
+    Sei \( n \in \N \)
+    \[ \limes{x} \frac{\ln x}{\sqrt[n]{x}} = 0 \]
+\end{satz}
+\begin{bew}
+    Erste zwei: siehe Bild.\\
+    Letzte Behauptung: setzen \( x = e^{nt} \).
+    \[ \Rightarrow \limes{x} \frac{\ln x}{\sqrt[n]{x}} 
+    = \limes{t} \frac{\ln (e^t)}{\sqrt[n]{e^{nt}}} 
+    = \limes{t} \frac{t}{e^t} = 0. \]
+\end{bew}
+\subsection*{Allgemeine Basen}
+Sei \( a > 0, x\in\R \). Was ist \( a^x \)?
+Sei \( n \in \N: a^n \) ist definiert:
+\[ a^0 = 1, a^1 = a, a^{n+1} = aa^n, n \in \N \text{ (induktiv)} \]
+Sei \( n \in -\N \). 
+\[ a^n := \frac{1}{a^{-n}}. \]
+\( \Rightarrow a^n \) ist definiert \( \forall n\in\Z \).\\
+\( a^{n_1 + n_2} = a^{n_1} a^{n_2} \;\forall n_1, n_2 \in\Z \).\\
+Wir wollen: \( (a^\frac{1}{m})^m = a \).\\
+Definieren \( a^{\frac{1}{m}} = \sqrt[m]{a} \).
+\[ \Rightarrow a^{\frac{n}{m}} = \sqrt[m]{a^n} 
+= (\sqrt[m]{a})^n. \]
+\( a^r \) ist definiert \( \forall r \in \Q \) konsistent, da
+\[ r = \frac{n_1}{m_1} = \frac{n_2}{m_2}
+, n_1,n_2 \in \Z, m_1,m_2 \in \N \]
+\[ \Rightarrow a^{\frac{n_1}{m_1}} = a^{\frac{n_2}{m_2}} 
+\text{ (nachrechnen)} \]
+Was ist für \( r\in \R \setminus \Q \)?\\
+Beachte: \( a = e^{\ln a} \). 
+\[ \Rightarrow a^2 = e^{\ln a} e^{\ln a} = e^{2\ln a}
+\Rightarrow a^n = (e^{\ln a})^n = e^{n\ln a} \;\forall n\in\N. \]
+\[ \Rightarrow a^{-n} = \frac{1}{a^n} = \frac{1}{(e^{\ln a})^n}
+= \frac{1}{e^{n\ln a}} = e^{-n\ln a} \]
+\[ \Rightarrow \forall n\in\Z: a^n = e^{n \ln a}. \]
+Sei \( m \in \N \):
+\[ \left( e^{\frac{1}{m} \ln a} \right)^m = e^{\frac{m}{m} \ln a}
+= e^{\ln a} = a \]
+\[ \Rightarrow e^{\frac{1}{m} \ln a = \sqrt[m]{a}} = a^{frac{1}{m}} \]
+\[ \Rightarrow \forall n\in\N_0: 
+\left( e^{\frac{1}{m} \ln a} \right)^n 
+= e^{\frac{n}{m} \ln a} = (a^{\frac{1}{m}})^n = a^{frac{n}{m}} \]
+\[ \Rightarrow e^{\frac{n}{m} \ln a} = a^{\frac{n}{m}} \;\forall n \in \N_0, m \in \N \]
+Genauso: \( -n \in \N \):
+\[ e^{\frac{n}{m} \ln a} = \frac{1}{e^{-\frac{n}{m} \ln a}}
+= \frac{1}{a^{-\frac{n}{m}}} = a^{\frac{n}{m}} \]
+\[ \Rightarrow a^r = \exp(r \ln a) \forall r \in \Q \]
+Sei \( x\in\R \). \( \Q \) ist dicht in \( \R \). 
+\( \exists \) Folge \( (r_n)_n \in \Q, r_n \rightarrow x \).\\
+\[ a^{r_n} = \exp(r_n \ln a) \rightarrow \exp(x\ln a) \]
+da \( \exp \) stetig.
+\begin{defi}[Exponentialfunktion zur Basis \(a\)]
+    Sei \( a > 0, z\in\C \).
+    \[ a^z := \exp(z \ln a). \]
+\end{defi}
+Es gilt: \( f_a(x) = \exp(x\ln a) \)
+\begin{enumerate}
+    \item \( a^{z+w} = a^z \cdot a^w \;\forall z,w \in \C \).
+    \item \( \limesx{z}{a} \frac{a^z -1}{z} = \ln a \).
+    \item \( \C \ni z \mapsto a^z \) ist stetig.
+    \item \( f_a(x) := a^x, x\in \R, f_a : \R \rightarrow (0,\infty) \)
+    ist strikt wachsend bzw.\ fallend, falls
+    \( a > 1 \) bzw.\  \( 0 < a < 1 \)
+    ist.
+    \item Ist \(a \neq 1 \), so nimmt \( f_a \) auf \( \R \) jeden Wert aus
+    \( (0, \infty) \) an.
+\end{enumerate}
+%Bild
+\begin{defi}
+    \( \ln_a x = y \) genau dann wenn 
+    \( a^y = x \ (\Leftrightarrow \exp(y\ln a) = x) \)
+    \[ \Rightarrow \forall x > 0 \existse y \in \R: a^y = x. \]
+\end{defi}
+\begin{satz}[Rechenregeln für \( \ln \)]\leavevmode
+    \begin{enumerate}
+        \item \( \ln (a^x) = x \ln a \;\forall x \in \R \).
+        \item \( (a^x)^y = a^{xy} \;\forall x,y \in \R \).
+        \item \( a^z b^z = (ab)^z \;\forall z\in\C \).
+    \end{enumerate}
+\end{satz}
+\begin{bew}\leavevmode
+    \begin{enumerate}
+        \item \( a^x = \exp(x\ln a) \Rightarrow \)
+        \item \( (a^x)^y = \exp(y\ln (a^x)) = \exp (xy \ln a)
+        =a^{xy} \)
+        \item \( a^z b^z = \exp(z \ln a) \exp(z \ln b) \\
+        = \exp(z (\ln a + \ln b)) = \exp(z \ln(a\cdot b)) 
+        = (ab)^z. \)
+    \end{enumerate}
 \end{bew}
 \end{document}
