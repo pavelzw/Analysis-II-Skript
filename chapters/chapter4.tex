@@ -3,6 +3,142 @@
 \begin{document}
 
 \setcounter{section}{3}
-\section{}
+\section{Integrieren}
+Bild:
+%Bild
+\subsection{Treppenfunktionen und ihr Integral}
+\begin{defi}
+    Eine Funktion \( \abb{\varphi}{[a,b]}{\C} \) 
+    (oder \(\R, \R^d\))
+    heißt Treppenfunktionen, falls es Punkte 
+    \( a=x_0 < x_1 < \cdots < x_n = b \) gibt, sodass 
+    \( \varphi \) auf jedem Intervall \( (x_{k-1}, k_k) \)
+    konstant ist.    
+\end{defi}
+\begin{bem}
+    Egal, was in \(x_k\) passiert.
+    %Bild
+\end{bem}
+\begin{bem}
+    Eine Menge \( Z = \set{x_0, \ldots, x_n} \) nennen 
+    wir Zerlegung von \( [a,b] \), falls 
+    \[ a = x_0 < x_1 < \cdots < x_k < \cdots < x_n = b \]
+    ist.
+\end{bem}
+Die Menge aller Treppenfunktionen \( T[a,b] \) bildet 
+einen Vektorraum (siehe Lemma 4).
+\begin{defi}[Integral einer Treppenfunktionen]
+    Ist \( \abb{\varphi}{[a,b]}{\C} \) und 
+    \( Z = \set{x_0, \ldots, x_n} \) eine Zerlegung 
+    \gqq{passend} zu \( \varphi \), d.\ h.\  \( \varphi \) 
+    ist auf jedem offenen Teilintervall \( (x_{k-1}, x_k) \) 
+    kostant, so definieren wir 
+    \[ \integral{\varphi(x)}{a}{b} = \integral{\varphi(x)}{a}{b} 
+    := \sum_{k=1}^n c_k (\underbrace{x_k - x_{k-1}}_{= \Delta x_k})
+    = \sum_{k=1}^n c_k \Delta x_k \]
+\end{defi}
+Frage: Ist der Wert der obigen Summe unabhängig von der Zerlegung?
+\begin{lem}
+    Die obige Definition ist unabhängig von der Zerlegung.
+\end{lem}
+\begin{bew}
+    Sei \( \varphi \) feste Treppenfunktion, \(Z\) eine passende 
+    Zerlegung, \( Z=\set{x_0, x_1,\dots, x_n}, x_0=a<x_1<\dots<x_n=b \) \\
+    \( \varphi \) ist konstant.
+    
+    \[ I(Z) := \sum_{k=1}^n c_k \Delta x_k \]
+    Sei \(\tilde{Z}\) andere passende Zerlegung: 
+    z.z.: \(I(Z) = I(\tilde{Z})\)
+    Erste Beobachtung: Nennen \( Z \) Verfeinerung von \( Z \), 
+    falls \( Z \subset Z' \). Also \( Z' \) enthält alle Punkte 
+    von \(Z\) und vielleicht mehr.
+    \begin{beh}
+        \[ I(z) = I(Z') \; \forall \text{Verfeinerungen } Z' \text{ von } Z. \]
+    \end{beh}
+    \begin{bew}
+        Angenommen \(Z'\) enthält genau einen Punkt \(y\) mehr 
+        als \(Z\).
+        \[ \Rightarrow \exists k : x_{k-1} < y < x_k. \]
+        \[ Z = \set{x_0,\ldots,x_n} \]
+        \[ Z' = \set{x_0,\ldots,x_{k-1}, x_k,\ldots,x_n} \]
+        \(\Rightarrow \) in \(I(Z)\) ist der Summand 
+        \( c_k(x_k - x_{k-1}) \) zu ersetzen mit 
+        \[ c_k(y - x_{k-1}) + c_k(x_k - y) 
+        = c_k(x_k - x_{k-1}). \]
+        alle anderen Summanden sind gleich.
+        \[ \Rightarrow I(Z) = I(Z'). \]
+    \end{bew}
+    Allgemeiner Fall: Ist \(Z'\) eine Verfeinerung von \(Z\)
+    füge eine schrittweise neue Punkte zu \(Z\).
+    \[ \Rightarrow \text{Verfeinerungen } Z = Z_0' 
+    \subset Z_1' \subset Z_2' \subset \cdots \subset Z_k' = Z'. \]
+    \( Z_k' \setminus Z_{k-1}' \) enthält genau einen Punkt.
+    \[ \Rightarrow I(Z) = I(Z'_0) = I(Z'_1) 
+    = \cdots = I(Z'_k) = I(Z'). \]
+    2. Beobachtung: Gegeben zwei Zerlegungen \(Z_1, Z_2\), die zu 
+    \( \varphi \) passen.\\
+    \( \Rightarrow \tilde{Z} := Z_1 \cup Z_2 \).\\
+    \( \Rightarrow \tilde{Z} \) Verfeinerung von \( Z_1, Z_2 \).
+    \[ \overundersett{Erste}{Beobachtung}{\Rightarrow} 
+    I(Z_1) = I(\tilde{Z}) = I(Z_2). \]
+\end{bew}
+\begin{lem}
+    Seien \( \varphi, \psi \) Treppenfunktionen und 
+    \( \alpha, \beta \ni \C \).
+    \begin{enumerate}
+        \item \( \alpha \varphi + \beta \psi \) ist Treppenfunktion.
+        \item Linearität: \( \integral{(\alpha \varphi + \beta \psi)}{a}{b} 
+        = \alpha \integral{\varphi}{a}{b} 
+        + \beta \integral{\psi}{a}{b} \).
+        \item Beschränktheit: \( \abs{\integral{\varphi}{0}{b}}
+        \leq \integral{\abs{\varphi}}{0}{b} \leq (b-a||\psi||_\infty) \). \\
+        \( ||\varphi||_\infty 
+        := \underset{x \in [a,b]}{\sup} \abs{\varphi(x)} \).
+        \item Monotonie: Sind \( \varphi, \psi \) reell und 
+        \( \varphi \leq \psi \).
+        \[ \Rightarrow \integral{\varphi}{a}{b} 
+        \leq \integral{\psi}{a}{b}. \]
+    \end{enumerate}    
+\end{lem}
+\begin{bew}
+    Seien \( Z_1, Z_2 \) Zerlegungen passend zu \( \varphi \) bzw. 
+    \( \psi \).\\
+    \( \tilde{Z} := Z_1 \cup Z_2 \) passt auch zu \( \varphi \) und 
+    \( \psi \).\\
+    \( \Rightarrow \) Linearkombination \( \alpha \varphi + \beta \psi \) 
+    ist Treppenfunktion mit passender Zahl \( \tilde{Z} \).\\
+    Nehme \( \tilde{Z} = \set{x_0,\ldots, x_m} \).
+    Z. B. \( \varphi = c_k \) auf \( (x_{k-1}, x_k) \).
+    %align
+    \[ \Rightarrow \abs{ \integral{\varphi}{a}{b} } 
+    = \abs{\sum_{k=1}^m c_k (x_k - x_{k-1}) } \]
+    \[ \leq \sum_{k=1}^m \abs{c_k} (x_k - x_{k-1}) \]
+    \[ = \integral{\abs{\varphi}}{a}{b}. \]
 
+    \[ \leq \underbrace{\underset{k=1,\dots,m}{\max}}
+    _{\underset{x \in [a,b]}{\abs{\varphi(x)}} \abs{x_k}}
+    \underbrace{\sum_{k=1}^m (x_k-x_{k-1})}_{=b-a} \]
+    \[ = ||\varphi||_\infty (b-a) \Rightarrow \text{3)} \]
+    2) und 4) analog.
+\end{bew}
+\begin{bem}
+    \[ \mathds{1}_A (x) = \begin{cases}
+        1, x \in A \\
+        0, x \notin A
+    \end{cases}, A\subset \R. \]
+    charakteristische Funktion von \(A\).\\
+    \( \Rightarrow \varphi \) Treppenfunktion
+    \[ \varphi = \sum_{k=1}^m c_k \mathds{1}_{A_k}. \]
+    \( A_k \) offenes Intervall oder Punkt.
+\end{bem}
+\subsection{Regelfunktion und ihr Integral}
+Wir haben 
+\[ \abb{\int_a^b}{T[a,b]}{\C} \text{ (oder } \R \text{)} \]
+ist eine lineare Abbildung.\\
+Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
+\[ \abs{ \underbrace{\integral{\varphi_n} {a}{b}}_{I(\varphi_n)} 
+- \underbrace{\integral{\varphi_m} {a}{b}}_{I(\varphi_m)} } 
+= \abs{ \integral{(\varphi_n - \varphi_m)}{a}{b} }. \]
+\[ \oversett{(3)}{=} (b-a) ||\varphi_n-\varphi_m||_\infty 
+\rightarrow 0, n,m \rightarrow \infty \]
 \end{document}

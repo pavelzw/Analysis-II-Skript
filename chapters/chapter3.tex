@@ -482,4 +482,122 @@ Es gilt: \( f_a(x) = \exp(x\ln a) \)
         = (ab)^z. \)
     \end{enumerate}
 \end{bew}
+\subsection*{Die Arcus Funktionen}
+\begin{align*}
+    \tan z &= \frac{\sin z}{\cos z}, 
+    z \in \C \setminus \set{\frac{\pi}{2}, k\pi, k \in \Z} \\
+    \cot z &= \frac{\cos z}{\sin z}, 
+    z \in \C \setminus \set{k\pi, k \in \Z}
+\end{align*}
+\( \tan \): auf \( \R \) definiert 
+\( x \neq \frac{\pi}{2} + k \pi, k \in \Z \).\\
+\( \abb{\tan}{(- \frac{\pi}{2}, \frac{\pi}{2})}{\R}\) ist stetig.\\
+\( \limesx{x}{\frac{\pi}{2}-} \tan x 
+= \limesx{x}{\frac{\pi}{2}-} \frac{\sin x}{\cos x} 
+= +\infty \).\\
+Analog: \( \limesx{x}{\frac{\pi}{2}+} \tan x = -\infty \).\\
+Auf \( [0,\frac{\pi}{2}] \) ist \( \sin \) strikt wachsend, 
+\( \cos \) strikt fallend.\\
+\( \Rightarrow \tan \) ist strikt wachsend auf 
+\( [0,\frac{\pi}{2}) \).\\
+\( \tan \) ist antisymmetrisch: \( \tan x = -\tan(-x) \)
+\( \Rightarrow \tan \) ist auf 
+\( (-\frac{\pi}{2},\frac{\pi}{2}) \) strikt wachsend.
+%Bild tangens mit Hauptzweig
+Bild:
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+Umkehrfunktion von 
+\( \abb{\tan}{\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)}{\R}\) existiert.
+\[ \abb{\arctan}{\R}{\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)} \]
+
+Graph vom Arcustangens:\\
+%Bild
+\begin{tikzpicture}
+    
+\end{tikzpicture}\\
+Analog: 
+\begin{align*}
+    \abb{\cos}{[0,\pi]}{[-1,1]} \\
+    \abb{\sin}{\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]}{[-1,1]}
+\end{align*}
+strikt monoton und stetig.\\
+\( \oversett{ZWS}{\Rightarrow} \) sie sind surjektiv.
+Sie sind bijektiv aufgrund der strikten Monotonie.
+\( \Rightarrow \) Umkehrfunktionen:
+\begin{align*}
+    \abb{\arccos}{[-1,1]}{[0,\pi]} \\
+    \abb{\arcsin}{[-1,1]}{\left[-\frac{\pi}{2},\frac{\pi}{2}\right]}
+\end{align*}
+Bilder:\\
+%Bild
+\( \cos \)
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+\( \sin \)
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+\( \arccos \)
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+\( \arcsin \)
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+
+\subsubsection*{Ableitungen}
+\begin{align*}
+    (\tan x)' &= \ddx \tan x \\
+    &= \ddx \frac{\sin x}{\cos x}\\
+    &= \frac{\cos x \sin'x - \sin x \cos'x}{\cos^2 x}\\
+    &= \frac{\cos^2 x + \sin^2 x}{\cos^2 x} \\
+    &= \frac{1}{\cos^2 x}.
+\end{align*}
+
+\[ (\arctan x)' = \frac{1}{\tan'(\arctan x)} 
+= \cos^2(\arctan x) \]
+
+Nebenrechnung:
+\[ \tan^2 x = \frac{\sin^2 x}{\cos^2 x} 
+= \frac{\sin^2 x + \cos^2 x - \cos^2 x}{\cos^2 x}
+= \frac{1}{\cos^2 x} - 1 \]
+\[ \Rightarrow \cos^2 x = \frac{1}{1 + \tan^2 x} \]
+\[ \Rightarrow (\arctan x)' = \cos^2(\arctan x) 
+= \frac{1}{1 + \tan^2(\arctan x)} = \frac{1}{1 + x^2}. \]
+
+\[ (\arccos x)' = \frac{1}{\cos'(\arccos x)} 
+= \frac{1}{-\sin(\arccos x)}
+= -\frac{1}{\sqrt{1-\cos^2 (\arccos x)}} 
+= -\frac{1}{\sqrt{1-x^2}} \]
+Ähnlich: \( (\arcsin x)' = \frac{1}{\sqrt{1 - x^2}} \).
+\subsection*{Hyperbolische Funktionen}
+Es existieren neben \( \cos, \sin, \tan \) und \( \cot \) 
+noch der \( \cosh, \sinh, \tanh \) und der \( \coth \).
+\begin{align*}
+    \cosh x &= \frac{1}{2} (e^x + e^{-x}) \geq 1\\
+    \sinh x &= \frac{1}{2}(e^x-e^{-x}) \\
+    \tanh x &= \frac{\sinh x}{\cosh x} \;\forall x\in\R \\
+    \coth x &= \frac{\cosh x}{\sinh x}, \;x \neq 0
+\end{align*}
+Bild:
+%Bild
+\( \abb{\cosh}{\R}{[1,\infty)} \) ist stetig, 
+strikt wachsend auf \( [0,\infty) \).
+\begin{tikzpicture}
+
+\end{tikzpicture}
+\( \abb{\sinh}{\R}{\R} \) ist stetig und strikt
+wachsend.
+\begin{tikzpicture}
+    
+\end{tikzpicture}
+\( \Rightarrow \) Umkehrfunktionen existieren.
+\begin{align*}
+    &\abb{\arcosh}{[1, \infty)}{[0, \infty)} \\
+    &\abb{\arsinh}{\R}{\R}
+\end{align*}
 \end{document}
