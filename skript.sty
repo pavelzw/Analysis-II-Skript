@@ -65,8 +65,8 @@
 \newcommand{\existse}{\exists!}
 \newcommand{\inverse}[1]{{#1}^{\minus 1}}
 \newcommand{\abb}[3]{\ensuremath{#1:#2\rightarrow #3}}
-\newcommand{\ddx}{\frac{d}{dx}}
-\newcommand{\dx}{\ensuremath{dx}}
+\newcommand{\ddx}[1]{\frac{d}{d#1}}
+\newcommand{\dx}[1]{\ensuremath{d#1}}
 \newcommand{\integral}[3]{\ensuremath{\int_{#2}^{#3} #1 \;dx}}
 
 \newcommand{\overunderset}[3]{\overset{#1}{\underset{#2}{#3}}}
@@ -96,3 +96,4 @@
 \DeclareMathOperator{\Bild}{Bild}
 \DeclareMathOperator{\arcosh}{arcosh}
 \DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\Log}{Log}

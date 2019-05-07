@@ -2,8 +2,160 @@
 \begin{document}
 \setcounter{section}{0}
 
-\section{First chapter}
+\section{Komplexer Logarithmus}
 
-Hallo Welt.
-
+\( z\in\C, a\in\R_+ \)
+\[ a^z = e^{z \ln a} \]
+Was ist mit \( a \in \C \setminus \R_+ \)?
+\( y = \ln x  \) ist die eindeutige Lösung der Gleichung 
+\( x=e^y \).\\
+Funktioniert hier, weil \(e^x\) injektiv ist, \dphp{}
+\[ x_1 \neq x_2 \Rightarrow e^{x_1} \neq e^{x_2}. \]
+Aber \( e^z \) für \( z\in\C \) ist 
+\( 2\pi i \)-periodisch.
+Ähnliche Probleme hat man auch bei der Definition 
+der Umkehrfunktion des Sinus.
+\begin{defi}[Komplexer Logarithmus]
+    Sei \( z \in \C \). Wir nennen \( w \) den 
+    Logarithmus von \(z\), wenn \( z = e^w \) ist.\\
+    Wir schreiben \( w = \log z \).
+\end{defi}
+Wir müssen also entsprechendes \(w\) finden.
+Sei also \( w = u + vi \) und setzen 
+\( z = r e^{\theta i} \). Wir setzen in die Gleichung 
+ein 
+\[ z = r e^{\theta i} \overset{!}{=} e^u e^{iv} 
+= e^{u+vi} = e^w. \]
+\[ \Rightarrow e u = r \text{ bzw. } u = \ln r \]
+\[ \text{und } v = \theta = \arg z. \]
+Somit gilt: \[ w = \ln r + \theta i \]
+und somit ist der komplexe Logarithmus einer 
+komplexen Zahl \(z\) gegeben durch 
+\[ \log z = \ln \abs{z} + i\arg z. \tag{\(*\)} \]
+\begin{bem}
+    Da \( \arg z \) einer Zahl 
+    \( z \in \C \setminus \set{0} \)
+    auf Vielfache von \( 2\pi \) 
+    bestimmt ist, hat jede komplexe Zahl ungleich 
+    Null unendlich viele Logarithmen.
+\end{bem}
+\begin{bsp}
+    \begin{align*}
+        \log(1+i) &\overset{(*)}{=} \ln(\sqrt{2}) 
+        + (\frac{\pi}{4} + 2k\pi)i, \forall k \in \Z \\
+        &= \frac{1}{2} \ln 2 + (1 + 8k) \frac{\pi}{4}i, 
+        \forall k \in \Z \\
+    \end{align*}
+    Die Logarithmen haben alle denselben Realteil, aber 
+    der Imaginärteil variiert um Vielfache von \( 2\pi \).\\
+    \( \Rightarrow \) der komplexe Logarithmus ist 
+    mehrwertig bzw.\ mehrzweigig.
+\end{bsp}
+\begin{bsp}
+    \[ \log (2-3i) = ? \]
+    \begin{itemize}
+        \item \( \abs{2-3i} = \sqrt{13} \).
+        \item 
+        \begin{align*}   
+            \arg(2-3i) &= \arctan \left(-\frac{3}{2}\right) + 2\pi k \\
+            &= -\arctan\left(\frac{3}{2}\right) + 2\pi k \\
+            \log(2 - 3i) &= \ln \sqrt{13} 
+            + i (2\pi k - \arctan \left(\frac{3}{2}\right))\\
+            &= \frac{1}{2} \ln 13 
+            + i (2 \pi k - \arctan \left(\frac{3}{2}\right))
+        \end{align*}
+    \end{itemize}
+    
+\end{bsp}
+\section{Eigenschaft des komplexen Logarithmus}
+Einige Eigenschaften sind ungleich als im reellen, aber 
+nicht alle.\\
+Sei \( z = x + iy = re^{\theta i} \).
+\begin{enumerate}
+    \item \( e^{\log z} = e^{\ln r + \theta i} 
+    = e^{\ln r}e^{\theta i} = re^{\theta i} = z \).
+    \item 
+        \begin{align*}
+            \log e^z &= \log e^{x+iy} = \ln e^x + (y + 2k\pi)i \\
+            &= x + yi + 2k \pi i\\
+            &= z + 2k \pi i.
+        \end{align*}
+\end{enumerate}
+Sei nun \( z_1 = r e^{\theta i} \), 
+\( z_2 = R \cdot e^{\phi i} \).
+Sei \( p\in\Z \).
+\begin{align*}
+    \log(z_1 z_2) &= \log(rR e^{(\theta + \phi)i}) \\
+    &\overset{(*)}{=} \ln(rR) + (\theta + \phi + 2\pi p)i \\
+    &= (\ln r + \theta i) + (\ln R + \phi i) + 2\pi p i. \tag{\(**\)}
+\end{align*}
+\[ \log z_1 = \ln r + (\theta + 2\pi n)i. \]
+\[ \log z_2 = \ln R + (\phi + 2\pi m)i. \]
+\begin{align*}
+    \Rightarrow \log (z_1 z_2) &\overset{(**)}{=} 
+    (\log z_1 - 2\pi ni) + (\log z_2 - 2\pi m i) + 2p\pi i \\
+    &= \log z_1 + \log z_2 + 2(\underbrace{p-n-m}_{= k}) \pi i\\    
+    &= \log z_1 + \log z_2 + 2\pi k i.
+\end{align*}
+Somit existiert in Abhängigkeit von den 
+jeweiligen Zweigen der 
+Logarithmen von \(z_1\) und \(z_2\) ein Zweig des Logarithmus
+von \(z_1 z_2 \), sodass
+\[ \log (z_1z_2) = \log z_1 + \log z_2 \]
+Aber im Allgemeinen ist dies nicht richtig! \\
+Gleiches gilt für
+\[ \log \left( \frac{z_1}{z_2} \right)
+= \log z_1 - \log z_2 + 2k\pi i, k \in \Z. \]
+Ableitung von \( \log z \)?
+Wir betrachten 
+\[ \ddx{z} \log z 
+= \limesx{\Delta z}{0} 
+\frac{\log(z+\Delta z) - \log z}{\Delta z}. \]
+Damit die Ableitung existiert, muss der 
+Grenzwert existieren, eindeutig sein und darf
+nicht davon abhängen, wie \( \Delta z \rightarrow 0 \)
+geht.\\
+Dies ist unmöglich, da wir unendlich viele Möglichkeiten
+für \( \log z \) und \( \log (z + \Delta z) \) für 
+jeden Wert von \( \Delta z \) haben. \\
+Wir müssen \( \log z \) einschränken, um eine Ableitung 
+zu definieren. Aus der Definition von \( \arg z \) folgt,
+dass der Imaginärteil von \( \log z = \ln \abs{z} + (\arg z)i \)
+in jedem Punkt auf der negativen reellen Achse eine
+unstetige Funktion ist.\\
+Somit können wir \( \log z \) in keinem dieser Punkte 
+differenzieren. Nehmen wir also als Definitionsbereich
+\[ \abs{z} > 0, -\pi < \arg z < \pi \]
+dann ist 
+\[ \Log z = \ln r + \theta i, -\pi < \theta < \pi \]
+sogar unendlich oft differenzierbar.
+Für die Ableitung gilt dann
+\[ \ddx{z} \Log z = \frac{1}{z} \]
+Durch die Einschränkung auf \( -\pi < \arg z < \pi \)
+erhält man den Hauptzweig von \( \log z \).
+\begin{bem}
+    Für \( x \in \R \) hatten wir \(\log_a x \) als den Logarithmus
+    zur Basis \(a \) definiert. \\
+    Für den komplexen Logarithmus verwendet man immer Basis \(e\).
+    Beachte: \( \log_\varphi z \) bezeichnet die Einschränkung
+    des \(\log z \) auf den Zweig \( \arg_\varphi \). 
+    \[ \log_\varphi z = \ln \abs{z} + (\arg_\varphi z)i \]
+\end{bem}
+Nun können wir für \( a \in \C, z \in \C \) das 
+folgende definieren:
+\[ a^z := e^{z \log a}. \]
+\begin{beh}
+    \( i^i \in\R \).
+\end{beh}
+\begin{bew}
+    \[ i^i = e^{i \log i} \]
+    \[ \log i \overset{*}{=} \ln \abs{i} + i \cdot \arg i \]
+    \[ \arg i = (\frac{\pi}{2} + 2k\pi), k \in \Z \]
+    \[ \Rightarrow \log i = (\frac{\pi}{2} + 2k\pi)i \]
+    \[ \Rightarrow i^i = e^{i \log i} 
+    = e^{i \cdot i(\frac{\pi}{2} + 2 \pi k)} 
+    = e^{-(\frac{\pi}{2} + 2\pi k)} \in\R, k\in\Z. \]
+    \( \leadsto \) Einschränkung auf Hauptzweig ergibt: 
+    \[ i^i = e^{-\frac{\pi}{2}} \]
+\end{bew}
 \end{document}
