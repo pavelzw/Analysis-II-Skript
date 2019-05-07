@@ -1,0 +1,59 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{1}
+
+\section{Beispiele für Integrale}
+\begin{bsp}
+    \( \integral{x}{0}{1} \) 
+    %Bild Treppenfunktion 1/n, 2/n...
+    \( g_n = \frac{1}{n} \lfloor nx \rfloor \) 
+    konvergiert gleichmäßig in \( [0,1] \)
+    gegen \(x\) auf \( [\frac{ k-1 }{n}, \frac{k}{n}) \)
+    ist \( g_n(x) = \frac{k-1}{n} \).
+    \[ x_k = \frac{k}{n},
+    \quad x_k - x_{k-1} = \frac{1}{n} \]
+
+    \begin{align*}
+        \Rightarrow \integral{g_n(x)}{0}{1}
+        &= \sum_{k=1}^n \frac{k-1}{n} \cdot \frac{1}{n}\\
+        &= \frac{1}{n^2} \cdot \frac{n(n-1)}{2} \\
+        &= \frac{1}{2} (1-\frac{1}{n}) 
+        \overset{n\rightarrow \infty}{\rightarrow} 
+        \frac{1}{2}
+    \end{align*}
+    \[ \Rightarrow \integral{x}{0}{1} = \frac{1}{2} \]
+\end{bsp}
+\begin{bsp}
+    \begin{beh}
+        \( f(x) = \exp x \) auf \( [a,b] \).
+    \end{beh}    
+    Wollen zeigen:
+    \[ \integral{\exp x}{a}{b} = \exp b - \exp a. \]
+    \begin{bew}
+        Setze \( x_k = a + \frac{k}{n} (b-a) \)
+        \[ g_n(x) = \begin{cases}
+            \exp(x_{k-1}), &x_{k-1} \leq x < x_k\\
+            \exp b, &x = b
+        \end{cases}. \]
+        
+        \begin{align*}
+            \Rightarrow \integral{g_n(x)}{a}{b} 
+            &= \sum_{k=1}^n \exp x_{k-1}(x_k-x_k-1)\\
+            &= \sum_{k=1}^n 
+            \exp\left(a + \frac{(k-1)(b-a)}{n}\right)
+            \frac{b-a}{n}\\
+            &= \frac{b-a}{n} \exp a \cdot 
+            \sum_{k=1}^n \underbrace{\exp \left( (k-1) \frac{b-a}{n} \right)}_
+            {= \exp \left( \frac{b-a}{n} \right)^{k-1} := \;q^{k-1}}\\
+            &= \frac{b-a}{n} \exp a \cdot 
+            \underbrace{\sum_{k=1}^n q^{k-1} }_{\text{geom. Summe}}\\
+            &= \frac{ b-a }{n} \exp a 
+            \frac{ \exp(\frac{b-a}{n})^n - 1}{ \exp(\frac{b-a}{n}) - 1 }\\
+            &= \frac{\frac{b-a}{n}}{\exp \left( \frac{b-a}{n} \right) - 1}
+            \cdot \underbrace{\exp a (\exp(b-a) - 1)}_{=\exp b - \exp a}\\
+            &\overset{n \rightarrow \infty}{\longrightarrow} 
+            1 \cdot (\exp b - \exp a) = \exp b - \exp a.
+        \end{align*}
+    \end{bew}
+\end{bsp}
+\end{document}
