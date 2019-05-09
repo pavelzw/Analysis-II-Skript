@@ -131,7 +131,7 @@ Frage: Ist der Wert der obigen Summe unabhängig von der Zerlegung?
     \[ \varphi = \sum_{k=1}^m c_k \mathds{1}_{A_k}. \]
     \( A_k \) offenes Intervall oder Punkt.
 \end{bem}
-\subsection{Regelfunktion und ihr Integral}
+\subsection{Regelfunktionen und ihre Integrale}
 Wir haben 
 \[ \abb{\int_a^b}{T[a,b]}{\C} \text{ (oder } \R \text{)} \]
 ist eine lineare Abbildung.\\
@@ -141,4 +141,254 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
 = \abs{ \integral{(\varphi_n - \varphi_m)}{a}{b} }. \]
 \[ \oversett{(3)}{=} (b-a) ||\varphi_n-\varphi_m||_\infty 
 \rightarrow 0, n,m \rightarrow \infty \]
+\begin{defi}[Regelfunktion]
+    Sei \( I \) ein Intervall mit Anfangspunkt \(a\) 
+    und Endpunkt \(b\). Eine Funktion 
+    \[ \abb{f}{[a,b]}{\C} \] 
+    heißt Regelfunktion, falls sie 
+    \begin{enumerate}
+        \item in jedem Punkt \(x \in (a,b)\) 
+        einen linksseitigen und rechtsseiten 
+        Grenzwert hat.
+        
+        \item im Fall \( a \in I \) in \(a\) einen 
+        rechtsseiten Grenzwert hat und falls 
+        \( b \in I \) in \(b\) 
+        einen linksseitigen Grenzwert hat.
+    \end{enumerate}
+    Wir bezeichnen den \( \C \)-Vektorraum der 
+    Regelfunktionen mit \( R(I) \).
+    \begin{bspe}
+        \begin{enumerate}
+            \item Die stetigen Funktionen auf \( I \rightarrow \C \).
+            \item Die monotonen Funktionen \( I \rightarrow \R \).
+        \end{enumerate}      
+    \end{bspe}
+    Sind \( f,g \) Regelfunktionen, so sind auch 
+    \( \abs{f}, g\cdot f \) Regelfunktionen, sowie im 
+    reellen Fall auch \( \min\set{f,g}, \max\set{f,g} \).
+\end{defi}
+\begin{satz}[Approximationssatz]
+    Eine Funktion \( \abb{f}{[a,b]}{\C} \) ist 
+    eine Regelfunktion genau dann, wenn 
+    \[ \forall \varepsilon > 0 \; \exists 
+    \text{Treppenfunktion } \varphi \in T[a,b] \]
+    mit 
+    \[ ||f - \varphi||_\infty 
+    = \underset{x \in [a,b]}{\sup} |f(x) - \varphi(x)| 
+    \leq \varepsilon \]
+    (dieses \(\varphi\) nennt man \( \varepsilon \)-Approximationsfunktion
+    für \(f\))
+\end{satz}
+\begin{bew}
+    Siehe Skript. (handschriftlich)
+\end{bew}
+\begin{kor}
+    \( \abb{f}{[a,b]}{\C} \) ist eine Regelfunktion 
+    \[ \Leftrightarrow \exists \text{Folge } 
+    (\varphi_n)_n \text{ von Treppenfunktionen} \]
+    \( \varphi_n \in T[a,b] \) mit \( ||f-\varphi_n||_\infty 
+    \rightarrow 0 (n\rightarrow \infty) \).
+\end{kor}
+\begin{bew}
+    \gqq{\( \Leftarrow \)}: Klar. Sei \( \varepsilon > 0\), 
+    da \( ||f-\varphi_n||_\infty \rightarrow 0 \) folgt 
+    \( ||f-\varphi_n|| < \varepsilon \) für fast alle \(n\)
+    
+    \gqq{\( \Rightarrow \)}: Satz \(6\) 
+    mit \( \varepsilon = \frac{1}{n} \).
+\end{bew}
+\begin{kor}
+    \( f \) ist eine Regelfunktion
+    \[ \exists (\varphi_k)_k, \psi_k \in T[a,b] 
+    \text{ mit } f = \sum_{k=1}^\infty \psi_k. \]
+\end{kor}
+\begin{bew}
+    gqq{\( \Rightarrow \)}: Wähle \( \varphi_k \in T[a,b] \)
+    mit \( ||f-\varphi_k||_\infty \leq 2^{-k} \)
+    \[ \psi_1 := \varphi_1, \psi_2 := \varphi_2 - \varphi_1, 
+    \ldots, \psi_n := \varphi_n - \varphi_{n-1} \]
+    \[ \Rightarrow |f(x) - \sum_{k=1}^n \psi_k(x)| 
+    = |f(x)-\varphi_n(x)| \leq ||f-\varphi_n||_\infty \leq 2^{-k} \]
+    Beachte: \( ||\psi_k||_\infty = ||\varphi_k - \varphi_{k-1}||_\infty
+    \leq ||\varphi_k-f||\infty + ||f-\varphi_{k-1}||_\infty
+    \leq 2^{-k} +  2^{-(k-1)} = \frac{3}{2^k} \).
+
+    Somit 
+    \[ \sum_{k=1}^\infty ||\psi_k||_\infty < \infty. \]
+    Reihe konvergiert absolut in \( ||\cdot||_\infty \).
+
+    \gqq{\( \Leftarrow \)}: Gegeben \( (\psi_k)_k \).
+    \[ \phi_n := \sum_{k=1}^n \psi_k \in T[a,b]. \]
+    \( \Rightarrow ||f - \varphi_n||_\infty \rightarrow 0 \).
+\end{bew}
+\begin{kor}
+    Sei \(I\) ein Intervall. Jede Regelfunktion 
+    \[ \abb{f}{I}{\C} \]
+    ist bis auf abzählbar viele Stellen stetig.
+\end{kor}
+\begin{bew}
+    Sei \( a,b \in I, J := [a,b] \)
+    \[ \oversett{Kor. 8}{\Rightarrow} f 
+    = \sum_{k=1}^\infty \psi_k
+    , \quad \psi_k \in T[a,b]. \]
+    \( \psi_k \) hat nur endlich viele 
+    Unstetigkeitsstellen.\\
+    \( \sum_{k=1}^\infty \psi_k \) hat höchstens abzählbar viele 
+    Unstetigkeitsstellen in \( [a,b] \).
+    
+    Ist \( I = (c,d) \Rightarrow I 
+    = \bigcup_{n\in\N} 
+    [c + \frac{1}{n}, d - \frac{1}{n}] \) \\
+    \( \Rightarrow f\) hat auch \( (c,d) \) nur abzählbar 
+    abzählbar (= abzählbar) viele Unstetigkeitsstellen.
+\end{bew}
+\begin{kor}
+    Jede Regelfunktion \( \abb{f}{[a,b]}{\C} \) 
+    ist beschränkt. 
+\end{kor}
+\begin{bew}
+    Sei \( \varphi \in T[a,b] \) eine \(1\)-Approximation 
+    von \( f \). \( ||f - \varphi||_\infty \leq 1 \).
+    \[ \Rightarrow ||f||_\infty 
+    = || f - \varphi + \varphi ||_\infty 
+    \leq ||f - \varphi||_\infty + ||\varphi||_\infty 
+    \leq 1 + ||\varphi||_\infty. \]
+\end{bew}
+\subsection{Integration von Regelfunktionen 
+über kompakten Intervallen}
+\begin{satzdefi}
+    Sei \( \abb{f}{[a,b]}{\C} \) eine Regelfunktion
+    \( \forall \) Folgen \( (\varphi_n)_n, \varphi_n \in T[a,b] \)
+    mit \( ||f - \varphi_n||_\infty \rightarrow 0 \) existiert.
+    \[ \integral{f(x)}{a}{b} 
+    := \limes{n} \integral{\varphi_n(x)}{a}{b}. \]
+    Der Grenzwert hängt nicht von der Wahl der Folge
+    \( (\varphi_n)_n \) ab.\\
+    Wir nennen den Grenzwert das Integral von 
+    \( f \) über \( [a,b] \).
+\end{satzdefi}
+\begin{bew}
+    1. Schritt: \( I_n := \integral{\varphi_n(x)}{a}{b} \).
+    \begin{beh}
+        \( I_n \) ist eine Cauchy-Folge.
+    \end{beh}
+    \begin{bew}
+        \( I_n - I_m \overundersett{Lemma}{4}{=} \oversett{Lem. 4}{=} 
+        \integral{(\varphi_n - \varphi_m)}{a}{b} \).
+
+        \begin{align*}
+            &\overundersett{Lemma}{4}{\Rightarrow} \abs{I_n - I_m} \\
+            &\leq \integral{\abs{\varphi_n - \varphi_m}}{a}{b} \\
+            &\leq (b-a) ||\varphi_n - \varphi_m||_\infty \\
+            &\leq (b-a) \left( ||\varphi_n - f||_\infty 
+            + ||f - \varphi_m \right) \rightarrow 0.
+        \end{align*}
+    \end{bew}
+    2. Schritt: Unabhängigkeit von der Folge
+    \begin{bew}
+        Seien \( (\varphi_n)n, (\psi_n)_n \) zwei Folgen 
+        von Treppenfunktionen mit 
+        \[ ||f-\varphi_n||_\infty \overset{n\rightarrow \infty}{\rightarrow} 0, 
+        ||f-\psi_n||_\infty \overset{n\rightarrow \infty}{\longrightarrow} 0 \]
+        Konstruktion neuer Folge \(\chi_n \) durch Reisverschlussverfahren:
+        \( \varphi_1, \psi_1, \varphi_2, \psi_2, \ldots \)
+        Das heißt
+        \[ \chi_{2n} = \varphi_n, \chi_{2n-1} = \psi_n. \]
+        Haben immer noch
+        \[ ||f - \chi_n||_\infty \overset{n \rightarrow \infty}{\rightarrow} 0 \]
+        \( \overundersett{Schritt}{1}{\rightarrow} \limes{n} \integral{\chi_n}{a}{b} \)
+        existiert.
+        Teilfolgensatz:     
+        \[ \limes{n} \integral{\chi_{2n}}{a}{b} = \limes{n} 
+        \integral{\chi_{2n+1}}{a}{b} \]
+        \[ = \limes{n} \integral{\varphi_n}{a}{b} 
+        = \limes{n} \integral{\psi_n}{a}{b} \]
+    \end{bew}
+\end{bew}
+\begin{kor}
+    Das Integral ist für stetige und monotone 
+    Funktionen definiert.
+\end{kor}
+\begin{bew}
+    Klar.
+\end{bew}
+\begin{satz}
+    Seien \( f,g \in R([a,b]),\; \alpha, \beta \in \C \).
+    \begin{enumerate}[label=(\alph*)]
+        
+        \item Linearität: \[ \integral{(\alpha f + \beta g)}{a}{b}
+        = \alpha \integral{f}{a}{b} + \beta \integral{g}{a}{b} \]
+        \item Beschränktheit: \[ \abs{\integral{f}{a}{b}} \leq 
+        \integral{\abs{f}}{a}{b} 
+        \leq (b-a)||f||_\infty. \]
+        \item Monotonie: \[ \integral{f}{a}{b} 
+        \leq \integral{g}{a}{b}, \text{ falls } f \leq g \]
+    \end{enumerate}
+\end{satz}
+\begin{bew}
+    Sei \((\varphi_n)_n, (\psi_n)_n \subset T[a,b] \) mit 
+    \( ||f-\varphi_n||_\infty \rightarrow 0, 
+    ||g-\psi_n||_\infty \rightarrow 0, n \rightarrow \infty \)
+    
+    (a): Da \( ||(\alpha f+\beta g) - (\alpha \varphi_n + \beta \psi_n) ||_\infty \)
+    \[ \leq \abs{\alpha} ||f - \varphi_n||_\infty 
+    + \abs{\beta} ||g - \psi_n||_\infty \rightarrow 0 \]
+    
+    folgt 
+    \[ \integral{(\alpha f + \beta g)}{a}{b} \oversett{Def 11}{=}
+    \limes{n} \integral{(\alpha f + \beta g)}{a}{b}
+    = \oversett{Lemma 4}{=} \alpha \limes{n} \integral{\varphi_n}{a}{b}
+    + \beta \limes{n} \integral{\psi_n}{a}{b} \]
+    \[ \oversett{Satz 11}{=} \alpha \integral{f}{a}{b} 
+    + \beta \integral{g}{a}{b}. \]
+
+    (b): \( || \abs{f} - \abs{\varphi_n}||_\infty \leq ||f-\varphi_n||_\infty
+    \rightarrow 0 (n \rightarrow \infty) \)
+    \[ \Rightarrow \integral{\abs{f}}{a}{b}
+    = \limes{n} \integral{\abs{\varphi_n}}{a}{b} \]
+
+    \[ \Rightarrow \abs{\integral{f}{a}{b}} = \limes{n} \abs{\integral{\varphi_n}{a}{b}}
+    \leq \limes{n} 
+    \integral{\underbrace{\abs{\varphi_n}}_{\leq (b-a)||\varphi_n||_\infty}}{a}{b} 
+    = \integral{\abs{f}}{a}{b} \]
+    
+    \[ \leq \limes{n} ||\varphi_n||_\infty (b-a)  
+    = ||f||_\infty (b-a) \]
+    
+    (c): Seien \( f \leq g \) und \( \varphi_n, \psi_n \) reellwertig.
+    Problem: \( \varphi_n \leq \psi_n \) ist im Allgemeinen falsch.\\
+    Setze \[ \varphi_n^- 
+    := \varphi_n - ||f - \varphi_n||_\infty 
+    \leq f. \]
+    \[ \psi_n^+ := \psi_n + ||g - \psi_n||_\infty \geq g. \]
+    \[ \Rightarrow \varphi_n^- \leq f \leq g \leq \psi_n^+ \]
+    und \( \varphi_n^-, \psi_n^+ \in T[a,b] \)
+    und \( ||f - \varphi_n^-||_\infty \rightarrow 0, 
+    ||g - \psi_n||_\infty \rightarrow 0, n\rightarrow \infty \).
+    \[ \Rightarrow \integral{f}{a}{b}
+    \oversett{Def. 11}{=} \limes{n} 
+    \integral{\varphi_n^-}{a}{b} \]
+    \[ \leq \limes{n} \integral{\psi_n^+}{a}{b} 
+    = \integral{g}{a}{b}. \]
+\end{bew}
+\begin{satz}
+    Seien \( a < b < c \), \(f\) eine Regelfunktion auf 
+    \( [a,c] \). Dann gilt 
+    \[ \integral{f}{a}{c} 
+    = \integral{f}{a}{b} + \integral{f}{b}{c} \tag{\(*\)}. \]
+\end{satz}
+\begin{bew}
+    Ist \( f \in T[a,c] \), so ist \( (*) \) offensichtlich wahr.
+    Durch Approximieren erweitern wir dies auf 
+    \( f \in R([a,c]) \).\\
+    Man beachte: ist \( \varphi_1 \in T[a,b]: \abs{f(x) - \varphi_1(x)} 
+    \leq \varepsilon \forall x\in[a,b] \)
+    und \( \varphi_2 \in T[b, c]: |f(x)-\varphi_2| \leq \varepsilon \forall x \in [b,c]\)    
+    \( \Rightarrow \varphi(x) := \begin{cases}
+        \varphi_1(x), x\in [a,b]\\
+        \varphi_2(x), x \in (b,c]
+    \end{cases} \in T[a,c] \) und erfüllt \( \abs{f(x) - \varphi(x)} \leq \varepsilon 
+    \; \forall x \in [a,c] \).
+\end{bew}
 \end{document}
