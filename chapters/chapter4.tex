@@ -10,9 +10,9 @@ Bild:
 \begin{defi}
     Eine Funktion \( \abb{\varphi}{[a,b]}{\C} \) 
     (oder \(\R, \R^d\))
-    heißt Treppenfunktionen, falls es Punkte 
+    heißt Treppenfunktion, falls es Punkte 
     \( a=x_0 < x_1 < \cdots < x_n = b \) gibt, sodass 
-    \( \varphi \) auf jedem Intervall \( (x_{k-1}, k_k) \)
+    \( \varphi \) auf jedem Intervall \( (x_{k-1}, x_k) \)
     konstant ist.    
 \end{defi}
 \begin{bem}
@@ -32,18 +32,18 @@ einen Vektorraum (siehe Lemma 4).
     \( Z = \set{x_0, \ldots, x_n} \) eine Zerlegung 
     \gqq{passend} zu \( \varphi \), d.\ h.\  \( \varphi \) 
     ist auf jedem offenen Teilintervall \( (x_{k-1}, x_k) \) 
-    kostant, so definieren wir 
-    \[ \integral{\varphi(x)}{a}{b} = \integral{\varphi(x)}{a}{b} 
+    konstant, so definieren wir 
+    \[ \integral{\varphi(x)}{a}{b} 
     := \sum_{k=1}^n c_k (\underbrace{x_k - x_{k-1}}_{= \Delta x_k})
     = \sum_{k=1}^n c_k \Delta x_k \]
 \end{defi}
-Frage: Ist der Wert der obigen Summe unabhängig von der Zerlegung?
 \begin{lem}
     Die obige Definition ist unabhängig von der Zerlegung.
 \end{lem}
 \begin{bew}
     Sei \( \varphi \) feste Treppenfunktion, \(Z\) eine passende 
-    Zerlegung, \( Z=\set{x_0, x_1,\dots, x_n}, x_0=a<x_1<\dots<x_n=b \) \\
+    Zerlegung, \( Z=\set{x_0, x_1,\dots, x_n}.\\
+    a=x_0<x_1<\cdots<x_n=b \) \\
     \( \varphi \) ist konstant.
     
     \[ I(Z) := \sum_{k=1}^n c_k \Delta x_k \]
@@ -84,14 +84,14 @@ Frage: Ist der Wert der obigen Summe unabhängig von der Zerlegung?
 \end{bew}
 \begin{lem}
     Seien \( \varphi, \psi \) Treppenfunktionen und 
-    \( \alpha, \beta \ni \C \).
+    \( \alpha, \beta \in \C \).
     \begin{enumerate}
         \item \( \alpha \varphi + \beta \psi \) ist Treppenfunktion.
         \item Linearität: \( \integral{(\alpha \varphi + \beta \psi)}{a}{b} 
         = \alpha \integral{\varphi}{a}{b} 
         + \beta \integral{\psi}{a}{b} \).
         \item Beschränktheit: \( \abs{\integral{\varphi}{0}{b}}
-        \leq \integral{\abs{\varphi}}{0}{b} \leq (b-a||\psi||_\infty) \). \\
+        \leq \integral{\abs{\varphi}}{0}{b} \leq (b-a) \cdot ||\psi||_\infty \). \\
         \( ||\varphi||_\infty 
         := \underset{x \in [a,b]}{\sup} \abs{\varphi(x)} \).
         \item Monotonie: Sind \( \varphi, \psi \) reell und 
@@ -204,7 +204,7 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
     \text{ mit } f = \sum_{k=1}^\infty \psi_k. \]
 \end{kor}
 \begin{bew}
-    gqq{\( \Rightarrow \)}: Wähle \( \varphi_k \in T[a,b] \)
+    \gqq{\( \Rightarrow \)}: Wähle \( \varphi_k \in T[a,b] \)
     mit \( ||f-\varphi_k||_\infty \leq 2^{-k} \)
     \[ \psi_1 := \varphi_1, \psi_2 := \varphi_2 - \varphi_1, 
     \ldots, \psi_n := \varphi_n - \varphi_{n-1} \]
@@ -274,7 +274,7 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
         \( I_n \) ist eine Cauchy-Folge.
     \end{beh}
     \begin{bew}
-        \( I_n - I_m \overundersett{Lemma}{4}{=} \oversett{Lem. 4}{=} 
+        \( I_n - I_m \oversett{Lem. 4}{=} 
         \integral{(\varphi_n - \varphi_m)}{a}{b} \).
 
         \begin{align*}
@@ -391,4 +391,41 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
     \end{cases} \in T[a,c] \) und erfüllt \( \abs{f(x) - \varphi(x)} \leq \varepsilon 
     \; \forall x \in [a,c] \).
 \end{bew}
+\begin{notation}
+    Wir definieren
+    \[ \integral{f}{a}{a} = 0 \;\forall a\in\R. \]
+    \[ \integral{f}{a}{b} := - \integral{f}{b}{a}, \text{ falls } b < a \]
+\end{notation}
+\begin{bem}
+    Ist \( \abb{f}{[a,b]}{\R} \) eine Regelfunktion,
+    so folgt aus der Monotonie:
+    
+    \[ \inf \set{f(x): x\in[a,b]} \cdot (b-a) \leq \integral{f}{a}{b} 
+    \leq \sup \set{f(x): x \in [a,b]} \cdot (b-a) \]
+    
+    Ist \( \abb{f}{[a,b]}{\R} \) stetig, so existiert 
+    \( \rho \in (a,b) \) mit
+    \[ \integral{f}{a}{b} = (b-af(\rho)) \]
+\end{bem}
+\begin{satz}[Allgemeiner Mittelwertsatz für Integrale]
+    Es sei \( \abb{f}{[a,b]}{\R} \) stetig, 
+    \( p \in R[a,b] \) mit 
+    \[ p \geq 0 \text{ (Gewichtsfunktion)}. \]
+    Dann gilt: \( \exists \rho \in (a,b) \) mit 
+    \[ \integral{f(x) p(x)}{a}{b} 
+    = f(\rho) \integral{p(x)}{a}{b}. \]    
+\end{satz}
+\begin{bew}
+    Sei \( m = \min f \) auf \([a,b]\), \(M=\max f\) auf \([a,b]\)
+    \[ \Rightarrow m p \leq f p \leq M p \]
+    \[ \oversett{Monotonie}{\Rightarrow} m \integral{p}{a}{b}
+    \leq \integral{fp}{a}{b} \leq M \integral{p}{a}{b}  \]
+
+    \[ \Rightarrow \exists \mu \in [m,M]: 
+    \integral{fp}{a}{b} = \mu \integral{p}{a}{b} \]
+    Weiter gilt, da \(f\) stetig ist, dass 
+    \(\rho \in [a,b]\) mit \( f(\xi) = \mu \).
+\end{bew}
+
+
 \end{document}
