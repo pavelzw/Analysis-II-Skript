@@ -1,0 +1,44 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{3}
+\section{Riemann Integral}
+\begin{defi}
+    Sei \( \abb{f}{[a,b]}{\R} \) eine beschränkte Funktion und 
+    \( Z := \set{a=x_0, x_1, \dots, x_{n-1}, x_n = b} \)
+    Zerlegung von \([a,b]\)    
+    Dann heißt 
+    \[ O(z) := \sum_{i=1}^n (x_i - x_{i-1}) 
+    \underset{x\in(x_{i-1}, x_i)}{\sup} f(x) \]
+    die Obersumme zur Zerlegung \(Z\) und 
+    \[ U(Z) = \sum_{i=1}^n (x_i - x_{i-1}) 
+    \underset{x\in(x_{i-1},x_i)}{\inf} f(x)  \]
+    Durch Bildung des Supremums bzw. Infimums
+    über alle Zerlegungen von \( [a,b] \) erhält man
+    \[ \int_a^{*b} f(x) \dx 
+    = \integral{f(x)}{a}{b} := \inf O(z) 
+    \text{ Oberintegral} \]
+    \[ \int_{*a}^b f(x) \dx 
+    = \integral{f(x)}{a}{b} := \sup O(z) 
+    \text{ Unterintegral} \]
+    Gilt
+    \[ \int_{*a}^b f(x) \dx = \int_a^{*b} f(x) \dx \]
+    so heißt dies Riemann Integral von \(f\)
+    \[ \integral{f(x)}{a}{b} \]
+    Sei nun \( \abb{f}{[a,b]}{\R} \) stetige Regelfunktion. \\
+    \( \Rightarrow f \) gleichmäßig stetig auf \([a,b]\).\\
+    Sei \( Z=\set{x_0, \dots, x_n} \) von \([a,b]\)
+    \[ \varphi_i(x) = \begin{cases}
+        \underset{x\in[x_{i-1}, x_i]}{\sup} f(x), \; x_{i-1} < x \leq x_i \\
+        0, \text{ sonst}
+    \end{cases}\]
+    \[ \psi_i (x) = \begin{cases}
+        \underset{x \in [x_{i-1}, x_i]}{\inf} f(x), \; x_{i-1} < x < x_i\\
+        0 \text{ sonst}
+    \end{cases} \]
+    Und man sieht, da \( f \) gleichmäßig stetig auf 
+    \( [a,b] \) ist, dass 
+    \[ ||f - \sum_{i=1}^n \varphi_i ||_\infty < \varepsilon \]
+    für \( \abs{x_{i-1} - x_i} < \delta \).
+\end{defi}
+
+\end{document}

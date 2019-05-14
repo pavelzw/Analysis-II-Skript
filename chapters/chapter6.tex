@@ -20,7 +20,7 @@ ist Stammfunktion von \(f\) (bis auf abzählbare Menge
     Regelfunktion \( \abb{f}{I}{\C} \) ist.
 \end{defi}
 \begin{notation}
-    Wir schreiben \( F = \int f \dx{x} \).
+    Wir schreiben \( F = \int f \dx \).
     \[ \integral{f}{a}{b} = F(b) - F(a) \;\forall a,b\in I. \]
 \end{notation}
 \subsection*{Partielle Integration}
@@ -29,7 +29,7 @@ ist Stammfunktion von \(f\) (bis auf abzählbare Menge
     differenzierbar, dann ist auch 
     \( u \cdot v \) fast überall stetig differenzierbar und 
     es gilt 
-    \[ \int u v' \dx{x} = uv - \int u' v \dx{x}. \]
+    \[ \int u v' \dx = uv - \int u' v \dx. \]
     Genauer: 
     \[ \integral{uv'}{a}{b} 
     = \left[ uv \right]_a^b - \integral{u'v}{a}{b} 
@@ -62,9 +62,9 @@ abzählbare Mengen \(A,B\) mit
 \begin{bspe}
     \begin{enumerate}
         \item Sei \( a \neq -1, 
-        \int x^a \dx{x} = \frac{1}{a+1}x^{a+1} \).
+        \int x^a \dx = \frac{1}{a+1}x^{a+1} \).
         \item \(a \neq -1\)
-        \[ \int \underbrace{x^a}_{u'} \underbrace{\ln x}_{v} \dx{x} 
+        \[ \int \underbrace{x^a}_{u'} \underbrace{\ln x}_{v} \dx 
         = \frac{1}{a+1}x^{a+1} \ln x 
         - \frac{1}{a+1} 
         \underbrace{\int \overbrace{x^{a+1}}^{x^a} \cdot \frac{1}{x} dx}_
@@ -115,8 +115,8 @@ abzählbare Mengen \(A,B\) mit
         \[ \integral{f(\underbrace{cx}_{t(x)})}{a}{b}
         = \frac{1}{c} \integralx{f(t)}{ca}{cb}{t}. \]
         \item 
-        \[ \int \frac{t'(x)}{t(x)} \;\dx{x} 
-        = \int f(t) \;\dx{t} = \ln \abs{t}. \]
+        \[ \int \frac{t'(x)}{t(x)} \dx 
+        = \int f(t) \; dt = \ln \abs{t}. \]
         \[ f(t) = \frac{1}{t}. \]
     \end{enumerate}
 \end{bspe}
@@ -127,6 +127,6 @@ Bild:
 \[ I(x) = 2 \integralx{\sqrt{1-t^2}}{x}{1}{t} \]
 \[ \oversett{Bsp. 3}{=} 
 \left[ t \sqrt{1 - t^2} + \arcsin t \right]_x^1 
-= - x\sqrt{1 - x^2} + \arcsin 1 - \arcsin x. \]
-\[ I(-1) = \arcsin 1 - \arcsin(-1) = \pi. \]
+= 2(- x\sqrt{1 - x^2} + \arcsin 1 - \arcsin x). \]
+\[ I(-1) = 2(\arcsin 1 - \arcsin(-1)) = \pi. \]
 \end{document}
