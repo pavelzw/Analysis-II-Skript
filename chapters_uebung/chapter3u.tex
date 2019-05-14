@@ -1,0 +1,190 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{2}
+
+\section{Beispiele für Integrale}
+\subsection{Partielle Integration}
+\( u,v : I \rightarrow \C \) fast überall 
+stetig differenzierbar.
+Dann gilt
+\[ \int uv' \dx = uv - \int u'v \dx. \tag{\(*\)} \]
+\begin{bsp}
+    Sei \( n\in\N, c\in\C \setminus \set{0} \).
+    \[ I_n = \int x^n e^{cx} \dx = ? \]
+    \[ \overset{(*)}{=} \underbrace{x^n}_{u} 
+    \underbrace{\frac{1}{c} e^{cx}}_{v} \dx 
+    - \int \underbrace{nx^{n-1}}_{u'} 
+    \underbrace{\frac{1}{c} e^{cv}}_{v} \dx
+    = \frac{1}{c} x^n e^{cx} - \frac{n}{x} 
+    \underbrace{\int x^{n-1} e^{cx} \dx{x} }_{I_{n-1}} \]
+    \[ I_0 = \int e^{cx} \dx = \frac{1}{c} e^{cx} \]
+    Ebenso \( x^n e^{ax} \cos(bx) \) und \( x^n e^{ax} \sin(bx) \)
+    \[ \Rightarrow \int x^n e^{ax} \cos(bx) \dx = \Re I_n \]
+    \[ \int x^n e^{ax} \sin (bx) \dx = \Im I_n) \]
+\end{bsp}
+Aus der Vorlesung haben wir für \( x \in [-1, 1] \)
+\[ \int \sqrt{1-x^2} \dx = \frac{1}{2} (x \sqrt{1-x^2} + \arcsin x) \]
+\begin{bew}
+    \begin{align*}
+        I = \int \sqrt{1-x^2} \dx 
+        &= \int \sqrt{1-x2} \cdot 1 \dx \\
+        &\overset{(*)}{=} \underbrace{\sqrt{1-x^2}}_{u}
+        \cdot \underbrace{x}_{v} - 
+        \int \frac{-2x}{2\sqrt{1-x^2}} \cdot x \dx \\
+        &= x \sqrt{1-x^2} + \int \frac{dx}{\sqrt{1-x^2}} 
+        - \int \frac{1-x^2}{\sqrt{1-x^2}} \dx \\
+        &= x \sqrt{1 - x^2} + \arcsin x 
+        - \int \sqrt{1 - x^2} \dx\\
+        &\Rightarrow 2I = x \sqrt{1-x^2} + \arcsin(x).
+    \end{align*}
+\end{bew}
+\begin{bsp}
+    \( \cos^k x,  \sin^k (x), k = 2,3,\dots \)
+    \begin{align*}
+        I_k &= \int \cos^k x \dx = \int \cos^{k-1} x \cos \dx \\
+        &\overset{(*)}{=} \cos^{k-1} x \sin x + (k-1) 
+        \int \underbrace{\cos^{k-2} x \sin x}_{\frac{1}{k-1} u'} 
+        \sin x \dx \\        
+        &= \cos^{k-1} x \sin x + (k-1)
+        \int \cos^{k-2} x 
+        \underbrace{\sin^2 x }_{1 - \cos^2 x} \dx \\
+        &= \cos^{k-1} x \sin x - (k-1) \left( 
+            \underbrace{\int \cos^k x \dx}_{I_k} 
+            - \underbrace{\int \cos^{k-2} x \dx}_{I_{k-2}} 
+        \right)\\
+        &\Rightarrow I_k = \frac{1}{k} \cos^{k-1} x \sin x 
+        + \frac{k-1}{k} \int \cos^{k-2} x \dx.
+    \end{align*}
+    Analog: 
+    \[ \int \sin^k x \dx = -\frac{1}{k} \sin^{k-1}x \cos x
+    + \frac{k-1}{k} \int \sin^{k-2}x \dx \]
+    \begin{align*}
+        c_{2n} &= \integral{\cos^{2n}x}{0}{\frac{\pi}{2}} \\
+        &= \frac{2n-1}{2n} \cdots \frac{3}{4} 
+        \cdot \frac{1}{2} \cdot \frac{\pi}{2} \\
+        c_{2n+1} &= \integral{\cos^{2n+1}}{0}{\frac{\pi}{2}}
+        = \integral{\sin^{2n+1} x}{0}{\frac{\pi}{2}} \\
+        &= \frac{2}{2n+1} \cdots \frac{4}{5} \cdot \frac{2}{3}
+    \end{align*}
+    \begin{beh}
+        \[ \limes{n} \frac{c_{2n+1}}{c_{2n}} = 1 \]
+    \end{beh}
+    \begin{bew}
+        Auf \( [0, \frac{\pi}{2}] \) gilt, \\ 
+        \( \cos^{2n} x \geq \cos^{2n+1} x \geq \cos^{2n+2} x \)
+        Also gilt: \( c_{2n} \geq c_{2n+1} 
+        \geq c_{2n+2} \)
+        \[ \Rightarrow 1 \geq \frac{c_{2n+1}}{c_n} 
+        \geq \frac{c_{2n+2}}{c_{2n}} 
+        = \frac{2n+1}{2n+2} 
+        \overset{n\rightarrow \infty}{\longrightarrow} 1. \]
+        Wallisches Produkt:
+        \[ w_n := \frac{2 \cdot 2}{1 \cdot 3} 
+        \cdot \frac{4 \cdot 4}{3 \cdot 5} \cdots
+        \frac{2n \cdot 2n}{(2n-1) \cdot (2n+1)} \]        
+        \begin{beh}
+            \( \limes{n} w_n = \frac{\pi}{2} \).
+        \end{beh}
+        Nach dem vorherigen gilt:
+        \[ w_n = \frac{\pi}{2} 
+        \frac{c_{2n+1}}{c_{2n}} 
+        \overset{n\rightarrow \infty}{\longrightarrow}
+        \frac{\pi}{2}. \]
+    \end{bew}    
+\end{bsp}
+\subsection*{Integration durch Substitution}
+Sei \( \abb{f}{I}{\C} \) Regelfunktion und \(F\) Stammfunktion zu \(f\).
+Weiter \( \abb{t}{[a,b]}{I} \) stetig differenzierbar und streng monoton. \\
+Dann gilt \( F \circ t \) ist Stammfunktion zu \( (f\circ t) \cdot t' \)
+und \[ \integral{f(t(x)) \cdot t'(x)}{a}{b} 
+= \integral{f(t)}{a}{b}. \]
+\begin{bsp}
+    \[ \int \frac{Bx + C}{x^2 + 2bx + c} \dx, 
+    \quad B, C, b, c \text{ reell} \tag{\(*\)} \]
+    Sei \( Q(x) = x^2 +2bx + c \Rightarrow Q'(x) = 2x+2b \) und somit
+    \[ Bx + C = \frac{B}{2} Q'(x) + (C-Bb) \]
+    Es gilt also:
+    \[ \frac{ Bx + C }{x^2 + 2bx + c} 
+    = \frac{B}{2} \frac{Q'(x)}{Q(x)} 
+    + (C-Bb) \frac{1}{Q(x)}. \]
+    Für das Integral \((*)\) folgt
+    \[ \int \frac{Bx + C}{x^2 + 2bx + c} \dx 
+    = \frac{B}{2} \ln \abs{x^2 + 2bx + x} 
+    + (C-Bb) \int \frac{1}{x^2 + 2bx + c} \dx. \]
+    Wir schreiben \( Q(x) = (x+b)^2 + (c-b^2) \).\\
+    Wir unterscheiden drei Fälle: \\
+    Fall 1: \( c > b^2 \) \\
+    Wir definieren \( d := \sqrt{c - b^2} \).
+    \[ \frac{1}{x^2 + 2bx + c} 
+    = \frac{1}{ (x+b)^2 + (c - b^2) }
+    = \frac{1}{d^2} \frac{1}{(\frac{x+b}{2})^2 + 1}. \]
+    \[ \Rightarrow \int \frac{1}{x^2 + 2bx + c} \dx 
+    = \frac{1}{d} \int \frac{1}{(\frac{x+b}{2})^2 + 1} 
+    \frac{1}{d} \dx \]
+    \[ = \frac{1}{d} \int \frac{1}{t^2 + 1} \; dt 
+    = \frac{1}{d} \arctan t
+    = \frac{1}{\sqrt{x - b^2}} 
+    \arctan\left(\frac{x+b}{\sqrt{c-b^2}}\right). \]
+    Fall 2: \( c = b^2 \) \\
+    \( t = x + b, t' = 1 \).
+    \( \frac{1}{x^2+2bx + c} = \frac{1}{(x+b)^2} \)
+    \[ \int \frac{1}{x^2+2bx + c} \dx = \int \frac{1}{(x-b)^2} \dx
+    \int \frac{1}{t^2} \; dt \oversett{HDI}{=} 
+    -\frac{1}{t} = -\frac{1}{x+b} \]
+    \[ \int \frac{1}{(x-a)^m} \dx 
+    = - \frac{1}{n-1} \frac{1}{(x-a)^{m-1}}. \]
+    Fall 3: \( c < b^2 \) \\
+    Wir definieren \( d = \sqrt{b^2 -c} \)
+    \[ \frac{1}{x^2+2bx + c} = \frac{1}{(x+b^2) - d^2}
+    = \frac{1}{2d}\left( \frac{1}{x+b-d} - \frac{1}{x+b+d} \right). \]
+    \[ \int \frac{1}{x^2 + 2bx + c} \dx 
+    = \frac{1}{2d} 
+    \int \left( \frac{1}{x+b-d} 
+    - \frac{1}{x+b+d} \right) \dx \]
+    \[ = \frac{1}{2d} \left( \int \frac{1}{t_1} \;dt_1
+    - \int \frac{1}{t_2} \; dt_2 \right) \]
+    \[ = \frac{1}{2d} (\ln t_1 - \ln t_2) \]
+    \[ = \frac{1}{2\sqrt{b^2-c}} \ln 
+    \left( \frac{x+b-\sqrt{b^2-c}}{x+b+\sqrt{b^2-c}} \right). \]
+\end{bsp}
+\subsection*{Standardsubstitutionen}
+Seien \( R(u,v,\dots) \) rationale 
+Funktionen in den angegebenen Variablen.
+1. Typ: \( \int R(\cos x) \sin x \dx \).\\
+Substitution: \( t := \cos x, dt = -\sin x \dx \).
+\begin{bsp}
+    \begin{align*}
+        \integral{\frac{\sin(2x)}{\cos x 
+        + \cos^2 x}}{0}{\pi/4} 
+        &= \integral{\frac{2\sin x \cos x}{\cos x + \cos^2 x}}{0}{\pi/4} \\
+        &= -2 \integralx{\frac{t}{t+t^2}}{\cos 0}{\cos \frac{\pi}{4}}{t} \\
+        &= -2 \integralx{\frac{1}{1+t}}{1}{\frac{\sqrt{2}}{2}}{t}
+    \end{align*}
+\end{bsp}
+2. Typ \( \int R(\sin x) \cos x \dx, t := \sin x, dt = \cos x \dx \)
+\begin{bsp}
+    \[ \integral{\frac{\cos^3 x}{1 -\sin x}}{0}{\frac{\pi}{2}} = \frac{3}{2} \]
+\end{bsp}
+3. Weierstraß Substitution\\
+Typ \( \int R(\cos x, \sin x) \dx \).
+\[ t = \tan(\frac{x}{2}), dx = \frac{2dt}{1 + t^2}. \]
+\[ \cos x = \frac{1 - t^2}{1 + t^2}, 
+\sin x = \frac{2t}{1 + t^2}. \]
+\begin{bsp}
+    \[ \integral{\frac{\sin^2 x}{(1 + \sin x + \cos x)}}{0}{\pi/2} \]
+    \[ = \integralx{ \frac{ \frac{4t^2}{(1+t^2)^2} }{ 
+        (1 + \frac{2t}{1+t^2} + \frac{1-t^2}{1+t^2})
+     } \frac{2}{1+t^2} }{\tan 0}{\tan \frac{\pi}{4}}{t} \]
+    \[ = \integralx{\frac{t^2}{(1+t)^3}}{0}{1}{t} \]
+    \[ = \ln 2 - \frac{5}{8}. \]
+\end{bsp}
+4. Typ \( \int R(x, \sqrt[n]{ax + b}) \dx \).
+\[ t = \sqrt[n]{ax+b}, x = \frac{1}{a} (t^n - b), 
+dx = \frac{n}{a} t^{n-1} dt \]
+\begin{bsp}
+    \[ \integral{\frac{dx}{1+\sqrt{1+x}}}{0}{1}
+    = \integral{\frac{1}{1+t} 2t}{1}{\sqrt{2}} 
+    = 2 \left[ \sqrt{2} - 1 
+    + \ln \left( \frac{2}{1+\sqrt{2}} \right) \right]. \]   
+\end{bsp}
+\end{document}

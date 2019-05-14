@@ -1,0 +1,104 @@
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+\setcounter{section}{4}
+\section{Hauptsatz der Differential- und Integralrechnung}
+
+\begin{defi}
+    Gegeben \( \abb{f}{I}{\C} \) (oder \( \R^n \)), 
+    \(I\) Intervall    
+    \( \abb{F}{I}{C} \) heißt Stammfunktion (von \(f\)), falls
+    \begin{enumerate}
+        \item \(F\) stetig ist.
+        \item \(F\) außerhalb einer abzählbaren Teilmenge 
+        \( A \) von \( I \) differenzierbar ist und 
+        \[ F'(x) = f(x) \; \forall x\in I \setminus A. \]
+    \end{enumerate}   
+\end{defi} 
+\begin{satz}
+    Sei \( \abb{f}{I}{\C} \) eine Regelfunktion 
+    auf Intervall \(I\). Sei \(a \in I\) fest und 
+    für \( x\in I \) setzen wir 
+    \[ F(x) := \int_a^x f(t) dt. \]
+    Dann gilt: 
+    \begin{enumerate}
+        \item \(F\) ist eine Stammfunktion zu \(f\).
+        Genauer: \( F \) ist für jeden Punkt 
+        \( x_0 \in I \) sowohl rechts- als auch linksseitig 
+        differenzierbar mit 
+        \[ F'_-(x_0) = \limesx{t}{0-} 
+        \frac{F(x_0 + t) - F(x_0)}{t} 
+        = f_-(x_0) = \limesx{x}{x_0-} f(x). \]
+        \[ F'_+(x_0) = \limesx{t}{0+} 
+        \frac{F(x_0 + t) - F(x_0)}{t} 
+        = f_+(x_0) = \limesx{x}{x_0+} f(x). \]
+        
+        Insbesondere ist \(F\) an jeder Stetigkeitsstelle 
+        \( x_0 \) von \(F\) differenzierbar mit 
+        \[ F'(x_0) = f(x_0). \]
+        \item Für jede beliebige Stammfunktion \(\phi \) 
+        zu \(f\) auf \(I\) gilt \( \forall a,b \in I \)
+        \[ \integralx{f}{a}{b}{t} = \phi(b)-\phi(a) 
+        =: \left[ \phi \right]^b_a = \phi \vert_a^b. \]
+    \end{enumerate}
+\end{satz}
+\begin{bew}
+    1.\\
+    1. Schritt: Sei \( J \subset I \) ein kompaktes 
+    Teilintervall 
+    \[ ||f||_J := \underset{x\in J}{\sup} \abs{f(x)} \]
+    Dann gilt für alle \( x_1, x_2 \in J: F(x_2)-F(x_1)
+    = \integralx{f(t)}{a}{b}{t} \). \\
+    Somit ist \(F\) auf \(J\) Lipschitzstetig.\\
+    \(\Rightarrow F\) ist stetig auf \(I\) 
+    (lokal Lipschitzstetig).
+    
+    2. Schritt: Sei \(x_0 \in I\) mit 
+    \(x_0 + \delta \in I \)
+    für \(\delta > 0\)
+    \begin{beh}
+        \(F_+'(x_0) = f_+(x_0) \).
+    \end{beh}
+    \begin{bew}
+        Sei \(\varepsilon > 0 \) und \(\delta > 0\):
+        \[ \abs{f(x)-f(x_0)} < \varepsilon 
+        \; \forall x \in (x_0, x_0 + \delta) \]
+        \[ \Rightarrow \frac{F(x) - F(x_0)}{x - x_0} 
+        - f_+(x_0) 
+        = \frac{1}{x - x_0} 
+        \integralx{f(t) - f_+(x_0)}{x_0}{x}{t}, 
+        \; \forall x \in (x_0, x_0+ \delta)\]
+        und deshalb
+        \begin{align*}
+            &\abs{\frac{F(x)-F(x_0)}{x-x_0} - f_+(x_0)} \\
+            &\leq \frac{1}{x-x_0} \cdot 
+            \integralx{\abs{f(t)-f_+(x_0)}}{x_0}{x}{t} \\
+            &< \frac{ \varepsilon (x - x_0) }{x - x_0} \\
+            &= \varepsilon \;\forall x\in (x_0, x_0 + \delta).
+        \end{align*}
+        \[ \Rightarrow \frac{F(x) - F(x_0)}{x - x_0} 
+        = f_+(x_0) = \limesx{x}{x_0+} f(x). \]
+        Genauso:
+        \[ \limesx{x}{x_0-} \frac{F(x) - F(x_0)}{x - x_0} 
+        = f_-(x_0). \]    
+        Ist \(f\) stetig in \(x_0\), so folgt 
+        \[ F'_-(x_0) = F'_+(x_0) = f(x_0) \]
+        (d.\ h.\  \(F\) ist differenzierbar in \(x_0\)).
+    \end{bew}
+
+    2.\\
+    Nur für \( \abb{f}{I}{\C} \) stetig und 
+    \( \abb{\phi}{I}{\C} \) differenzierbar.
+    Setze 
+    \[ F(x) = \integralx{f(t)}{a}{x}{t} \text{ und }
+    h := F - \phi. \]
+
+    \[ \Rightarrow h' = F' - \phi' = f - f = 0 \]
+    \[ h \text{ ist konstant.} \]
+    \[ \Rightarrow F(b) - \phi(b) = h(b) = h(a) = F(a)- \phi(a)
+    = -\phi(a) \]
+
+    \[ \Rightarrow \integralx{f(t)}{a}{b}{t} 
+    = F(b) = \phi(b) - \phi(a) 
+    =: \phi \vert_a^b. \]
+\end{bew}
+\end{document}

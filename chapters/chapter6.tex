@@ -1,0 +1,132 @@
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+\setcounter{section}{5}
+\section{Integrationstechniken}
+Sei \( \abb{f}{I}{\C} \) Regelfunktion \( a \in I\)
+\( \oversett{HDI}{\Rightarrow} F(x) = \integralx{f(t)}{a}{x}{t} \)
+ist Stammfunktion von \(f\) (bis auf abzählbare Menge 
+\( A \subset I \) ist \(F\) differenzierbar mit 
+\( F' = f \) auf \( I \setminus A \)).
+\begin{bem}
+    Sind \( f_1, f_2 : I \rightarrow \C \) Regelfunktionen
+    und \(f_1 = f_2\) auf \( I \setminus A, A \subset I \) 
+    abzählbar.
+    \[ \Rightarrow \integral{f_1}{a}{b} = \integral{f_2}{a}{b},
+    \; \forall a < b \in I \]
+\end{bem}
+\begin{defi}[Fast überall differenzierbar]
+    Eine Funktion \( \abb{F}{I}{\C} \) ist fast überall 
+    stetig differenzierbar, falls es Stammfunktion einer 
+    Regelfunktion \( \abb{f}{I}{\C} \) ist.
+\end{defi}
+\begin{notation}
+    Wir schreiben \( F = \int f \dx \).
+    \[ \integral{f}{a}{b} = F(b) - F(a) \;\forall a,b\in I. \]
+\end{notation}
+\subsection*{Partielle Integration}
+\begin{satz}
+    Sind \(\abb{u,v}{I}{\C}\) fast überall stetig 
+    differenzierbar, dann ist auch 
+    \( u \cdot v \) fast überall stetig differenzierbar und 
+    es gilt 
+    \[ \int u v' \dx = uv - \int u' v \dx. \]
+    Genauer: 
+    \[ \integral{uv'}{a}{b} 
+    = \left[ uv \right]_a^b - \integral{u'v}{a}{b} 
+    \;\forall a,b\in I. \]
+\end{satz}
+\begin{bew}
+\( \abb{u',v'}{I}{\C} \) sind Regelfunktionen und es gibt 
+abzählbare Mengen \(A,B\) mit 
+\begin{align*}
+    & u' = \text{ Ableitung von } u \text{ auf } I \setminus A \\
+    & v' = \text{ Ableitung von } v \text{ auf } I \setminus B 
+\end{align*}
+
+\(D = A \cup B \) ist abzählbar
+\(\Rightarrow\)
+\begin{align*}
+    &u' = \text{ Ableitung von } u \text{ auf } I \setminus D
+    &v' = \text{ Ableitung von } v \text{ auf } I \setminus D
+\end{align*}
+
+\( \Rightarrow (uv)' \) ist differenzierbar auf 
+\( I \setminus D \) und \( (uv)' = u'v + uv' \)
+\[ \Rightarrow \integral{(uv)'}{a}{b} 
+= [uv]_a^b = u(b)v(b) - u(a)v(a) \]
+\[ \integral{(u'v + uv')}{a}{b} 
+= \integral{u'v}{a}{b} + \integral{uv'}{a}{b}. \]
+\[ \Rightarrow \integral{uv'}{a}{b} 
+= [uv]_a^b - \integral{u'v}{a}{b}. \]
+\end{bew}
+\begin{bspe}
+    \begin{enumerate}
+        \item Sei \( a \neq -1, 
+        \int x^a \dx = \frac{1}{a+1}x^{a+1} \).
+        \item \(a \neq -1\)
+        \[ \int \underbrace{x^a}_{u'} \underbrace{\ln x}_{v} \dx 
+        = \frac{1}{a+1}x^{a+1} \ln x 
+        - \frac{1}{a+1} 
+        \underbrace{\int \overbrace{x^{a+1}}^{x^a} \cdot \frac{1}{x} dx}_
+    {\frac{1}{a+1}x^{a+1}} \]
+        \[ \frac{1}{a+1} x^{a+1} \ln x 
+        - \frac{1}{(a+1)^2} x^{a+1} 
+        = \frac{x^{a+1}}{(a+1)^2} 
+        ((a+1) \ln x + 1). \]
+        \item Mit \( v' = 1 \) folgt 
+        \[ \int \sqrt{1-x^2} dx 
+        = \frac{1}{2} (x \sqrt{1 - x^2} + \arcsin x) \]
+        auf \( [-1,1] \).\\
+        \[ \int \sqrt{1 + x^2} dx 
+        = \frac{1}{2} (x \sqrt{1 + x^2} + \arsinh x) \]
+        \[ \int \sqrt{x^2 - 1} dx 
+        = \frac{1}{2} (x \sqrt{x^2 - 1} - \arcosh x) \]
+        auf \( [1,\infty) \).
+    \end{enumerate}
+\end{bspe}
+\begin{satz}[Substitutionsregel]
+    Sei \( \abb{f}{I}{\C} \) Regelfunktion    
+    und Stammfunktion \(F\) zu \(f\).\\
+    Weiter sei \( \abb{t}{[a,b]}{I} \) 
+    stetig differenzierbar und monoton.\\
+    Dann gilt:    
+    \( F \circ t \) ist Stammfunktion von 
+    \( (f\circ t) \cdot t' \)
+    und es gilt 
+    \[ \integral{f(t(x))}{a}{b} 
+    = \integralx{f(t)}{t(a)}{t(b)}{t}. \]    
+\end{satz}
+\begin{bew}
+    1. Behauptung folgt aus der Kettenregel.
+
+    Aus dem HDI folgt dann
+    \begin{align*}
+        \integral{f(t(x))}{a}{b} 
+        &= (F \circ t)(b) - (F \circ t)(a) \\
+        &= F(t(b)) - F(t(a))  \\
+        &= \integralx{f(t)}{t(a)}{t(b)}{t}.
+    \end{align*}
+\end{bew}
+\begin{bspe}
+    \begin{enumerate}\leavevmode
+        \item \[ \integral{f(\underbrace{x+c}_{t(x)})}{a}{b} 
+        = \integralx{f(t)}{a+c}{b+c}{t}. \]
+        \item Ist \(c \neq 0\): 
+        \[ \integral{f(\underbrace{cx}_{t(x)})}{a}{b}
+        = \frac{1}{c} \integralx{f(t)}{ca}{cb}{t}. \]
+        \item 
+        \[ \int \frac{t'(x)}{t(x)} \dx 
+        = \int f(t) \; dt = \ln \abs{t}. \]
+        \[ f(t) = \frac{1}{t}. \]
+    \end{enumerate}
+\end{bspe}
+Anwendung:
+Fläche des Einheitskreises:\\
+Bild:
+%Bild Einheitskreis
+\[ I(x) = 2 \integralx{\sqrt{1-t^2}}{x}{1}{t} \]
+\[ \oversett{Bsp. 3}{=} 
+\left[ t \sqrt{1 - t^2} + \arcsin t \right]_x^1 
+= 2(- x\sqrt{1 - x^2} + \arcsin 1 - \arcsin x). \]
+\[ I(-1) = 2(\arcsin 1 - \arcsin(-1)) = \pi. \]
+\end{document}
