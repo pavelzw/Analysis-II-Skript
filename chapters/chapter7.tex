@@ -1,0 +1,71 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{6}
+\section{Integration von Funktionenreihen}
+\begin{satz}
+    \( \abb{f_n}{[a,b]}{\C} \) Regelfunktionen 
+    und \( f = \sum_{k=0}^\infty f_n \) konvergent 
+    absolut in der Supremumsnorm. Dann darf \(f\) 
+    gleichmäßig integriert werden:
+    \[ \integral{f(x)}{a}{b} 
+    = \integral{\sum_{n=1}^\infty f_n}{a}{b}
+    = \sum_{n=1}^\infty \integral{f_n}{a}{b}. \]
+\end{satz}
+\begin{bew}
+    \[ ||f_n||_\infty 
+    = \underset{x\in[a,b]}{\sup} \abs{f_n(x)} \]
+    Haben \( \sum_{n=1}^\infty ||f_n||_\infty < \infty \) \\
+    Sei \(\varepsilon > 0: \exists N \in \N: 
+    \sum_{n=N+1}^\infty ||f_n||_\infty < \frac{\varepsilon}{2}\)
+    und \( \exists \) Treppenfunktion 
+    \[ \varphi : ||\sum_{n=1}^N f_n - \varphi ||_\infty 
+    < \frac{\varepsilon}{2}. \]
+    \[ \Rightarrow ||f-\varphi||_\infty 
+    = ||\sum_{n=1}^\infty f_n - \varphi||_\infty 
+    \leq || \sum_{n=1}^N f_n - \varphi||_\infty 
+    + \sum_{n=N+1}^\infty ||f_n||_\infty < \frac{\varepsilon}{2}
+    + \frac{\varepsilon}{2} = \varepsilon \]    
+    \( \overundersett{Approx.}{satz}{\Rightarrow} f \)
+    ist eine Regelfunktion und 
+    \begin{align*}
+        \integral{f(x)}{a}{b} - \sum_{n=1}^L 
+        \integral{f(x)}{a}{b}
+        &= \integral{(f(x) - \sum_{n=1}^L f_n(x))}{a}{b}\\
+        &\leq (b-a) ||f - \sum_{n=1}^L f_n ||_\infty \\
+        &< \frac{(b-a)\varepsilon}{2} \;\forall L \geq N.
+    \end{align*}
+    Nach der Definition von Konvergenz 
+    \[ \Rightarrow \integral{f}{a}{b} = \limes{L} 
+    \sum_{n=1}^L \integral{f_n}{a}{b} \]
+\end{bew}
+\begin{bsp}
+    Potenzreihe \( f: (-R, R) \rightarrow \C \)
+    \[ f(x) = \sum_{n=0}^\infty a_n x^n \]
+    konvergiert in \( (-R, R) \) absolut und gleichmäßig 
+    auf jedem \( [a,b], -R < a < b < R \).
+    \( -R < x < R \)
+    \[ \integralx{f(t)}{0}{x}{t} = 
+    \sum_{n=0}^\infty \underbrace{\integralx{a_n t^n}{0}{x}{t}}
+    _{=\frac{a_n}{n+1}x^{n+1}}
+    = \sum_{n=0}^\infty \frac{a_n}{n+1} x^{n+1}\]
+    
+\end{bsp}
+\begin{bsp}
+    \( f(x) = e^x = \sum_{n=0}^\infty 
+    \frac{x^n}{n!} \).
+    \[ \integralx{e^t}{0}{x}{t}
+    = \sum_{n=0}^\infty \frac{1}{(n+1)!} x^{n+1} 
+    = \sum_{n=1}^\infty \frac{x^n}{n!} 
+    = e^x - 1. \]
+\end{bsp}
+\begin{bsp}
+    \[ e^{\frac{-t}{2}} = \sum_{n=0}^\infty 
+    \frac{(\frac{-t^2}{2})^n}{n!} 
+    = \sum_{n=0}^\infty \frac{(-1)^n}{2^n n!} t^{2n} \]
+    \[ \Rightarrow W(x) = \integralx{e^{\frac{-t}{2}}}{0}{x}{t} \]
+    \[ = \sum_{n=0}^\infty \frac{(-1)^n}{2^n n!} 
+    \frac{t^{2n+1}}{2n+1}. \]
+
+\end{bsp}
+\end{document}
