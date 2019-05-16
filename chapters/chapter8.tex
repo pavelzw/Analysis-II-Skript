@@ -1,0 +1,154 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{7}
+\section{Uneigentliche Integrale und Reihen}
+Bisland \( [a,b]  \) z.B. \( \abb{f}{[1,2]}{\R}, \;
+x \mapsto \frac{1}{x} \) \\
+\( \abb{f}{(0,2]}{\R} x \mapsto \frac{1}{x} \)
+Frage: Wie definiert man Integral über \( [a,b), (a,b] \)
+oder \( (a,b) \)? (\( -\infty \leq a < b \leq \infty \))
+\begin{defi}
+    Sei \(f\) eine Regelfunktion auf dem Intervall \(I\) 
+    mit Randpunkten 
+    \( a, b, -\infty \leq a < b \leq \infty \).
+    \begin{enumerate}
+        \item Ist \( I=[a,b) \), so definiert man im 
+        Fall der Konvergenz:
+        \[ \integral{f(x)}{a}{b} 
+        = \underset{[a,b)}{\int} f(x) \dx
+        := \limesx{\beta}{b-} \integral{f(x)}{a}{\beta} \]
+        In diesem Fall heißt das uneigentliche Integral 
+        \( \integral{f(x)}{a}{b} \) (genauer 
+        \( \underset{[a,b)}{\int} f(x) \dx \)) konvergent 
+        und der Grenzwert dessen Wert.    
+        \item Analog im Fall \( I = (a, b], a,b \in \R \).
+        \item Ist \( I =(a,b) \) so definiert man
+        \[ \integral{f(x)}{a}{b} 
+        = \underset{(a,b)}{\int} f(x) \dx 
+        := \integral{f(x)}{a}{c} 
+        + \integral{f(x)}{c}{b}, \]
+        falls die uneigentlichen Integrale auf der rechten
+        Seite für ein \(a < c < b\) existieren (und damit
+        für alle \( a < c < b \)) und denselben Wert haben.
+        \item Ein uneigentliches Integral über \(f\) 
+        heißt absolut konvergent, falls das Integral 
+        über \(f\) konvergiert.
+    \end{enumerate}
+\end{defi}
+\begin{bem}
+    Ist \( f \) eine Regelfunktion auf \( [a,b] \), 
+    so stimmt das \gqq{alte} Integral über 
+    \( [a,b] \) mit dem \gqq{neuen} Integral nach 
+    Def. 1 über \( (a,b), [a,b) \) oder \( (a,b] \) 
+    überein.
+\end{bem}
+\begin{bew}
+    \[ \underset{[a,b)}{\int} f(x) \dx = \limesx{\beta}{b} 
+    \integral{f(x)}{a}{b} \]
+    \( \integral{f(x)}{a}{b} \) ist Stammfunktion von \(f\) 
+    die stetig in \(\beta\) ist. \\
+    Man definiere \(F(\beta) := \integral{f(x)}{a}{b}\)
+    \[ \integral{f(x)}{a}{b} = \limesx{\beta}{b} F(\beta)
+    = F(\limesx{\beta}{b} \beta) = F(b) 
+    = \integral{f(x)}{a}{b} \]    
+\end{bew}
+\begin{bsp}
+    1.
+    \[ \integral{\frac{1}{x^s}}{1}{\infty} 
+    \text{ existiert } \Leftrightarrow s > 1 \]
+    mit Wert \( \frac{1}{s-1} \), denn 
+    \[ \integral{\frac{1}{x^s}}{1}{\beta} 
+    = \frac{1}{1-s} [x^{1-s}]^\beta 
+    = \frac{1}{1-s} (\beta^{1-s} - 1)
+    = \frac{1}{s-1} (1 - \beta^{1-s}), s \neq 1. \]
+    \[ \integral{\frac{1}{x^s}}{1}{\beta} 
+    = \begin{cases}
+        \frac{1}{s-1}(1 - \beta^{1-s}), &s \neq -1.\\
+        \ln \beta, &s = -1.
+    \end{cases} \]
+    \[ \Rightarrow \limes{\beta} \int_1^\beta \frac{\dx}{x^s} \]
+    existiert und hat den Wert 
+    \( \frac{1}{s-1} \Leftrightarrow s > 1 \) \\
+    2.
+    \[ \integral{\frac{1}{x^s}}{0}{1} 
+    \text{ existiert } \Leftrightarrow s < 1. \]
+    und hat dann den Wert \( \frac{1}{1-s} \), da
+    \[ \integral{\frac{1}{x^s}}{\alpha}{1} 
+    = \begin{cases}
+        \frac{1}{1-s} [x^{1-s}]_\alpha^1, &s \neq 1\\
+        -\ln \alpha, &s = 1
+    \end{cases}
+    = \begin{cases}
+        \frac{1}{1-s} (1-\alpha^{1-s}), &s \neq 1\\
+        \ln \alpha, &s = 1
+    \end{cases} \]    
+    Grenzwert
+    \[ \limesx{\alpha}{0} \int_\alpha^1 \frac{\dx}{x^s} = \frac{1}{1-s} \]
+    existiert \( \Leftrightarrow s < 1 \)
+    3.
+    \[ \integral{e^{cx}}{0}{\infty}, c\in\C, \Re(c) > 0. \]    
+    \[ \integral{e^{-cx}}{0}{\beta} 
+    = \frac{1}{c} (1-e^{-cx}) \rightarrow \frac{1}{c}, 
+    \beta \rightarrow \infty. \]
+    4. 
+    \[ \int_{-\infty}^\infty \frac{\dx}{1+x^2} = \pi \]
+    beide Grenzen \( -\infty, \infty \) kritisch. \\
+    Fall: \(s \neq -1\) überlege man selbst.
+\end{bsp}
+\begin{satz}[Majorantenkriterium]
+    Seien \( f,g \) Regelfunktionen auf 
+    \( [a,b), \abs{f} \leq g \). 
+    Existiert \( \integral{g(x)}{a}{b} \), so existiert 
+    auch \( \integral{f(x)}{a}{b} \), was 
+    absolut konvergent ist.
+\end{satz}
+\begin{bem}
+    Analog für \( (a,b], (a,b) \).
+\end{bem}
+\begin{bew}
+    \[ F(u) = \integral{f(x)}{a}{u}, a \leq u < b \]
+    \[ G(u) := \integral{g(x)}{a}{u} \]
+    \begin{align*}
+        \Rightarrow F(u) - F(v) 
+        &= \integral{f(x)}{u}{v}  \\
+        \Rightarrow \abs{F(u) - F(v)} 
+        &\leq \integral{\abs{f(x)}}{\min(u,v)}{\max(u,v)} \\
+        &\leq \integral{g(x)}{\min(u,v)}{\max(u,v)} \\
+        &= \abs{G(u) - G(v)} \tag{\(*\)}
+    \end{align*}
+    Wissen \( \limesx{u}{b} G(u) \) existiert.
+    Aus \( (*) \) und Cauchykriterium für Konvergenz 
+    folgt \( \limesx{u}{b} F(u) \) existiert.
+\end{bew}
+\begin{bsp}
+    Konvergenz von \( \integral{\frac{\sin x}{x}}{0}{\infty} \) \\
+    \( \frac{\sin x}{x} \rightarrow 1 (x \rightarrow 0) \)
+    nur \( \infty \) ist kritisch.
+\end{bsp}
+\begin{bew}
+    \[ \integral{\frac{\sin x}{x}}{0}{1} \]
+    ist okay.
+    \( \Rightarrow \) z.z. \( \integral{\frac{\sin x}{x}}{1}{\infty} \)
+    existiert.    
+    Warnung!
+    \[ \integral{\abs{\frac{\sin x}{x}}}{1}{\infty} 
+    = \infty. \]
+    Sei \( 1 < R < \infty \).
+    \[ \integral{\frac{\sin x}{x}}{1}{R} 
+    \overundersett{part.}{int.}{=}
+    \integral{\sin x \cdot \frac{1}{x}}{1}{R} 
+    = [-\cos x \frac{1}{x}]_1^R 
+    - \integral{\frac{\cos x}{x^2}}{1}{R} \]
+    \[ = \cos(1) - \frac{\cos R}{R} 
+    - \underbrace{\integral{\frac{\cos}{x^2}}{1}{R}}
+    _{\text{Majorante } \frac{1}{x^2}} \]
+    \[ \abs{\frac{\cos x}{x^2}} \leq \frac{1}{x^2} \]
+    auf \( [1,\infty) \) ist \( \frac{1}{x^2} \) 
+    integrierbar.\\
+    Majorantenkriterium 
+    \[ \Rightarrow \limes{R} 
+    \integral{\frac{\cos x}{x^2}}{1}{R} \]
+    existiert.
+\end{bew}
+\end{document}
