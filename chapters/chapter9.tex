@@ -1,0 +1,119 @@
+
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+\setcounter{section}{8}
+\section{Topologie des \( \R^d (\C^d, \ldots) \)}
+Frage: Abstand, Konvergenz in \gqq{komplizierteren} 
+Räumen.
+Z. B. 
+\[ \R^d = \set{x = (x_1, \ldots, x_d) : 
+x_j \in \R \forall 1 \leq j \leq d} \]
+\[ \C^d = \set{z = (z_1, \ldots, z_d) : 
+z_j \in \R \forall 1 \leq j \leq d} \]
+\begin{defi}[Norm auf einen Vektorraum]
+    Eine Norm auf enen reellen oder komplexen Vektorraum
+    ist eine Funktion: \( \abb{\norm{\cdot}}{X}{\R} \) mit
+    \begin{description}
+        \item[Positivität] \( \norm{x} \geq 0 \forall x\in X \) 
+        und \( \norm{x} = 0 \Leftrightarrow x = 0 \).
+        \item[Homogenität] \( \norm{\lambda x} = \abs{\lambda} \norm{x}
+        \; \forall \lambda \in \R (\C), x\in X \).
+        \item[\( \Delta \)-Ungleichung] \( \norm{x+y}
+        \leq \norm{x} + \norm{y} \; \forall x,y \in X \)
+    \end{description}
+\end{defi}
+\begin{bspe}
+    \[ \norm{x}_1 = \sum_{j=1}^d \abs{x_j} \]
+    \[ \norm{x}_\infty 
+    = \underset{1 \leq j \leq d}{\max} \abs{x_j} \]
+\end{bspe}
+\begin{defi}[Metrik und metrischer Raum]
+    Menge \(X\) mit einer Funktion \( \abb{d}{X\times X}{\R} \)
+    mit den Eigenschaften
+    \begin{description}
+        \item[Positivität] \( d(x,y) \geq 0, d(x,y) = 0 \Leftrightarrow x=y
+        \; \forall x,y \in X \)       
+        \item[Symmetrie] \( d(x,y) = d(y,x) \; \forall x,y \in X \)
+        \item[\( \Delta \)-Ungleichung] 
+        \( d(x,y) \leq d(x,z) + d(z, y) 
+        \; \forall x,y,z \in X \).
+    \end{description}
+    \(d\) heißt Metrik und \( (X, d) \) heißt metrischer 
+    Raum.
+\end{defi}
+\begin{bsp}
+    \( \R^d \) oder \( \C^d\) mit \(\norm{\cdot}_2\)
+    \[ d(x,y) := \norm{x-y}_2 \]
+    oder ein allgemeiner Vektorraum \(X\) mit Norm 
+    \(\norm{\cdot}\)
+    \[ d(x,y) := \norm{x-y} \]
+    Z. B. 
+    \begin{align*}
+        d(y,x) &= \norm{y - x} = \norm{-(x-y)} \\
+        &= \abs{-1}\norm{x-y} = \norm{x-y} = d(x, y).
+    \end{align*}
+    \begin{align*}
+        d(x,y) &= \norm{x-y} = \norm{x-z + (z-y)} \\
+        &\leq \norm{x-z} + \norm{z-y} \\
+        &= d(x,z) + d(z,y)
+    \end{align*}
+    \( \R^d \) mit \( \norm{\cdot}_2 \) ist ein metrischer 
+    Raum.
+\end{bsp}
+\begin{defi}
+    Sei \(X\) ein metrischer Raum mit Metrik \(d\).
+    \[ x_0 \in X, r > 0 \quad B_r(x_0) 
+    := \set{ x\in X: d(x, x_0) < r } \] 
+    ist die offnee Kugel mit Radius \(r\) um \(x_0\).
+    \[ \R^d: B_r(x_0) = \set{x \in \R^d: 
+    \norm{x - x_0}_2 < r}. \]
+\end{defi}
+\begin{defi}[offene Mengen]
+    Sei \( (X,d) \) ein metrischer Raum. Eine Menge 
+    \( U \subset X \) heißt offen, falls 
+    \[ \forall x\in U \exists r = r_x > 0 \]
+    mit 
+    \[ B_r(x) \subset U. \]
+\end{defi}
+\begin{bsp}
+    \( B_r(x_0) \) ist offen: 
+    \( x \in B_r(x_0) \).
+    \( \varepsilon := r - d(x, x_0) \)
+    Ist \( y \in B_\varepsilon(x): d(y, x_0) 
+    \leq d(y, x) + d(x, x_0) < \varepsilon 
+    + d(x, x_0) = r \).
+\end{bsp}
+\begin{satz}[Topologie]
+    Man nehme metrischen Raum \( (X, d) \).
+    Die Menge aller offenen Teilmengen von \(X\) 
+    ist eine Topologie, das heißt
+    \begin{enumerate}[label=(\alph*)]
+        \item \( \emptyset, X \) sind offen.
+        \item Der Durchschnitt endlich vieler
+        offener Mengen ist offen.
+        \item Die Vereinigung beliebig vielen offenen
+        Mengen ist offen. 
+    \end{enumerate}    
+\end{satz}
+\begin{bew}
+    Etwas später.
+\end{bew}
+\begin{defi}
+    Sei \( X, d \) ein metrischer Raum, \( M \subset X \).
+    Dann ist 
+    \[ \inner M = M^o 
+    := \set{x \in M: \exists r_x > 0: B_r(x \subset M)}\]
+    \[= \set{x \in M: \exists \varepsilon > 0: 
+    B_\varepsilon(x) \subset M }\]
+    Abschluss:
+    \[ \overline{M} := 
+    \set{x \in M: \; \forall \varepsilon > 0: 
+    B_\varepsilon(x) \cap M \neq \emptyset} \]
+    Rand: 
+    \[ \delta M := \set{ x \in X: \forall \varepsilon > 0: 
+    B_\varepsilon(x) \cap M \neq \emptyset, 
+    B_\varepsilon(x) \cap M^C \neq \emptyset },
+    M^C = X \setminus M. \]
+    \[ \inner M \subset M \subset \overline{M}. \]
+\end{defi}
+\end{document}
