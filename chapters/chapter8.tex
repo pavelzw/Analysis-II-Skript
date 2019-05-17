@@ -130,7 +130,7 @@ oder \( (a,b) \)? (\( -\infty \leq a < b \leq \infty \))
     \[ \integral{\frac{\sin x}{x}}{0}{1} \]
     ist okay.
     \( \Rightarrow \) z.z. \( \integral{\frac{\sin x}{x}}{1}{\infty} \)
-    existiert.    
+    existiert. 
     Warnung!
     \[ \integral{\abs{\frac{\sin x}{x}}}{1}{\infty} 
     = \infty. \]
@@ -151,4 +151,163 @@ oder \( (a,b) \)? (\( -\infty \leq a < b \leq \infty \))
     \integral{\frac{\cos x}{x^2}}{1}{R} \]
     existiert.
 \end{bew}
+Hatten:
+\[ \integral{\frac{\sin x}{x}}{0}{\infty} \text{ konvergent}. \]
+Jetzt: 
+\[ \integral{\abs{\frac{\sin x}{x}}}{0}{\infty} = \infty. \]
+\begin{enumerate}
+    \item \[ \integral{\abs{\frac{\sin x}{x}}}{0}{R} \]
+    wachsend in \(R\).
+    \item \( k \in \N_0 \)
+    \[ \integral{\abs{\frac{\sin x}{x}}}{k \pi}{(k+1)\pi} 
+    \geq \frac{1}{(k+1)\pi} \integral{\abs{\sin x}}{k \pi}{(k+1)\pi}
+    = \frac{2}{(k+1)\pi}. \]
+
+    \begin{align*}
+        \Rightarrow \integral{\abs{\frac{\sin x}{x}}}{0}{(n+1)\pi}
+        &= \sum_{k=0}^n \integral{\abs{\frac{\sin x}{x}}}{k\pi}{(k+1)\pi} \\
+        &\geq \sum_{k=0}^n \frac{2}{\pi(k+1)}  \\
+        &= \frac{2}{\pi} \sum_{k=1}^{n+1} \frac{1}{k}
+        \rightarrow \infty, (n \rightarrow \infty)
+    \end{align*}
+    \[ \Rightarrow \integral{\abs{\frac{\sin x}{x}}}{0}{\infty} 
+    = +\infty. \]
+    aber \( \integral{\frac{\sin x}{x}}{0}{\infty} \) ist 
+    konvergent.
+\end{enumerate}
+\begin{bem}
+    \( \sin x \) ist das Pendant zum Leibnizkriterium 
+    für das Integral.\\
+    Z.\ B.\  \( a_n \geq a_{n+1} \rightarrow 0 \).
+    \( \sum_{n=1}^L b_n \) beschränkt \( \forall L\in\N \).
+    \( \overundersett{beefed up}{Leibniz}{\Rightarrow}
+    \sum_{n=1}^\infty a_n b_n \) konvergiert. 
+\end{bem}
+\begin{bsp}
+    Gammaintegral  Euler (1729)
+    \[ \Gamma(x) := \integralx{t^{x+1}e^{-t}}{0}{\infty}{t}, x > 0 \]
+    konvergent. \\
+    Sketch: 
+    \begin{enumerate}
+        \item In \( (0, 1]: 0 \leq t^{x-1}e^{-t} \leq t^{x-1} \)
+        \[ \integralx{t^{x-1}}{0}{1}{t} \text{ konvergent} 
+        \Leftrightarrow x > 0 \]
+        \item In \( [1,\infty), 0 \leq t^{x-1} e^{-t} 
+        = t^{x-1} e^{-\frac{t}{2}} \cdot e^{-\frac{t}{2}}
+        \leq c_x e^{-\frac{t}{2}} \) integrierbar 
+        auf \( [1,\infty) \).
+        \( \Rightarrow \integralx{t^{x-1}e^{-t}}{1}{\infty}{t} \)
+        konvergent.
+        \begin{beh}
+            \( \forall x > 0 \exists 0 < c_x < \infty: 
+            t^{x-1}e^{-\frac{t}{2}} \leq c_x \forall t \geq 1 \)
+        \end{beh}
+        \begin{bew}
+            Alleine.
+        \end{bew}
+    \end{enumerate}
+    Eigenschaften:
+    \begin{enumerate}
+        \item \( \Gamma(x+1) = x \Gamma(x) \).
+        \item \(\Gamma(1) = 1\).
+        \item \( \Gamma(n) = (n-1)! \;\forall n\in\N \).
+    \end{enumerate}
+    Sketch:
+    \begin{enumerate}
+        \item \( 0 < \varepsilon < R < \infty \) 
+        partielles Integrieren auf \( [\varepsilon, R] \)
+        \item \( \Gamma(1) 
+        = \integral{e^{-t}}{0}{\infty} 
+        = \limes{R} \integral{e^{-t}}{0}{R} 
+        = \limes{R} (1 - e^{-R}) = 1 \).
+        \item scharfes Hinschauen auf 1) und 2). \\
+        \( \Gamma(n) = \Gamma((n-1)+1) 
+        \oversett{1)}{=} (n-1)\Gamma(n-1) \)
+    \end{enumerate}
+\end{bsp}
+\begin{satz}[Integralkriterium für Konvergenz von Reihen]
+    Sei \( \abb{f}{[1,\infty)}{[0,\infty)} \) monoton 
+    fallend, dann konvergiert 
+    \[ a_n := \sum_{k=1}^n f(k) 
+    - \integral{f(x)}{1}{n+1} \]    
+    und 
+    \[ 0 \leq \limes{n} a_n \leq f(1) \]
+    und insbesondere gilt:
+    \[ \sum_{k=1}^\infty f(k) \text{ konvergiert }
+    \Leftrightarrow \integral{f(x)}{1}{\infty} 
+    \text{ konvergiert}. \]
+    Und im Fall der Konvergenz:
+    \[ 0 \leq \sum_{k=1}^\infty f(k) - \integral{f(x)}{1}{\infty} 
+    \leq f(1) \]
+\end{satz}
+\begin{bew}
+    %Bild
+    Da \(f\) fällt, gilt 
+    \[ f(k) \geq \integral{f(x)}{k}{k+1} 
+    \geq \integral{f(x)}{k}{k+1} 
+    \geq f(k+1). \]
+    \begin{align*}
+        &\Rightarrow a_n = \sum_{k=1}^n f(k) 
+        - \integral{f(x)}{1}{n+1} \\
+        &= \sum_{k=1}^n 
+        \underbrace{\left( f(k) - \integral{f(x)}{k}{k+1} \right)}
+        _{\geq 0} \\
+        &\leq \sum_{k=1}^n (f(k)-f(k+1)) \\
+        &= f(1) - f(n+1) \leq f(1)
+    \end{align*}
+    \[ \Rightarrow a_n \leq a_{n+1} \forall n\in\N. \]
+    \[ \overundersett{Mon.}{Konv.}{\Rightarrow} 
+    \limes{n} a_n \text{ existiert}. \]
+    Und da \( 0 \leq a_n \leq f(1) \) folgt 
+    \[ 0 \leq \lim a_n \leq f(1). \]
+    Da \[ \sum_{k=1}^n f(k) 
+    = \integral{f(x)}{1}{n+1} + a_n \forall n\in\N. \]
+    Linke Seite konvergiert 
+    \( \Leftrightarrow \integral{f(x)}{1}{n+1} \) konvergent, 
+    da \( a_n \) konvergent.
+
+    \[ \integral{f(x)}{0}{n} \leq \integral{f(x)}{0}{R} 
+    \leq \integral{f(x)}{0}{n+1}, n\leq R < n+1. \]
+    \( \Rightarrow \) 2. Behauptung von Satz über Konvergenz 
+    folgt.
+    \[ 0 \leq a_n \leq f(1) \]
+    \[ \Rightarrow \underbrace{\sum_{k=1}^n f(k)}
+    _{\geq \integral{f(x)}{1}{n+1}}
+    \leq \integral{f(x)}{1}{n+1} + f(1) \]
+    \[ \Rightarrow \integral{f(x)}{1}{\infty} 
+    \leq \sum_{k=1}^\infty f(k) 
+    \leq \integral{f(x)}{1}{\infty} + f(1). \]
+\end{bew}
+\begin{bsp}[Zeta Funktion]
+    \[ \zeta(s) := \sum_{k=1}1\infty \frac{1}{k^s} \]
+    konvergiert für \(s>1\). \\
+    Da
+    \[ \integral{\frac{1}{x^s}}{1}{\infty} \text{ konvergiert}
+    \Leftrightarrow s > 1  \]
+    und 
+    \[ \zeta(s) \leq \integral{\frac{1}{x^s}}{1}{\infty} + 1
+    = \frac{1}{s-1} + 1 = \frac{s}{s-1} \]
+\end{bsp}
+\begin{bsp}
+    Zeta Funktion mit \(s = 1\): \\
+    \( f(x) = \frac{1}{x}, 
+    \gamma_n := \sum_{k=1}^n \frac{1}{k} - \ln n \).
+    \[ a_n = \sum_{k=1}^n \frac{1}{k} 
+    - \underbrace{\integral{\frac{1}{x}}{1}{n+1}}_{=\ln(n+1)} 
+    = \sum_{k=1}^n \frac{1}{k} - \ln n 
+    - \ln(n+1) + \ln(n+1) = \gamma_n + \ln(\frac{n}{n+1}) \]
+
+    \[ a_n = \sum_{k=1}^n \frac{1}{k} - 
+    \underbrace{\integral{\frac{1}{x}}{1}{n+1}}_{) \ln(n+1)}
+    = \underbrace{\sum_{k=1}^n \frac{1}{k} - \ln n}_{= \gamma_n}
+    - \underbrace{\ln(n+1) + \ln n}
+    _{\ln (\frac{n}{n+1}) \rightarrow 0, (n\rightarrow \infty)} \]
+
+    \( \lim a_n \) existiert nach Satz 3.
+    \[ \Rightarrow \gamma := 
+    \limes{n} (1+ \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n}) \]
+    existiert (Euler).
+\end{bsp}
+
+
 \end{document}
