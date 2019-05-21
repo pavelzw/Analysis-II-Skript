@@ -1,0 +1,114 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{6}
+\section{Metrik und offene Mengen}
+    \begin{defi}
+        Sei \(X\) eine nicht leere Menge. Eine
+        Abbildung \( \abb{d}{X\times X}{\R} \)
+        heißt Metrik oder Abstand auf \(X\), falls
+        für alle \( x,y,z \in X \) gilt:
+        \begin{description}
+            \item[Positivität] \( d(x,y) \geq 0 \)
+            \item[Definitheit] \( d(x,y) = 0 
+            \Leftrightarrow x = y \)
+            \item[Symmetrie] \( d(x,y) = d(y,x) \)
+            \item[\( \Delta \)-Ungleichung] \( d(x,z) 
+            \leq d(x,y) + d(y,z) \)
+        \end{description}
+        Ein metrischer Raum ist eine nicht leere Menge \(X\)
+        mit Metrik \(d\) auf \(X\).
+    \end{defi}
+    \begin{bsp}[Eisenbahnmetrik]
+        Es sei \(X = \R^2\)
+        \[ \abb{d}{X \times X}{\R}, d(x,y) = \begin{cases}
+            \norm{x-y}_2 &, \text{ falls } y = tx \text{ für ein } t \in \R \\
+            \norm{x}_2 + \norm{y}_2 &, \text{ sonst}
+        \end{cases} \]
+    \end{bsp}
+    \begin{bew}
+        Positivität: Offensichtlich gilt \( d(x,y) \geq 0 \), 
+        da \(\norm{\cdot}_2\)
+        Metrik auf \(X\) ist. \\
+        Definitheit: \( d(x,x) = 0 \), siehe oben \\
+        Symmetrie: \( d(x,y) = d(y,x) \), siehe oben \\
+        \( \Delta \)-Unleichung: \\
+        Fall 1:
+        Seien \( x \) und \( z \) auf einer Geraden \(g\) 
+        durch den Ursprung, \dphp{} \( \exists t \in \R \), 
+        sodass \(z=tx\).\\
+        Fall 1.1: \( y \) ist auch auf der Geraden.
+        \[ d(x,z) = \norm{x-z}_2 \leq \norm{x-y}_2 + \norm{y-z}_2 
+        = d(x,y) + d(y,z). \]
+        Fall 1.2: \( y \) ist nicht auf \(g\).
+        \begin{align*}
+            d(x,z) &= \norm{x-z}_2 \\
+            &\leq \norm{x}_2 + \norm{-z}_2  \\
+            &\leq \norm{x}_2 + 2\norm{y}_2 + \norm{z}_2 \\
+            &= \norm{x}_2 + \norm{y}_2 + \norm{y}_2 + \norm{z}_2 \\
+            &= d(x,y) + d(y,z).
+        \end{align*}
+        Fall 2: Seien \( x \) und \(z\) nicht auf einer Geraden 
+        durch den Ursprung.\\
+        Fall 2.1: \( y \) liegt weder auf Gerade durch Ursprung 
+        mit \(x\) noch mit \(z\). Dann ist 
+        \begin{align*}
+            d(x,z) &= \norm{x}_2 + \norm{y}_2 \\
+            &\leq \norm{x}_2 + 2\norm{y}_2 + \norm{z}_2 \\
+            &= d(x,y) + d(y,z).
+        \end{align*}    
+        Fall 2.2/2.3: (i) \(y\) ist auf einer Geraden durch 
+        \( x \) und den Ursprung. Dann folgt
+        \begin{align*}
+            d(x,z) &\leq \norm{x}_2 + \norm{z}_2 \\
+            &= \norm{x - y + y}_2 + \norm{z_2} \\
+            &\leq \norm{x - y}_2 + \norm{y}_2 + \norm{z}_2  \\
+            &= d(x,y) + d(y,z).
+        \end{align*}
+        (ii) \(y\) ist auf der Gerade durch \(z\) und den Ursprung 
+        analog.
+        \( \Rightarrow d \) ist eine Metrik auf \(X\).
+    \end{bew}
+    \begin{defi}
+        Sei \((X,d)\) ein metrischer Raum. 
+        Ist \( \varepsilon > 0 \) und \( x\in X \), so 
+        heißt 
+        \[ U_\varepsilon(x) 
+        := \set{ y \in X: d(x,y) < \varepsilon } \]
+        \( \varepsilon \)-Umgebung von \(x\).
+    \end{defi}
+    \begin{defi}[\( \varepsilon \)-Umgebung von \(x\)]
+        Eine Teilmenge \( U \subset X \) heißt Umgebung 
+        von \(x\) und \(x\) heißt innerer Punkt von \(U\), 
+        falls \(U\) eine \(\varepsilon \)-Umgebung von \(x\) 
+        enthält.
+        \[ M^0 := \set{x \; \vert \; 
+        x \text{ ist innerrer Punkt von } M } \]
+        heißt Inneres von \(M\).
+        Eine Teilmenge \( M \subset X \) heißt offen genau 
+        dann wenn sie nur innere Punkt enthält.
+    \end{defi}
+    \begin{defi}
+        \( M \subset X \) ist genau dann offen, wenn 
+        ihr Komplement abgeschlossen ist.\\
+        Sei \( x \in X \) und \( M \subset X \). 
+        \(x\) heißt Berührpunkt von \(M\) wenn jede 
+        \( \varepsilon \)-Umgebung von \(x\) die Menge 
+        \(M\) trifft.\\
+        \( x \) Berührpunkt von \(M\) 
+        \[ \Leftrightarrow \forall \varepsilon > 0: 
+        M \cap U_\varepsilon(x) \neq \emptyset. \]
+        \[ \overline{M} := \set{ x \;\vert \; 
+        x \text{ ist Berührpunkt von }M } \] 
+        heißt abgeschlossene Hülle von \(M\).\\
+        \( M \) heißt abgeschlossen, wenn sie alle 
+        ihre Berührpunkte enthält.\\
+        \(x\) heißt Randpunkt von \( M \) 
+        \[ \Leftrightarrow \forall \varepsilon > 0 : 
+        M \cap U_\varepsilon(x) \neq \emptyset \] 
+        und \[ (x \setminus M) \cap U_\varepsilon(x) \neq \emptyset \]
+        \( \delta M := \set{ x \;\vert\; x 
+        \text{ ist Randpunkt von } M } \) heißt 
+        Rand von \(M\).
+    \end{defi}
+
+\end{document}
