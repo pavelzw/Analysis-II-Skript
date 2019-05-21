@@ -1,0 +1,109 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{4}
+\section{Uneigentliche Integrale}
+\begin{defi}[Uneigentliches Integral]
+    Sei \( a \in \R, b \in \R \cup \set{\infty}, a < b \) 
+    und \( \abb{f}{[a,c]}{\R} \)
+    integrierbar für alle \( a < c < b \).
+    Ist \(f\) im Intervall \( [a,b) \) unbeschränkt 
+    oder \( b = \infty \), so nennen wir das Integral
+    \[ \integralx{f(t)}{a}{b}{t} \]
+    (an der oberen Grenze) uneigentliches Integral.
+    Existiert der Grenzwert
+    \[ \limesx{c}{b-} \integralx{f(t)}{a}{c}{t} \]
+    so sagt man, das uneigentliche Integral
+    \( \integralx{f(t)}{a}{b}{t} \) existiert.
+\end{defi}
+\begin{bem}\leavevmode
+    \begin{enumerate}
+        \item Integrale an unterer Grenze uneigentlich sind 
+        analog definiert
+        \item An beiden Seiten uneigentliche Intergrale 
+        zerlegt man in zwei einseitig uneigentliche.
+    \end{enumerate}
+\end{bem}
+Man nent ein uneigentliches Integral absolut konvergent, 
+wenn das Integral \( \integralx{\abs{f(t)}}{a}{b}{t} \)
+existiert.
+\begin{bsp}
+    \[ \integral{\frac{1}{x^\alpha}}{0}{1} \] konvergent 
+    \( \Leftrightarrow \alpha < 1 \)
+    \[ \integral{\frac{1}{x^\beta}}{1}{\infty} \]
+    konvergent \( \Leftrightarrow \beta > 1 \).
+\end{bsp}
+\begin{bsp}
+    \[ \integral{\frac{\sin x}{x}}{0}{\infty} = \frac{\pi}{2}, \]
+    aber \( \integral{\abs{\frac{\sin x}{x}}}{0}{\infty} \)
+    existiert nicht.
+\end{bsp}
+\begin{bsp}
+    \[ \integral{e^{-x^2}}{-\infty}{\infty} = \sqrt{\pi} \]
+\end{bsp}
+\begin{bem}
+    Uneigentliche Integrale sind Grenzwerte 
+    \gqq{normaler} Integrale, daher übertragen 
+    sich die üblichen Rechenregeln.  
+\end{bem}
+Betrachten wir die Funktion, \(a \in \R\) 
+\[ \abb{F}{[0,\infty)}{\R}, (\C, \ldots) \]
+\begin{beh}
+    \( \limes{x} F(x) \) existiert \\
+    \( \Leftrightarrow 
+    \forall \varepsilon > 0 \;\exists R \geq a : 
+    \forall x,y \geq R: \abs{F(x) - F(y)} < \varepsilon \).
+\end{beh}
+\begin{bew}
+    \gqq{\( \Rightarrow \)}: Wie bei Folgen. 
+    \( L = \limes{x} F(x) \)
+    \begin{align*}
+        &\Rightarrow \forall \varepsilon > 0 \;\exists R 
+        \geq a : \abs{F(x) - L} < \frac{\varepsilon}{2} 
+        \; \forall x \geq R \\
+        &\Rightarrow \abs{F(x) - F(y)} 
+        = \abs{F(x) - L + L - F(y)} \\
+        &\leq \abs{F(x) - L} + \abs{L - F(y)} < \varepsilon.
+    \end{align*}
+    \gqq{\( \Leftarrow \)}:   
+    \( a_n = F(n) \) ist eine Folge und 
+    \[ \forall \varepsilon > 0 \;\exists R \geq a: 
+    \abs{a_n - a_m} < \varepsilon \forall n,m \geq R \in\N \]
+    \[ \Rightarrow L = \limes{n} a_n = \limes{n} F(n) \]
+    existiert.\\
+    Sei \( \varepsilon > 0, \)
+    \begin{align*}
+        &R_1 \geq a: \abs{F(n) - L} 
+        < \frac{\varepsilon}{2} \;\forall n\geq R_1. \\
+        &R_2 \geq a : \abs{F(x) - F(y)} < \frac{\varepsilon}{2}
+        \;\forall x,y \geq R_2.
+   \end{align*}
+    Setze \( R := \max\set{R_1, R_2}, x \geq R, 
+    k \leq x < k+1, k\in\N \)
+    \begin{align*}
+        \Rightarrow \abs{F(x) - L} &= \abs{F(x) - F(k+1) 
+        + F(k+1) - L} \\
+        &\leq \abs{F(x) - F(k+1)} + \abs{F(k+1) - L} \\
+        &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+        &= \varepsilon.
+    \end{align*}
+\end{bew}
+\subsection{Konvergenzkriterien}
+\subsubsection{Cauchy-Kriterium}
+Sei \(a\in\R, b \in \R \cup \set{a}, a < b\).
+\(f\) ist definiert auf \([a,b)\) und integrierbar
+in allen Intervallen \( [a,c], a < c < b \).
+Dann gilt \( \integralx{f(t)}{a}{b}{t} \) 
+konvergiert
+\[ \Leftrightarrow \forall \varepsilon > 0 \;\exists 
+c \in [a,b) \forall x,y \in [c,b):  \]
+\[ \abs{ \integralx{f(t)}{x}{y}{t} } < \varepsilon. \]
+\subsubsection{Monotoniekriterium}
+Sei \( \abb{f}{[a,b)}{\R_{\geq 0}} \) nicht negativ und in
+allen Intervallen \( [a,c] \subset [a,b) \) integrierbar.
+Dann konvergiert das Intervall \( \integralx{f(t)}{a}{b}{t} \)
+genau dann, wenn die Integrale
+\[ \integralx{f(t)}{a}{c}{t}, a \leq c < b \]
+beschränkt sind.
+\subsubsection{Majorantenkriterium, Minorantenkriterium}
+Siehe Vorlesung.
+\end{document}

@@ -1,0 +1,48 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{5}
+\section{Konvergenzuntersuchung}
+\begin{beh}
+    Das Integral 
+    \[ \integralx{\sqrt{t} \cos t^2}{0}{\infty}{t} \]
+    konvergiert.
+\end{beh}
+\begin{bew}
+    Verwende Cauchy-Kriterium. 
+    \[ \integralx{\sqrt{t} \cos t^2}{0}{\infty}{t} \] 
+    konvergiert 
+    \[ \Leftrightarrow \forall \varepsilon > 0 \;\exists 
+    R \geq 0 : \forall a,b \geq R: 
+    \abs{ \integralx{\sqrt{t} \cos t^2}{0}{\infty}{t} }
+    < \varepsilon. \]
+
+    Für \( 0 < a < b \) folgt mit partieller Integration
+    \[ \integralx{\sqrt{t} \cos t^2}{0}{\infty}{t}
+    = \integralx{\frac{1}{2\sqrt{t}} \cdot 2t \cos t^2}{0}{\infty}{t} 
+    = \frac{sin t^2}{2\sqrt{t}} \vert_a^b - 
+    \integralx{\sin t^2 \left( \frac{1}{2\sqrt{t}} \right)'}{a}{b}{t} \]
+    Sei \( \varepsilon > 0 \) beliebig und 
+    \[ b > a > \frac{4}{\varepsilon^2} := R. \]
+    Dann gilt 
+    \[ \abs{\sin t} \leq 1, (\frac{1}{2\sqrt{t}})' < 0 \]
+    für \( a \leq t \leq b \).
+    \[ \abs{ \integralx{\sqrt{t}\cos t^2 }{a}{b}{t} }
+    \leq \frac{1}{2\sqrt{a}} + \frac{1}{2\sqrt{b}} 
+    < \frac{2}{\sqrt{R}} = \varepsilon. \]
+\end{bew}
+\begin{beh}
+    \[ \integralx{\frac{\sin(\frac{1}{t})}{t}}{1}{\infty}{t} \]
+    konvergiert.
+\end{beh}
+\begin{bew}
+    Für \( t \geq 1 \) gilt: 
+    \[ 0 < \frac{\sin(\frac{1}{t})}{t} 
+    < \frac{\frac{1}{t}}{t} = \frac{1}{t^2}. \]
+
+    Da das Integral 
+    \[ \integralx{\frac{1}{t}}{1}{\infty}{t} \]
+    konvergent ist, folgt die Konvergenz von
+    \[ \integralx{\frac{\sin(\frac{1}{t})}{t}}{1}{\infty}{t} \]
+    aus dem Majorantenkriterium.
+\end{bew}
+\end{document}
