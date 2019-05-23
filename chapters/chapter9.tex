@@ -60,6 +60,25 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \( \R^d \) mit \( \norm{\cdot}_2 \) ist ein metrischer 
     Raum.
 \end{bsp}
+\begin{bsp}[beschränkte Funktionen von \( X \) nach \( \R \)]
+    \[ L^\infty(x) := \set{\abb{f}{X}{\R} 
+    \; \vert \; \underset{x\in X}{\sup} \abs{f(x)} < \infty} \]
+    \[ d_\infty(f, g) := \underset{x\in X}{\sup} 
+    \abs{ f(x) - g(x) } = \norm{f-g}_\infty \]
+    Angenommen: \(X\) ist ein metrischer Raum, 
+    \( \abb{d}{X \times X}{\R} \). \\
+    Nehme \( a \in X \), setze 
+    \( f_x(y) := -d(y,a) + d(x,y), y \in X \) \\
+    \( \Rightarrow \) Die Abbildung \( X \rightarrow L^\infty \)
+    \( x \mapsto f_x \) (\( f_x(y) := 
+    -d(y,a) + d(x,y), a \in X \))
+    ist injektiv.
+\end{bsp}
+\begin{bsp}
+    Norm \( \norm{\cdot} \) auf VR \( V, 
+    d(x,y) := \norm{x-y} \) ist Metrik auf 
+    \(V\).
+\end{bsp}
 \begin{defi}
     Sei \(X\) ein metrischer Raum mit Metrik \(d\).
     \[ x_0 \in X, r > 0 \quad B_r(x_0) 
@@ -107,13 +126,149 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     B_\varepsilon(x) \subset M }\]
     Abschluss:
     \[ \overline{M} := 
-    \set{x \in M: \; \forall \varepsilon > 0: 
+    \set{x \in X: \; \forall \varepsilon > 0: 
     B_\varepsilon(x) \cap M \neq \emptyset} \]
     Rand: 
-    \[ \delta M := \set{ x \in X: \forall \varepsilon > 0: 
+    \[ \delta M := \set{ x \in X: \; \forall \varepsilon > 0: 
     B_\varepsilon(x) \cap M \neq \emptyset, 
     B_\varepsilon(x) \cap M^C \neq \emptyset },
     M^C = X \setminus M. \]
     \[ \inner M \subset M \subset \overline{M}. \]
 \end{defi}
+\begin{lem}[Hausdorff-Trennungseigenschaft]
+    Sei \( X \) ein metrischer Raum, 
+    \( x,y \in X, x\neq y \). 
+    \[ \Rightarrow \exists \varepsilon > 0: 
+    B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset \]
+\end{lem}
+\begin{bew}
+    Ist \(x \neq y \Rightarrow L = d(x,y) > 0 \) \\
+    Sei \( \varepsilon := \frac{L}{2} \) und 
+    \( B_\varepsilon(x) := \set{z \in X: d(z,x) < \varepsilon} \)
+    Angenommen \( z \in B_\varepsilon(x) \cap 
+    B_\varepsilon(y) \)
+    \[ \Rightarrow L = d(x,y) 
+    \leq d(x,z) + d(z,y) 
+    \leq \varepsilon + \varepsilon = 2\varepsilon = L. \]
+\end{bew}
+\begin{defi}[Konvergenz]
+    Sei \( X \) ein metrischer Raum. Die Folge 
+    \( (x_n)_n \) von Punkten \( x_n \in X \; \forall n\in\N \)
+    (schreiben \( (x_n)_n \subset X \)) konvergiert 
+    gegen \( x \in X \), falls 
+    \begin{align*}
+        &\forall \varepsilon > 0 \; \exists K \in \N: 
+        d(x_n, x) < \varepsilon \;\forall n \geq K. \\
+        &\Leftrightarrow \; \forall \varepsilon > 0 
+        \; \exists K \in \N: x_n \in B_\varepsilon(x) 
+        \; \forall n \geq K 
+    \end{align*}
+    \( \Leftrightarrow \forall \varepsilon > 0  \) 
+    ist \( x_n \in B_\varepsilon(x) \) für fast alle 
+    \( n\in\N \)
+    \[ \Leftrightarrow \limes{n} d(x_n, x) = 0 \]
+    Schreiben \( x_n \rightarrow x \), oder 
+    \( \limes{n} x_n = x \).
+\end{defi}
+\begin{bem}
+    Der Grenzwert \( x \) ist eindeutig. (wg. Hausdorff)
+\end{bem}
+\begin{defi}[Abgeschlossene Menge]
+    Sei \( X \) ein metrischer Raum und \( A \subset X \) 
+    heißt abgeschlossen, falls 
+    \[ (x_n)_n \subset A, x_n \rightarrow x 
+    \Rightarrow x \in A. \]
+\end{defi}
+\begin{bem}
+    \(\emptyset, X \) sind abgeschlossen.
+\end{bem}
+\begin{satz}
+    In einem metrischen Raum 
+    \( X \) gilt für alle \( A \subset X \):
+    \[ A \text{ ist offen } 
+    \Leftrightarrow A^C = X \setminus A \text{ ist 
+    abgeschlossen}. \]
+\end{satz}
+\begin{bew}
+    \gqq{\( \Rightarrow \)}: Sei \(M\) offen.
+    \( M^C = X \setminus M \). \( (x_n)_n 
+    \in M^C, x_n \rightarrow x \).
+
+    Angenommen \( x \notin M^C\), d. h. \(x \in M \).
+    \(M\) offen \(\Rightarrow \exists \varepsilon > 0:
+    B_\varepsilon(x) \subset M. \) \\
+    \( \Rightarrow \) ist \(y \in M^C: d(y, x) 
+    \geq \varepsilon \) \\
+    Andererseits \( d(x_n, x) \rightarrow 0 
+    (n \rightarrow \infty)  \) \Lightning{} \\
+    \( \Rightarrow x \in M^C \)
+    \gqq{\( \Leftarrow \)}:
+    Annahme: \( M^C \) ist abgeschlossen\\
+    Angenommen, \(M\) wäre nicht offen.
+    \[ \Rightarrow \exists x\in M: 
+    \forall \varepsilon > 0 : B_\varepsilon(x) \cap 
+    M^C \neq \emptyset. \]    
+    Wähle \( \varepsilon = \frac{1}{n} 
+    \Rightarrow \exists x_n \in B_{\frac{1}{n}}(x) \cap 
+    M^C \).
+    \begin{align*}
+        &\Rightarrow (x_n)_n \subset M^C, x_n \rightarrow x 
+        \overunderset{M^C}{\text{abgeschlossen}}{\Rightarrow} 
+        x \in M^C \\
+        &\Rightarrow x \in M \cap M^C = \emptyset \text{ \Lightning} 
+    \end{align*}
+\end{bew}
+\begin{kor}
+    Für Teilmengen eines metrischen Raums \(X\) gilt: 
+    \begin{enumerate}
+        \item \( \emptyset, X \) abgeschlossen.
+        \item Die Vereinigung endlich vieler abgeschlossen 
+        Mengen ist abgeschlossen.
+        \item Der Durchschnitt beliebig vieler abgeschlossener 
+        Mengen ist abgeschlossen.
+    \end{enumerate}
+\end{kor}
+\begin{bew}
+    Satz 10 und de Morgan Regeln.
+\end{bew}
+\begin{bem}
+    \( I \) Indexmenge, \( j \in I \) ist 
+    \( U_j \subset X \) offen.
+    \[ U = \bigcup_{j\in I} U_j \]
+    \[ x \in U \Leftrightarrow \exists j_0 \in I: 
+    x \in U_{j_0}. \]
+\end{bem}
+\begin{satz}
+    Sei \( M \) Teilmenge eines metrischen 
+    Raumes \( X \).
+    \begin{enumerate}
+        \item \( \inner M \) ist offen und \( U \) offen 
+        und \( U \subset M \Rightarrow U \subset \inner M \).
+        (d. h. \( \inner M \) ist die größte offene Teilmenge 
+        von \(M\))
+        \item \( \overline{M} \) ist abgeschlossen und ist 
+        \(A \supset M \), \( A \) abgeschlossen 
+        \[ \Rightarrow A \supset \overline{M}. \]
+        \[ \text{d. h. } \overline{M} 
+        = \bigcap_{\substack{A \supset M\\A \text{ abg.}}} 
+        U \subset M \]
+        \item \( \delta M = \overline{M} \setminus (\inner M) \).
+    \end{enumerate}
+\end{satz}
+\begin{bew}
+    1.\\
+    \( x \in \inner M \). Das heißt 
+    \[ \exists r > 0: B_r(x) \subset M. \]
+    Sei \( y \in B_r(x) \) und \( \varepsilon := d(y,x) > 0 \).
+    \[ \Rightarrow B_\varepsilon(y) \subset B_r(x) 
+    \subset M. \]
+    \[ \Rightarrow y \in \inner M \]
+    \[ \Rightarrow B_r(x) \subset \inner M \]
+    \[ \Rightarrow \inner M \text{ ist offen}. \]
+    Sei \( U \subset M \) offen. 
+    \( \Rightarrow \forall x \in U 
+    \exists \varepsilon = \varepsilon_x > 0: 
+    B_\varepsilon(x) \subset U \subset M \).
+
+\end{bew}
 \end{document}
