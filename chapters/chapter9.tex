@@ -271,4 +271,277 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     B_\varepsilon(x) \subset U \subset M \).
 
 \end{bew}
+\begin{satz*}\leavevmode
+    \begin{enumerate}
+        \item \( \inner M \) offen und 
+        \( U \subset M \) offen \( \Rightarrow U \subset \inner M \)
+        (d. h. \( \inner M = \bigcup_{\substack{U \subset M \\\text{offen}}} \) 
+        größte offene Teilmenge von \(M\))
+        \item \( \overline{M} \) ist abgeschlossen und 
+        \( M \subset A \) abgeschlossen 
+        \( \Rightarrow \overline{M} \subset A \)
+        \item \( \delta M = \overline{M} \setminus \inner M \)
+    \end{enumerate}
+\end{satz*}
+\begin{bew}
+    zu 2. \( \overline{M} = \set{x \in X: \forall \varepsilon > 0 
+    \text{ ist } B_\varepsilon(x) \cap M \neq \emptyset} \) \\
+    \( \overline{M}^C = \set{x \in X: \exists \varepsilon > 0: 
+    B_\varepsilon(x) \subset M^C} = \inner M^C \) \\
+    \( \overundersett{Satz}{10}{\Rightarrow} 
+    \overline{M} \) ist abgeschlossen.\\
+    Ist \(A \supset M, A\) abgeschlossen 
+    \( \overundersett{Satz}{10}{\Rightarrow}
+    A^C \) ist offen und 
+    \( A^C = X \setminus A \subset X \setminus M = M^C
+    \Rightarrow A^C \subset \inner M^C 
+    = \overline{M}^C \Rightarrow A \supset \overline{M} \)
+    Zu 3. Nach Definition ist 
+    \[ \delta M = \set{x \in X : 
+    \forall \varepsilon > 0 \text{ ist } 
+    B_\varepsilon(x) \cap M \neq \emptyset 
+    \text{ und } B_\varepsilon(x) \cap M^C \neq \emptyset} \]
+    \[ = \overline{M} \cap \overline{M^C} 
+    = \overline{M} \cap (m + M)^C 
+    = \overline{M} \setminus (\inner M). \]
+    Da \[ (m+M)^C = \set{x \in X: \exists \varepsilon > 0: 
+    B_\varepsilon(x) \subset M}^C \]
+    \[ = \set{ x \in X: \forall \varepsilon > 0: 
+    B_\varepsilon(x) \cap M^C \neq \emptyset } \]
+    \[ = \overline{M^C}. \]
+\end{bew}
+\begin{defi}[Häufungspunkte, isolierte Punkte]
+    Set \(X\) metrischer Raum, \( M \subset X \) \\
+    Ein Punkt \( x \in X \) heißt Häufungspunkt von \(M\),
+    falls 
+    \[ \forall \varepsilon > 0: 
+    \inner (B_\varepsilon(x) \cap M) \setminus \set{x} 
+    \neq \emptyset. \]
+    Ein Punkt \( x \in X \) heißt isolierter Punkt 
+    von \( M \), falls 
+    \[ \exists \varepsilon > 0: B_\varepsilon(x) \cap M 
+    = \set{x}. \]
+\end{defi}
+\begin{bem}
+    Ist \( x \) ein Häufungspunkt von \( M \), 
+    so enthält \( B_\varepsilon(x) \cap M \) 
+    sogar \( \infty \)-viele Puntke auf \( M \) 
+    (\( \forall \varepsilon > 0 \)).
+\end{bem}
+\begin{bew}
+    Angenommen, es wäre falsch.
+    \( \exists \varepsilon_0 > 0: 
+    (B_{\varepsilon_0}(x) \setminus \set{x}) \cap M \)
+    enthält endlich viele Puntke \( y_1, \ldots, y_k \).
+    \[ \varepsilon_\delta = d(y_i, x) > 0 \]
+    \[ \varepsilon := 
+    \min(\varepsilon_1, \dots, \varepsilon_k) > 0 \]
+    \[ \Rightarrow (B_\varepsilon(x) \setminus \set{x})
+    \cap M = \emptyset. \text{ \Lightning{}} \]
+\end{bew}
+\begin{defi}
+    Eine Teilmenge \(M\) eines metrischen Raumes heißt
+    dicht, falls \(\overline{M} = X\).\\
+    z. B. \( \Q \) ist dicht in \( \R \), 
+    \( \Q^d \) ist dicht in \( \R^d \).
+\end{defi}
+\begin{defi}[Cauchyfolge]
+    Sei \( X \) ein metrischer Raum. 
+    Eine Folge \( (x_n)_n \subset X \) heißt 
+    Cauchyfolge, falls
+    \[ \forall \varepsilon > 0 \; \exists K \in \N: 
+    d(x_n, x_m) < \varepsilon \; \forall n,m \geq K \]
+    \[ \Leftrightarrow \limessup{n} \limessup{m} 
+    d(x_n, x_m) = 0. \]
+    Ein metrischer Raum heißt vollständig, falls jede 
+    Cauchyfolge konvergiert.
+\end{defi}
+\begin{bem}\leavevmode
+    \begin{enumerate}
+        \item Ist \( M \) ein metrischer Raum 
+        und \( (x_n)_n \) konvergiert in \( X \)
+        (gegen ein \( x \in M \)) 
+        \( \Rightarrow (x_n)_n \) ist eine 
+        Cauchyfolge.
+        \item Bsp.: \( \R^d \) mit \( \norm{x}_2 = \abs{x} 
+        = \left( \sum_{j=1}^d \abs{x_j}^2 \right)^2) \)
+        ist vollständig. \\
+        \( \C^d \) mit \( \norm{z}_2 = \abs{z} 
+        = \left( \sum_{j=1}^d \abs{z_j}^2 \right)^2) \)
+        ist vollständig.
+        \item \( X \) eine Menge, 
+        \( L^\infty(X) = L^\infty(X, \R) 
+        = \set{ \abb{f}{X}{\R}, 
+        \norm{f}_\infty 
+        := \underset{x \in X}{\sup} \abs{f(x)} < \infty } \)
+        \[ L^\infty(X, \C) 
+        = \set{ \abb{f}{X}{\C}, 
+        \norm{f}_\infty 
+        := \underset{x \in X}{\sup} \abs{f(x)} < \infty } \]
+        ist vollständig, \( d(f,g) = d_\infty(f,g) 
+        := \norm{f-g}_\infty = \norm{f-g}_\infty 
+        := \underset{x\in X}{\sup} \abs{f(x) - g(x)} \)
+    \end{enumerate}
+\end{bem}
+\begin{bew}
+    Sei \( (f_n)_n \) eine Cauchyfolge in 
+    \( L^\infty(X, \R) \).
+    Schritt 1: Kandidat: \\
+    Sei \( x \in X \), \( (f_n(x))_n \) reelle Folge.
+    Ist sogar eine Cauchyfolge in \(\R\).
+    \[ \abs{f_n(x) - f_m(x)} \leq \underset{y \in X}{\sup} 
+    \abs{f_n(y)-f_m(y)} = \norm{f_n-f_m} \]
+    \[ \limessup{n} \limessup{m} \norm{f_m - f_n}_\infty 
+    = 0 \]
+    \[ \Rightarrow \limessup{n} \limessup{m} 
+    \abs{f_n(x)-f_m(x)} = 0 \]
+    \( \overunderset{\R}{\text{vollständig}}{\Rightarrow} 
+    f(x) := \limes{n} f_n(x)\) existiert. \\
+    Brauchen noch: 
+    \begin{enumerate}
+        \item \( f \in L^\infty(X, \R) \)
+        \item \(f_n\) konvergiert gegen \(f\) in 
+        \( L^\infty(X, \R) \)
+    \end{enumerate}
+    Schritt 2: \(f \in L^\infty(X, \R)\) \\
+    \( f_n \) ist Cauchyfolge in \(L^\infty(X,\R)\)
+    d. h. \( \exists C < \infty: \norm{f_n}_\infty 
+    \leq C \; \forall n \in \N \) \\
+    Demnach \( \forall \varepsilon > 0 \; \exists K \in \N: 
+    \norm{f_n-f_m}_\infty < \varepsilon \; \forall n,m > K \) \\
+    nehme \( \varepsilon = 1 \Rightarrow \; \exists K: \norm{f_n-f_m} 
+    < 1 \; \forall n,m \geq K \)
+
+    \( \Rightarrow \) ist \( n \geq K: 
+    \norm{f_n - f_K}_\infty < 1 \).
+    \[ \norm{f_n}_\infty \leq 
+    \norm{ f_n - f_K }_\infty 
+    + \norm{f_K}_\infty < 1 + \norm{f_K}_\infty \]
+    \[ C := \max( \norm{f_1}_\infty, 
+    \norm{f_2}_\infty, \ldots, 
+    \norm{f_K}_\infty, 1 + \norm{f_K}_\infty ) \]
+    \[ \Rightarrow \norm{f_n}_\infty \leq C \;\forall \; 
+    n\in\N. \]
+    \(x \in X\):
+    \[ \abs{f(x)} = \limes{n} \abs{f_n(x)} 
+    = \limesinf{n} \abs{f_n(x)}
+    \leq \limesinf{n} \norm{f_n}_\infty \]
+    mit \( \abs{f_n(x)} 
+    \leq \underset{y \in X}{\sup} \abs{f_n(y)} 
+    = \norm{f_n}_\infty \)
+    \[ \Rightarrow \norm{f}_\infty 
+    = \underset{x \in X}{\sup} \abs{f(x)}
+    \leq \limesinf{n} \norm{f_n}_\infty \]
+    Schritt 3:
+    \[ f(x) - f_n(x) = 
+    \limes{m} \abs{ f_m(x) - f_n(x) }
+    = \limessup{m} \underbrace{\abs{f_m(x) - f_n(x)}}
+    _{\leq \norm{f_m - f_n}_\infty} \]
+    \[ \leq \limessup{m} \norm{f_m - f_n}_\infty. \]
+    \[ \Rightarrow \norm{f - f_n}_\infty 
+    = \underset{x \in X}{\sup} \abs{f(x) - f_n(x)} 
+    \leq \limessup{m} \norm{f_m - f_n}_\infty. \]
+    \[ \Rightarrow \limessup{n} \norm{f-f_n}_\infty 
+    \leq \limessup{n}\limessup{m} 
+    \norm{f_m - f_n}_\infty = 0. \]
+\end{bew}
+\begin{beh}
+    \( L^\infty(\set{1,2,\dots,d}, \R) \cong \R^d \)
+\end{beh}
+\begin{bew}
+    Sei \( x = (x_1,\dots,x_d) \in \R^d \) \\
+    \( \Rightarrow \) Funktion 
+    \( \abb{h_x}{\set{1,\dots,d}}{\R}, j \mapsto h_x(j) := x_j \)
+    Umgekehrt ist \( h \in L^\infty(\set{1,\dots,d}, \R) \)
+    mit \( x_j := h(j) \). \\
+    Normen passen:
+    \[ \norm{x}_\infty = \underset{j=1,\dots,d}{\max} \abs{x_j}
+    = \underset{j=1,\dots,d}{\max} \abs{h_x(j)} = \norm{h_x}_\infty \]
+    Genauso \( L^\infty(\set{1,\dots,d}, \C) \cong \C^d \)
+    Warum ist \( \R^d, \norm{\cdot}_2 \) vollständig?
+    Z. B. \( \norm{\cdot}_2 \) und \( \norm{\cdot}_\infty \) 
+    sind äquivalent auf \( \R^d \).
+    \[ \norm{x}_\infty 
+    = (\underset{j=1,\ldots,d}{\max} 
+    \abs{x_j}^2 )^{\frac{1}{2}} 
+    \leq (\sum_{j=1}^d \abs{x_j}^2)^{\frac{1}{2}}
+    = \norm{x}_\infty 
+    \leq (\sum_{j=1}^d \norm{x}_\infty^2)^{\frac{1}{2}}
+    = \sqrt{d} \norm{x}_\infty. \]
+\end{bew}
+\begin{defi*}[Äquivalenz von Normen]
+    \( \norm{:}_a, \norm{.}_b \) sind äquivalent, wenn
+    \[ \exists c_1, c_2: c_1\norm{x}_a \leq \norm{x}_b 
+    \leq c_2\norm{x}_a \; \forall x \]
+\end{defi*}
+\begin{bsp}
+    \( \mathcal{C}^\infty(\N) 
+    = \set{\text{reelle oder komplexe Folgen}
+    (x_n)_n, \underset{n\in\N}{\sup} \abs{x_n} < \infty} \) ist
+    vollständig.
+    \( \mathcal{C}^\infty(\N) 
+    = \set{\abb{h}{\N}{\R}, \norm{h}_\infty < \infty}
+    = L^\infty(\N, \R) \)
+\end{bsp}
+\begin{defi}[Stetigkeit]
+    Seien \(X, Y \) metrische Räume, \(\abb{f}{X}{Y}\)
+    heißt stetig in \(x_0 \in X\), falls 
+    \[ \forall \varepsilon > 0 \; \exists \delta > 0
+    d_y(f(x), f(x_0)) < \varepsilon \forall x \in X: 
+    d_x(x, x_0) < \delta \]
+    oder äquivalent 
+    \[ f(B_\delta(x_0)) \subset B_\varepsilon(f(x_0)) \]
+    \(f\) stetig auf \(X\) falls \(f\) in jedem Punkt 
+    \(x_0 \in X\) stetig ist. \\
+    Schreiben \( d(f(x), f(x_0)) \) 
+    statt \( d_y(f(x), f(x_0)) \) usw.
+\end{defi}    
+\begin{defi}[Lipschitzstetig]
+    \( \abb{f}{X}{Y} \) heißt Lipschitzstetig 
+    mit Konstante \( L \geq 0 \), falls 
+    \[ d(f(x_1), f(x_2)) 
+    \leq L d(x_1, x_2) \forall x_1, x_2 \in X. \]
+\end{defi}
+\begin{bsp}
+    Sei \(X\) ein metrischer Raum, \(x_0 \in X\),
+    \( \abb{f}{X}{[0, \infty)}: f(x) := d(x,x_0) \)
+    \[ f(x_1) = d(x_1, x_0) \leq d(x_1, x_2) + d(x_2, x_0)
+    = d(x_1, x_2) + f(x_2) \]
+    \[ \Rightarrow f(x_1) - f(x_2) \leq d(x_1, x_2) \]
+    \[ \Rightarrow \underbrace{f(x_2) - f(x_1)}_{
+        = -(f(x_1) - f(x_2))
+    } \leq d(x_2, x_1) = d(x_1, x_2) \]
+    \[ \Rightarrow \abs{ f(x_1) - f(x_2) } 
+    \leq d(x_1, x_2). \]
+\end{bsp}
+\begin{defi}[Folgenkriterium für Stetigkeit]
+    Sei \( \abb{f}{X}{Y} \) stetig in \(x_0\)\\
+    \( \Leftrightarrow \) für jede Folge 
+    \( (x_n)_n \subset X, x_n \rightarrow x_0 \) 
+    folgt \( f(x_n) \rightarrow f(x_0) \).
+\end{defi}
+\begin{bew}
+    \( \Rightarrow \): 
+    \[ \forall \varepsilon >0
+    \exists \delta >0: d(f(x), f(x_0)) < \varepsilon
+    \forall x \in X: d(x, x_0) < \delta \tag{\(*\)} \]
+    Nehme \( (x_n)_n \subset X, x_n \rightarrow x_0 \).
+    Nehme \( \varepsilon > 0, \delta > 0 \), sodass 
+    \((*)\) gilt.
+    \( \Rightarrow d(x_n, x_0) < \delta \) für fast 
+    alle \(n\).\\
+    \( \Rightarrow d(f(x_n), f(x_0)) < \varepsilon \) 
+    für fast alle \(n\).\\
+    \( \rightarrow f(x_n) \rightarrow f(x_0) \). \\
+    \( \Leftarrow \): Kontraposition \\
+    Angenommen \(f\) ist nicht stetig in \(x_0\)
+    \( \Rightarrow \exists \varepsilon_0 > 0: 
+    \forall \delta >0: \exists x\in X: 
+    d(f(x),f(_0)) \geq \varepsilon_0, d(x,x_0) < \delta \) \\
+    Nehme \( \delta = \frac{1}{n} \Rightarrow \exists 
+    x_n \in X: d(x_n, x) < \frac{1}{n} \) und 
+    \( d(f(x_n), f(x_0)) \geq \varepsilon > 0 \).
+    Beachte: \(x_n \rightarrow x_0\) und 
+    \(f(x_n) \not \rightarrow f(x_0) \).
+\end{bew}
 \end{document}
