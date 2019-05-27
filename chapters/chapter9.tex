@@ -269,7 +269,6 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \( \Rightarrow \forall x \in U 
     \exists \varepsilon = \varepsilon_x > 0: 
     B_\varepsilon(x) \subset U \subset M \).
-
 \end{bew}
 \begin{satz*}\leavevmode
     \begin{enumerate}
@@ -411,7 +410,6 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \norm{f_n-f_m}_\infty < \varepsilon \; \forall n,m > K \) \\
     nehme \( \varepsilon = 1 \Rightarrow \; \exists K: \norm{f_n-f_m} 
     < 1 \; \forall n,m \geq K \)
-
     \( \Rightarrow \) ist \( n \geq K: 
     \norm{f_n - f_K}_\infty < 1 \).
     \[ \norm{f_n}_\infty \leq 
@@ -543,5 +541,183 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \( d(f(x_n), f(x_0)) \geq \varepsilon > 0 \).
     Beachte: \(x_n \rightarrow x_0\) und 
     \(f(x_n) \not \rightarrow f(x_0) \).
+\end{bew}
+\( \abb{f}{X}{Y}, X, Y \) metrische Räume. \\
+Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
+\begin{bem}[Induzierte Metrik]
+    Sei \( (X, d) \) metrischer Raum. \\
+    \(M \subset X\) wird zu einem metrischen Raum mit Metrik
+    \( d_M(x,y) := d(x, y), x, y \in M \).
+    Danut gilt Satz 18 auch im Fall:
+    \( M \subset X, Y \) metrischer Raum mit \( \abb{f}{M}{Y} \)
+    ist stetig in \(x_0 \Leftrightarrow \forall \) Folgen
+    \( (x_n)_n \subset M, x_n \mapsto x \in M \) folgt
+    \( f(x_n) \rightarrow f(x) \). \\
+    Kugeln in \( M: x_0 \in M \)
+    \[ B_r^M(x_0) = \set{x \in M: d_M(x,_0) < r}
+    = \set{x \in X: x \in M \text{ und } d(x, x_0) < r}
+    = B_r(x) \cap M \]
+    offene Mengen in \( (M, d_M) \): genau die Mengen der
+    Form \( \tilde{U} \cap M, \tilde{U} \subset X \) offen.\\
+    Denn sei \( x \in \tilde{U} \cap M, \tilde{U}\) offen in \(X\)
+    \[ \Rightarrow \exists r > 0: B_r(x) \subset \tilde{U},
+    B_r^M(x)  := B_r(x) \cap M \subset \tilde{U} \cap M \]
+    \[ \Rightarrow \tilde{U} \cap M \text{ offen in } M. \]
+    Umgekehrt: Sei \( U \subset M \) offen. D. h.
+    \[ \forall x \in U \; \exists r_x > 0: B_{r_x}^M(x) \subset U \]
+    \[ = \set{z \in M: d(z,x) < r_x} \subset \set{z \in X: d(z,x) < r_x}
+    = B_{r_x}(x) \]
+    \[ \tilde{U} := \bigcup_{x \in U} B_{r_x}(x) \text{ ist offen in } X \]
+    und
+    \[ \tilde{U} \supset M = U \]
+    Abgeschlossene Mengen in \( (M, d_M) \): alle Mengen der Form
+    \( \tilde{A} \cap M, \tilde{A} \subset X \) abgeschlossen.\\
+    Denn: Sei \(A \subset M\) abgeschlossen in \( M \Rightarrow
+    U := M \setminus A \) ist offen nach Satz 10. 
+    \[ \Rightarrow \exists \tilde{U} \subset X \text{ offen mit }
+    U = M \cap \tilde{U} = M \setminus A \]
+    \[ \Rightarrow M \setminus (M \setminus A) 
+    = M \setminus (M \cap \tilde{U}) = M \setminus \tilde{U}
+    = M \cap (\underbrace{X \setminus \tilde{U}}_{=: \tilde{A}}) 
+    = M \cap \tilde{A} \]
+    die ist abgeschlossen in \(X\). Umkehrung ähnlich.    
+\end{bem}
+\begin{satz}[Charakterisierung von Stetigkeit]
+    Seien \( X, Y \) metrische Räume. Dann gilt \( \abb{f}{X}{Y} \)
+    ist stetig \( \Leftrightarrow \) Urbilder offener Mengen sind offen:
+    \( forall V \subset Y \) offen ist \( f^{-1}(V) \) offen in \( X \).
+\end{satz}
+\begin{bew}
+    Beweis als Hausaufgabe.
+\end{bew}
+\begin{defi}[Folgenkompakt]
+    Ein metrischer Raum \( X \) ist folgenkompakt oder kurz kompakt, 
+    falls jede Folge \((x_n)_n \subset X \) hat eine Teilfolge
+    \( (x_{n_k})_k \subset X \), die gegen ein \( x \in X \) konvergiert. 
+\end{defi}
+\begin{bem}
+    Genauso \(M \subset X\) ist kompakt \( \Leftrightarrow (M, d_M) \) ist
+    kompakter metrischer Raum. 
+\end{bem}
+\begin{satz}
+    Eine Menge \( K \subset \R^d \) (mit Euklidischen Abstand sogar jede
+    Norm) ist kompakt \( \Leftrightarrow K \) ist abgeschlossen und
+    beschränkt.
+\end{satz}
+\begin{bew}
+    siehe Analysis I (Übung).
+\end{bew}
+\begin{bem}
+    In allgemeinen Vektorräumen (oder metrischen Räumen) falsch.
+    \( \Rightarrow \) gilt immer.\\
+    Sei \((X, d)\) vollständiger metrischer Raum. \\
+    \(M \subset X\) ist kompakt \(\Leftrightarrow X\) ist abgeschlossen
+    und total beschränkt.
+\end{bem}
+\begin{defi*}[total beschränkt]
+    \(M\) ist total beschränkt: 
+    \[ \forall \varepsilon > 0 \; 
+    \exists \text{ endlich viele } x1,\dots,x_n \in X:
+    M \subset \bigcup_{j=1}^n B_\varepsilon(x_j) \]
+\end{defi*}
+\begin{kor}[Bilden kompakter Mengen]
+    Sei \( \abb{f}{X}{Y} \) stetig, \( X, Y \) metrische Räume
+    und \(X\) sei kompakt
+    \( \Rightarrow \)
+    \begin{enumerate}
+        \item \( f(X) \subset Y \) ist kompakt in \( Y \).
+        \item Ist \(f\) injektiv, so ist \( \abb{f^{-1}}{f(X)}{X} \)
+        stetig.
+    \end{enumerate}
+\end{kor}
+\begin{bew}
+    Zu 1.:\\
+    Sei \( (y_n)_n \subset f(X) \).
+    \[ \Rightarrow \exists (x_n)_n \in X: y_n = f(x_n). \]
+    \[ \Rightarrow \exists \text{Teilfolge } 
+    (x_{n_k})_k, x_{n_k} \rightarrow x \in X. \]
+    \[ y_{n_k} = f(x_{n_k}) 
+    \overset{k \rightarrow \infty}{\rightarrow} 
+    f(x) =: y \in f(X) \]
+    Zu 2.:\\
+    Angenommen, \( \abb{f}{X}{Y} \) ist injektiv 
+    und \( \abb{f^{-1}}{f(X)}{X} \) ist nicht stetig,
+    d. h. \( \exists x \in X: f^{-1} \) ist nicht stetig in 
+    \(y_0 := f(x_0): y := f(x_0)\) \\
+    und \( \exists \varepsilon > 0 \; \forall \delta > 0: 
+    \exists y \in f(X), d(y, y_0) < \delta \)
+    und \( d(x, x_0) \geq \varepsilon \).
+    Wähle \( \delta = \frac{1}{n}, x := f^{-1}(y) \).
+    \[ \Rightarrow y_n \in f(X) : d(y_n, y_0) < \frac{1}{n} 
+    \;\forall n\in\N \]
+    und \( d(f^{-1}(y_n), x_0) = d(x_n, x_0) \geq \varepsilon \), 
+    \( x_n := f^{-1}(y_n) \).
+    \( X \) kompakt \(\Rightarrow \exists \) 
+    Teilfolge \( (x_{n_k})_k \in X, x_{n_k} \rightarrow \tilde{x}\)  
+    \[ \underbrace{d(x_{n_k}, x_0)}_{\rightarrow d(\tilde{x}, x_0)} 
+    \geq \varepsilon 
+    \Rightarrow d(\tilde{x}, x_0) \geq \varepsilon 
+    \Rightarrow \tilde{x} \neq x_0. \]  
+    Aber: 
+    \[ f(x_{n_k}) = y_{n_k} \rightarrow y_0 = f(x_0) \]
+    mit \(f\) stetig folgt gleichzeitig
+    \( f(x_{n_k}) = f(\tilde{x}) \)
+    \[ \Rightarrow f(\tilde{x}) = f(x_0) \text{\Lightning{}} \]
+    \(f\) ist also nicht injektiv.
+\end{bew}
+\begin{satz}[Extrema]
+    Sei \( \abb{f}{X}{\R} \) stetig, \( X \) kompakter 
+    metrischer Raum.\\
+    \( \Rightarrow f \) nimmt sein Minimum und 
+    Maximum an.
+\end{satz}
+\begin{bew}
+    Wie in Analysis I durch minimierende Folgen.
+    Idee: 
+    \begin{enumerate}
+        \item \( f \) ist beschränkt.
+        \item Minimierende Folge: \( \alpha = \inf(f(X)) \) \\
+        \( \emptyset \neq f(X) \subset \R \) beschränkt und 
+        \( \alpha + \frac{1}{n} \exists x_n \in X: 
+        \alpha \leq f(x_n) < \alpha + \frac{1}{n} \).
+    \end{enumerate}
+\end{bew}
+\begin{bem}
+    Sei \(K \subset X\) kompakt, \(x_0 \in X\)
+    \[ \Rightarrow \exists x \in K: d(x_0, x) 
+    = \underset{y \in K}{\inf} d(x_0, y) 
+    := dist(x_0, K) \]
+\end{bem}
+\begin{bew}
+    Gegeben \( x_0 \in X, \exists (y_n)_n \subset K: 
+    d(x_0, y_n) \rightarrow dist(x_0, K) \) \\
+    \(K\) kompakt \( \Rightarrow \exists \) Teilfolge 
+    \(y_{n_k})_k \subset K, y_{n_k} \rightarrow x \in K, 
+    k \rightarrow \infty\)    
+    \[ \Rightarrow \underset{\rightarrow d(x_0, X)}{d(x_0, y_{n_k})} 
+    \rightarrow dist(x_0, K) \]
+    \[ \Rightarrow d(x_0, x) = dist(x_0, K). \]
+\end{bew}
+\begin{satz}[Gleichmäßige Stetigkeit]
+    Sei \( \abb{f}{X}{Y} \) stetig, 
+    \( X, Y \) metrische Räume, \(X\)
+    kompakt. \\
+    \( \Rightarrow f \) ist sogar gleichmäßig 
+    stetig.
+    \[ f: X \rightarrow Y \text{ gleichmäßig stetig }
+    \forall \varepsilon > 0 \exists 
+    \delta(\varepsilon) = \delta > 0:
+    x_1, x_2 \in X: d(x_1, x_2) < \delta:
+    \text{ impliziert } d(f(x_1), f(x_2)) < \varepsilon \]
+\end{satz}
+\begin{bew}
+    Geg. \( x_0 \in X, \exists (y_n) \subset K. d(x_0, y_n) 
+    \rightarrow dist(x_0, K) \)
+    \[ K \text{ kompakt } \Rightarrow \exists \text{ Teilfolge } 
+    (y_{n_k})_k \subset K, y_{n_k} \rightarrow x \in K. \]
+    Geg. \( x_0: \forall \varepsilon > 0 \exists \delta 
+    = \delta(\varepsilon, x_0) > 0:
+    x \in X, d(x, x_0) < \delta \Rightarrow d(f(x), f(x_0)) 
+    < \varepsilon. \)
 \end{bew}
 \end{document}
