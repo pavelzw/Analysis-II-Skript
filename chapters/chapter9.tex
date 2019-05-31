@@ -274,7 +274,7 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \begin{enumerate}
         \item \( \inner M \) offen und 
         \( U \subset M \) offen \( \Rightarrow U \subset \inner M \)
-        (d. h. \( \inner M = \bigcup_{\substack{U \subset M \\\text{offen}}} \) 
+        (d. h. \( \inner M = \bigcup_{\substack{U \subset M \\\text{offen}}} U \) 
         größte offene Teilmenge von \(M\))
         \item \( \overline{M} \) ist abgeschlossen und 
         \( M \subset A \) abgeschlossen 
@@ -548,13 +548,13 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
     Sei \( (X, d) \) metrischer Raum. \\
     \(M \subset X\) wird zu einem metrischen Raum mit Metrik
     \( d_M(x,y) := d(x, y), x, y \in M \).
-    Danut gilt Satz 18 auch im Fall:
+    Damit gilt Satz 18 auch im Fall:
     \( M \subset X, Y \) metrischer Raum mit \( \abb{f}{M}{Y} \)
     ist stetig in \(x_0 \Leftrightarrow \forall \) Folgen
     \( (x_n)_n \subset M, x_n \mapsto x \in M \) folgt
     \( f(x_n) \rightarrow f(x) \). \\
     Kugeln in \( M: x_0 \in M \)
-    \[ B_r^M(x_0) = \set{x \in M: d_M(x,_0) < r}
+    \[ B_r^M(x_0) = \set{x \in M: d_M(x,x_0) < r}
     = \set{x \in X: x \in M \text{ und } d(x, x_0) < r}
     = B_r(x) \cap M \]
     offene Mengen in \( (M, d_M) \): genau die Mengen der
@@ -585,7 +585,7 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
 \begin{satz}[Charakterisierung von Stetigkeit]
     Seien \( X, Y \) metrische Räume. Dann gilt \( \abb{f}{X}{Y} \)
     ist stetig \( \Leftrightarrow \) Urbilder offener Mengen sind offen:
-    \( forall V \subset Y \) offen ist \( f^{-1}(V) \) offen in \( X \).
+    \( \forall V \subset Y \) offen ist \( f^{-1}(V) \) offen in \( X \).
 \end{satz}
 \begin{bew}
     Beweis als Hausaufgabe.
@@ -706,7 +706,8 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
     stetig.
     \[ f: X \rightarrow Y \text{ gleichmäßig stetig }
     \forall \varepsilon > 0 \exists 
-    \delta(\varepsilon) = \delta > 0:
+    \delta(\varepsilon) \]
+    \[ = \delta > 0:
     x_1, x_2 \in X: d(x_1, x_2) < \delta:
     \text{ impliziert } d(f(x_1), f(x_2)) < \varepsilon \]
 \end{satz}
@@ -719,5 +720,28 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
     = \delta(\varepsilon, x_0) > 0:
     x \in X, d(x, x_0) < \delta \Rightarrow d(f(x), f(x_0)) 
     < \varepsilon. \)
+
+    %alternativer Beweis
+    Angenommen \( f \) ist nicht gleichmäßig stetig.
+    \[ \Rightarrow \exists \varepsilon > 0 
+    \;\forall \delta > 0: \exists x^1, x^2 \in X: 
+    d(x^1, x^2) < \delta 
+    \text{ und } d(f(x^1), f(x^2)) \geq \varepsilon. \]
+    Wähle \( \delta = \frac{1}{n} \Rightarrow x_n^1, x_n^2
+    \in X \)
+    \[ d(x_n^1, x_n^2) < \frac{1}{n}, d(f(x_n^1), f(x_n^2)) 
+    \geq \varepsilon. \]
+    \[ \Rightarrow (x_n^1)_n, (x_n^2)_n \subset X. \]
+    \( X \) kompakt, \( (x_n^1)_n \) konvergente Teilfolge 
+    \( (x_{n_k}^1)_k \).
+    \[ x := \limes{k} x_{n_k}^1 \]
+    Auch: \( \abb{f}{X}{Y} \) stetig.
+    \[ \Rightarrow f(x) = \limes{k} f(x_{n_k}^1) \]
+    Und: \[ d(x, x_{n_k}^2) \leq d(x, x_{n_k}^1) 
+    + \underbrace{d(x_{n_k}^1, x_{n_k}^2)}_{\leq \frac{1}{n_k}} 
+    \rightarrow 0 \]
+    \[ \Rightarrow x_{n_k}^2 \rightarrow x. \]
+    Aber: \( d(f(x_{n_k}^1), f(x_{n_k}^2)) \geq \varepsilon > 0 \)
+    konvergiert gegen \( d(f(x), f(x)) = 0 \). \Lightning{}
 \end{bew}
 \end{document}

@@ -110,5 +110,144 @@
         \text{ ist Randpunkt von } M } \) heißt 
         Rand von \(M\).
     \end{defi}
-
+    \begin{defi}[offene Überdeckung]
+        Sei \((X, d)\) ein metrischer Raum und \(M\) eine Teilmeine von
+        \(X\). Ein System \(U = \set{U_j, j \in J}, J \subset \N\)
+        von offenen Mengen \(U_j\) heißt offene Überdeckung von \(M\),
+        wenn
+        \[ M \subset \bigcup_{j \in J} U_j \]
+        ist.        
+    \end{defi}
+    \begin{defi}[Überdeckungskompakt]
+        Eine Teilmenge \( M \subset X \) eines metrischen
+        Raums \( (X,d) \) heißt überdeckungskompakt, 
+        wenn jede offene Überdeckung von \(M\) eine 
+        endliche Teilüberdeckung enthält.
+    \end{defi}
+    \begin{beh}
+        Überdeckungskompakte metrische Räume sind
+        folgenkompakt.
+    \end{beh}
+    \begin{bew}
+        Sei \(X\) ein überdeckungskompakter metrischer Raum
+        und \( (x_n)_n \) eine Folge in \(X\).\\
+        Angenommen, die Folge \( (x_n)_n \) besitzt 
+        keinen Häufungswert in \( X \). Dann existiert für alle 
+        \( x \in X \) ein \( \varepsilon_x > 0 \), sodass 
+        \( B_{\varepsilon_x}(x) \) höchstens endlich viele 
+        Elemente von \( (x_n)_n \) enthält.\\
+        Da \( X \) überdeckungskompakt ist und 
+        \(B_\varepsilon(x), x \in X\) eine offene Überdeckung
+        von \(X\) ist, existiert eine endliche
+        Teilüberdeckung \( B_{\varepsilon_{y_1}}, 
+        B_{\varepsilon_{y_2}}, \ldots, 
+        B_{\varepsilon_{y_n}} \), sodass 
+        \( X \subset \bigcup_{j=1}^n B_{\varepsilon_{y_j}}(y_j) \)        
+        Somit liegen in \( \bigcup_{j=1}^n 
+        B_{\varepsilon_{y_j}} \) auch nur endlich 
+        viele Elemente der Folge \( (x_n)_n \). \Lightning{}\\
+        \( (x_n)_n \) war keine Folge in \(X\).\\
+        Also besitzt \( (x_n)_n \) einen 
+        Häufungswert in \(X\) und somit ist \( X \) 
+        per Definition folgenkompakt.
+    \end{bew}
+\subsection{Eigenschaften kompakter metrischer Räume}
+    \begin{enumerate}
+        \item Jede kompakte Teilmenge 
+        eines metrischen Raumes ist 
+        beschränkt, abgeschlossen und 
+        vollständig.
+        \item Im \(\R^n\) ist jede abgeschlossene und 
+        beschränkte Menge auch kompakt
+        (Satz von Heine-Borel).
+        \item Eine abgeschlossene Teilmenge 
+        eines kompakten Raums ist kompakt.
+        \item Eine Menge mit endlich 
+        vielen Elementen ist kompakt.
+        \item Stetige Bilder von kompakten Mengen sind
+        kompakt.
+        \item Kompakte Teilmengen metrischer Räume besitzen
+        eine abzählbare\\dichte Teilmenge. Man sagt sie
+        sind seperabel.
+    \end{enumerate}
+    \begin{beh}
+        Folgenkompakte metrische Räume sind 
+        seperabel.
+    \end{beh}
+    \begin{bew}
+        Sei \(X\) ein folgenkompakter metrischer Raum.\\
+        Zunächst zeigen wir, dass es zu jedem 
+        \(\varepsilon > 0\) eindlich viele 
+        \( \varepsilon \)-Umgebungen gibt, die \(X\) 
+        überdecken. \\
+        Angenommen es ist \(\varepsilon > 0\) derart, dass
+        es keine endliche Menge von \(\varepsilon\)-Kugeln
+        gibt, die \(X\) überdeckt.\\
+        Dann würde es eine Folge \( (x_k)_k \) in \(X\) 
+        geben, sodass 
+        \[ x_{k+1} \notin \bigcup_{j=1}^k U_\varepsilon(x_j) \]
+        Für die Folgenglieder gilt dann 
+        \( d(x_k, x_j) \geq \varepsilon \) für 
+        \( k \neq j \).
+        Eine solche Folge kann keine konvergente 
+        Teilfolge in \(X\) besitzen. \Lightning{} \\
+        Also gibt es zu jedem \(k \in \N\) eine endliche 
+        Menge \(E_k \subset X\) von Punkten aus \(X\),
+        deren \(\frac{1}{k}\)-Umgebung
+        ganz \( X \) überdeckt.\\
+        Damit ist \( D := \bigcup_k E_k \) eine abzählbare 
+        dichte Teilmenge von \(X\).
+    \end{bew}
+    \begin{bem}
+        Mit Hilfe dieses Resultats kann man nun auch
+        beweisen, dass folgenkompakte metrische Räume
+        überdeckungskompakt sind. \\
+        Dies gilt nicht in allgemeinen topologischen 
+        Räumen.
+    \end{bem}
+    \begin{bsp}
+        Die abgeschlossene Einheitskugel im \( \R^n \)
+        \[ B = \set{x \in \R^n \;\vert\; 
+        \norm{x}_2 \leq 1} \]
+        ist kompakt (mit Heine-Borel).
+    \end{bsp}
+    \begin{bsp}
+        Sei
+        \[ l^2 := \set{(x_i)_i: \sum_{i=1}^\infty \abs{x_i}^2 < \infty} \]
+        der Raum der reellen bzw. komplexen Folgen 
+        mit konvergenter Quadratsumme. \\
+        Es gilt für \( l^2 \):
+        \[ \scalarprod{(x_i)_i}{(y_i)_i} 
+        = \sum_{i=1}^\infty x_i \overline{y_i} \]
+        ist inneres Produkt auf \(l^2\).
+        \begin{align*}
+            & \norm{\cdot} = \sqrt{\scalarprod{\cdot}{\cdot}} 
+            \text{ definiert die Norm auf } l^2 \\
+            & \norm{x-y}_{l^2} = d(x,y) \text{ definiert die Metrik auf } 
+            l^2
+        \end{align*}
+        \( \leadsto l^2 \) ist ein metrischer Raum.
+        Die Einheitskugel in \( l^2 \) ist gegeben 
+        durch 
+        \[ C = \set{x \in l^2: \norm{x}_{l^2} \leq 1}. \]
+        Die Menge \( C \) ist abgeschlossen und 
+        beschränkt, aber sie ist nicht kompakt.
+        Um dies zu zeigen, zeigen wir, dass \(C\) nicht 
+        folgenkompakt ist.
+        Sei \( (e_k)_k \) gegeben durch 
+        \( e_k = (0,\dots,0,
+        \underbrace{1}_{k\text{-te Stelle}},0,\dots) \). \\
+        Dann gilt: 
+        \( \sum_{i=1}^\infty \abs{e_k^i}^2 = 1 < \infty \) \\
+        \( \Rightarrow e_k \in C \subset l^2 \; \forall k \in \N \)
+        \[ \norm{e_k - e_m}_{l^2}^2 
+        = \norm{(0, \ldots, 0, 1, 0, 
+        \ldots, 0, -1, 0, \ldots)}_{l^2}^2 
+        = 2. \]
+        Somit kann \( (e_k)_k \subset l^2 \) keine konvergente Teilfolge 
+        in \( l^2 \) besitzen. \\
+        \( \Rightarrow C \) ist nicht folgenkompakt.
+        Somit ist \( C \) nicht kompakt.
+    \end{bsp}
+    
 \end{document}

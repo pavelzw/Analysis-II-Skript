@@ -1,0 +1,202 @@
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+\setcounter{section}{9}
+\section{Die mehrdimensionale Ableitung}
+Situation: \( U \subset \R^n \) offen. 
+\[ \abb{f}{U}{\R^m}, n,m\in\N, x\in U. \]
+Frage: Was ist die Ableitung?\\
+\( U \) offen: \( \forall x\in U, v\in \R^n \) 
+ist \( x + tv \in U \), sofern 
+\( \abs{t} \) klein genug ist.
+
+Z. B.: \( U = I = (a,b) \subset \R = \R^1 \)
+offen. \[ \abb{f}{(a,b)}{\R^m} \]
+\[ f(t) \in \R^m \;\forall t\in (a,b) \]
+Differenzenquotienten 
+\[ f'(t_0) := \limesx{t}{t_0} 
+\frac{f(t) - f(t_0)}{t - t_0}, \]
+falls der Grenzwert existiert.
+\[ =: \ddx{t} f(t_0) = \frac{df}{dt} (t_0). \]
+
+Exkurs für Physiker:
+\( f(t) = \) Position eines Teilchens in \( \R^3 \) \\
+\( f'(t) =  \) Geschwindigkeit eines Teilchens in \( \R^3 \) \\
+\( f''(t) =  \) Beschleunigung eines Teilchens in \( \R^3 \) \\
+
+2 Teilchen:\\ 
+\( f_1(t) = \) Position des ersten Teilchens in \( \R^3 \) \\
+\( f_2(t) = \) Position des zweiten Teilchens in \( \R^3 \)
+\[ f_1(t) = \left( \begin{array}{c}
+    x_1(t)\\
+    y_1(t)\\
+    z_1(t)
+\end{array} \right), 
+f_2(t) = \left( \begin{array}{c}
+    x_2(t)\\
+    y_2(t)\\
+    z_2(t)
+\end{array} \right). \]
+\[ f(t) := \begin{array}{c}
+    f_1(t)\\f_2(t)
+\end{array} \in \R^3 \times \R^3 = \R^6. \]
+\( N \) Teilchen: \( f_j(t) = \) Position 
+des \( j \)-ten Teilchens in \( \R^3 \).
+
+\[ f(t) = \left( \begin{array}{c}
+    f_1(t)\\
+    \vdots \\
+    f_N(t)
+\end{array} \right) \in \R^3 \times \cdots \times \R^3 
+= \R^{3N} \]
+Statistiche Mechanik: \( N \rightarrow \infty \).
+
+\begin{lem}
+    Sei \( \abb{f}{(a,b)}{\R^m}, \) 
+    \[f(t) = \begin{array}{c}
+        f_1(t)\\
+        \vdots \\
+        f_m(t)
+    \end{array}. \]
+    \( \abb{f_j}{(a,b)}{\R}, t_0 \in (a,b) \).
+
+    \[ \text{Es existiert } f'(t_0) = \limesx{t}{t_0} \frac{f(t) - f(t_0)}{t - t_0} 
+    \text{ (Grenzwert in \( \R^3 \))} \]
+    \[ \Leftrightarrow \abb{f_j}{(a,b)}{\R} 
+    \text{ ist in \(t_0\) differenzierbar} \forall j=1,\ldots,m. \]
+\end{lem}
+\begin{bew}
+    Selbst nachdenken.
+\end{bew}
+Was sollte man machen, falls \( \abb{f}{U}{\R^m}, 
+U \subset \R^n \) offen, \( x\in U, v \in \R^n \)
+\[ \Rightarrow \exists \delta = \delta(x,v) > 0: 
+x + tv \in U \;\forall t \in (-\delta, \delta). \]
+Definiere 
+\[ h(t) := f(x + tv), \abb{h}{(-\delta,\delta)}{\R^m} \]
+Können fragen, ob \( h \) in 
+\( t = 0 \) differenzierbar ist.
+\[ h'(0) = \limesx{t}{0} \frac{h(t) - h(0)}{t} \text{ sofern 
+Grenzwert existiert.} \]
+\[ := \ddx{t} h(0) =: \ddx{t} h(t)\vert_{t=0}. \]
+
+\begin{defi}[Richtungsableitung]
+    Sei \( \abb{f}{U}{\R^m}, U \subset \R^n \) offen, 
+    \( x \in U, v \in \R^n \).
+    \[ D_U f(x) := \limesx{t}{0} \frac{f(x + tv) - f(x)}{t} 
+    =: \ddx{t} f(x + tv) \]
+    heißt die Richtungsableitung von \( f \) in \( x\in U \), 
+    in Richtung \( v \in \R^n \).
+\end{defi}
+\begin{bem}
+    Manchmal sinnvoll
+    \[ D_U f(x) = \limesx{t}{0+} \frac{f(x + tv) - f(x)}{t}. \]
+\end{bem}
+\begin{bsp}
+    \( v = e_j \) sind kanonische Basisvektoren von \( \R^n \).
+\end{bsp}
+\begin{defi}[Partielle Ableitungen]
+    \( \abb{f}{U}{\R^m}, U \subset \R^n \) offen, \( x\in U \).
+    Die \(j\)-te partielle Ableitung von \(f\) in \(x \in U\) 
+    ist gegeben durch
+    \[ \partial_j f(x) := \ddxpartial{x_j} f(x) 
+    := D_{e_j} f(x) = \ddx{t} f(x + t e_j) \vert_{t=0}. \]
+\end{defi}
+\begin{bem}
+    \[ f(x) = f(x_1, \ldots, x_j, \ldots, x_n) \]
+    \[ f(x+t e_j) = f(x_1, \ldots, x_{j-1}, 
+    x_j + t, x_{j+1} \ldots, x_n) \]
+\end{bem}
+Gute Nachricht!
+\begin{lem}
+    Sei \( U \subset \R^n \) offen, \( x\in U \), 
+    \( \abb{f,g}{U}{\R^m} \) und 
+    \( \partial_j f(x), \partial_j g(x) \) existiere.
+    \begin{enumerate}
+        \item Linearität \( \forall \alpha, \beta \in \R \)
+        \[ \partial_j (\alpha f + \beta g)(x) 
+        = \alpha \partial_j f(x) + \beta \partial_j g(x). \]
+        \item \[ \partial_j f(x) = \left(\begin{array}{c}
+            \partial_j f_1(x) \\
+            \vdots \\
+            \partial_j f_m(x) \\
+        \end{array}\right), 
+        f = \left( \begin{array}{c}
+            f_1\\
+            \vdots \\
+            f_m           
+        \end{array} \right) \]
+        Sofern eine der beiden Seiten existiert.
+        \item Quotientenregel (für \( g(x) \neq 0 \))
+        \[ \partial_j (\frac{f}{g})(x) 
+        = \frac{g(x) \partial_j f(x) - f(x) \partial_j g(x)}{g(x)^2} \]
+        \item Kettenregel (für \( \abb{f}{U}{I \subset \R}, 
+        I \) offenes Intervall, 
+        \( \abb{\varphi}{I}{\R} \) differenzierbar)
+        \[ \partial_j (\varphi \circ f)(x) 
+        = \varphi'(f(x)) \partial(f(x)) \]
+    \end{enumerate}
+\end{lem}
+Schlechte Nachricht!\\
+Es gibt Funktionen \( \abb{f}{U}{\R}, U \subset \R^n \) offen, 
+die in \( x\in U \) alle partiellen Ableitungen haben, 
+aber nicht in \( x \) stetig sind.
+\begin{bsp}
+    \( U = \R^2, \abb{f}{\R^2}{\R} \)
+    \[ f(x,y) = \begin{cases}
+        \frac{xy}{x^2 + y^2}, &(x,y) \neq (0,0)\\
+        0, &(x,y) = (0,0)
+    \end{cases}. \]
+
+    \[ \partial_1 f(0,0) \partial_x f(0,0) 
+    = \limesx{t}{0} \frac{f(t,0) - f(0,0)}{t} 
+    = \limesx{t}{0} \frac{0 - 0}{t} = 0 \]
+    genauso \( \partial_2 f(0,0) = \partial_y f(0,0) = 0 \).
+    Aber \(f\) ist nicht stetig in \( (0,0) \).
+
+    Z. B. \( f(x,0) = 0 \forall x \in \R \)
+    \[ \Rightarrow \limes{n} f(\frac{1}{n},0) = 0 \]
+    \( x=y, x \neq 0: f(x,x) = \frac{x^2}{x^2 + x^2} = \frac{1}{2} \) \\
+    \( \limes{n} f(\frac{1}{n}, \frac{1}{n}) = \frac{1}{2} \neq 0 \) \\
+    \( f \) ist nicht stetig in \( (0,0) \).
+\end{bsp}
+Wie rechnet man mit partiellen Ableitungen?
+Z. B. \[ \abb{r}{\R^n}{\R}, x \mapsto r(x) = \abs{x} 
+= \left( \sum_{l=1}^n x_l^2 \right)^{\frac{1}{2}} \]
+Ist \( x \neq 0 \), dann existieren alle partiellen Ableitungen.
+
+\[ \partial_j r(x) = \ddxpartial{x_j} 
+\left( \sum_{l=0}^n x_l^2 \right)^{\frac{1}{2}} 
+= \frac{1}{2} \left( \sum_{l=1}^n x_l^2 \right)^{-\frac{1}{2}} 
+\cdot \ddxpartial{x_j} \underbrace{\sum_{l=1}^n x_j^2}_{=2x_j} \]
+\[ = \frac{x_j}{r(x)} = \frac{x_j}{\abs{x}} \]
+Quotientenregel: \( x \neq 0 \)
+\( \Rightarrow \partial_j r(x) \) nach \( x_i \) 
+differenzierbar.
+\[ \Rightarrow \partial_j d_j r(x) 
+= \frac{ \partial_i(x_j) r(x) = x_j \partial_i r(x) }{r(x)^2} 
+= \frac{\partial_{ij} \abs{x} - x_k \frac{x_i}{\abs{x}}}{\abs{x}^2} \]
+\[ = \frac{1}{\abs{x}} \left( \partial_{ij} - \frac{x_i x_j}{\abs{x}^2} \right). \]
+
+Sei \( \abb{\varphi}{(0,\infty)}{\R} \) zwei Mal differenzierbar. 
+
+\[ f = \varphi \circ r, f(x) = \varphi(r(x)) = \varphi(\abs{x}) \]
+\[ \partial_j f(x) = \varphi'(r(x)) \partial_j r(x) \]
+\[ = \varphi'(r(x)) \cdot \frac{x_j}{r(x)} 
+= \varphi'(\abs{x}) \frac{x_j}{\abs{x}}. \]
+\[ \partial_i \partial_j f(x) = \partial_i(\varphi'(r(x))) 
+\frac{x_j}{\abs{x}} + \varphi'(r(x)) \partial_i \frac{x_j}{r(x)} \]
+\[ = \varphi''(r(x)) \frac{x_i}{\abs{x}} \frac{x_j}{\abs{x}} 
++ \varphi'(\abs{x}) \frac{1}{\abs{x}} (\partial_{ij} - \frac{x_i x_j}{\abs{x}^2}) \]
+Laplace Operator:
+\[ \Delta f = \sum_{j=1}^n \partial_j ()\partial_j f) \]
+\( \Rightarrow \) ist \(f\) rotationssymmetrisch, so ist 
+\[ f(x) = \varphi(r(x)). \]
+\[ \Rightarrow \Delta f(x) = \Delta(\varphi(\abs{x})) 
+= \Delta \varphi(r(x)) = \sum_{j=1}^n 
+\partial_j \partial_j f(x) \]
+\[ = \sum_{j=1}^n (\varphi^n(\abs{x}) \frac{x_j^2}{\abs{x}^2} 
+- \varphi'(\abs{x}) \frac{1}{\abs{x}} (1 - \frac{x_j^2}{\abs{x}^2}) ) \]
+\[ = \varphi''(\abs{x}) - \varphi'(\abs{x}) \frac{n}{\abs{x}} 
++ \varphi'(\abs{x}) \frac{1}{\abs{x}} \]
+\[ = \varphi''(\abs{x}) - \frac{n-1}{\abs{x}} \varphi'(\abs{x}) \]
+\end{document}

@@ -1,0 +1,98 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{7}
+\section{Stetige Funktionen in metrischen Räumen}
+Seien \( (X, d_X) \) und \( (Y, d_Y) \) 
+metrische Räume, \( D \subset X \) und 
+\( \xi \in D \).
+Eine Funktion \( \abb{f}{D}{Y} \) heißt stetig in \(\xi\),
+wenn zu jedem \(\varepsilon > 0\) ein \(\delta > 0\) 
+existiert, sodass für alle \(x \in D\) gilt:
+\[ d_X(a, \xi) < \delta 
+\Rightarrow d_Y(f(a), f(\xi)) < \varepsilon \]
+
+\begin{defi}[Folgenkriterium für Stetigkeit]
+    \( \abb{f}{D}{Y} \) ist genau dann stetig 
+    in \( \xi \in D \), wenn für alle 
+    Folgen \( (x_n)_n \) aus \(D\) gilt:
+    \[ x_n \rightarrow \xi \Rightarrow 
+    f(x_n) \rightarrow f(\xi). \]
+\end{defi}
+\begin{bem}
+    \( \abb{f}{X}{Y} \) ist genau dann stetig wenn die 
+    Urbilder offener Mengen offen sind.
+\end{bem}
+\begin{bsp}
+    \( \abb{f}{\R^2}{\R} \) definiert durch 
+    \[ f(x,y) 
+    = \frac{e^{-\frac{1}{x^2}}y}{e^{-\frac{2}{x^2}}+y^2}, x \neq 0. \]
+    \[ f(x,y) = 0 \text{ sonst.} \]
+\end{bsp}
+\begin{beh}
+    \begin{enumerate}
+        \item Längs aller Kurven der Form 
+        \( (x,y) = (t^n, t^m), n,m\in\N \) besitzt 
+        \( f \) für \( t \rightarrow 0+ \) den 
+        Grenzwert \( 0 \).
+        \item \( f \) ist nicht stetig in \( (0,0) \).
+    \end{enumerate}
+\end{beh}
+\begin{bew}
+    \begin{enumerate}
+        \item 
+        \begin{align*}
+            \limesx{t}{0+} f(t^n, t^m) 
+            &= \limesx{t}{0+} \frac{ e^{-\frac{1}{t^{2n}}} t^m }{ e^{-\frac{2}{t^{2n}} + t^{2m} } }\\
+            &= \limesx{s}{0+} \frac{ e^{-\frac{1}{s^2} s^{m/n} } }{ e^{ -\frac{2}{s^2} + s^{\frac{2m}{n}} } }\\
+            &= \limesx{s}{0+} \frac{ e^{-\frac{1}{s^2} s^{-m/n} } }{ e^{ -\frac{-2}{s^2} e^{-2m/n} + 1 } }\\
+            &= 0.
+        \end{align*}
+        \item Aber \(f\) ist nicht stetig in \((0,0)\), denn
+        bei Annäherung an \((0,0)\) längs der Kurve
+        \( (x, y) = (t, e^{-\frac{1}{t^2}}), t \rightarrow 0+ \)
+        hat 
+        \[ \limesx{t}{0+} f(t, e^{-\frac{1}{t^2}}) 
+        = \limesx{t}{0+} \frac{e^{-\frac{1}{t^2}} 
+        \cdot e^{-\frac{1}{t^2}}}{e^{-\frac{2}{t^2}} + e^{-\frac{2}{t^2}}}
+        = \frac{1}{2} \neq f(0,0) = 0 \]
+    \end{enumerate}
+\end{bew}
+\begin{bsp}
+    Sei \( D = \bigcup_1( (0,0) ) \setminus \set{(0,0)} \).
+    \[ \abb{f}{D \setminus \set{(x,y) \in \R^2: x = 0 } }{\R}, 
+    (x,y) \mapsto \frac{ \ln (x^2) \sin(x^2 y) }{ 
+        e^{y^2} \cos(xy) }. \]
+    Betrachte \( \limesx{(x,y)}{0,0} f(x,y) \). \\
+    Sei \( (z^{(k)})_k \) definiert durch 
+    \( z^{(k)} := (x_k, y_k) \)
+    und \( (x_k)_k, (y_k)_k \) sind reelle 
+    Nullfolgen mit \( (x_k, y_k) \in U \)
+    für \(k \in \N\).\\
+    Für \(k \in \N\) gilt:
+    \[ f(z^{(k)}) = f(x_k, y_k) 
+    = \frac{ \ln(x_k^2) \sin(x_k^2 y_k) }{ 
+        e^{y_k^2} \cos(x_k y_k) }. \]
+    Es gilt \( \limes{k} e^{y_k^2} = 1 
+    = \limes{k} \cos(x_k y_k) \)
+    Für \( x \in (0,1) \) liefert der Mittelwertsatz 
+    \[ 0 > \ln x > 1 - \frac{1}{x} \]
+    und es gilt
+    \[ \abs{ \sin(x_k^2 y_k) } \leq \abs{ x_k^2 y_k }. \]
+    Somit folgt 
+    \[ \abs{\ln(x_k^2) \sin(x_k^2 y_k)} 
+    \leq \abs{ 1 - \frac{1}{x_k^2} }\abs{x_k^2 y_k} 
+    \leq x_k^2 \abs{y_k} + \abs{y_k} \rightarrow 0. \]
+    Also gilt 
+    \[ \limesx{(x,y)}{(0,0)} f(x,y) = 0. \]
+\end{bsp}
+\begin{bsp}
+    \[ f(x,y) := (1-e\abs{x+y})^{\frac{x}{x^2+y^2}}. \]
+    \( \limesx{(x,y)}{(0,0)} f(x,y) \) existiert nicht.
+\end{bsp}
+\begin{bew}
+    \[ \limes{n} f\left(\frac{1}{n}, \frac{1}{n}\right) 
+    = (1 - \frac{2e}{n})^\frac{n}{2} \rightarrow e^{-e}. \]
+    \[ \limes{n} f\left(-\frac{1}{n}, -\frac{1}{n}\right) 
+    = (1 - \frac{2e}{n})^{-\frac{n}{2}} \rightarrow e^e. \]
+\end{bew}
+\end{document}
