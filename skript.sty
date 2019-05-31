@@ -68,7 +68,8 @@
 \newcommand{\existse}{\exists!}
 \newcommand{\inverse}[1]{{#1}^{\minus 1}}
 \newcommand{\abb}[3]{\ensuremath{#1:#2\rightarrow #3}}
-\newcommand{\ddx}[1]{\frac{d}{dx}}
+\newcommand{\ddx}[1]{\frac{d}{d#1}}
+\newcommand{\ddxpartial}[1]{\frac{\partial}{\partial#1}}
 \newcommand{\dx}{\ensuremath{\; dx}}
 \newcommand{\integralx}[4]{\ensuremath{\int_{#2}^{#3} #1 \;d{#4}}}
 \newcommand{\integral}[3]{\integralx{#1}{#2}{#3}{x}}

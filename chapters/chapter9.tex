@@ -720,5 +720,28 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
     = \delta(\varepsilon, x_0) > 0:
     x \in X, d(x, x_0) < \delta \Rightarrow d(f(x), f(x_0)) 
     < \varepsilon. \)
+
+    %alternativer Beweis
+    Angenommen \( f \) ist nicht gleichmäßig stetig.
+    \[ \Rightarrow \exists \varepsilon > 0 
+    \;\forall \delta > 0: \exists x^1, x^2 \in X: 
+    d(x^1, x^2) < \delta 
+    \text{ und } d(f(x^1), f(x^2)) \geq \varepsilon. \]
+    Wähle \( \delta = \frac{1}{n} \Rightarrow x_n^1, x_n^2
+    \in X \)
+    \[ d(x_n^1, x_n^2) < \frac{1}{n}, d(f(x_n^1), f(x_n^2)) 
+    \geq \varepsilon. \]
+    \[ \Rightarrow (x_n^1)_n, (x_n^2)_n \subset X. \]
+    \( X \) kompakt, \( (x_n^1)_n \) konvergente Teilfolge 
+    \( (x_{n_k}^1)_k \).
+    \[ x := \limes{k} x_{n_k}^1 \]
+    Auch: \( \abb{f}{X}{Y} \) stetig.
+    \[ \Rightarrow f(x) = \limes{k} f(x_{n_k}^1) \]
+    Und: \[ d(x, x_{n_k}^2) \leq d(x, x_{n_k}^1) 
+    + \underbrace{d(x_{n_k}^1, x_{n_k}^2)}_{\leq \frac{1}{n_k}} 
+    \rightarrow 0 \]
+    \[ \Rightarrow x_{n_k}^2 \rightarrow x. \]
+    Aber: \( d(f(x_{n_k}^1), f(x_{n_k}^2)) \geq \varepsilon > 0 \)
+    konvergiert gegen \( d(f(x), f(x)) = 0 \). \Lightning{}
 \end{bew}
 \end{document}
