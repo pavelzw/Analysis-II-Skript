@@ -95,4 +95,47 @@ existiert, sodass für alle \(x \in D\) gilt:
     \[ \limes{n} f\left(-\frac{1}{n}, -\frac{1}{n}\right) 
     = (1 - \frac{2e}{n})^{-\frac{n}{2}} \rightarrow e^e. \]
 \end{bew}
+\begin{defi}[Homöomorphismus]
+    Seien \( X, Y \) metrische Räume. Eine 
+    bijektive Abbildung \( \abb{f}{X}{Y} \) 
+    heißt Homöomorphismus wenn \(f\) stetig 
+    ist und die Umkehrfunktion \( \abb{f^{-1}}{Y}{X} \) 
+    ebenfalls stetig ist.
+    
+    Zwei metrische Räume heißen homöomorph, 
+    wenn es einen \\Homöomorphismus 
+    \( \abb{f}{X}{Y} \) gibt.
+\end{defi}
+\begin{bsp}
+    \(\R^n\) ist homöomorph zur offenen
+        Einheitskugel \( B = \set{x \in \R^n: \norm{x} < 1} \). \\
+        Ein Homöomorphismus \( \abb{f}{\R^n}{B} \) 
+        wird gegeben durch 
+        \[ x \mapsto f(x) := \frac{x}{1 + \norm{x}}. \]
+        Die Abbildung ist stetig, da \( x \mapsto x \) 
+        und \( x \mapsto 1 + \norm{x} \) stetig sind.
+        Außerdem ist \(f\) bijektiv mit stetiger Umkehrabbildung
+        \[ g := \abb{f^{-1}}{B}{\R^n}, 
+        x \mapsto \frac{x}{1 - \norm{x}}. \]
+\end{bsp}
+\begin{bsp}
+    Sei \(X = [0, 2\pi) \subset \R, 
+        Y := \set{(x,y) \in \R^2: x^2 + y^2 = 1} \subset \R^2 \)
+        und \( d_X, d_Y \) die von \( \R^2 \) induzierten 
+        Metriken.\\ 
+        Sei \( \abb{f}{X}{Y}, t \mapsto (\cos t, \sin t) \).
+        Dann ist \(f\) stetig und bijektiv. Die Umkehrabbildung
+        \( \abb{f^{-1}}{Y}{X} \) ist aber unstetig in \((1,0) \in Y\). \\
+        Sei \( p_k = \left( \cos \left( 2\pi - \frac{1}{k} \right), 
+        \sin\left(2\pi - \frac{1}{k}\right) \right), k \geq 1 \).
+        Dann gilt
+        \[ p_k \overset{k\rightarrow \infty}{\rightarrow} (1, 0 = f(0)) \]
+        Aber 
+        \[ f^{-1}(p_K) = 2\pi - \frac{1}{k} 
+        \overset{k\rightarrow \infty}{\not \rightarrow} 0. \]
+\end{bsp}
+\begin{bem}
+    Man kann sogar zeigen, dass es keinen\\
+    Homöomorphismus \(X \rightarrow Y\) geben kann.
+\end{bem}
 \end{document}

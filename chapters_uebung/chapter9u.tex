@@ -1,0 +1,206 @@
+\documentclass[../ana2u.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{8}
+\section{Partielle Ableitungen}
+Sei \( \abb{f}{\R^2}{\R} \) definiert 
+durch 
+\[ f(x,y) = x^2 y \sin(xy). \]
+Per Definition ist dann die partielle 
+Ableitung von \(f\) bzgl. der \(1.\) Koordinate
+\begin{align*}
+    \ddxpartial{x} f(x,y) = f_x(x,y) 
+    &:= \limesx{h}{0} \frac{f(x+h,y) - f(x,y)}{h} \\
+    &= 2xy \sin(xy) + x^2y^2 \cos(xy).
+\end{align*}
+Also die Ableitung in \(x\), wenn man \(y\)
+festhält (bzw. als Konstante betrachtet). \\
+Ebenso die partialle Ableitung von \(f\) in \(y\)
+\begin{align*}
+    \ddxpartial{y} f(x,y) = f_y(x,y) 
+    &:= \limesx{n}{0} \frac{f(x,y+h) - f(x,y)}{h} \\
+    &= x^2\sin(xy) + x^3y \cos (xy).
+\end{align*}
+Achtung: \\
+Aus der Existenz der partiallen Ableitungen
+in einem Punkt folgt nicht automatisch die 
+Stetigkeit in diesem Punkt.
+\begin{bsp}
+    \[ \abb{f}{\R^2}{\R}, (x,y) \mapsto \begin{cases}
+        0, &xy = 0\\
+        1, &\text{sonst.}
+    \end{cases} \]
+    Offensichtlich ist \( f \) in \( (0,0) \) 
+    unstetig, aber 
+    \[ \limesx{h}{0} \frac{f(h,0) - f(0,0)}{h} = 0 \]
+    \[ \limesx{h}{0} \frac{f(0,h) - f(0,0)}{h} = 0 \]
+    \[ \Rightarrow f_x(0,0) = 0, f_y(0,0) = 0. \]    
+\end{bsp}
+Auch wen die Ableitung \(f_x, fy\) in einer vollen
+Umgebung eines Punktes existieren folgt im 
+Allgemeinen nicht die Stetigkeit von \(f\) in diesem
+Punkt.
+\begin{bsp}
+    \[ f(x,y) = \begin{cases}
+        \frac{xy}{(x^2+y^2)}, &(x, y) \neq (0,0)\\
+        0, &(x,y) = (0,0)
+    \end{cases} \]
+    \begin{align*}
+        f_x(x,y) &= \limesx{h}{0} 
+        \frac{f(x+h, y) - f(x,y)}{h} \\
+        &= \limesx{h}{0} \frac{ \frac{(x+h)y}{(x+h)^2 + y^2} 
+        - \frac{xy}{x^2 + y^2} }{h} \\
+        &= \frac{ hy(y^2- x^2 -xh) }{ h((2h+h^2)(x^2+y^2) + (x^2+y^2))^2 } \\
+        &= \frac{y(y^2- x^2 -xh)}{((2h+h^2)(x^2+y^2) + (x^2+y^2))^2} \\
+        &= \frac{y^3-yx^2}{(x^2+y^2)^2}.
+    \end{align*}
+    \[ f_y(x,y) = x \frac{x^2 - y^2}{(x^2 + x^2)^2} \]
+    und wir erhalten auch \( f_x(0,0) = 0; f_y(0,0) = 0 \),
+    weil \(f(x, 0) = 0, \\
+    f(0, y) = 0 \; \forall x,y \in \R\). Die partiellen 
+    Ableitungen existieren also überall in \( \R^2 \).
+    Aber die Funktion ist im Nullpunkt nicht stetig. 
+
+    Sei \( x_k = y_k = \frac{1}{k} \).
+    \[ \Rightarrow x_k \rightarrow 0, y_k \rightarrow 0. \]
+    Aber:
+    \[ f(x_k, y_k) = \frac{ \frac{1}{k} \cdot \frac{1}{k} }{ \frac{1}{k^2} + \frac{1}{k^2} } 
+    = \frac{k^2}{2 k^2} = \frac{1}{2} \rightarrow \frac{1}{2} \neq 0. \]
+    \( \Rightarrow f \) ist nicht stetig in \((0,0)\).
+\end{bsp}
+\begin{bem}
+Die Situation ändert sich, wenn die partiellen 
+Ableitungen stetig sind. Wenn die partiellen 
+Ableitungen \(f_x, f_y\) in einer Umgebung 
+eines Punktes existieren und in diesem Punkt 
+stetig sind, so ist \(f\) in diesem Punkt stetig.
+\end{bem}
+Nun zum allgemeinen Fall:\\
+Sei \( \eta = (\eta_1, \ldots, \eta_n) \in G \subset \R^n \).
+Dann heißt \( \abb{f}{G}{\R} \) im Punkt \( \eta \) 
+partiell differenzierbar nach \( x_j \), wenn die 
+durch Festhalten der übrigen Variablen 
+entstehende Funktion 
+\[ x_j \mapsto g(x_j) = f(\eta_1, \ldots, \eta_{j-1}, 
+x_j, \eta_{j+1}, \ldots, \eta_n) \]
+im eindimensionalen Sinn differenzierbar an 
+der Stelle \( \eta_j \) ist (\( j = 1,\ldots, n \)).
+Die entsprechende Ableitung \(g'\) wird partielle
+Ableitung der Funktion \(f\) nach der Variablen \(x_j\)
+(im Punkt \(\eta_j\))
+und einem der Symbole 
+\[ \ddxpartial{x_j} f(\eta), 
+f_{x_j}(\eta), D_j f(\eta) 
+:= \limesx{h}{0} \frac{ f(\eta + h e_j) - f(\eta) }{h} \]
+bezeichnet (\(e_j\) ist der \(j\)-te Einheitsvektor).
+
+Dabei wird vorausgesetzt, dass der Grenzwert gebildet 
+werden kann.
+
+\begin{bsp}
+    \[ \abb{r}{\R^n}{\R}, x \mapsto \norm{x}_2 
+    = \sqrt{x_1^2 + \dots + x_n^2} \] 
+    für \(x \in \R^n\).
+    Es gilt
+    \[ \ddxpartial{x_i} r = \frac{x_i}{r(x)}, 
+    \; \forall x \neq 0. \]
+\end{bsp}
+\begin{bsp}
+    Sei \(\abb{f}{\R_+}{\R}\) eine beliebige differenzierbare
+    Funktion. Dann ist die Funktion \( x \mapsto f(r(x)) \) auf 
+    \( \R^n \setminus \set{0} \) definiert und 
+    dort partiell differenzierbar.
+    \[ \ddxpartial{x_i} f(r(x)) = f'(r(x)) 
+    \ddxpartial{x_i} r = f'(r(x)) \frac{x_i}{r(x)}. \]
+\end{bsp}
+\begin{bsp}
+    \( n \geq 2 \)
+    \[ \abb{F}{\R^n}{\R}, x \mapsto \begin{cases}
+        \frac{ x_1 \cdots x_n }{r(x)^n}, & x \neq 0\\
+        0, & x = 0.
+    \end{cases} \]
+    Mit Beispiel 4 und 5 folgt, dass \( F \) partiell 
+    differenzierbar ist in \( \R^n \setminus \set{0} \).
+    \begin{align*}
+        \ddxpartial{x_1} F 
+        &= \frac{x_2 \cdots x_n}{r^n}
+        + x_1 \cdots x_n \ddxpartial{x_1} (r^{-n}) \\
+        &= \frac{x_2 \cdots x_n}{r^n} 
+        - n \frac{x_1^2 x_2 \cdots x_n}{r^{n+2}}
+    \end{align*}
+    Die Funktion \(F\) ist auch in \(x = 0\) partiell 
+    differenzierbar mit 
+    \[ (\ddxpartial{x_i} F)(0) = \limesx{h}{0} 
+    \frac{F(h e_i) - F(0)}{h} = 0 \]
+    Also ist \(F\) auf ganz \(\R^n\) partiell 
+    differenzierbar. Aber auch hier ist \(F\) nicht 
+    stetig im Nullpunkt. Denn sei 
+    \( a_k = \left(\frac{1}{k}, \ldots, \frac{1}{k} \right)) 
+    \in \R^n, k \geq 1 \), dann gilt \(a_k \rightarrow 0\)
+    Weiter gilt:
+    \[ r(a_k) = \frac{\sqrt{n}}{k} \]
+    \[ F(a_k) = \frac{ (\frac{1}{k})^n }{ (\frac{\sqrt{n}}{k})^n }
+    = n^{-\frac{n}{2}} \overset{k\rightarrow\infty}{\longrightarrow} 
+    n^{-\frac{n}{2}} \]
+    \( \Rightarrow  F \) nicht stetig im Nullpunkt.
+\end{bsp}
+\begin{bsp}
+    \[ f(x,y) = \begin{cases}
+        \frac{x\cdot y^2}{x^2 + y^2}, &(x,y) \neq (0,0)\\
+        0, &(x,y) = (0,0).
+    \end{cases} \]
+    Berechnen der Richtungsableitung im Nullpunkt 
+    in jede Richtung 
+    \( \nu = (\nu_1, \nu_2)\in \R^2 \) mit 
+    \( \norm{\nu}_2 = 1 \).
+    \begin{align*}
+        \ddxpartial{\nu} (0,0) 
+        &= \limesx{h}{0} \frac{ f((0,0) + h \nu) - f(0,0) }{h} \\
+        &= \limesx{h}{0} 
+        \frac{ \nu_1 \nu_2^2 h^3 }{h^3(\nu_1^2 + \nu_2^4 h^2)}
+        = \frac{\nu_2^2}{\nu_1}
+    \end{align*}
+    falls \( (\nu_1, \nu_2) \neq 0 \) und für \( \nu = (0,0)\) 
+    gilt \(f_\nu(0,0) = 0 \).
+    \(f\) ist nicht stetig im Nullpunkt.
+    \[ x_n = \frac{1}{n^2}, y_n = \frac{1}{n} \]
+    dann gilt \( (x_n, y_n) \rightarrow (0,0) \).
+    \[ f(x_n, y_n) = 
+    \frac{ \frac{1}{n^4} }{ \frac{1}{n^4} + \frac{1}{n^4} } 
+    = \frac{1}{2} \not \rightarrow 0. \]
+\end{bsp}
+\begin{bsp}
+    \[ \abb{f}{\R}{\R^2}, f(x) := \begin{cases}
+        \left(x \sin(\frac{1}{x}), \abs{x}^{x^2}\right),
+        &x\in \R \setminus \set{0} \\
+        (0,1), &x = 0.
+    \end{cases} \]
+    \begin{beh}
+        \(f\) ist stetig in \(0\). 
+    \end{beh}
+    Sei \( (x_k)_k \) Nullfolgen in 
+    \( \R \setminus \set{0} \). Aus Analysis I und II wissen
+    wir schon
+    \[ x\sin \frac{1}{x} \overset{x \rightarrow 0}{\longrightarrow} 0 \]
+    \[ \abs{x}^{x^2} = e^{x^2 \ln(\abs{x})} \rightarrow 1. \]
+    Dann gilt für \( k \in \N \):
+    \[ \norm{f(x_k) - f(0)}_2 
+    = \sqrt{x_k^2 \sin(\frac{1}{x_k})^2 + (\abs{x_k}^{x_k^2} - 1)^2 } 
+    \overset{k \rightarrow \infty}{\longrightarrow} 0.\]
+    Also ist \(f\) stetig in \(0\).
+    \begin{beh}
+        \(f\) nicht in \(0\) partiell differenzierbar.
+    \end{beh}
+    Dazu reicht es, eine der Koordinatenfunktionen zu betrachten.
+    Es sei \( \abb{f_1}{\R}{\R}, x \mapsto x \sin \frac{1}{x}, 
+    \; \forall x \in \R \setminus \set{0} \)
+    und \( f_1(0) = 0 \). Dann gilt für 
+    \( \abs{x} > 0 \): 
+    \[ \frac{1}{x} (f_1(x) - f_1(0)) = \sin(\frac{1}{x}). \]
+    Wir wissen \( \sin \frac{1}{x} \) divergiert für 
+    \(x \rightarrow 0\). Also ist \(f_1\) in \( 0 \) nicht 
+    differenzierbar und \( f \) in \(0\) nicht partiell 
+    differenzierbar.
+\end{bsp}
+
+\end{document}
