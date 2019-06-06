@@ -134,6 +134,11 @@ Gute Nachricht!
         \( \abb{\varphi}{I}{\R} \) differenzierbar)
         \[ \partial_j (\varphi \circ f)(x) 
         = \varphi'(f(x)) \partial(f(x)) \]
+        \item Produktregel: \( \abb{f}{U}{\R^m}, 
+        \abb{g}{U}{\R} \), partielle Ableitung 
+        existiert in \( x_0 \in U \).
+        \[ \Rightarrow \partial_j(fg)(x_0) 
+        = (\partial_j f)(x_0) + f(x_0) \partial_j g(x_0). \]
     \end{enumerate}
 \end{lem}
 Schlechte Nachricht!\\
@@ -199,4 +204,204 @@ Laplace Operator:
 \[ = \varphi''(\abs{x}) - \varphi'(\abs{x}) \frac{n}{\abs{x}} 
 + \varphi'(\abs{x}) \frac{1}{\abs{x}} \]
 \[ = \varphi''(\abs{x}) - \frac{n-1}{\abs{x}} \varphi'(\abs{x}) \]
+
+% Vorlesung vom 06.06.2019
+\( f(x) = \abs{x} \)
+\[ \partial_i \partial_j \abs{x} 
+= \frac{1}{\abs{x}} (\delta_{ij} - \frac{x_i x_j}{\abs{x}^2}) \]
+\[ \abb{\varphi}{(0,\infty)}{\R} \in C^2((0,\infty), \R) \]
+\[ f(x) = \varphi(r(x)) = \varphi(\abs{x}) \]
+
+
+\[ \Rightarrow \partial_i \partial_j f(x) 
+= \varphi''(\abs{x}) \frac{x_i x_j}{abs{x}^2}
++ \frac{\varphi'(\abs{x})}{\abs{x}} (\delta_{ij} 
+- \frac{x_i x_j}{\abs{x}^2}) \]
+\( \Delta = \) Laplace \( = \sum_{j=1}^d \delta_j^2 \)
+\[ \Rightarrow \Delta f(x) 
+= \varphi''(\abs{x}) + \varphi(\abs{x}) 
+\frac{(d-1)}{\abs{x}} \]
+z. B. \( f \) harmmonisch: \( \Delta f = 0
+= \varphi''(\abs{x}) + \frac{n-1}{\abs{x}} \varphi'(\abs{x}) \)
+\[ \Rightarrow \partial_r^2 \varphi + \frac{d-1}{r} \partial_r \varphi = 0 \]
+\[ \abb{\varphi}{(0,\infty)}{\R}, r \mapsto \varphi(r) \]
+\begin{align*}
+    0 = \partial_r^2 \varphi + \frac{n-1}{r} \partial_r \varphi \\
+    = r^{1-n} ( r^{n-1}\varphi')'
+\end{align*}
+\[ \Rightarrow (r^{n-1}\varphi')' = 0 \]
+\[ \Rightarrow r^{n-1} \varphi' = \tilde{a}, 
+\varphi' = \tilde{a} r^{1-n} \]
+\[ \Rightarrow \varphi =
+\begin{cases}
+    a r^{2-n} + b, &n \geq 3\\
+    a \ln r + b, & n = 2.
+\end{cases} \]
+z. B.: \( n=3: \varphi(r) = \frac{a}{r} (+b), a,b\in \R \)
+
+Erinnerung aus Lineare Algebra:
+\begin{align*}
+    \mathscr{L}(\R^n, \R^m) 
+    &:= \set{\text{lin. Abb. von } \R^n \text{ nach } \R^m}\\
+    &= \set{\text{stetige lin. Abb. von } \R^n \text{ nach } \R^m}
+\end{align*}
+allgemein \( X, Y \) normierte Vektorräume
+\[ \mathscr{L}(X, Y) := 
+\set{\text{stetige lin. Abb. von } X \text{ nach } Y}  \]
+\( \abb{A}{X}{Y} \) linear, ist stetig 
+\( \Leftrightarrow A \) ist stetig in \(0\) \\
+\( \Leftrightarrow A \) ist lokal gleichmäßig stetig \\
+\( \Leftrightarrow A \) ist beschränkt
+\( \abb{A}{X}{Y} \) linear ist beschränkt, falls 
+\[ \underset{\substack{x\in X\\x \neq 0}}{\sup}
+\frac{ \norm{Ax}y }{\norm{x}x} < \infty \]
+\[ = \underset{\substack{x\in X\\x \neq 0}}{\sup} 
+\norm{ A\left(\frac{x}{\norm{x}_X}\right) }_Y
+= \underset{\substack{x\in X\\\norm{x}_X = 1}}{\sup} 
+\norm{Ax}_Y \]
+Man überlege sich: Ist \( \abb{A}{R^n}{\R^m} \)
+linear, so ist
+\[ \underset{\substack{x\in \R^n \\ \norm{x} = 1}}{\sup} \abs{Ax} < \infty \]
+z.B. \( \abb{A}{\R^n}{Y} \) linear, \(x = \sum_{j=1}^n x_j e_j\)
+\begin{align*}
+    \norm{Ax}_Y &= \norm{\sum_{j=1}^n x_jAe_j}_Y \\
+    &\leq \sum_{j=1}^n \norm{ x_j A e_j }_Y \\
+    &= \sum_{j=1}^n \abs{x_j} \norm{ A e_j }_Y \\
+    &\leq \underset{j=1,\ldots,n}{\max} \abs{x_j} \sum_{j=1}^n \norm{A e_j}_Y\\
+    &\leq C \abs{x} < \infty
+\end{align*}
+\[ \Rightarrow \underset{x\in\R^n}{\sup} 
+\frac{ \norm{A x}_y }{\abs{x}} \leq C < \infty. \]
+\( \abb{f}{(a,b)}{\R} \) ist differenzierbar in \( X_0 \in (a,b)\)
+\[ \limesx{x}{x_0} \frac{f(x)-f(x_0)}{x-x_0} = f'(x_0) \]
+Taylor: \[ f(x) = f(x_0) + f'(x_0)(x - x_0) + \ldots \]
+\begin{defi}[Ableitung]
+    \( U \subset R^n \) offen. Eine Funktion \(\abb{f}{U}{R^m}\)
+    heißt differenzierbar in \(x_0 \in U\), falls ein
+    \( A \in \mathscr{L}(\R^n, \R^m) \) existiert mit
+    \[ \limesx{x}{x_0} \frac{f(x) -f(x_0 - A(x-x_0))}{\abs{x-x_0}} 
+    = 0 \in \R^m. \]
+    Mit der Substitution \( x = x_0 + h \), 
+    erhält man die äquivalente Form 
+    \[ \limesx{h}{0} \frac{ f(x_0 + h) - f(x_0) - A(h) }{\abs{h}} = 0 \]
+\end{defi}
+\begin{bem}
+    \begin{enumerate}
+        \item \( \abs{h} = \left( \sum_{j=1}^n \abs{h_j}^2 \right)^{1/2} \) 
+        euklidische Norm. Man kann jede Norm auf \( \R^n \) oder 
+        \( \R^m \) nehmen.
+        \item \( \R^n, \R^m \), kann durch \(X, Y\) 
+        normierter Vektorraum erreicht werden. \\
+        \( U \subset X \) offen, \( x_0 \in U, \abb{f}{X}{Y} \) ist
+        differenzierbar in \(x_0\), falls \(A \in \mathscr{L}(X, Y) \)
+        existiert mit
+        \[ \limesx{x}{x_0} \frac{f(x)-f(x_0)-A(x-x_0)}{\norm{x-x_0}_X} = 0 \]
+        \[ \Leftrightarrow \limesx{x}{x_0} 
+        \frac{\norm{f(x)-f(x_0)-A(x-x_0)}_Y}{\norm{x-x_0}_X} = 0 \]
+    \end{enumerate}
+    Warum ist die Ableitung eindeutig? 
+    Richtung \( h \in \R^n, x_0 + th \in U 
+    \;\forall \abs{t} \) klein genug
+    \( \abb{A}{\R^n}{\R^m} \) linear, 
+    \[ \frac{ f(x_0 + th) - f(x_0) - 
+    \overbrace{A(th)}^{=\dot{t} A(h)} }{ \abs{th} }\]
+    \[ = \frac{1}{\abs{h}} 
+    \left( \frac{f(x_0 + th) - f(x_0)}{t} - A(h) \right) \]
+    Also ist \( f \) in \( x_0 \) differenzierbar 
+    mit der Ableitung \( A \in \mathscr{L}(\R^n, \R^m) \)    
+    \[ \Rightarrow \underbrace{\limesx{t}{0} \frac{f(x_0+th) 
+    - f(x_0)}{t}}_{= D_{h_0}f(x_0)} = A(h) 
+    \text{ existiert.} \]
+\end{bem}
+\begin{notation}
+    Wir nennen \( D f(x_0) := A \) die 
+    Ableitung von \(f\) in \(x_0\).\\
+    \( \abb{Df(x_0)}{\R^n}{\R^m} \) linear.
+\end{notation}
+\begin{satz}[Eindeutigkeit und Berechnung der Ableitung]
+    Ist \( \abb{f}{U}{\R^m} \) in \( x_0 \in U \)
+    differenzierbar, so gilt 
+    \[ Df(\underbrace{x_0}_{\text{fest}})\underbrace{[h]}{\text{linear}} 
+    = D_n f(x_0) 
+    := \limesx{t}{0} \frac{f(x_0 + th) - f(x_0)}{t}. \]
+\end{satz}
+\begin{bsp}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item \( f(2) = z, \abb{f}{\C}{\C} \)
+        \[ \abb{f}{\R^2}{\R^2}, f(z) = f(x+iy) := \begin{pmatrix}
+            x^2-y^2 \\
+            2xy
+        \end{pmatrix}\]
+        \[ (x+iy)^2 = x^2 - y^2 + 2ixy \]
+        \[ h = \zeta + i \eta = \begin{pmatrix}
+            \zeta \\
+            \eta
+        \end{pmatrix} \]
+        \[ f(z + h) - f(z) = \begin{pmatrix}
+            (x + \zeta)^2 - (y + \eta)^2\\
+            2 (x+\zeta)(y + \eta)
+        \end{pmatrix} - \begin{pmatrix}
+            x^2 - y^2\\
+            2xy
+        \end{pmatrix} \]
+        \[ = \begin{pmatrix}
+            2x\zeta + \zeta^2 - 2y\eta - \eta^2\\
+            2x\eta + 2y\eta + 2\zeta \eta
+        \end{pmatrix} = \begin{pmatrix}
+            2x \zeta - 2y \eta \\
+            2x\eta + 2y \eta 
+        \end{pmatrix} = \begin{pmatrix}
+            \zeta^2 - \eta^2 \\
+            2 \zeta \eta
+        \end{pmatrix} \]
+        \[ = \begin{pmatrix}
+            2x & 2y\\
+            2y & 2x
+        \end{pmatrix} \begin{pmatrix}
+            \zeta\\ \eta
+        \end{pmatrix} + \begin{pmatrix}
+            \zeta^2 - \eta^2\\
+            2\zeta \eta
+        \end{pmatrix} \]        
+        \[ \Rightarrow \frac{\abs{f(z+h) - f(z - Ah)}}{\abs{h}}
+        = \abs{h} \overset{h \rightarrow 0}{\longrightarrow} 0 \]
+        und \[ \begin{pmatrix}
+            2x & -2y\\
+            2y & 2x
+        \end{pmatrix} \begin{pmatrix}
+            \zeta \\ \eta
+        \end{pmatrix}
+        = z \cdot h \]
+        \( z = x + iy, h = \zeta + i \eta \)
+    \end{enumerate}
+\end{bsp}
+Haben
+\[ \frac{f(x) - f(x_0) - A(x-x_0)}{\abs{x-x_0}} 
+\overset{x \rightarrow x_0}{\longrightarrow} 0 \]
+falls \( f \) in \(x_0\) differenzierbar ist.
+Definiere \( \varphi(x) := f(x)-f(x_0)-A(x-x_0), x \in U \)
+\[ \Rightarrow f(x) = f(x_0) A(x - x_0) + \varphi(x) 
+\;\forall x \in U. \]
+\( \varphi(x) = \abs{x-x_0} \cdot 
+\frac{\varphi(x)}{\abs{x-x_0}}
+= \abs{x-x_0} \cdot \frac{f(x)-f(x_0)-A(x-x_0)}{\abs{x-x_0}} \) \\
+\( x \neq x_0 \rightarrow 0 (x \rightarrow x_0) \)
+\[ \Rightarrow \limesx{x}{x_0} f(x) = f(x_0) 
++ \limesx{x}{x_0} A(x-x_0) 
++ \limesx{x}{x_0} \varphi(x) = f(x_0) \]
+\( \Rightarrow f \) differenzierbar \( \Rightarrow f \) stetig.
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
