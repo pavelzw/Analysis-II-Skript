@@ -276,10 +276,10 @@ z.B. \( \abb{A}{\R^n}{Y} \) linear, \(x = \sum_{j=1}^n x_j e_j\)
 \[ \limesx{x}{x_0} \frac{f(x)-f(x_0)}{x-x_0} = f'(x_0) \]
 Taylor: \[ f(x) = f(x_0) + f'(x_0)(x - x_0) + \ldots \]
 \begin{defi}[Ableitung]
-    \( U \subset R^n \) offen. Eine Funktion \(\abb{f}{U}{R^m}\)
+    \( U \subset \R^n \) offen. Eine Funktion \(\abb{f}{U}{R^m}\)
     heißt differenzierbar in \(x_0 \in U\), falls ein
     \( A \in \mathscr{L}(\R^n, \R^m) \) existiert mit
-    \[ \limesx{x}{x_0} \frac{f(x) -f(x_0 - A(x-x_0))}{\abs{x-x_0}} 
+    \[ \limesx{x}{x_0} \frac{f(x) -f(x_0) - A(x-x_0)}{\abs{x-x_0}} 
     = 0 \in \R^m. \]
     Mit der Substitution \( x = x_0 + h \), 
     erhält man die äquivalente Form 
@@ -321,7 +321,7 @@ Taylor: \[ f(x) = f(x_0) + f'(x_0)(x - x_0) + \ldots \]
 \begin{satz}[Eindeutigkeit und Berechnung der Ableitung]
     Ist \( \abb{f}{U}{\R^m} \) in \( x_0 \in U \)
     differenzierbar, so gilt 
-    \[ Df(\underbrace{x_0}_{\text{fest}})\underbrace{[h]}{\text{linear}} 
+    \[ Df(\underbrace{x_0}_{\text{fest}})\underbrace{[h]}_{\text{linear}} 
     = D_n f(x_0) 
     := \limesx{t}{0} \frac{f(x_0 + th) - f(x_0)}{t}. \]
 \end{satz}
@@ -392,16 +392,262 @@ Definiere \( \varphi(x) := f(x)-f(x_0)-A(x-x_0), x \in U \)
 + \limesx{x}{x_0} \varphi(x) = f(x_0) \]
 \( \Rightarrow f \) differenzierbar \( \Rightarrow f \) stetig.
 
+\begin{bsp}
+    4. \( \abb{A}{\R^n}{\R^m} \) linear, 
+    \( \abb{f}{\R^n}{\R^m}, x \mapsto f(x) := Ax \).
 
+    \[ \Rightarrow f(x) - f(x_0) - A(x - x_0) 
+    = A(x) - A(x_0) - A(x - x_0) = 0. \]
+    \( \Rightarrow f \) ist in jedem Punkt \( x_0 \in \R^n \) 
+    differenzierbar und \( Df(x_0) = A \in \mathscr{L}(\R^n, \R^m) \)
+    \[ D f(x_0)[h] = Ah. \]
 
+    \( \abb{f}{U}{\R^m}, U \subset \R^n \) offen,
+    \( Df (x_0) \) existiert \( \forall x_0 \in U \)
+    \[ \Rightarrow \abb{Df}{U}{\mathscr{L}(\R^n, \R^m)} \]
+    d. h. \( \forall x_0 \in U: \abb{Df (x_0)}{\R^n}{\R^n} \) linear.
 
+\end{bsp}
+\begin{bsp}[5]
+    \begin{enumerate}
+        \item \( \mathscr{L}(\R^n, \R^m) \) ist ein reeller Vektorraum.
+        \item hat auch eine natürliche Norm.
+        \[ A \in \mathscr{L}(\R^n, \R^m) : \norm{A} := 
+        \underset{\substack{x \in \R^n \\ x \neq 0}}{\sup} 
+        \frac{\abs{Ax}}{\abs{x}} < \infty \]
+        \( \Rightarrow \mathscr{L}(\R^n, \R^m) \) ist 
+        normierter vollständiger Vektorraum.
+        Symmetrisch, d. h. \( \scalarprod{x}{y} 
+        = \sum_{j=1}^n x_j y_j \) Euklidisches Skalarprodukt
+    \end{enumerate}
 
+    \begin{align*}
+        f(x + h) &= \scalarprod{x + h}{A(x+h)} = \scalarprod{x + h}{Ax + Ah}\\
+        &= \scalarprod{x}{Ax + Ah} + \scalarprod{h}{Ax + Ah} \\
+        &= \scalarprod{x}{Ax} + \scalarprod{x}{Ah} + \scalarprod{h}{Ax} + \scalarprod{h}{Ah}\\
+        &= f(x) + 2\scalarprod{Ax}{h} + \scalarprod{h}{Ah}
+    \end{align*}
+    \[ \Rightarrow \abs{ f(x+h) - f(x) - \scalarprod{2Ax}{h} } 
+    = \abs{ \scalarprod{h}{Ax} } 
+    \oversett{CSU}{\leq} \abs{h} \abs{Ah} 
+    \leq \abs{h} \norm{A} \abs{h} \]
+    \[ \Rightarrow \frac{\abs{ f(x+h) - f(x) - \scalarprod{2Ax}{h} } }{\abs{h}} 
+    \leq \norm{A} \abs{h} \rightarrow 0, h \rightarrow \infty. \]
 
+    Aus Def. der Ableitung folgt 
+    \[ Df(x)[h] = \scalarprod{2Ax}{h} \]
+    \[ \Rightarrow Df(x) = \scalarprod{2Ax}{\cdot}. \]
+\end{bsp}
+\begin{bsp}[6]
+    \[ \abb{f}{(a,b)}{\R^m}, (a, b) \subset \R \] 
+    habe Ableitung \( f'(x), x \in (a,b) \) im Sinne von Analysis 1, 
+    d. h. 
+    \[ \limesx{t}{0} \frac{f(x+t) - f(x)}{t} = f'(x) \] 
+    existiere. Dann ist \(f\) auch in \(x\) differenzierbar nach 
+    Definition 5 und es gilt.
 
+    \[ Df(x)[h] = f'(x) \cdot h \;\forall h \in \R. \]
+    \begin{bew}
+        \[ \frac{f(x+h) - f(x) - f'(x) \cdot h}{h} = \frac{f(x+h)-f(x)}{h} - f'(x)
+        \overset{h \rightarrow 0}{\longrightarrow} 0 \]
+        \[ \Rightarrow D f(x)[h] = f'(x)h \; \forall h \in \R \]
+    \end{bew}
+\end{bsp}
+\subsection{Berechnen von Ableitungen}
+Angenommen: \( \abb{f}{U}{\R^m}, U \subset \R^n \) offen
+Sei in \( x \in U \) differenzierbar (im Sinne von Definition 5).
+\[ \oversett{Satz 6}{\Rightarrow} Df(x)[h] = D_hf(x) \; \forall h \in \R^n \]
+Sei \( b_1, b_2, \dots, b_n \) Basis für \( \R^n \)
+\[ \Rightarrow h = \sum_{j=1}^n c_j b_j, c_1, \ldots, c_n \in \R \text{ eindeutig.} \]
+\[ \begin{pmatrix}
+    b_1 &\cdots &b_n
+\end{pmatrix} \cdot \begin{pmatrix}
+    c_1 \\
+    \vdots \\
+    c_n
+\end{pmatrix} \]
+\[ \Rightarrow Df(x)[h] = Df(x)[\sum_{j=1}^n c_j b_j]
+= \sum_{j=1}^n  c_j \underbrace{Df(x)[b_j]}_{=D_{b_j}f(x)}
+= \sum_{j=1}^n D_{b_j} f(x)c_j \]
+\[ = (D_{b_1}f(x), \dots, D_{b_n}f(x))
+\begin{pmatrix}
+    c1 \\
+    c2 \\
+    \vdots \\
+    c_n
+\end{pmatrix} \]
 
+Sei \( e_1, e_2, \dots, e_n \) Standardbasis für \(\R^n\).\\
+\( h = \begin{pmatrix}
+    h1 \\
+    \vdots\\
+    h_n
+\end{pmatrix} = \sum_{j=1}^n h_je_j \) \\
+\( \Rightarrow D_{e_j}f(x) = \partial_j f(x) \) partielle Ableitung.
+\[ \Rightarrow Df(x)[h] = \sum_{j=1}^n D_{e_j}f(x)h_j 
+= \sum_{j=1}^n \partial_j f(x)h_j
+= \underbrace{(\partial_1f(x), \dots, \partial_n f(x))}_{\text{Jakobimatrix}}
+\begin{pmatrix}
+    h_1 \\
+    \vdots \\
+    h_n    
+\end{pmatrix} \tag{*}\]
+Ist \( \abb{f}{U}{\R^m}, f = \sum_{j=1}^m f_j \partial_j, \quad 
+\partial_1, \ldots, \partial_m \) Standardbasis für \( \R^m \) \\
+\( \abb{f_j}{U}{\R} \) Koordinatenfunktion
+\[ f = \begin{pmatrix}
+    f_1 \\
+    f_2 \\
+    \vdots \\
+    f_m
+\end{pmatrix} \]
+\[ \partial_j f(x) = \begin{pmatrix}
+    \partial_j f_1(x) \\
+    \partial_j f_2(x) \\
+    \vdots \\
+    \partial_j f_m(x)
+\end{pmatrix} \]
+\[ \Rightarrow \begin{pmatrix}
+    \partial_1 f(x) & \cdots &\partial_n f(x)
+\end{pmatrix} 
+= \begin{pmatrix}
+    \partial_1 f_1(x) & \cdots & \partial_n f_1(x) \\
+    \vdots & & \vdots \\
+    \partial_1 f_m(x) & \cdots & \partial_n f_m(x)
+\end{pmatrix} \]
+Formel \((*)\) bleibt gültig, falls \( \abb{f}{U}{Y}, U \subset \R^n \)
+offen. \( Y\) beliebige normierter Vektorraum. 
 
+Gradient: \\
+Angenommen \(\abb{f}{U}{\R}, U \subset \R^n \) offen, differenzierbar
+in \(x \in U\)
+\[ \Rightarrow Df(x)[h] ) (\partial_1f(x), \dots, \partial_nf(x))\begin{pmatrix}
+    h_1\\
+    \vdots \\
+    h_n
+\end{pmatrix} \]
+\[ = \sum_{j=1}^n \partial_jf(x) h_j = \langle \nabla f(x), h \rangle \]
+(Euklidisches Skalarprodukt)
+\[ \nabla f(x) = \begin{pmatrix}
+    \partial_1 f(x) \\
+    \partial_2 f(x) \\
+    \vdots \\
+    \partial_n f(x)
+\end{pmatrix} = \begin{pmatrix}
+    \partial_1 f(x), \cdots, \partial_n f(x)
+\end{pmatrix}^T \]
 
+\begin{defi}
+    Wir nennen \( \grad f(x) := \nabla f(x) \begin{pmatrix}
+        \partial_1 f(x) \\
+        \vdots \\
+        \partial_n f(x)
+    \end{pmatrix} \in \R^n \) den Gradienten von \(f\) in 
+    \( x \in U \).
 
+    Ist \( \nabla f(x) = 0 \in \R^n \), so heißt \(x\) 
+    kritischer Punkt.\\
+    Ist \( \nabla f(x) \neq 0 \), so heißt \(x\) 
+    nicht kritisch.
+\end{defi}
+Sei \( \nabla f(x) \neq 0, h \in \R^n, \abs{h} = 1 \)
+\[ \Rightarrow D_hf(x) = Df(x)[h] = \langle f(x), h \rangle 
+\leq \abs{\langle \nabla f(x), h \rangle} \]
+\[ \leq \abs{\nabla f(x)} \abs{h} = \abs{\nabla f(x)} \]
+Wann gilt \gqq{\(=\)}?\\
+\( \Leftrightarrow h \) und \( \forall f(x) \) lin. abhängig \\
+\( \Rightarrow \) Richtung von \(h = \) Richtung von 
+\( \nabla f(x) \)
+\begin{bsp}
+    \( f(x) = \langle x, Ax \rangle, A \subset \R^{n \times n} \)
+    symmetrisch. \\
+    \( \Rightarrow Df(x)[h] = \langle 2Ax, h \rangle
+    \Rightarrow \nabla f(x) = 2Ax \)
+\end{bsp}
+\begin{satz}[Differenzierbar \(\Rightarrow\) stetig]
+    Sei \(U \subset \R^n\) offen, \( \abb{f}{U}{\R^n} \)
+    differenzierbar in \( x_0 \in U \)
+    \[ \Rightarrow f \text{ ist stetig in } x_0 \]
+\end{satz}
+\begin{bew}
+    Setzen \( \varphi(x) = f(x) - f(x_0) - A(x - x_0) \)
+    \[ \Rightarrow f(x) 
+    = f(x_0) + A(x - x_0) + \varphi(x) \rightarrow f(x_0), 
+    x\rightarrow x_0 \]
+    Sei \( x + x_0, \varphi(x) = 
+    \abs{x - x_0} \frac{f(x) - f(x_0) - A(x - x_0)}{\abs{x - x_0}} \)
+    da \( f \) in \(x_0\) diffbar und \(A = D f(x_0)\).
+\end{bew}
+\begin{lem}
+    Sei \( U \subset \R^n\) offen, \(\abb{f}{U}{\R^m}\).
+    Dann gilt:
+    \(f\) ist differenzierbar in \(x_0 \in U \) mit Ableitung
+    \( A = Df(x_0) \)
+    \( \Leftrightarrow \exists \) Funktion, \( \varepsilon = 
+    \abb{\varepsilon_{x_0}}{U}{\R^m} \), stetig in \(x_0\) und
+    \(\varepsilon(x_0) = 0\) mit 
+    \[ f(x) = \underbrace{f(x_0) + A(x-x_0)}_{\text{affin linear}} 
+    + \underbrace{\abs{x-x_0}\varepsilon(x)}_{\text{Fehler}}
+    \; \forall x \in U \]
+\end{lem}
+\begin{bew}
+    Definiere 
+    \[ \varepsilon(x) = \varepsilon_{x_0}(x) 
+    := \begin{cases}
+        0, & x = x_0 \\
+        \frac{f(x) - f(x_0) - A(x - x_0)}{\abs{x - x_0}}, & x\in U \setminus \set{x_0}
+    \end{cases} \]
+    \[ \Rightarrow f(x) = f(x_0) + A(x - x_0) + \abs{x - x_0} \varepsilon(x) \]
+    Dann scharf hinschauen (mit Brille am besten).
+\end{bew}
+Anwendung: Sei \( U \subset \R^n \) offen. \\
+Linearität: \( \abb{f,g}{U}{\R^m} \) differenzierbar in \(x_0 in U\)
+\( \Rightarrow \alpha f + \beta g \) ist differenzierbar in 
+\(x_0 \; \forall \alpha, \beta \in \R\) \\
+\( D(\alpha f + \beta f)(x_0) = \alpha Df(x_0) + \beta D_g(x_0) \)
+\begin{bew}
+    \( A = Df (x_0), B = Dg(x_0) \)
+    Haben (Lemma 8) 
+    \[ f(x) = f(x_0) + A(x - x_0) + \abs{x - x_0}\varepsilon(x), 
+    \abb{\varepsilon}{U}{\R^m} \text{ stetig und } \varepsilon(x_0) = 0 \]
+    \[ g(x) = g(x_0) + B(x - x_0) + \abs{x - x_0}\eta(x), 
+    \abb{\eta}{U}{\R^m} \text{ stetig und } \eta(x_0) = 0 \]
+    \[ (\alpha f +\beta g)(x) 
+    = \alpha f(x) + \beta g(x) \]
+    \[ = \alpha (f(x_0) + A(x - x_0) + \abs{x - x_0}\varepsilon(x)) 
+    + \beta (g(x_0) + A(x - x_0) + \abs{x - x_0}\eta(x)) \]
+    \[ \alpha f(x_0) + \beta g(x_0) + \alpha A(x-x_0)+\beta B(x-x_0) + \abs{x-x_0}
+    (\alpha \varepsilon(x) + \beta \eta(x)) \]
+    \( \abb{\gamma}{U}{\R} \) ist stetig in \(x_0\), 
+    \( \gamma(x_0) = 0 \).
+    \[ \oversett{Lemma 8}{\Rightarrow} 
+    D(\alpha f + \beta g)(x) = \alpha A + \beta B. \]
+\end{bew}
+Produktregel: Sei \( \abb{f}{U}{R^m}, \abb{g}{U}{\R} \)
+differenzierbar in \(x_0\) \\
+\( \Rightarrow  fg \) differenzierbar in \(x_0\): 
+\( D(fg)(x_0) = Df(x_0)g(x_0) + f(x_0)Dg(x_0) \)
+\begin{bew}
+    \[ (fg)(x) = f(x)g(x) 
+    = (f(x_0) + A(x - x_0) + \abs{x - x_0}\varepsilon(x)) 
+    (g(x_0) + B(x - x_0) + \abs{x - x_0}\eta(x))  \]
+    \[ = f(x_0)g(x_0) + A(x - x_0) g)x_0 
+    + f(x_0) + B(x - x_0) + \text{ Rest.} \]
+    \[\mathrm{Rest}(x) = A(x-x_0)B(x-x_0) + \abs{x-x_0}
+    (f(x_0)\eta(x) + \varepsilon(x)g(x_0) + A(x-x_0)\eta(x)
+    + \varepsilon(x)B(x-x_0) + \abs{x-x_0} \varepsilon(x)\eta(x))\]
 
-
+    \[ \abs{ A(x - x_0) B(x - x_0) } 
+    = \abs{A (x- x_0)}\abs{B(x-x_0)} \]
+    \[ \leq \norm{A}\abs{x-x_0} \norm{B}\abs{x - x_0}
+    = \norm{A} \norm{B} \abs{x - x_0}^2 \]
+    \[ \gamma(x) = \begin{cases}
+        0, &x = x_0\\
+        \frac{A(x - x_0)B(x - x_0)}{\abs{x - x_0}} + (**), &x \in U \setminus \set{x_0}.
+    \end{cases} \]
+    Ähnlich: Quotientenregel \( \abb{f}{U}{\R^m}, \abb{g}{U}{\R} \)
+    \[ g(x_0) \neq 0 \]
+    \[ D(\frac{f}{g})(x_0) 
+    = \frac{D(f)(x_0) g(x_0) - D(g)(x_0) f(x_0)}{g(x_0)^2} \]
+\end{bew}
 \end{document}
