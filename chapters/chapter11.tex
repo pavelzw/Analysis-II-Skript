@@ -1,0 +1,92 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{10}
+\section{Der mehrdimensionale Mittelwertsatz}
+\begin{satz}
+    Sei \( I = [a,b] \subset \R \) ein 
+    kompaktes Intervall 
+    und \(\abb{f}{I}{\R^m} \) stetig und 
+    differenzierbar in \( (a,b) \) mit 
+    \[ \norm{Df(t)} 
+    = \underset{\substack{h \in \R\\\abs{h} = 1}}{\sup} 
+    \abs{Df(t)[h]}
+    = \abs{f'(t)} \leq M \; \forall t \in (a,b) \]
+    \[ \Rightarrow \abs{f(b) - f(a)} \leq M(b-a). \]
+\end{satz}
+\begin{bew}
+    Wir geben uns etwas mehr Freiraum und zeigen, dass 
+    \( \forall \varepsilon > 0 \ 
+    a < \tilde{a} < \tilde{b} < b \)
+    \[ \abs{f(\tilde{b}) - f(\tilde{a})} 
+    \leq (M + \varepsilon)(\tilde{b} - \tilde{a}) \tag{\(**\)} \]
+    Die Behauptung folgt dann im Grenzwert
+    \( \tilde{b} \rightarrow b, \tilde{a} \rightarrow a \)
+    (da \(f\) auf \( [a,b] \) stetig ist) 
+    und \( \varepsilon \rightarrow 0 \).
+    Zum Beweis von \((**)\): 
+    \[ A := \set{t \in [\tilde{a}, \tilde{b}]:
+    \abs{f(t)-f(\tilde{a})} \leq (M+\varepsilon)(t-\tilde{a})
+    \; \forall \tilde{a} < t < \tilde{b}} \]
+    Beachte: 
+    \begin{enumerate}
+        \item \( A \neq \emptyset \), da \( \tilde{a} \in A \).
+        \item \( A \leq \tilde{b} \), also ist \( A \) 
+        nach oben beschränkt.
+    \end{enumerate}
+    \( \overundersett{Vollst.}{von \(\R\)}{\Rightarrow} 
+    c := \sup A \) existiert.\\
+    Müssen somit zeigen, dass \( c = \tilde{b} \).\\
+    Beachte: nach Konstruktion gilt \( A = [\tilde{a},c] \).\\
+    Angenommen \( \tilde{a} \leq c < \tilde{b} \). \\
+    Da \(f\) in \(c\) differenzierbar ist, folgt 
+    \( \exists \abb{\eta}{[\tilde{a}, \tilde{b}]}{\R^m} \) 
+    stetig in \(c\) mit \( \eta(c) = 0 \) 
+    und 
+    \[ f(c + h) = f(c) + Df(c)[h] + \abs{h} \eta(h) \tag{\(***\)} \]
+    Da \( \limesx{h}{0} \eta(h) = 0 \Rightarrow \exists \delta > 0: 
+    \abs{\eta(h)} < \varepsilon \; \forall \abs{h} < \delta \). \\
+    Sei \( c \leq x \leq c + \delta \):
+    \begin{align*}
+        \Rightarrow \abs{ f(x) - f(\tilde{a}) } 
+        &= \abs{ f(x) - f(c) + f(c) - f(\tilde{a})} \\
+        &\leq \abs{f(x) - f(c)} 
+        + \underbrace{\abs{f(c) - f(\tilde{a})}}_{\leq (M+\varepsilon)(c - \tilde{a})}
+    \end{align*}
+    und aus \( (***) \) folgt 
+    \begin{align*} 
+        \abs{ f(x) - f(c) } &= \abs{Df(x)[x - c]} + \abs{x - c}\eta(x-c) \\
+        &\leq \abs{Df(c)[x - c]} + \abs{ \abs{x-c}\eta(x-c) }\\
+        &\leq \underbrace{\norm{ Df(c) }}_{\leq M} \abs{x-c}
+        + \abs{x - c} \underbrace{\abs{ \eta(x-c) }}_{<\varepsilon} \\
+        &\leq (M+\varepsilon) \abs{x-c}
+    \end{align*}
+    \begin{align*}
+        \Rightarrow \abs{f(x) - f(\tilde{a})} 
+        &\leq (M+\varepsilon)(x - c + c - \tilde{a}) \\
+        &= (M+\varepsilon)(x - \tilde{a}) \;\forall c \leq x < c + \delta
+    \end{align*}
+    Also ist z. B. \( c < c + \frac{1}{2} \delta =: x \in A \)
+    \Lightning{} zu \(c = \sup A\).
+    \[ \Rightarrow c =: \tilde{b}. \]
+\end{bew}
+\begin{kor}
+    Sei \( U \subset \R^n \) offen, \(x,y \in U\) mit 
+    \[ [x,y] := \set{x+t(y-x): 0 \leq t \leq 1} \subset U \]
+    (das Liniensegment, welches \(x\) und \(y\) verbindet).
+    Ferner sei \( \abb{f}{U}{\R^m} \) stetig auf \( [x,y] \)
+    und differenzierbar in \((x,y) := \set{x+t(y-x): 0 < t < 1} \)
+    mit \( \norm{Df(z)} \leq M \;\forall z \in (x,y) \).\\
+    Dann ist 
+    \[ \abs{f(y) - f(x)} \leq M \abs{y - x}. \]
+\end{kor}
+\begin{bew}
+    Sei \( I = [0,1] \subset \R \) und 
+    \( \abb{g}{I}{\R^m} \)
+    \[ g(t) := f(x + t(y - x)). \]
+    Da \(f\) differenzierbar auf \((x,y)\) ist, ist \(g\)
+    differenzierbar in \(0,1\) und
+    \[ g'(t) = Df(x+t(y-x))[y-x] (\text{Kettenregel}) \]
+    Aus Satz 1 folgt die Behauptung.
+\end{bew}
+\end{document}

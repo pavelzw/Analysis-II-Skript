@@ -576,7 +576,7 @@ Wann gilt \gqq{\(=\)}?\\
     x\rightarrow x_0 \]
     Sei \( x + x_0, \varphi(x) = 
     \abs{x - x_0} \frac{f(x) - f(x_0) - A(x - x_0)}{\abs{x - x_0}} \)
-    da \( f \) in \(x_0\) diffbar und \(A = D f(x_0)\).
+    da \( f \) in \(x_0\) differenzierbar und \(A = D f(x_0)\).
 \end{bew}
 \begin{lem}
     Sei \( U \subset \R^n\) offen, \(\abb{f}{U}{\R^m}\).
@@ -649,5 +649,51 @@ differenzierbar in \(x_0\) \\
     \[ g(x_0) \neq 0 \]
     \[ D(\frac{f}{g})(x_0) 
     = \frac{D(f)(x_0) g(x_0) - D(g)(x_0) f(x_0)}{g(x_0)^2} \]
+\end{bew}
+\begin{satz}[Kettenregel]
+    Seien \( \abb{f}{U}{\R^m} \), 
+    \( \abb{g}{V}{\R^p} \)
+    mit \( U \subset \R^n, V \subset \R^m \)
+    offen und \( f(U) \subset V \).
+    Sind \(f\) in \(x_0\) und \(g\) in \(y_0 = f(x_0)\)
+    differenzierbar, so ist auch \(\abb{g \circ f}{U}{R^p}\)
+    differenzierbar in \(x_0\) und es gilt die 
+    Kettenregel 
+    \[ D(g\circ f)(x_0) = D_g(f(x_0))Df(x_0) \]
+    Sind \( \abb{A = D_g(y_0)}{\R^m}{\R^p} \) und 
+    \[ B = \abb{Df(x_0)}{\R^n}{\R^m} \]
+    die zugehörige Jacobimatrizen, so folgt 
+    \[ C := AB \]
+    wobei
+    \[ \abb{C}{\R^n}{\R^p} \] 
+    die Jacobimatrix zu \( D(f \circ g)(x_0) \) ist.
+\end{satz}
+\begin{bew}
+    Sei \(A = D_g(y_0), y_0 = f(x_0), B = Df(x_0) \).
+    \[ \oversett{Lem. 8}{\Leftrightarrow} 
+    f(x_0 + h) = f(x_0) + Bh + \abs{h} \varepsilon(h), \]
+    \( \varepsilon \) stetig in \(0. \varepsilon(0) = 0\).
+    \[ g(x_0 + k) = g(x_0) + Ak + \abs{k} \eta(k) \]
+    \( \eta \) stetig in \( 0 \), \( \eta(0) = 0 \).
+
+    \begin{align*}
+        \Rightarrow (g \circ f)(x_0 + h) &= g(f(x_0 + h))\\
+        &= g(f(x_0)) + Bh + \abs{h}\varepsilon(h) \\
+        &= g(f(x_0)) + A(Bh + \abs{h}\varepsilon(h)) \\
+        &+ \abs{ Bh + \abs{h}\varepsilon(h) } \eta (Bh + \abs{h}\varepsilon(h)) \\
+        &= g(f(x_0)) + ABh + \underbrace{\abs{h} A \varepsilon(h) + \abs{Bh \abs{h}\varepsilon(h)} \eta (Bh + \abs{h}\varepsilon(h))}_{=:\abs{h}\rho(h)}
+    \end{align*}
+    Beachte 
+    \[ \frac{\abs{ Bh + \abs{h}\varepsilon(h) }}{\abs{h}} 
+    \leq B(\frac{h}{\abs{h}}) + \abs{\varepsilon(h)} 
+    \leq \norm{B} + \underbrace{\abs{\varepsilon(h)}}_{\underset{h \rightarrow 0}{\longrightarrow 0}} \]
+    \[ \Rightarrow \exists c < \infty: \frac{\abs{Bh + \abs{h}\varepsilon(h)}}{\abs{h}} 
+    \leq C \; \forall \abs{h} \leq 1 \]
+    \[ \Rightarrow \forall \abs{h} \leq 1: 
+    \abs{\rho(h)} \leq | \underbrace{A(\underbrace{\varepsilon(h)}_{\rightarrow 0})}_{\rightarrow 0} 
+    + C\underbrace{\rho (Bh + \abs{h}\varepsilon(h)}_{\rightarrow 0}) | \]    
+    \[ \Rightarrow \limesx{h}{0} \abs{\rho(h)} = 0. \]
+    \( \oversett{Lem. 8}{\Rightarrow} g \circ f \) 
+    ist differenzierbar in \(x_0\) mit der Ableitung \( AB \).
 \end{bew}
 \end{document}
