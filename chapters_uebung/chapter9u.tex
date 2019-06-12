@@ -18,7 +18,7 @@ festhält (bzw. als Konstante betrachtet). \\
 Ebenso die partialle Ableitung von \(f\) in \(y\)
 \begin{align*}
     \ddxpartial{y} f(x,y) = f_y(x,y) 
-    &:= \limesx{n}{0} \frac{f(x,y+h) - f(x,y)}{h} \\
+    &:= \limesx{h}{0} \frac{f(x,y+h) - f(x,y)}{h} \\
     &= x^2\sin(xy) + x^3y \cos (xy).
 \end{align*}
 Achtung: \\
@@ -202,5 +202,91 @@ werden kann.
     differenzierbar und \( f \) in \(0\) nicht partiell 
     differenzierbar.
 \end{bsp}
+Wiederholung: \( G \subset \R^n \).
+\( \abb{f}{G}{\R} \) im Punkt \( \xi \) partiell 
+differenzierbar nach allen Variablen. 
+\[ \grad f(\xi) := \nabla f(\xi) 
+:= \left( \ddxpartialboth{f}{x_1}(\xi), 
+\dots, \ddxpartialboth{f}{x_n}(\xi) \right)) \]
+\( \abb{g}{G}{\R^m} \) im Punkt \( \xi \) nach 
+allen Variablen partiell differenzierbar, so heißt 
+die Matrix 
+\[ J_g(\xi) := \frac{ \partial_{g_1, \ldots, g_m} }{\partial_{x_1, \ldots, x_n}}(\xi) \]
+\[ := \begin{pmatrix}
+    \ddxpartialboth{g_1}{x_1} & \dots & \ddxpartialboth{g_1}{x_n} \\
+    \vdots & & \vdots \\
+    \ddxpartialboth{g_m}{x_1} & \dots & \ddxpartialboth{g_m}{x_n}
+\end{pmatrix} \]
+die Jacobimatrix von \(g\) in \( \xi \).\\
+Sei \( G \subset \R^n \) offen und \( \xi \in G \).
+\( \abb{f}{G}{\R^m} \) ist in \(\xi \) differenzierbar 
+\[ \Leftrightarrow \exists A \subset \hom(\R^n, \R^m): 
+\limesx{x}{\xi} \frac{f(x) - [f(\xi) + A(x - \xi) ] }{\norm{x-\xi}} = 0. \]
+\(A\) wird auch Approximierende genannt und 
+ist die Ableitung \(Df(\xi)\) von \(f\) im Punkt \(\xi\).\\
+\begin{bsp}
+    Sei \( \abb{f}{\R^3}{\R} \) definiert durch 
+    \( f(x,y,z) = xyz \).\\
+    Frage: Gibt es \( \vec{x} = (x,y,z) \in \R^3 \) aus Strecke 
+    zwischen \( \vec{a} = (1,1,0) \) und \( \vec{b} 
+    = (0,1,1) \), so dass 
+    \[ f(\vec{a}) - f(\vec{b}) = \scalarprod{ \grad f(\vec{x})}{\vec{a}-\vec{b}} \]
+    Antwort: \\ 
+    Ja. Per Definition: 
+    \( f(\vec{a}) = f(\vec{b}) = 0 \).\\
+    Wir parametrisieren die Strecke zwischen \( \vec{a} \) 
+    und \( \vec{b} \) 
+    \[ \set{\vec{x}(t) := \vec{a} + t(\vec{b}-\vec{a}) = (1-t, 1, t)}, t \in [0,1] \]
+    \begin{align*}
+        \grad f(\vec{x}) &= \grad f(x, y, z) \\
+        &= \begin{pmatrix}
+            \ddxpartial{x} f(x,y,z) & \ddxpartial{y} f(x,y,z) & \ddxpartial{z} f(x,y,z)
+        \end{pmatrix} \\
+        &= (yz, xz, xy).
+    \end{align*}
+    oder die Parameterdarstellung 
+    \[ \grad f(\vec{x}(t)) = (t, t - t^2, 1 - t) \]
+    Wir sucen \( t \in [0,1] \) mit 
+    \[ \scalarprod{ (t, t - t^2, 1 - t) }{(1,0,-1)} 
+    = f(\vec{a}) - f(\vec{b}) \]
+    \[ \Leftrightarrow 2t-1 = 0 \Rightarrow t = \frac{1}{2} \]
+    Also \( \vec{x} = (\frac{1}{2}, 1, \frac{1}{2}) \) 
+    ist der gesuchte Punkt.
+    Differentielle Form des Mittelwertsatzes.
+    Sei \( G \subset \R^n \) offen und \( \abb{f}{G}{\R} \) 
+    reellwertig und differenzierbar. Seien \( a, b \in G \) 
+    und \( \overline{a,b} \) sei in \( G \) enthalten.\\
+    Dan gibt es ein \( \xi \in \overline{a,b} \) mit 
+    \[ f(a)-f(b) = \scalarprod{\grad f(\xi)}{(a-b)} \]
+    Ist \( \abb{f}{G}{\R^m} \), also vektorwertig, 
+    so gibt es im Allgemeinen keine Zwischenstelle 
+    \( \xi \in \overline{a,b} \) mit 
+    \[ f(a) - f(b) = f'(\xi) (a - b). \]
+\end{bsp}
+\begin{bsp}[für Ableitung]
+    \( \abb{f}{\R^2}{\R}, (x,y) \mapsto x^3 + e^y \).
+    \begin{beh}
+        \( \abb{g}{\R^2}{\R^{1\times 2}}, (x,y) \mapsto \begin{pmatrix}
+            3x^2 & e^y
+        \end{pmatrix} \)
+    \end{beh}
+    \begin{bew}
+        Sei \( (x_0, y_0) \in \R^2 \) und 
+        \( h = (h_1, h_2) \in \R^2 \setminus \set{(0,0)} \).
+        Wir müssen zeigen, dass \( g \) die lineare Approximierende 
+        für \(A\) ist.
+        \[ \frac{1}{\abs{h}} \abs{f(x_0 + h_1, y_0 + h_2) - f(x_0, y_0) - (3x_0^2 e^{y_0})\begin{pmatrix}
+            h1 \\
+            h2
+        \end{pmatrix}} \overunderset{!}{h \rightarrow 0}{\longrightarrow} 0 \]
+        \[ = \ldots 
+        \leq \frac{1}{\abs{h}} (3 \abs{x_0} \abs{h^2} + \abs{h}^2) 
+        + \frac{1}{\abs{h}} \sum_{k=1}^\infty \sum_{l=2}^k \binom{k}{l} 
+        \frac{\abs{ y_0 }^{k-l}}{k!} \abs{h}^l \]
 
+        \[ = (3\abs{x_0}\abs{h} + \abs{h}^2) + 
+        \sum_{k=1}^\infty \sum_{l=2}^k \binom{k}{l} 
+        \frac{\abs{ y_0 }^{k-l}}{k!} \abs{h}^{l-1} \rightarrow 0. \]
+    \end{bew}
+\end{bsp}
 \end{document}
