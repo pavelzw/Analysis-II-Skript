@@ -1,0 +1,162 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{11}
+\section{Existenz der Ableitung}
+\begin{defi}
+    \(U \subset \R^n \) offen, \(\abb{f}{U}{\R^m}\) heißt
+    stetig differenzierbar auf \(U\), falls \(f\) für alle
+    \(x \in U\) differenzierbar ist und    
+    \[ \abb{Df}{U}{\mathscr{L}(\R^n, \R^m)} \]
+    eine stetige Funktion ist.
+\end{defi}
+\begin{bem}
+    Seien \(X, Y\) normierte Räume. 
+    \( \mathscr{L}(X,Y) \) ist ein Vektorraum mit
+    der Operatornorm \( (A \in \mathscr{L}(X,Y)) \)
+    \[ \norm{A} = \underset{\substack{x\in X\\x\neq 0}}{\sup}
+    \frac{\norm{Ax}_Y}{\norm{x}_X} 
+    = \underset{\substack{u\in X\\ \norm{u}_X = 1}}{\sup}
+    \norm{Au}_Y
+    \quad a \in \mathscr{L}(X,Y) \]
+\end{bem}
+\begin{bem}
+    Eine Funktion \(\abb{G}{U}{\mathscr{L}(X,Y)}\) ist 
+    steig in \(x_0 \in U\), falls 
+    \[ \limesx{x}{x_0} \underbrace{\norm{G(x) - G(x_0)}}_{
+        = \norm{(G(x) - G(x_0))[u]}_Y
+    } = 0 \]
+\end{bem}
+Ist \(X=\R^m, Y = \R^m\), so ist \(\mathscr{L}(\R^n, \R^m)\)
+wieder ein endlich dimensionaler reeller Vektorraum, also sind 
+alle Normen auf \( \mathscr{L}(\R^n, \R^m) \) äquivalent.
+Ist \( A \in \mathscr{L}(\R^n, \R^m) \), so können wir \(A\) 
+auch als \( m \times n \)-Matrix darstellen.
+\[ A = (a_{jk})_{\substack{ 1 \leq j \leq m\\1 \leq k \leq n }} \]
+\begin{defi*}[Hilbert-Schmidt Norm]
+    Wir definieren
+    \[ \norm{A}_{HS} = \norm{A}_2 := \left( 
+        \sum_{j=1}^m \sum_{k=1}^n \abs{a_{jk}}^2 \right)^{1/2} \]
+    die sogenannte Hildert-Schmidt Norm.
+\end{defi*}
+Somit erhalten wir für \( \abb{G}{U}{\mathscr{L}(\R^n, \R^m)} \) 
+für jedes \( x \in U \) eine Matrix
+\[ G(x) = (g_{jk}(x))_{\substack{1 \leq j \leq m \\ 
+1 \leq k \leq n}} \]
+und \( \abb{G}{U}{\mathscr{L}(\R^n, \R^m)} \) ist stetig 
+in \(x_0 \in U\), falls
+\[ \limesx{x}{x_0} \underbrace{\norm{G(x) - G(x_0)}_{HS}}_{
+    (= \sum_{j,k} (g_{jk}(x)-g_{jk}(x_0))^2)^{1/2}} = 0 \]
+Eine wichtige Folgerung:\\
+\( \abb{G}{U}{\mathscr{L}(\R^n, \R^m)}; x \mapsto G(x) 
+= (g_{jk}(x))_{\substack{1 \leq j \leq m 
+\\ 1 \leq k \leq n}} \)
+ist stetig in \( x_0 \in U \)
+\( \Leftrightarrow \) alle \( \abb{g_{j,k}}{U}{\R} \) 
+sind stetig in \(x_0\) für alle 
+\( 1 \leq j \leq m, 1 \leq k \leq n \).\\
+
+Ist \(\abb{f}{U}{\R^m} \) in \(x_0\) differenzierbar, so lässt 
+sich \(Df(x_0)\) durch die Jacobimatrix darstellen.
+\[ \begin{pmatrix}
+    \partial_1 f(x_0) & \cdots & \partial_n f(x_0)
+\end{pmatrix} = \begin{pmatrix}
+    \partial_1 f_1(x_0) & \cdots & \partial_n f_1(x_0) \\
+    \vdots && \vdots \\
+    \partial_1 f_m(x_0) & \cdots & \partial_n f_m(x_0)
+\end{pmatrix}. \]
+\( \Rightarrow \) die Ableitung \( Df(x_0) \) existiert 
+\( \forall x_0 \in U \subset \R^n \), so ist 
+\( \abb{Df}{U}{\mathscr{L}(\R^n, \R^m)} \) 
+stetig in \( x_0 \in U \) \\
+\( \Leftrightarrow \) alle partiellen Ableitungen 
+\( \abb{\partial_k f_j}{U}{\R} \) sind stetig in 
+\(x_0 \; \forall 1 \leq j \leq m, 1 \leq k \leq n \) \\
+\( \Leftrightarrow \) alle partiellen Ableitungen 
+\( \abb{\partial_k f}{U}{\R^m} \)
+sind stetig in \(x_0 \; \forall 1 \leq k \leq n\).
+Hauptbeobachtung:\\
+Die Stetigkeit aller partiellen Ableitungen 
+impliziert die Existenz von \(Df\).\\
+Erinnerung: \\
+Ist \(\abb{f}{U}{\R^m}\)
+differenzierbar in \( x\in U \)\\
+\( \Rightarrow \) alle partiellen Ableitungen 
+\( \partial_j f(x), 1 \leq j \leq n \) existieren
+und es gilt
+\[ Df(x)[h] = \sum_{j=1}^n \partial_j f(x) h_j. \]
+Hier \( \R^n = \R \underbrace{\times \ldots \times}_{n\text{-mal}} \R \)
+Es wird nützlich sein, dies etwas flexibler zu 
+gestalten.\\
+Seien \( d_1, \ldots, d_l \in \N \) mit
+\[ n = \sum_{j=1}^l d_j. \]
+Schreiben 
+\[ R^n = \R^{d_1} \times \ldots \times \R^{d_l} \]
+\( \Rightarrow h \in \R^n \) lässt sich schreiben
+als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
+\begin{defi}
+    Sei \( \R^n = \R^{d_1} \times \dots \times \R^{d_l}, U \subset \R^n \),
+    \( x = (x_1, \ldots, x_l)^t \in U \).
+    Eine Funktion \( \abb{f}{U}{\R^m} \) heißt verallgemeinert
+    partiell differenzierbar in \(x\) in der \(j\)-ten 
+    Variable (\(j = 1, \ldots, l\)), falls die Funktion 
+    \[ h_j \mapsto f(x_1,\ldots, x_{j-1}, x_j + h_j, 
+    x_{j+1}, \ldots, x_l) \in \R^m \] 
+    in \( h_j = 0 \) differenzierbar ist.\\
+    Wir schreiben \(D_jf(x)\) für diese Ableitung.\\
+    Man beachte: \( \abb{D_jf(x)}{\R^{d_j}{\R^m}} \) ist linear.
+\end{defi}
+\begin{bem}
+    Ist \(U \subset \R^n\) offen und 
+    \( x = (x_1, \ldots, x_l) 
+    \in \R^{d_1} \times \ldots \times \R^{d_l} \in U \),
+    so gibt es offene Mengen \( U_j \subset \R^{d_j} \) 
+    mit \( x_j \in U_j, j = 1,\ldots, l \), sodass 
+    der \gqq{Quader} \( \tilde{U} := U_1 \times \cdots \times U_l \subset U \) 
+    ist.
+\end{bem}
+\begin{lem}
+    Notation wie Definition 2. \( U \subset \R^n \) 
+    offen, \( x \in U, x = (x_1, \ldots, x_l)^t \in U, 
+    x_j \in \R^{d_j}, 1 \leq j \leq l \).
+    Ist \(\abb{f}{U}{R^m}\) in \(x\) differenzierbar,
+    so existieren alle (verallgemeinerten) partiellen 
+    Ableitungen in \( x \) und für \( h \in \R^n, 
+    h = (h_1, \ldots, h_l)^T, h_j \in \R^{d_j}, 1 \leq j \leq l \) 
+    gilt 
+    \[ Df(x)[h] = \sum_{j=1}^l D_j f(x)[h_j]. \]
+\end{lem}
+\begin{bew}
+    Sei \(\R^n = \R^{d_1} \times \ldots \times \R^{d_j}\) und
+    \( \abb{I_j}{\R^{d_j}}{\R^n}; h_j \mapsto (0, \ldots, 0, h_j, 0, \ldots, 0)^t \) 
+    die kanonische Einbettung von \(\R^{d_j}\) in
+    \[\R^n = \R^{d_1} \times \R^{d_{j-1}} \times \R^{d_j} 
+    \times \R^{d_{j+1}} \times \ldots \times \R^{d_l}\]
+    Die Abbildung ist stetig und linear und somit 
+    differenzierbar mit Ableitung \( I_j \).\\
+    Man beachte: \( \exists U_j \subset \R^{d_j} \) offen mit \(0 \in U_j\)
+    und \(\abb{f_j}{U_j}{\R^m}; 
+    a_j \mapsto f(x_1, \ldots, x_{j-1}, x_j + a_j, x_{j+1}, \ldots, x_l)\)
+    \[ f_j(a_j) = f(x + I_j(a_j)). \]
+    Nach der Kettenregel ist \( f_j \) in \( a_j = 0 \) 
+    differenzierbar und somit existiert \( D_j f(x) \) 
+    die gegeben ist durch 
+    \[ D_j f(x) = Df(x) \circ DI_j 
+    = Df(x) \circ I_j \tag{\(*\)} \]
+    Da für alle \(h \in \R^n = \R^{d_1} \times \ldots \times \R^{d_j},
+    h = \sum_{j=1}^l I_j(h_j) \) folgt
+    \[ Df(x)[h] = Df(x)[\sum_{j=1}^l I_j(h_j)]
+    = \sum_{j=1}^l 
+    \underbrace{Df(x)I_j(h_j)]}_{= Df(x) \circ I_j(h_j) = D_jf(x)[h_j]} \]
+\end{bew}
+\begin{satz}
+    Schreiben \( \R^n = \R^{d_1} \times \ldots \times \R^{d_j} \),
+    \( d_j \in \N , 1 \leq j \leq l \) mit \( \sum_{j=1}^l d_j = n \).\\
+    Sei \( U_j \in \R^{d_j} \) offen und 
+    \( U = U_1 \times \ldots \times U_l \subset \R^n \) (auch offen).\\
+    Eine Funktion \( \abb{f}{U}{\R^m} \) ist stetig differenzierbar auf 
+    \( U \Leftrightarrow \) alle verallgemeinerten partiellen Ableitungen 
+    \( D_jf \) sind stetig auf U.\\
+    In diesem Fall gilt die Formel aus Lemma 3.
+\end{satz}
+\end{document}
