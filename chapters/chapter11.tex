@@ -89,4 +89,19 @@
     \[ g'(t) = Df(x+t(y-x))[y-x] (\text{Kettenregel}) \]
     Aus Satz 1 folgt die Behauptung.
 \end{bew}
+\begin{kor}
+    Sei \(U \subset \R^n\) offen, \(x, y \in U\)
+    mit \([x,y] \subset U, \abb{f}{U}{\R^m}\) differenzierbar
+    auf ganz \(U\). \(\Rightarrow \forall z \in U\)
+    \[\abs{f(y)-f(x) - Df(z)[y-x]} \leq \abs{y-x} 
+    \underset{\rho \in U}{\sup} \norm{Df(\rho)- Df(z)} \]
+\end{kor}
+\begin{bew}
+    Sei \(\abb{g}{U}{\R^m}\) definiert durch 
+    \[ g(\rho) := f(\rho) - Df(z)[\rho]. \]
+    Dann ist \( g \) differenzierbar mit 
+    Ableitung 
+    \[ D_g(\rho) = Df(\rho) - Df(z). \]
+    Aus Korollar 2 folgt die Behauptung.
+\end{bew}
 \end{document}
