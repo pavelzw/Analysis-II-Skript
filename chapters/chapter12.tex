@@ -143,5 +143,20 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     die gegeben ist durch 
     \[ D_j f(x) = Df(x) \circ DI_j 
     = Df(x) \circ I_j \tag{\(*\)} \]
+    Da für alle \(h \in \R^n = \R^{d_1} \times \ldots \times \R^{d_j},
+    h = \sum_{j=1}^l I_j(h_j) \) folgt
+    \[ Df(x)[h] = Df(x)[\sum_{j=1}^l I_j(h_j)]
+    = \sum_{j=1}^l 
+    \underbrace{Df(x)I_j(h_j)]}_{= Df(x) \circ I_j(h_j) = D_jf(x)[h_j]} \]
 \end{bew}
+\begin{satz}
+    Schreiben \( \R^n = \R^{d_1} \times \ldots \times \R^{d_j} \),
+    \( d_j \in \N , 1 \leq j \leq l \) mit \( \sum_{j=1}^l d_j = n \).\\
+    Sei \( U_j \in \R^{d_j} \) offen und 
+    \( U = U_1 \times \ldots \times U_l \subset \R^n \) (auch offen).\\
+    Eine Funktion \( \abb{f}{U}{\R^m} \) ist stetig differenzierbar auf 
+    \( U \Leftrightarrow \) alle verallgemeinerten partiellen Ableitungen 
+    \( D_jf \) sind stetig auf U.\\
+    In diesem Fall gilt die Formel aus Lemma 3.
+\end{satz}
 \end{document}
