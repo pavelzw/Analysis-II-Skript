@@ -82,14 +82,14 @@ Grenzwert existiert.} \]
 \begin{defi}[Richtungsableitung]
     Sei \( \abb{f}{U}{\R^m}, U \subset \R^n \) offen, 
     \( x \in U, v \in \R^n \).
-    \[ D_U f(x) := \limesx{t}{0} \frac{f(x + tv) - f(x)}{t} 
+    \[ D_v f(x) := \limesx{t}{0} \frac{f(x + tv) - f(x)}{t} 
     =: \ddx{t} f(x + tv) \]
     heißt die Richtungsableitung von \( f \) in \( x\in U \), 
     in Richtung \( v \in \R^n \).
 \end{defi}
 \begin{bem}
     Manchmal sinnvoll
-    \[ D_U f(x) = \limesx{t}{0+} \frac{f(x + tv) - f(x)}{t}. \]
+    \[ D_v f(x) = \limesx{t}{0+} \frac{f(x + tv) - f(x)}{t}. \]
 \end{bem}
 \begin{bsp}
     \( v = e_j \) sind kanonische Basisvektoren von \( \R^n \).
@@ -127,7 +127,7 @@ Gute Nachricht!
         \end{array} \right) \]
         Sofern eine der beiden Seiten existiert.
         \item Quotientenregel (für \( g(x) \neq 0 \))
-        \[ \partial_j (\frac{f}{g})(x) 
+        \[ \partial_j \left(\frac{f}{g}\right)(x) 
         = \frac{g(x) \partial_j f(x) - f(x) \partial_j g(x)}{g(x)^2} \]
         \item Kettenregel (für \( \abb{f}{U}{I \subset \R}, 
         I \) offenes Intervall, 
@@ -193,7 +193,7 @@ Sei \( \abb{\varphi}{(0,\infty)}{\R} \) zwei Mal differenzierbar.
 \[ = \varphi''(r(x)) \frac{x_i}{\abs{x}} \frac{x_j}{\abs{x}} 
 + \varphi'(\abs{x}) \frac{1}{\abs{x}} (\partial_{ij} - \frac{x_i x_j}{\abs{x}^2}) \]
 Laplace Operator:
-\[ \Delta f = \sum_{j=1}^n \partial_j ()\partial_j f) \]
+\[ \Delta f = \sum_{j=1}^n \frac{\partial_j^2}{\partial_j^2 x_j^2} f \]
 \( \Rightarrow \) ist \(f\) rotationssymmetrisch, so ist 
 \[ f(x) = \varphi(r(x)). \]
 \[ \Rightarrow \Delta f(x) = \Delta(\varphi(\abs{x})) 

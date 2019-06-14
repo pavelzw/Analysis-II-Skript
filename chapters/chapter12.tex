@@ -184,14 +184,14 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     \begin{align*}
         &f(x + h) - f(x) - D_1f(x)[h_1] - D_2 f(x)[h_2] \\
         &= f(x_1 + h_1, x_2 + h_2) - f(x_1 + h_1, x_2) 
-        - D_2 f(x_1 + h, x_2)[h_2] \tag{\Romannum{1}}\\ 
-        &+ D_2 f(x_1 + h, x_2)[h_2] - D_2 f(x_1, x_2)[h_2] \tag{\Romannum{2}} \\
-        &+ f(x_1 + h_1, x_2) - f(x_1, x_2) - D_1 f(x_1, x_2)[h_1] \tag{\Romannum{3}}.
+        - D_2 f(x_1 + h, x_2)[h_2] \tag{I}\\ 
+        &+ D_2 f(x_1 + h, x_2)[h_2] - D_2 f(x_1, x_2)[h_2] \tag{II} \\
+        &+ f(x_1 + h_1, x_2) - f(x_1, x_2) - D_1 f(x_1, x_2)[h_1] \tag{III}.
     \end{align*}
     Da \(f\) in \(x \in (x_1, x_2)^t\) in \(x_1\) partiell 
     differenzierbar ist, folgt 
-    \[ \limesx{h_1}{0} \frac{\Romannum{3}}{\abs{h_1}} = 0 \Rightarrow
-    \limesx{h}{0} \frac{\Romannum{3}}{\abs{h}} = 0 \]
+    \[ \limesx{h_1}{0} \frac{III}{\abs{h_1}} = 0 \Rightarrow
+    \limesx{h}{0} \frac{III}{\abs{h}} = 0 \]
     da \( \abs{h} = (\abs{h_1}^2 + \abs{h_2}^2)^{1/2} \geq \abs{h_1} \)
     \begin{align*}
         \abs{II} &= \abs{ D_2 f(x_1 + h_1, x_2)[h_2] - D_2 f(x_1, x_2)[h_2] } \\
@@ -205,12 +205,12 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     \[ I = f(x_1 + h_1, x_2 + h_2) - f(x_1 + h_1, x_2) - D_2 f(x_1 + h_1, x_2)[h_2] \]
     zu betrachten.
     Aus Korollar 11.3 folgt
-    \[ \abs{\Romannum{1}} = \underbrace{\abs{h_2}}_{\abs{h}} \underset{
+    \[ \abs{I} = \underbrace{\abs{h_2}}_{\abs{h}} \underset{
     \substack{
         \rho \in \R^{d_1}\\
         \abs{\rho} \leq \abs{h_1}
     }}{\sup} \norm{D_2f(x_1+\rho, x_2) - D_2f(x_1, x_2)} \]
-    \[ \Rightarrow \frac{\Romannum{1}}{\abs{h}} \leq \underset{
+    \[ \Rightarrow \frac{I}{\abs{h}} \leq \underset{
         \substack{
             \rho \in \R^{d_1}\\
             \abs{\rho} \leq \abs{h_1}
