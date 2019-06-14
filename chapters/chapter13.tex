@@ -1,0 +1,88 @@
+\documentclass[../ana2.tex]{subfiles}
+\begin{document}
+\setcounter{section}{12}
+\section{Anwendungen}
+\begin{notation}
+    \( U \subset \R^n \) offen, 
+    dann schreiben wir \(f \in \mathcal{C}^1(U, \R^m)\), 
+    falls alle partiellen Ableitungen \( \abb{\partial_jf}{U}{\R^m}, 
+    j = 1,\ldots, m \) stetig sind.\\
+    \( \oversett{Satz 12.4}{\Leftrightarrow} 
+    \abb{Df}{U}{\mathscr{L}(\R^n, \R^m)} \) 
+    ist stetig (auf \(U\))
+\end{notation}
+Erinnerung: HDI: \\
+Ist \( \abb{f}{[a,b]}{\R} \) stetig und stetig differenzierbar
+auf \((a,b)\).
+\[ \Rightarrow f(b)-f(a) = \integralx{f'(t)}{a}{b}{t} \]
+Dasselbe gilt, wenn \(f\) stückweise \(\mathcal{C}^1\)
+auf \([a,b]\), d.h. \(f\) ist stetig auf \([a,b]\) und
+\( \exists N \in \N, a = t_1 < t_2 < \ldots < t_N = b \),
+sodass \( f(t_j, t_{j+1}) \rightarrow \R \) ist stetig 
+differenzierbar.\\
+\( \Rightarrow f(b)- f(a) = \sum_{j=2}^N (f(t_j) - f(t_{j-1}))
+= \sum_{j=2}^N \integralx{f'(s)}{t_{j-1}}{t_j}{s} 
+=: \integralx{f'(s)}{a}{b}{s} \)\\
+Verallgemeinerung auf mehrere Dimensionen
+\begin{lem}
+    Sei \(U \subset \R^n\) offen, \( f \in \mathcal{C}^1(U, \R^m) \) 
+    und \( \abb{\gamma}{[a,b]}{U} \) stückweise \(\mathcal{C}^1\)
+    \[ \Rightarrow f(\gamma(b)) - f(\gamma(a)) 
+    = \integralx{Df(\gamma(t))[\dot{\gamma}(t)]}{a}{b}{t} \]
+    mit \(\dot{\gamma}(t) = \ddx{t} \gamma(t)\)
+\end{lem}
+\begin{bew}
+    Sei \( a = t_1 < t_2 < \dots < t_N = b \) Zerlegung von 
+    \( [a,b] \) mit \( \gamma(t_j, t_{j+1}) \rightarrow U \) 
+    ist \( \mathcal{C}^1 \)
+    \[ \Rightarrow D \gamma(t)[1] = \ddx{t} \gamma(t) 
+    = \dot{\gamma}(t) \]
+    ist stetig auf \( [t_j, t_{j+1}] \)
+    \[ \oversett{Kettenregel}{=} D(f\circ \gamma)(t)
+    = Df(\gamma(t))D\gamma(t) \]
+    d. h. 
+    \[ \ddx{t} f(\gamma(t)) = D(f\circ\gamma)(t)[1] 
+    = Df(\gamma(t))[D\gamma(t)[1]] = (**) \] 
+
+    \( = Df(\gamma(t))[\dot{\gamma}(t)] \) ist stetig auf 
+    \( (t_j t_{j+1}) \)
+    \begin{align*}
+        &\oversett{HDI}{\Rightarrow} f(\gamma(t_{j+1})) 
+        - f(\gamma(t_j)) \\
+        &= \integralx{\ddx{s}f(\gamma(s))}{t_j}{t_{j+1}}{s} \\
+        &= \integralx{D f(\gamma(s))
+        [\dot{\gamma}(s)]}{t_j}{t_{j+1}}{s} 
+    \end{align*}
+    \begin{align*}
+        &\Rightarrow f(\gamma(b)) - f(\gamma(a)) \\
+        &= \sum_{j=1}^{N-1} f(t_{j+1}) - f(t_j) \\
+        &= \sum_{j=1}^{N-1} \integralx{Df(\gamma(s))[\dot{\gamma}(s)]}{t_j}{t_{j+1}}{s} \\
+        &= \integralx{Df(\gamma(s))[\dot{\gamma}(s)]}{a}{b}{s}.
+    \end{align*}
+\end{bew}
+\begin{bem}
+    Im Beweis kommen Integrale einer vektorwertigen Funktion
+    vor. Man macht entweder Integrationstherorie für Vektorfunktionen
+    oder erklärt es komponentenweise.\\
+    Ist \( v \in \mathcal{C}([a,b], \R^m), 
+    b_1, \ldots, b_m \) Basis von \( \R^m \).
+    \[ v(t) = \sum_{j=1}^m v_j(t) b_j. \]
+
+    \[ \Rightarrow v_j \in \mathcal{C}([a,b], \R) \]
+    und
+    \[ \integralx{v(s)}{a}{b}{s} 
+    = \sum_{j=1}^m (\integralx{v_j(s)}{a}{b}{s}b_j) \]
+\end{bem}
+\begin{defi}
+    Ein metrischer Raum \(X\) heißt wegzusammenhängend, falls 
+    es zu je zwei Punkten \( x_0, x_1 \in X \) eine stetige 
+    Funktion \( \abb{\varphi}{[0,1]}{X} \) gibt mit 
+    \( \varphi(0) = x_0, \varphi(1) = x_1 \).\\
+    Da stetige Wege kompliziert sein können, z. B. 
+    kann die Peano-Kurve ein Quadrat überdecken (Peano 1890).\\
+    Deswegen benötigen wir stückweise stetige \( \mathcal{C}^1 \) 
+    Wege.
+\end{defi}
+Bild: 
+%Bild
+\end{document} 
