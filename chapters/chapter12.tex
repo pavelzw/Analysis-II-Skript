@@ -3,13 +3,13 @@
 \begin{document}
 \setcounter{section}{11}
 \section{Existenz der Ableitung}
-\begin{defi*}
+\begin{defi}
     \(U \subset \R^n \) offen, \(\abb{f}{U}{\R^m}\) heißt
     stetig differenzierbar auf \(U\), falls \(f\) für alle
     \(x \in U\) differenzierbar ist und    
     \[ \abb{Df}{U}{\mathscr{L}(\R^n, \R^m)} \]
     eine stetige Funktion ist.
-\end{defi*}
+\end{defi}
 \begin{bem}
     Seien \(X, Y\) normierte Räume. 
     \( \mathscr{L}(X,Y) \) ist ein Vektorraum mit
@@ -94,7 +94,7 @@ Schreiben
 \[ R^n = \R^{d_1} \times \ldots \times \R^{d_l} \]
 \( \Rightarrow h \in \R^n \) lässt sich schreiben
 als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
-\begin{defi*}
+\begin{defi}
     Sei \( \R^n = \R^{d_1} \times \dots \times \R^{d_l}, U \subset \R^n \),
     \( x = (x_1, \ldots, x_l)^t \in U \).
     Eine Funktion \( \abb{f}{U}{\R^m} \) heißt verallgemeinert
@@ -105,7 +105,7 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     in \( h_j = 0 \) differenzierbar ist.\\
     Wir schreiben \(D_jf(x)\) für diese Ableitung.\\
     Man beachte: \( \abb{D_jf(x)}{\R^{d_j}{\R^m}} \) ist linear.
-\end{defi*}
+\end{defi}
 \begin{bem}
     Ist \(U \subset \R^n\) offen und 
     \( x = (x_1, \ldots, x_l) 
@@ -244,205 +244,5 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     die Ableitung \( \abb{Df(x)}{(\R^{d_1 + d_2}) \times \R^{d_3}}{\R^m} \) 
     existiert für alle \( x\in \tilde{U} \times U_3 = U \) und stetig 
     in \( x \in U \).
-\end{bew}
-In der Vorlesungs wurde die folgende Kette von Inmplikationen bewiesen:
-\begin{align*}
-    &\text{stetig partiell differenzierbar} \\
-    &\Rightarrow \text{ Differenzierbarkeit} \\
-    &\Rightarrow \text{ partiell differenzierbar}
-\end{align*}
-Die Umkehrung gilt im Allgemeinen nicht.
-\begin{lem}
-    Sei \(U \subset \R^n \) offen und wegzusammenhängend. 
-    Dann gibt es zu \(x_0, x_1 \in U\) einen Polynomzug, d. h. 
-    ein stückweise linearen Weg \(\abb{\gamma}{[0,1]}{U}\) mit
-    \(\gamma(0) = x_0, \gamma(1) = x_1\).
-\end{lem}
-\begin{bew}
-    Sei \(\abb{\phi}{[0,1]}{U}\) stetig mit \(\phi(0) = x_0\)
-    und \(\phi(1) = x_1\). Da \(\phi\) stetig und \([0,1]\)
-    kompakt ist, ist \( K:= \set{\phi(t): 0 \leq t \leq 1} \subset U \subset \R^n \)
-    eine kompakte Teilmenge von \(\R^n\). Ausserdem ist 
-    \(A := U^C = \R^n \setminus U\) abgeschlossen und somit 
-    \(r := \dist(K, A) = 
-    \underset{\substack{x \in U \\ y \in A}}{\inf} 
-    \abs{x-y} > 0\). \\
-    Denn angenommen \( r = 0 \), so existieren 
-    Folgen \( (x_n)_n \subset K, (y_n)_n \subset A \)
-    mit \( \abs{x_n - y_n} \rightarrow 0 \).
-    Da \(K\) kompakt ist, existiert eine konvergente Teilfolge
-    \( (x_{n_k})_k, \tilde{x} := \limes{k} x_{n_k} \in K \subset U \)    
-    \( \Rightarrow \abs{ y_{n_K} - \tilde{x} }
-    \leq \abs{ y_{n_k} - x_{n_k} } 
-    + \abs{ x_{n_k} - \tilde{x} } \rightarrow 0 \).
-    Das heißt \( y_{n_k} \rightarrow \tilde{x} \) 
-    für \(k \rightarrow \infty \). Da 
-    \( y_{n_k} \in A = U^C \) abgeschlossen
-    \( \Rightarrow \tilde{x} \in A \text{ \Lightning} \) 
-    zu \(\tilde{x} \in K \subset U\). 
-    Also ist \(r > 0\).\\
-    Sei \( N\in\N \). Betrachte Zerlegung
-    \( t_j = \frac{j}{N} \) von \( [0,1] \).
-    \( j = 0,1,\ldots,N \) und definieren
-    \[ \gamma_N(t) = \frac{t_k -t}{t_k-t_{k-1}} \varphi(t_{k-1}) 
-    + \frac{t-t_{k-1}}{t_k - t_{k-1}} \varphi(t_k) \]
-    für \( t \in [t_{k-1}, t_k] \).\\
-    \(\Rightarrow\) Polygonzug \(\abb{\gamma_N}{[0,1]}{\R^n}\)
-    \begin{beh}
-        \( \gamma_N([0,1]) \subset U \), 
-        wenn \(N\) groß genug ist.
-    \end{beh}
-    \begin{bew}\renewcommand{\qedsymbol}{}
-        \(\abb{\varphi}{[0,1]}{U}\) ist stetig, 
-        \( [0,1] \) ist kompakt \( \Rightarrow 
-        \varphi \) ist gleichmäßig stetig auf 
-        \( [0,1] \).
-        Setze \(\mathrm{osz}(\varphi, \delta) := \sup 
-        \set{\abs{\varphi(t)- \varphi(\delta)} \vert s,t \in [0,1], \abs{t-s} \leq \delta}\)
-        die \(\delta\)-Oszillation von \( \varphi \).\\
-        \( \varphi \) gleichmäßig stetig 
-        \( \Leftrightarrow \limesx{\delta}{0+} 
-        \mathrm{osz}(\varphi, \delta) = 0 \).
-        Insbesondere \(\exists \delta > 0\) mit
-        \[ \mathrm{osz}(\varphi, \delta) \leq \frac{r}{2} \]
-        Wähle \(N \in \N\) so, dass \(\frac{1}{N} < \delta\).\\
-        \( \Rightarrow \) Auf dem Intervall 
-        \( [t_{k-1}, t_k] \) ist
-        \begin{align*}
-            \gamma_N(t) - \varphi(t) 
-            &= \frac{t_{k} - t}{t_k - t_{k-1}}\varphi(t_{k-1})
-            + \frac{ t - t_k }{ t_k - t_{k-1} }\varphi(t_k) 
-            - \varphi(t) \\
-            &= \frac{ t_k - t }{t_k - t_{k-1}} (\varphi(t_{k-1}) - \varphi(t)) 
-            + \frac{ t - t_{k-1} }{t_k - t_{k-1}}(\varphi(t_k) - \varphi(t_{k-1}))
-        \end{align*}
-        
-        \[ \Rightarrow \abs{\gamma_N(t) - \varphi(t)} 
-        \leq \mathrm{osz}(\varphi, \frac{1}{N})
-        \leq \mathrm{osz}(\varphi, \delta) < \frac{r}{2} 
-        \; \forall 0 \leq t \leq 1 \]
-        \[ \Rightarrow \underset{t \in [0,1]}{\sup} 
-        \abs{\gamma_N(t)-\varphi(t)} \leq \frac{r}{2} \]
-        d. h. \( \gamma_N([0,1]) \) ist in einem \(\frac{r}{2}\)-Schlauch um
-        \(\varphi([0,1]) = K\) und da \(\dist(K,A) = r > 0\) folgt
-        \[ \gamma_N([0,1]) \subset U. \]        
-    \end{bew}
-\end{bew}
-\begin{satz}
-    Sei \(U \subset \R^n\) offen und wegzusammenhängend,
-    \( \abb{f}{U}{\R^m} \) differenzierbar. Dann gilt
-    \[ Df(x) = 0 \; \forall x \in U \Rightarrow f \text{ ist konstant} \]
-\end{satz}
-\begin{satz}
-    Seien \(x_0, x_1 \in U\). Nach Lemma 3 existiert ein Polygonzug
-    \( \abb{\gamma}{[0,1]}{U} \) mit \( \gamma(0) = x_0 \), 
-    \( \gamma(1) = x_1 \).
-    Da \( \gamma \) stückweise \(\mathcal{C}^1\) ist und \(f\) stetig
-    differenzierbar ist, folgt aus Lemma 1 
-    \[ f(x_1)-f(x_0) = \integralx{\underbrace{Df(\gamma(t)[\gamma(t)]}_{=\; 0}}{a}{b}{t} 
-    = 0 \in \R^m. \]
-    \( \Rightarrow f(x_1) = f(x_0) \). Da \( x_0, x_1 \) beliegbig sind, 
-    folgt die Behauptung.
-\end{satz}
-\subsection{Zweite Ableitung}
-%\(U \subset \R^n\) offen, \(\abb{f}{U}{\R^m}\) differenzierbar.
-%\[ \Rightarrow \abb{Df}{U}{
-%    \underbrace{\mathscr{L}(\R^n, \R^m)}_{\text{ist wieder VR } W}} \]
-%\( W \) ist ein normierter Vektorraum und sei 
-%\( \abb{f}{U}{W} \) ist differenzierbar
-%\[ \Rightarrow \abb{Df}{U}{\underbrace{\mathscr{L}(\R^n, W)}_{= \mathscr{L}(\R^n, 
-%\mathscr{L}(\R^n, \R^m))} =: \tilde{W}}. \]
-%Was ist das? \\
-Sei \(U \subset \R^n\) offen, \(W\) beliegbiger Vektorraum, \(\abb{f}{U}{W}\)
-differenzierbar. \\
-\[ \Rightarrow \abb{Df}{U}{\mathscr{L}(\R^n, W)} =: W \text{ wieder ein VR} \]
-Frage: Ist \(\abb{f}{U}{\tilde{W}}\) wieder differenzierbar und falls ja,
-ist die zweite Ableitung von \(f\) dann
-\[ \abb{D^2f = D(Df)}{U}{\mathscr{L}(\R^n, \tilde{W})}  \]
-Was dieses Objekt ist, wird in einem Handout diskutiert.\\
-Im Folgenden der einfachere Fall von Richtungsableitungen.
-Ist \( \abb{f}{U}{\R^m} \) und \( h\in \R^n \) (\(U \subset \R^n\) offen)
-\[ \Rightarrow D_h f(x) = \limesx{t}{0} 
-\frac{ f(x + th) - f(x) }{t} = Df(x)[h] \]
-falls \(f\) differenzierbar ist.
-Satz 12.4 sagt: \\
-\(f\) ist stetig differenzierbar. \\
-\(\Leftrightarrow\) alle partiellen Ableitungen 
-\(\abb{\partial_j f}{U}{\R^m}\) sind stetig auf \(U\). \\
-\(\Leftrightarrow \forall n \in \R^n\) sind 
-alle Richtungsableitungen stetig auf \(U\).
-Also \( \abb{f}{U}{\R^m}, h_1, h_2 \in \R^n \) und 
-Richtungsableitungen \( \abb{D_{h_1}f}{U}{\R^m} \) 
-und \( \abb{D_{h_2}f}{U}{\R^m} \) existieren.
-Dann können wir die Richtungsableitungen von \(D_{h_1}f\) in Richtung
-\(h_2\) und von \(D_{h_2}f\) in Richtung \(h_1\) bilden.
-Also angenommen \( D_{h_1}(D_{h_2}f)(x) \) und \( D_{h_2}(D_{h_1}f(x) \)
-existieren. Was haben sie dann miteinander zu tun? \\
-Z. B. für partielle Ableitungen 
-\begin{align*}
-    \partial_j \partial_k f(x) &= D_{e_j}D_{e_k} f(x) \\
-    \partial_k \partial_j f(x) &= D_{e_k} D_{e_j} f(x)
-\end{align*}
-\begin{satz}[Einfache Version des Satzes von Schwarz]
-    Sei \( U \subset \R^n \) offen, \( \abb{f}{U}{\R^m}, 
-    h_1, h_2 \in \R^n \). Ferner existieren die 
-    Richtungsableitungen \( \abb{D_{h_1}f, D_{h_2}f}{U}{\R^m} \) 
-    und die iterierten Richtungsableitungen 
-    \( \abb{D_{h_1}D_{h_2}f}{U}{\R^m} \) und sie seinen stetig
-    auf \(U\).
-    \[ \Rightarrow D_{h_1}D_{h_2} f(x) = D_{h_2}D_{h_1} f(x) 
-    \; \forall x \in U \]
-    Das heißt die iterierten Richtungsableitungen sind symmetrisch.
-\end{satz}
-\begin{bew}
-    Sei \(x \in U\) und \(\delta > 0\), sodass 
-    \[ x + t_1 h_1 + t_2h_2 \; \forall t_1, t_2 \in [0, \delta] \]    
-    Sei \( 0 \leq t \leq \delta \) und 
-    \[ \varphi(s) := f(x + s h_1 + t h_2) - f(x + s h_1). \]
-    \begin{align*}
-        \Rightarrow \ddxpartial{s} \varphi(s) 
-        &= D_{h_1} f( x + sh_1 )- D_{h_1}f(x + s h_1) \\
-        &\oversett{HDI}{=} \integralx{\ddxpartial{u} 
-        D_{h_1}f(x+s h_1 + u h_2) }{0}{t}{u} \\
-        &= \integralx{ D_{h_2} D_{h_1}f(x+s h_1 + u h_2) }{0}{t}{u} 
-    \end{align*}
-    \begin{align*}
-        \Rightarrow \varphi(t)-\varphi(0) &= f(x+th_1+th_2)-f(x+th_1)
-        -f(x+th_2) + f(x) \\
-        &= \integralx{ \ddxpartial{s} \varphi(s)}{0}{t}{s}\\
-        &= \integralx{
-        \integralx{D_{h_1} D_{h_1} f(x + s h_1 + u h_2)}{0}{t}{u}
-        }{0}{t}{s}\\
-        &= \integralx{
-            \integralx{D_{h_1} D_{h_1} f(x + s h_1 + u h_2) - D_{h_2} D_{h_1}f(x)}{0}{t}{u}
-        }{0}{t}{s} + D_{h_2} D_{h_1} f(x) t^2.
-    \end{align*}
-    Durch Vertauschen von \(h_1\) und \(h_2\) erhalten wir 
-    (da \(\varphi(t)-\varphi(0)\) symmetrisch in \(h_1\) und \(h_2\) ist)
-    \[ \varphi(t)-\varphi(0) = \integralx{
-        \integralx{D_{h_1} D_{h_2} f(x + s h_2 + u h_1) - D_{h_1} D_{h_2}f(x)}{0}{t}{u}
-    }{0}{t}{s} + D_{h_1} D_{h_2} f(x) t^2 \]
-    Da \( U \in z \mapsto D_{h_2} D_{h_1} f(z) \) stetig ist, ist 
-    \[ [0,\delta]\times [0,\delta] = [0,\delta]^2 \ni (t_1, t_2) 
-    \mapsto D_{h_2} D_{h_1} f(x + t_1 h_1 + t_2 h_2) \] 
-    stetig, sagen gleichmäßig stetig, da \( [0,\delta]^2 \) kompakt ist.
-    \( \Rightarrow \forall \varepsilon > 0 \; \exists 0 < \eta_1 < \delta \) mit
-    \[ \abs{D_{h_2}D_{h_1} f(x+sh_1 + uh_2) - D_{h_2}D_{h_1}f(x)} \leq \varepsilon
-    \; \forall 0 < U, s < \eta_1 \]    
-    \[ \Rightarrow \forall 0 < t \leq \eta_1 \text{ gilt} \]
-    \[ A := \integralx{
-        \integralx{\abs{ D_{h_2} D_{h_1} f(x + s h_1 + u h_2) 
-        - D_{h_2} D_{h_1} f(x) }}{0}{t}{u}
-    }{0}{t}{s} \leq \frac{\varepsilon}{2}t^2 \]
-    Genauso \(\exists 0 < \eta_2 < \delta \) mit \(\forall 0 < t \leq \eta_2\)
-    \[ B := \integralx{
-        \integralx{\abs{ D_{h_1} D_{h_2} f(x + s h_1 + u h_2) 
-        - D_{h_1} D_{h_2} f(x) }}{0}{t}{u}
-    }{0}{t}{s} \leq \frac{\varepsilon}{2}t^2 \]
-    \[ t^2(D_{h_2}D_{h_1}f(x)-D_{h_1}D_{h_2}f(x)) = B - A \]
-    \[ \Rightarrow t^2 \abs{ D_{h_2} D_{h_1} f(x) - D_{h_1} D_{h_2} f(x) } \leq \varepsilon t^2 \]
-    \[ \Rightarrow \abs{ D_{h_2} D_{h_1} f(x) - D_{h_1} D_{h_2} f(x) } \leq \varepsilon \]
-    \(\Rightarrow\) da \(\varepsilon > 0\) beliebig ist, folgt 
-    \[ D_{h_2}D_{h_1}f(x) = D_{h_1}D_{h_2}f(x). \]
 \end{bew}
 \end{document}
