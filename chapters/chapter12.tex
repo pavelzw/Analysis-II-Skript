@@ -159,4 +159,90 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     \( D_jf \) sind stetig auf U.\\
     In diesem Fall gilt die Formel aus Lemma 3.
 \end{satz}
+\begin{bew}
+    \gqq{\( \Rightarrow \)} Lemma 3.\\
+    \gqq{\( \Leftrightarrow \)}: Es reicht den Fall, \( \R^n, \R^{d_1} \times \R^{d_2} \) 
+    zu betrachten. Der Allgemeine Fall folgt per Induktion. 
+    Also sei \( x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \in \R^{d_1} \times \R^{d_2} \), 
+    \( U_j \subset \R^{d_j}, j = 1,2 \) offen, \( x \in U_1 \times U_2 \). 
+    Bild: 
+    % Bild
+    Beachte \(h = \begin{pmatrix}
+        h_1 \\
+        h_2
+    \end{pmatrix} \in \R^n = \R^{d_1} \times \R^{d_2} \)
+    \[ \Rightarrow h \rightarrow 0 \Leftrightarrow 
+    \underbrace{h_1 \rightarrow 0}_{\in \R^{d_1}}
+    \wedge \underbrace{h_2 \rightarrow 0}_{\in \R^{d_2}} \]
+    \[ \abs{h} = (\abs{h_1}^2 + \abs{h_2}^2)^{1/2} \]
+    Wegen Lemma 3 vermuten wir 
+    \[ Df(x)[h] = D_1f(x)[h_1] + D_2f(x)[h_2]. \]
+    Also sei \( x + h = 
+    \begin{pmatrix} x_1 + h_1 \\ x_2 + h_2 \end{pmatrix} 
+    \in \R^{d_1} \times \R^{d_2} \).\\
+    Wir schreiben 
+    \begin{align*}
+        &f(x + h) - f(x) - D_1f(x)[h_1] - D_2 f(x)[h_2] \\
+        &= f(x_1 + h_1, x_2 + h_2) - f(x_1 + h_1, x_2) 
+        - D_2 f(x_1 + h, x_2)[h_2] \tag{I}\\ 
+        &+ D_2 f(x_1 + h, x_2)[h_2] - D_2 f(x_1, x_2)[h_2] \tag{II} \\
+        &+ f(x_1 + h_1, x_2) - f(x_1, x_2) - D_1 f(x_1, x_2)[h_1] \tag{III}.
+    \end{align*}
+    Da \(f\) in \(x \in (x_1, x_2)^t\) in \(x_1\) partiell 
+    differenzierbar ist, folgt 
+    \[ \limesx{h_1}{0} \frac{III}{\abs{h_1}} = 0 \Rightarrow
+    \limesx{h}{0} \frac{III}{\abs{h}} = 0 \]
+    da \( \abs{h} = (\abs{h_1}^2 + \abs{h_2}^2)^{1/2} \geq \abs{h_1} \)
+    \begin{align*}
+        \abs{II} &= \abs{ D_2 f(x_1 + h_1, x_2)[h_2] - D_2 f(x_1, x_2)[h_2] } \\
+        &= \abs{ (D_2 f(x_1 + h_1, x_2) - D_2 f(x_1, x_2))[h_2] }\\
+        &\leq \norm{ D_2 f(x_1 + h_1, x_2) - D_2 f(x_1, x_2) } \cdot \underbrace{\abs{h_2}}_{\leq \abs{h}}.
+    \end{align*}
+    Da \( D_2f(x) \) stetig ist in \(x\), folgt 
+    \[ \frac{\abs{II}}{\abs{h}} \leq \norm{ D_2 f(x_1 + h_1, x_2) - D_2 f(x_1, x_2) } 
+    \overset{h\rightarrow \infty}{\longrightarrow} 0. \]
+    Es bleibt also 
+    \[ I = f(x_1 + h_1, x_2 + h_2) - f(x_1 + h_1, x_2) - D_2 f(x_1 + h_1, x_2)[h_2] \]
+    zu betrachten.
+    Aus Korollar 11.3 folgt
+    \[ \abs{I} = \underbrace{\abs{h_2}}_{\abs{h}} \underset{
+    \substack{
+        \rho \in \R^{d_1}\\
+        \abs{\rho} \leq \abs{h_1}
+    }}{\sup} \norm{D_2f(x_1+\rho, x_2) - D_2f(x_1, x_2)} \]
+    \[ \Rightarrow \frac{I}{\abs{h}} \leq \underset{
+        \substack{
+            \rho \in \R^{d_1}\\
+            \abs{\rho} \leq \abs{h_1}
+        }}{\sup} \norm{D_2f(x_1+\rho, x_2) - D_2f(x_1, x_2)}
+        \overset{h \rightarrow 0}{\rightarrow} 0 
+        (\text{Da } D_2f \text{ stetig ist}) \]    
+    Insgesamt folgt also 
+    \[ \limesx{h}{0} \frac{1}{\abs{h}} (f(x + h) - f(x) 
+    - D_1f(x_1, x_2)[h_1] 
+    - D_2 f(x_1, x_2)[h_2] ) = 0. \]
+    Somit ist \(f\) in \(x = \begin{pmatrix}x_1\\x_2\end{pmatrix} \) 
+    diffbar und es gilt 
+    \[ Df(x)[h] = D_1 f(x)[h_1] + D_2f(x)[h_2]. \]    
+    Nun zur Induktion:
+    Sei \( \R^n = \R^{d_1} \times \R^{d_2} 
+    \times \R^{d_3}, U_j \subset \R^{d_j} \) offen, 
+    \( U = U_1 \times U_2 \times U_3, \abb{f}{U}{\R^m} \). 
+    Angenommen alle partiellen Ableitungen 
+    \( \abb{D_j f(x)}{\R^{d_j}}{\R^m} \) 
+    sind stetig (in \(x\) auf \(U\)). \\
+    Schreiben \( x = \begin{pmatrix} \tilde{x} x_3 \end{pmatrix} 
+    \in (\R^{d_1} \times \R^{d_2}) \times \R^{d_3} 
+    = \R^{d_1 + d_2} \times \R^{d_3} \).        
+    Ausdem bisher gezeigten folgt: Die partielle Ableitung von
+    \(f\) bzgl. \(\tilde{x} \in U_1 \times U_2\) existiert und 
+    ist stetig in \(x\).\\
+    D. h. bzgl. der Zerlegung \( \R^n = \R^{d_1 + d_2} \times \R^{d_3} \) 
+    existiert \[ \abb{\tilde{D_1} f(x)}{\R^{d_1 + d_2}}{\R^m} \]
+    \( D_2f(x) \) ist weiterhin stetig.\\
+    \( \Rightarrow \) aus dem bisher gezeigten folgt, dass 
+    die Ableitung \( \abb{Df(x)}{(\R^{d_1 + d_2}) \times \R^{d_3}}{\R^m} \) 
+    existiert für alle \( x\in \tilde{U} \times U_3 = U \) und stetig 
+    in \( x \in U \).
+\end{bew}
 \end{document}
