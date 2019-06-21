@@ -1,0 +1,151 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{13}
+\section{Extrema}
+(lokales) Extremum = (lokales) Minimum oder Maximum.
+\begin{defi}
+    Sei \(D \subset \R^d, \abb{f}{D}{\R}\) hat in \(x \in D\)
+    ein lokales Minimum, falls \(\delta > 0\) existiert, sodass
+    \[ \forall y \in B_\delta(x) \cap D: f(y) \geq f(x) \]
+    (in einer Umgebung von \(x\) minimal). \\
+    Das Minimum heißt strikt (oder isoliert), falls 
+    \[ \forall y \in (B_\delta(x) \cap D) \setminus \set{x}: f(y) > f(x) \]
+    \( \abb{f}{D}{\R} \) hat in \(x\) ein lokales (isoliertes) Maximum,
+    falls \(-f\) in \(x\) ein lokales (striktes, isoliertes) Minimum hat.
+\end{defi}
+\begin{bsp}
+    \(\abb{f}{[-1, 1]}{\R}, x \mapsto x^2\) hat in \(x = 0\) ein striktes Minimum.\\
+    \( \abb{f}{[-1,1]\times \R}{\R}, (x_1, x_2) \mapsto x^2 \) hat in 
+    \((x_1, x_2) = (0,0)\) ein lokales Minimum (auch in jedem Punkt 
+    \((0, x_2), x_2 \in \R \)
+\end{bsp}
+\begin{satz}
+    Sei \(U\subset \R^n\) offen, \(\abb{f}{U}{\R}\) habe ein lokales Extremum
+    in \(x \in U\) und sei in \(x\) differenzierbar.
+    \[ \Rightarrow Df(x) = 0 \]
+    (\(0\) ist die lineare Abbildung, die alles von \(\R^n)\) auf \(0 \in \R\)
+    abbildet).\\
+    Hatten \(Df(x)[h] = \langle \nabla f(x), h \rangle \)\\
+    \( = \sum_{j=1}^n \partial_j f(x) h_j = (\partial_1 f(x), \ldots, \partial_n f(x)) \begin{pmatrix}
+        h_1\\
+        \vdots\\
+        h_n
+    \end{pmatrix} \)
+    Sei \(\abb{A}{\R^n}{\R}\) linear. \(e_1, \ldots, e_n\) Basis von \(\R^n\).
+    \[ h = \sum_{j = 1}^{n} h_j e_j \]
+    \[ \Rightarrow A[h] = A[\sum_{j = 1}^{n} h_j e_j ] = \sum_{j=1}^n A[e_j]h_j \]
+    \[ = (A[e_1], \ldots, A[e_n]) \begin{pmatrix}
+        h_1\\
+        \vdots\\
+        h_n
+    \end{pmatrix} = \langle v_A, h \rangle \]
+    mit \(v_A := \begin{pmatrix}
+        A[e_1]\\
+        \vdots\\
+        A[e_n]
+    \end{pmatrix}\)
+    \[ \Rightarrow Df(x) = 0 \Leftrightarrow \nabla f(x) = \begin{pmatrix}
+        0\\
+        \vdots\\
+        0
+    \end{pmatrix} \in \R^n \]
+    \[ \Leftrightarrow \partial_jf(x) = 0, j=1,\ldots,n \]
+\end{satz}
+\begin{bew}
+    Sei \(x \in D \subset \R^n\) offen \(\Rightarrow \forall h \in \R^n \; 
+    \exists \delta_1 > 0: x +th \in D \; \forall \abs{t} < \delta_1, t \in \R^n \) \\
+    \[ \abb{g}{(-\delta, \delta)}{\R}, t \mapsto g(t):= f(x+th) \]
+    Achtung: \(g\) ist in \(0\) differenzierbar!
+    \[ \ddx{t} g(t) \vert_{t=0} = \limesx{t}{0} \frac{g(t)-g(0)}{t} \]
+    \[ = \limesx{t}{0} \frac{f(x+th)- f(x)}{t} \]
+    \[ = D_hf(x) = Df(x)[h] \; \forall h \in \R^n \]
+    \[ \Rightarrow Df(x) = 0 \]
+    \[ \Rightarrow 0 = Df(x)[h] = \langle \nabla f(x), h \rangle \]
+    Angenommen: \(v \in \R^n, \langle v, h \rangle = 0 \; \forall h \in \R^n\)
+    \[ \Rightarrow v = 0 = \begin{pmatrix}
+        0\\
+        \vdots\\
+        0
+    \end{pmatrix} \]
+    \[ \Rightarrow \nabla f(x) = 0 \]
+\end{bew}
+\begin{bem}
+    Punkt \(x \in D\) mit \(\nabla f(x) = 0\) heißt kritischer Punkt.\\
+    \( \Rightarrow \) kritische Punkte sind Kandidaten für lineare Extrema.
+\end{bem}
+\begin{bsp}
+    \(f(x_1, x_2) := x_1^2 - x_2^2 \Rightarrow \nabla f(0, 0) = 0\)\\
+    aber \(f\) hat in \((0,0)\) kein Extrema (Sattelpunkt).\\
+    Angenommen \(g\) ist \(2\)-mal differenzierbar auf \((-\delta, \delta)\)\\
+    Ana I \(\rightarrow\) Vorzeichen von \(g''(x)\) ist entscheidend für 
+    Maximum oder Minimum.\\
+    Ist \(f\) differenzierbar auf \(D\)
+    \[ \Rightarrow g'(t) = \ddx{t} f(x+th) = D_hf(x+th) \]
+    \[ g'(t) = D_h f(xk+th) \]
+    Angenommen\(g'\) ist wieder differenzierbar
+    \[ \Rightarrow g''(t) = \ddx{t} (D_hf(x+th)) = D_h(D_hf(x+th)) \]
+    oder \( h = \sum_{j=1}^n h_j e_j \)
+    \[ \Rightarrow g'(t) = D_hf(x+th) = Df(x+th)[h] \]
+    \[ = \sum_{j=1}^n Df(x+th)[e_j]h_j = \sum_{j=1}^n \partial_j f(x+th)h_j \]
+    \[ g'(t) = \sum_{j=1}^n \partial_j f(x+th) h_j \]
+    Angenommen \( \abb{\partial_j f}{D}{\R} \) ist wieder differenzierbar \(\forall j=1, \ldots, n\)
+    \[ \Rightarrow g''(t) = \ddx{t} (g'(t)) = \ddx{t} (\sum_{j=1}^n \partial_j f(x+th)h_j) \]
+    \[ = \sum_{j=1}^n  (\ddx{t}(\partial_j f(x+th)))h_j\]
+    \[ = \sum_{j=1}^n 
+    \underbrace{(D(\partial_j f)(x+th)[h])}_{= \sum-{k=1}^n D(\partial_jf)(x+th)[e_k]h_k} h_j \]
+    \[ = \sum_{j=1}^n ( \sum_{k=1}^n \partial_k \partial_j f(x+th)h_k)h_j \]
+    \[ = \sum_{j,k = 1}^n \partial_k \partial_j f(x+th)h_k h_j = \langle h, H(x+th)h \rangle \]
+    \[ \Rightarrow g''(0) = \sum_{j,k = 1}^n \partial_k \partial_j f(x) h_k h_j 
+    = \langle h, H(x)h \rangle \]
+    mit \(H(x) := (\partial_k \partial_j f(x))_{j,k=1,\ldots,n} \) 
+\end{bsp}
+\begin{defi}
+    Sei \(U \subset \R^n\) offen \(\abb{f}{U}{\R^n}\) existieren alle partiellen Ableitungen
+    erster und zweiter Ordnung von \(f\), so heißt die obige \(n\times n\) Matrix die Hessematrix 
+    von \(f\).
+\end{defi}
+Wichtig: Sind alle partiellen Ableitungen \(\partial_j f\) und \( \partial_k \partial_j f \)
+stetig \(\forall j,k = 1, \ldots , n\), so sind die zweiten partiellen Ableitungen symmetrisch
+nach dem Satz von Schwarz.
+\[ \partial_k \partial_j f = \partial_j \partial_k f \; \forall j,k \]
+\(\Rightarrow\) Unter dieser Voraussetzung ist die Hessematrix \(H(x)\) symmetrisch.
+\begin{defi}
+    1. Sei \(U \subset \R^n\) offen, \(f \in \mathcal{C}^2(U, \R^m)\), falls alle
+    partiellen \(\partial_jf, \abb{\partial_k \partial_j}{U}{\R^m}\) stetig auf \(U\) sind.\\
+    (\( \mathcal{C}^2(U) := \mathcal{C}^2(U, \R) \)).\\
+    2. Ähnlich \(f \in \mathcal{C}^r(U, \R^m)\), falls alle partiellen Ableitungen
+    \( \partial_{j_1}f, \partial_{j_2}\partial_{j_1}f, \ldots, 
+    \abb{\partial_{j_r}\ldots \partial_{j_1}}{U}{\R^m} \)
+    \( j_1, \ldots, j_r = 1, \ldots, n \) stetig auf \(U\) sind.\\
+    Ist \(f \in \mathcal{C}^2(U,\R) = \mathcal{C}^2\)
+    \[ \Rightarrow H(x) = (\partial_k \partial_j f(x))_{j,l = 1,\ldots, n} \]
+    ist symmetrische \(n\times n \) Matrix.
+    \[ \Rightarrow b_H(u,v) .= \langle u, H(x)v \rangle, u,v \in \R^n \]
+    symmetrische Bilinearform.\\
+    \( H(x)v = H v \)
+\end{defi}
+\begin{lem}
+    Sei \(U \subset \R^n\) offen, \(f \in \mathcal{C}^2(U)\), dann gilt
+    \[ \limesx{u}{0} \frac{f(x+u) - f(x) - Df(x)[h] - \frac{1}{2} \langle u, H(x) \rangle}
+    {\abs{u}^2} = 0 \]
+\end{lem}
+\begin{bew}
+    Sei \(u \in \R^n, f \in \mathcal{C}^2(U), x+tu \in U \; \forall 0 \leq t \leq 1\)\\
+    \(g(t) = f(x+tu) \) \\
+    \[ \Rightarrow g'(t) = Df(x+tu)[u] \text{ und } g''(t) = \langle u, H(x+tu)u \rangle \tag{*} \]
+    \[ g(1) - g(0) \oversett{HDI}{=} \integralx{\ddx{t}g(t)}{0}{1}{t} \]
+    \[ 1 = - \ddx{t}(1-t) = -\integralx{\ddx{t} (1-t)g'(t)}{0}{1}{t} \]
+    \[ = - [(1-t)g'(t)]_0^1 + \integralx{(1-t)g''(t)}{0}{1}{t} \]
+    \[ = g'(0) + \integralx{(1-t) \underbrace{g''(t)}_{= g''(t)-g''(0)+g''(0)}}{0}{1}{t} \]
+    \[ g'(0) + \integralx{(1-t)g''(0)}{0}{1}{t} + \integralx{(1-t)(g''(t)- g''(0))}{0}{1}{t} \]
+    \[ \Rightarrow g(t) = \underbrace{g(0)}_{f(x)} + \underbrace{g'(0)}_{Df(x)[u]} + \frac{1}{2} 
+    \underbrace{g''(0)}_{\langle u, H(x)u \rangle} + \integralx{(1-t)
+    \underbrace{(g''(t)-g''(0))}_{=\langle u, H(x+tu)u \rangle - \langle u, H(x)u \rangle
+    \\=\langle u, (H(x+tu)-H(x))u \rangle}}{0}{1}{t} \]
+    \[ \Rightarrow f(x+u) - f(x)- Df(x)[u] - \langle u,H(x)u \rangle \]
+    \[ = \integralx{(1-t)(\underbrace{\langle u, (H(x+tu)-H(x))u \rangle}
+    _{\langle u, Au \rangle \leq \abs{u}\abs{Au} \leq \norm{A}\abs{u}^2 }}{0}{1}{t} \]
+    \[ \leq \abs{u^2} \underbrace{\norm{H(x+tu)-H(x)}}_{\rightarrow 0 (u \rightarrow 0)} \]
+\end{bew}
+\end{document} 
