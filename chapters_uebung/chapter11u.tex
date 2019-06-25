@@ -1,0 +1,29 @@
+\documentclass[../ana2u.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{10}
+\section{Extrema}
+\( \abb{f}{\R^2}{\R}, (x,y) \mapsto (x^2 + 2y^2) e^{-(x^2 + y^2)} \).
+
+\begin{beh}[Die Mutter aller Extrema]
+    \(f\) besitzt ein globales Minimum in \((0,0)\), globales Maximum in
+    \((0, \pm 1)\) und keine weiteren lokalen Extrema.
+\end{beh}
+\begin{bew}
+    \(f\) ist offensichtlich \( 2 \) mal stetig differenzierbar und 
+    es gilt 
+    \[ \ddxpartialboth{f}{x} (x,y) = (2x - 2x^3 - 4xy^2)e^{-x^2 + y^2} \]
+    \[ \ddxpartialboth{f}{y} (x,y) = (4y - 2x^2y - 4y^3)e^{-x^2 + y^2} \]
+    für \( (x,y) \in \R^2 \).
+    Also betrachte 
+    \[ \nabla f(x,y) = \begin{pmatrix} 0 \\ 0\end{pmatrix} \]
+    \[ \Leftrightarrow x(2 - 2x^2 - 4y^2) = 0 \text{ und }
+    y(4 - 2x^2 - 4y^2) = 0 \]
+    \[ \Leftrightarrow (x = 0 = y) \vee (x = 0 \wedge 2 - 2y^2 = 0)
+    \vee (1 - x^2 = 0 \wedge y = 0). \]
+    Nullstellen des Gradienten sind also \( (0,0), (0, \pm 1) \) 
+    und \( (\pm 1, 0) \). 
+    Weiter: Wie sieht Hessematrix an diesen Punkten aus?
+    \( \Rightarrow \) Minima, Maxima, indefinit etc.
+\end{bew}
+\end{document}

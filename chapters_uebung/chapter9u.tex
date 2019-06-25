@@ -289,4 +289,91 @@ ist die Ableitung \(Df(\xi)\) von \(f\) im Punkt \(\xi\).\\
         \frac{\abs{ y_0 }^{k-l}}{k!} \abs{h}^{l-1} \rightarrow 0. \]
     \end{bew}
 \end{bsp}
+Erinnerung:
+Sei \(x_0 \in D \subset \R, x_0 \) Häufungspunkt von \(D\) und \(\abb{f}{D}{\R}\).
+\begin{defi*}
+    \(f\) heißt differenzierbar in \(x_0\), wenn der Grenzwert
+    \[ \limesx{x}{x_0} \frac{f(x)-f(x_0)}{x-x_0} (= f'(x_0)) \]
+    existiert.
+\end{defi*}
+\begin{defi*}
+    \(f\) heißt bei \(x_0\) linear (affin) approximierbar, wenn es ein
+    \(A \in \R\) gibt derart, dass die Differenz
+    \[ r(x) := f(x) - (f(x_0) + A(x-x_0)) \]
+    für \(x \rightarrow x_0\)
+    von höherer als erster Ordnung gegen Null strebt, d.h
+    \[ \limesx{x}{x_0} \frac{r(x)}{x-x_0} 
+    = \limesx{x}{x_0} \frac{f(x) - (f(x_0) + A(x-x_0))}{x-x_0} = 0 \]
+\end{defi*}
+Die affine Funktion \( T_{f,x_0} = f(x_0) + A(x - x_0) \) 
+nenn man die lineare Näherung von \(f\) bei \(x_0\). Ihr 
+Graph ist die sogenannte Tangente. \\
+Dabei ist \(T_{f,x_0}\) das 1. Taylorpolynom von \(f\) in \(x_0\).\\
+Jetzt im \(\R^n\):
+Sei \(G \subset \R^n\) offen und \(\xi \in G\).
+\begin{defi*}
+    Eine Funktion \(\abb{f}{G}{\R^m}\) heißt differenzierbar in \(\xi\),
+    wenn sie bei \(xi\) linear approximierbar ist, d. h. es gibt 
+    \(\abb{A}{\R^n}{\R^m}\) (lineare Abbildung), sodass    
+    die Differenz \( f(x) - [f(\xi) - A(x - \xi)] \) in \(\xi\)
+    höher als erster Ordnung verschwindet.
+    Anders ausgedrückt:
+    \[ f \text{ in } \xi \text{ differenzierbar} \Leftrightarrow
+    \exists A \in \mathscr{L}(\R^n, \R^m): \limesx{x}{\xi}
+    \frac{f(x) - (f(\xi) + A(x-\xi))}{\norm{x-\xi}_2} = 0 \]
+    Die lineare Approximierende \(\abb{A}{\R^n}{\R^m}\) heißt dann die
+    Ableitung \(f'(\xi) = Df(\xi)\) von \(f\) im Punkt \(\xi\).\\
+    Die Funktion 
+    \[ x \mapsto f(\xi) + f'(\xi)(x-\xi) \]
+    heißt die affine Approximierende von \(f\) bei \(\xi\). Sie ist das
+    erste Taylorpolynom von \(f\) im Entwicklungspunkt \(\xi\).
+\end{defi*}
+\subsection{Differentiation im Komplexen (Holomorphie)}
+Sei \(G \subset \C\) offen und \(\eta \in G\).\\
+Da \(\C\) ein Körper ist, kann man formal wie im eindimensionalen
+den Differenzenquotienten bilden. Die Funktion \(\abb{f}{G}{\C}\) heißt
+komplex differenzierbar in \(\eta \in G\), falls der Grenzwert
+\[ f'(\eta) = \limesx{z}{\eta} \frac{f(z) - f(\eta)}{z - \eta} \]
+existiert. Oder äquivalent, wenn es ein \(a \in \C\) gibt, sodass
+\[ \limesx{z}{\eta} \frac{ f(z) - [f(\eta) + a(z - \eta)] }{z - \eta} = 0. \]
+in diesem Fall ist dann \(a = f'(\eta)\). Eine Funktion \(\abb{f}{G}{\C}\)
+heißt holomorph in \(G\) falls sie in jedem Punkt
+Punkt \(\eta\in G\) differenzierbar ist und \(f'\) in \(G\)
+stetig ist.
+
+Sei \(z = (x,y), f(z) = (u(x,y), v(x,y))\), wobei \(u = \Re f, 
+v = \Im f\).
+\( a = (a_1, a_2), \eta = (\eta_1, \eta_2) \).\\
+Reelle Analysis: 
+\( \abb{f}{G\subset \R^2}{\R^2} \) differenzierbar in \( \eta \)
+heißt, dass eine Matrix \( A = \begin{pmatrix}
+    a_{11} & a_{12} \\ a_{21} & a_{22}
+\end{pmatrix} \) existiert, sodass
+\[ \limesx{(x,y)}{(\eta_1, \eta_2)} \frac{f(x,y)- 
+(f(\eta_1, \eta_2) + A((x, y)-(\eta_1, \eta_2)))}
+{\norm{ (x,y) - (\eta_1, \eta_2) }_2} = 0. \]
+\[ A \cdot \begin{pmatrix} x - \eta_1\\ y - \eta_2 \end{pmatrix} 
+    = \begin{pmatrix}
+        a_{11}(x - \eta_1) + a_{12}(y - \eta_2) \\
+        a_{21} (x - \eta_1) + a_{22}(y - \eta_2)
+    \end{pmatrix}. \]
+Komplexe Analysis:
+\[ \limesx{z}{\eta} \frac{f(z)- (f(\eta)+a(z-\eta))}{z - \eta} = 0 \]
+wobei \( a = a_1 + i a_2, z = x + iy, 
+\eta = \eta_1 + \eta_2 \). Also 
+\begin{align*}
+    a(z - \eta) &= a((x - \eta_1) + i(y - \eta_2))\\
+    &= (a_1(x - \eta_1) - a_2(y - \eta_2)) 
+    + i(a_1(y - \eta_2) + a_2(x - \eta_1)).
+\end{align*}
+Somit stimmen die linearen Approximierenden überein 
+genau dann, wenn 
+\[ a_{11} = a_{22} = a_1, \quad a_{21} = -a_{12} = a_2. \]
+Anders ausgedrückt:    
+\( f \) ist im Sinne der komplexen Analysis genau dann differenzierbar, 
+wenn \(f\) im reellen Sinne differenzierbar ist ud Funktionsmatrix 
+\(A\) die spezielle Gestalt 
+\[ A = \begin{pmatrix} u_x & u_y \\ v_x & v_y \end{pmatrix} 
+    = \begin{pmatrix} a_1 & -a_2 \\ a_2 & a_1 \end{pmatrix}
+    \leadsto u_x = v_y, u_y = -v_x. \tag{Cauchy-Riemann DGL} \]
 \end{document}

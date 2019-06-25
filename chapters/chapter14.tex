@@ -1,0 +1,348 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{13}
+\section{Extrema}
+(lokales) Extremum = (lokales) Minimum oder Maximum.
+\begin{defi}
+    Sei \(D \subset \R^d, \abb{f}{D}{\R}\) hat in \(x \in D\)
+    ein lokales Minimum, falls \(\delta > 0\) existiert, sodass
+    \[ \forall y \in B_\delta(x) \cap D: f(y) \geq f(x) \]
+    (in einer Umgebung von \(x\) minimal). \\
+    Das Minimum heißt strikt (oder isoliert), falls 
+    \[ \forall y \in (B_\delta(x) \cap D) \setminus \set{x}: f(y) > f(x) \]
+    \( \abb{f}{D}{\R} \) hat in \(x\) ein lokales (isoliertes) Maximum,
+    falls \(-f\) in \(x\) ein lokales (striktes, isoliertes) Minimum hat.
+\end{defi}
+\begin{bsp}
+    \(\abb{f}{[-1, 1]}{\R}, x \mapsto x^2\) hat in \(x = 0\) ein striktes Minimum.\\
+    \( \abb{f}{[-1,1]\times \R}{\R}, (x_1, x_2) \mapsto x^2 \) hat in 
+    \((x_1, x_2) = (0,0)\) ein lokales Minimum (auch in jedem Punkt 
+    \((0, x_2), x_2 \in \R \)
+\end{bsp}
+\begin{satz}
+    Sei \(U\subset \R^n\) offen, \(\abb{f}{U}{\R}\) habe ein lokales Extremum
+    in \(x \in U\) und sei in \(x\) differenzierbar.
+    \[ \Rightarrow Df(x) = 0 \]
+    (\(0\) ist die lineare Abbildung, die alles von \(\R^n)\) auf \(0 \in \R\)
+    abbildet).\\
+    Hatten \(Df(x)[h] = \scalarprod{\nabla f(x)}{h} \)\\
+    \( = \sum_{j=1}^n \partial_j f(x) h_j = (\partial_1 f(x), \ldots, \partial_n f(x)) \begin{pmatrix}
+        h_1\\
+        \vdots\\
+        h_n
+    \end{pmatrix} \)
+    Sei \(\abb{A}{\R^n}{\R}\) linear. \(e_1, \ldots, e_n\) Basis von \(\R^n\).
+    \[ h = \sum_{j = 1}^{n} h_j e_j \]
+    \[ \Rightarrow A[h] = A[\sum_{j = 1}^{n} h_j e_j ] = \sum_{j=1}^n A[e_j]h_j \]
+    \[ = (A[e_1], \ldots, A[e_n]) \begin{pmatrix}
+        h_1\\
+        \vdots\\
+        h_n
+    \end{pmatrix} = \scalarprod{v_A}{h} \]
+    mit \(v_A := \begin{pmatrix}
+        A[e_1]\\
+        \vdots\\
+        A[e_n]
+    \end{pmatrix}\)
+    \[ \Rightarrow Df(x) = 0 \Leftrightarrow \nabla f(x) = \begin{pmatrix}
+        0\\
+        \vdots\\
+        0
+    \end{pmatrix} \in \R^n \]
+    \[ \Leftrightarrow \partial_jf(x) = 0, j=1,\ldots,n \]
+\end{satz}
+\begin{bew}
+    Sei \(x \in D \subset \R^n\) offen \(\Rightarrow \forall h \in \R^n \; 
+    \exists \delta_1 > 0: x +th \in D \; \forall \abs{t} < \delta_1, t \in \R^n \) \\
+    \[ \abb{g}{(-\delta, \delta)}{\R}, t \mapsto g(t):= f(x+th) \]
+    Achtung: \(g\) ist in \(0\) differenzierbar!
+    \[ \ddx{t} g(t) \vert_{t=0} = \limesx{t}{0} \frac{g(t)-g(0)}{t} \]
+    \[ = \limesx{t}{0} \frac{f(x+th)- f(x)}{t} \]
+    \[ = D_hf(x) = Df(x)[h] \; \forall h \in \R^n \]
+    \[ \Rightarrow Df(x) = 0 \]
+    \[ \Rightarrow 0 = Df(x)[h] = \scalarprod{\nabla f(x)}{h} \]
+    Angenommen: \(v \in \R^n, \scalarprod{v}{h} = 0 \; \forall h \in \R^n\)
+    \[ \Rightarrow v = 0 = \begin{pmatrix}
+        0\\
+        \vdots\\
+        0
+    \end{pmatrix} \]
+    \[ \Rightarrow \nabla f(x) = 0 \]
+\end{bew}
+\begin{bem}
+    Punkt \(x \in D\) mit \(\nabla f(x) = 0\) heißt kritischer Punkt.\\
+    \( \Rightarrow \) kritische Punkte sind Kandidaten für lineare Extrema.
+\end{bem}
+\begin{bsp}
+    \(f(x_1, x_2) := x_1^2 - x_2^2 \Rightarrow \nabla f(0, 0) = 0\)\\
+    aber \(f\) hat in \((0,0)\) kein Extrema (Sattelpunkt).\\
+    Angenommen \(g\) ist \(2\)-mal differenzierbar auf \((-\delta, \delta)\)\\
+    Ana I \(\rightarrow\) Vorzeichen von \(g''(x)\) ist entscheidend für 
+    Maximum oder Minimum.\\
+    Ist \(f\) differenzierbar auf \(D\)
+    \[ \Rightarrow g'(t) = \ddx{t} f(x+th) = D_hf(x+th) \]
+    \[ g'(t) = D_h f(xk+th) \]
+    Angenommen\(g'\) ist wieder differenzierbar
+    \[ \Rightarrow g''(t) = \ddx{t} (D_hf(x+th)) = D_h(D_hf(x+th)) \]
+    oder \( h = \sum_{j=1}^n h_j e_j \)
+    \[ \Rightarrow g'(t) = D_hf(x+th) = Df(x+th)[h] \]
+    \[ = \sum_{j=1}^n Df(x+th)[e_j]h_j = \sum_{j=1}^n \partial_j f(x+th)h_j \]
+    \[ g'(t) = \sum_{j=1}^n \partial_j f(x+th) h_j \]
+    Angenommen \( \abb{\partial_j f}{D}{\R} \) ist wieder differenzierbar \(\forall j=1, \ldots, n\)
+    \[ \Rightarrow g''(t) = \ddx{t} (g'(t)) = \ddx{t} (\sum_{j=1}^n \partial_j f(x+th)h_j) \]
+    \[ = \sum_{j=1}^n  (\ddx{t}(\partial_j f(x+th)))h_j\]
+    \[ = \sum_{j=1}^n 
+    \underbrace{(D(\partial_j f)(x+th)[h])}_{= \sum-{k=1}^n D(\partial_jf)(x+th)[e_k]h_k} h_j \]
+    \[ = \sum_{j=1}^n ( \sum_{k=1}^n \partial_k \partial_j f(x+th)h_k)h_j \]
+    \[ = \sum_{j,k = 1}^n \partial_k \partial_j f(x+th)h_k h_j = \scalarprod{h}{H(x+th)h} \]
+    \[ \Rightarrow g''(0) = \sum_{j,k = 1}^n \partial_k \partial_j f(x) h_k h_j 
+    = \scalarprod{h}{H(x)h} \]
+    mit \(H(x) := (\partial_k \partial_j f(x))_{j,k=1,\ldots,n} \) 
+\end{bsp}
+\begin{defi}
+    Sei \(U \subset \R^n\) offen \(\abb{f}{U}{\R^n}\) existieren alle partiellen Ableitungen
+    erster und zweiter Ordnung von \(f\), so heißt die obige \(n\times n\) Matrix die Hessematrix 
+    von \(f\).
+\end{defi}
+Wichtig: Sind alle partiellen Ableitungen \(\partial_j f\) und 
+\( \partial_k \partial_j f \)
+stetig \(\forall j,k = 1, \ldots , n\), so sind die zweiten partiellen Ableitungen symmetrisch
+nach dem Satz von Schwarz.
+\[ \partial_k \partial_j f = \partial_j \partial_k f \; \forall j,k \]
+\(\Rightarrow\) Unter dieser Voraussetzung ist die Hessematrix \(H(x)\) symmetrisch.
+\begin{defi}
+    1. Sei \(U \subset \R^n\) offen, 
+    \(f \in \mathcal{C}^2(U, \R^m)\), falls alle
+    partiellen \(\partial_jf, \abb{\partial_k \partial_j}{U}{\R^m}\) stetig auf \(U\) sind.\\
+    (\( \mathcal{C}^2(U) := \mathcal{C}^2(U, \R) \)).\\
+    2. Ähnlich \(f \in \mathcal{C}^r(U, \R^m)\), 
+    falls alle partiellen Ableitungen
+    \( \partial_{j_1}f, \partial_{j_2}\partial_{j_1}f, \ldots, 
+    \abb{\partial_{j_r}\ldots \partial_{j_1}}{U}{\R^m} \)
+    \( j_1, \ldots, j_r = 1, \ldots, n \) stetig auf \(U\) sind.\\
+    Ist \(f \in \mathcal{C}^2(U,\R) = \mathcal{C}^2\)
+    \[ \Rightarrow H(x) = (\partial_k \partial_j f(x))_{j,l 
+    = 1,\ldots, n} \]
+    ist symmetrische \(n\times n \) Matrix.
+    \[ \Rightarrow b_H(u,v) .= \scalarprod{u}{H(x)v}, u,v \in \R^n \]
+    symmetrische Bilinearform.\\
+    \( H(x)v = H v \)
+\end{defi}
+\begin{lem}
+    Sei \(U \subset \R^n\) offen, \(f \in \mathcal{C}^2(U)\), 
+    dann gilt
+    \[ \limesx{u}{0} \frac{f(x+u) - f(x) - Df(x)[h] - \frac{1}{2} 
+    \scalarprod{u}{H(x)}}{\abs{u}^2} = 0 \]
+\end{lem}
+\begin{bew}
+    Sei \(u \in \R^n, f \in \mathcal{C}^2(U), x+tu \in U 
+    \; \forall 0 \leq t \leq 1\)\\
+    \(g(t) = f(x+tu) \) \\
+    \[ \Rightarrow g'(t) = Df(x+tu)[u] \text{ und } g''(t) 
+    = \scalarprod{u}{H(x+tu)u} \tag{*} \]
+    \[ g(1) - g(0) \oversett{HDI}{=} 
+    \integralx{\ddx{t}g(t)}{0}{1}{t} \]
+    \[ 1 = - \ddx{t}(1-t) = -\integralx{\ddx{t} (1-t)g'(t)}{0}{1}{t} \]
+    \[ = - [(1-t)g'(t)]_0^1 + \integralx{(1-t)g''(t)}{0}{1}{t} \]
+    \[ = g'(0) + \integralx{(1-t) \underbrace{g''(t)}
+    _{= g''(t)-g''(0)+g''(0)}}{0}{1}{t} \]
+    \[ g'(0) + \integralx{(1-t)g''(0)}{0}{1}{t} 
+    + \integralx{(1-t)(g''(t)- g''(0))}{0}{1}{t} \]
+    \[ \Rightarrow g(t) = \underbrace{g(0)}_{f(x)} 
+    + \underbrace{g'(0)}_{Df(x)[u]} + \frac{1}{2} 
+    \underbrace{g''(0)}_{\scalarprod{u}{H(x)u}} + \integralx{(1-t)
+    \underbrace{(g''(t)-g''(0))}_{=\scalarprod{u}{H(x+tu)u} 
+    - \scalarprod{u}{H(x)u}\\
+    =\scalarprod{u}{(H(x+tu) - H(x))u}}}{0}{1}{t} \]
+    \[ \Rightarrow f(x+u) - f(x)- Df(x)[u] - \frac{1}{2} 
+    \scalarprod{u}{H(x)u} \]
+    \[ = \integralx{(1-t)(\underbrace{\scalarprod{u}{(H(x+tu) 
+    - H(x))u}}
+    _{\scalarprod{u}{Au} \leq \abs{u}\abs{Au} \leq 
+    \norm{A}\abs{u}^2 }}{0}{1}{t} \]
+    \[ \leq \abs{u^2} \underbrace{\norm{H(x+tu)-H(x)}}
+    _{\rightarrow 0 (u \rightarrow 0)} \]
+    \begin{align*}
+        \Rightarrow &\frac{\abs{f(x+v) - f(x)- Df(x)[v] - \frac{1}{2}
+        \scalarprod{v}{H(x)v}}}{\abs{v}^2}\\
+        &= \frac{1}{\abs{v}^2} \abs{\integralx{ (1-t) 
+        \scalarprod{v}{ (H(x + tv) - H(x))v } }{0}{1}{t}} \\
+        &\leq \abs{v}^{-2} \integralx{ (1-t) 
+        \abs{\scalarprod{v}{(H(x + tv) - H(x))v  }} }{0}{1}{t}\\
+        &\leq \abs{v}^{-2} \integralx{ (1-t) 
+        \abs{v}\abs{(H(x + tv) - H(x))v  } }{0}{1}{t}\\
+        &\leq \abs{v}^{-2} \integralx{ (1-t) 
+        \abs{v}\abs{(H(x + tv) - H(x))}\abs{v} }{0}{1}{t}\\
+        &\leq \abs{v}^{-2} \integralx{(1-t) \abs{v}^2 \norm{H(x+tv) 
+        - H(x)}}{0}{1}{t}\\
+        &= \integralx{(1-t) \norm{H(x+tv) - H(x)}}{0}{1}{t}
+    \end{align*}
+    z.B. \(A n \times n \) Matrix \( \norm{A} \leq \norm{A}_{HS} 
+    = (\sum_{l,m = 1}^n (
+    \underbrace{H_{lm}(x+tv)-H_{lm}}_{\rightarrow 0 (v \rightarrow 0)}
+    )^2)^{1/2}\)\\
+    \( H_{lm}(x) = \partial_l \partial_m f(x) \) stetig in \(x\).\\
+    Sei \(\varepsilon > 0 \) und \(\delta > 0: 
+    \abs{H_{lm}(x+u)-H_{lm}(x)} \leq \varepsilon 
+    \; \forall u \in \R^n, \abs{u}\leq \delta 
+    \; \forall l,m = 1,\ldots,n\)
+    Ist \( \abs{v} \leq \delta, 0 \leq t \leq 1 \Rightarrow 
+    \abs{tv} = t\abs{v} \leq \delta \).\\
+    \( \Rightarrow \abs{ H_{lm}(x + tv) - H_{lm}(x) } \leq \varepsilon 
+    \forall v \in \R^n, \abs{v} \leq \delta \) und alle \( 0 \leq t \leq 1, 
+    l,m = 1,\ldots,n \).
+    \[ \Rightarrow \norm{H(x+tv)-H(x)}_{HS} \leq (\sum_{l,m = 1}^n
+    \varepsilon)^{1/2} = n \varepsilon 
+    \; \forall 0 \leq t \leq 1, \abs{v} \leq \delta \]    
+    \[ \Rightarrow \integralx{ (1-t) \norm{H(x + tv) - H(x)} }{0}{1}{t} 
+    \leq n \varepsilon \integralx{(1-t)}{0}{1}{t} = \frac{n\varepsilon}{2} 
+    \;\forall \abs{v} \leq \delta \]
+    \[ \Rightarrow \limesx{v}{0} 
+    \integralx{(1-t) \norm{ H(x+tv) - H(x) }}{0}{1}{t} = 0. \]
+\end{bew}
+\begin{defi}
+    Sei \( \abb{b}{\R^n \times \R^n}{\R} \) 
+    eine symmetrische Bilinearform, z.B. 
+    \( b(u,v) = \scalarprod{v}{Hu}, H \)
+    eine symmetrische \( n\times n \)-Matrix.\\
+    Wir nennen \( b \) positiv semidefinit
+    (besser positiv), falls \( b(u,u) \geq 0 
+    \;\forall u \in \R^n \), \\
+    \(b\) heißt positiv definit (besser strikt positiv), 
+    falls \( b(u,u) > 0 \;\forall u \in \R^n \setminus \set{0} \),\\
+    \(b\) negativ semidefinit (besser negativ),
+    falls \( b(u,u) \leq 0 \;\forall u \in \R^n \),\\
+    negativ definit (besser strikt negativ), falls 
+    \( b(u,u) < 0 \; \forall u \in \R^n \setminus \set{0} \)\\
+    \(b\) heißt indefinit, falls \( u_1, u_2 \in \R^n \) 
+    existieren mit 
+    \( b(u_1, u_1) > 0, b(u_2, u_2) < 0 \).
+\end{defi}
+\begin{satz}
+    Sei \(U \subset \R^n\) offen, \(f \in \mathcal{C}^2(U,\R)\), 
+    \( H = H(x) \) Hessematrix von \(f\) in \(x\).\\
+    \(f\) hat genau dann in \(x\in U\) ein lokales Minimum, wenn
+    \( \nabla f(x) = 0 \) und \( b(v,v) := \scalarprod{v}{H(x)v} \)
+    positiv semidefinit.
+\end{satz}
+\begin{bem}
+    Analog für Maximum, ersetze \(f\) durch \(-f\).
+\end{bem}
+\begin{bew}
+    \gqq{\(\Rightarrow\)}: Hat \(f\) in \(x\) ein lokales Minimum \(\Rightarrow \nabla f(x) = 0\)
+    (Satz 2)\\
+    \( H(x) = \) Hessematrix von \(f\) in \(x\).
+    \[ \oversett{Lem. 5}{\Rightarrow}
+    \limesx{v}{0} \frac{f(x+v) - f(x) - Df(x)[v] - \frac{1}{2} 
+    \scalarprod{v}{H(x)v}}{\abs{v}^2} = 0 \]
+    \(t \neq 0:\)
+    \[ \frac{\scalarprod{v}{H(x)v}}{\scalarprod{v}{v}} 
+    = \frac{\scalarprod{tv}{H(x)tv}}{\scalarprod{tv}{tv}}
+    = \limesx{t}{0} \frac{ \scalarprod{tv}{H(x)tv} }{\abs{tv}^2} \]
+    mit Lemma 5: \( f(x+v) - f(x)-Df(x){v} = \frac{1}{2}
+    \scalarprod{v}{H(x)v} + \eta(\abs{v})\abs{v}^2 \), mit
+    \( \limesx{v}{0} \eta(v) = 0 \)
+    \[ \Rightarrow f(x+v)-f(x) = \frac{1}{2} \scalarprod{v}{Hv}
+    + \eta(v)\abs{v}^2 \]
+    \[ \frac{\scalarprod{v}{H(x)v}}{\scalarprod{v}{v}} 
+    = \frac{\scalarprod{tv}{H(x)tv}}{\scalarprod{tv}{tv}}
+    = \limesx{t}{0} \frac{ \scalarprod{tv}{Htv} }{\abs{tv}^2} \]
+    \[ \oversett{Lem. 5}{=} \limesx{t}{0} 
+    \frac{f(x+tv)-f(x)}{\scalarprod{tv}{tv}} \geq 0 \]
+    \[ \Rightarrow \scalarprod{v}{Hv} \geq 0 \; \forall v \in \R^n \]
+    \gqq{\(\Leftarrow\)}: Angenommen \( \nabla f(x) = 0, 
+    \scalarprod{v}{H(x)v} = 0 \;\forall v\in \R^n \).\\
+    \begin{beh}
+        \( \exists \delta > 0: \scalarprod{v}{H(x)v} \geq \delta \abs{v}^2 \;\forall v\in \R^n \).
+    \end{beh}
+    \begin{align*}
+        \underset{\substack{v\in\R^n\\v \neq 0}}{\inf} 
+        \frac{\scalarprod{v}{Hv}}{\scalarprod{v}{v}}
+        = \underset{v \in \R^n \setminus \set{0}}{\inf} 
+        \frac{\scalarprod{v}{Hv}}{\abs{v}^2}
+        = \underset{\abs{v} = 1}{\inf} \scalarprod{v}{Hv}
+    \end{align*}
+    a) \( \R^n \ni v \mapsto \scalarprod{v}{Hv} \) ist stetig.\\
+    b) \( S^{n-1} := \set{v \in \R^n; \abs{v} = 1} \) ist eine
+    kompakte Teilmenge von \(\R^n\)\\    
+    \( \Rightarrow \exists v \in S^{n-1} \)
+    \[ \underset{\abs{v} = 1}{\inf} \scalarprod{v}{Hv} 
+    = \underbrace{\scalarprod{v_1}{Hv_1}}_{=:\delta} > 0. \]    
+    \( \Rightarrow \) das Infimum existiert.
+    \[ \oversett{Lem 5}{\Rightarrow} f(x+u) 
+    = f(x) + \frac{1}{2} \scalarprod{u}{Hu} + \eta(u) \abs{u}^2 
+    \geq f(x) + (\frac{\delta}{2} + \eta(u))\abs{u}^2 \]
+    \( \eta(u) \rightarrow 0, u \rightarrow 0 \).
+    \( \Rightarrow \exists r > 0: \abs{\eta(u)} \geq - \frac{\delta}{4} \;\forall \abs{u} \leq r \).
+    \[ \Rightarrow \forall \abs{u} \leq r: f(x+u) \geq f(x)
+    + \frac{\delta}{4}\abs{u}^2\]
+    \(\Rightarrow\) isoliertes Minimum in \(x\).
+\end{bew}
+\(H\) symmetrische Matrix \( \oversett{LA}{\Rightarrow} \exists \)
+Orthonormalbasis \( u_1,\ldots,u_n \) an 
+Eigenvektoren von \(H\), \( H u_j = \lambda_j u_j \)
+\[ \Rightarrow v = \sum_{j=1}^n x_j u_j \in \R^n \]
+\begin{align*}
+    \scalarprod{v}{Hv} &= 
+    \scalarprod{\sum_{j=1}^n x_j u_j}{H(\sum_{j=1}^n x_j u_j)}\\
+    &= \sum_{j=1}^n \sum_{k=1}^n x_j x_k \scalarprod{u_j}{Hu_k}\\
+    &= \sum_{j=1}^n \sum_{k=1}^n x_j x_k \lambda_k \scalarprod{u_j}{u_k}\\
+    &= \sum_{j=1}^n \sum_{k=1}^n x_j x_k \lambda_k \delta_{jk} \\
+    &= \sum_{j=1}^n \lambda_j x_j^2
+\end{align*}
+\(\Rightarrow\) Eigenwerte \(\lambda_j\) von \(H\) bestimmen ob
+\( \scalarprod{v}{Hv} \) partiell (demi)definit oder anders ist.\\
+Analytischer Beweis des Spektraltheorems für symmetrische \(n \times n\)
+Matrizen.\\
+Sei \(A\) relle symmetrische \(n \times n\) Matrix.\\
+1. Schritt:\\ 
+Rayleighquotient: \(x \in \R^n \setminus \set{0}, R(x) 
+= \frac{\scalarprod{x}{Ax}}{\scalarprod{x}{x}}\) \\
+\( \R^n \setminus \set{0} \ni x \mapsto R(x) \) homogen von Grad \(0\).\\
+\( R(tx) = R(x) \; \forall t \neq 0, x \neq 0 \)
+\[ \Rightarrow \alpha := 
+\underset{x \in \R^n\setminus \set{0}}{\sup}
+R(x) = \underset{x\in\R^n \setminus \set{0}}{\sup} 
+R(\frac{x}{\abs{x}}) 
+= \underset{y\in S^{n-1}}R(y). \]
+Supremum von stetiger Funktion auf kompakten Mengen werden 
+angenommen.
+\( \Rightarrow \exists u \in S^{n-1}: \alpha = R(u) \), 
+d. h. \(R\) hat ein Maximum.\\
+2. Schritt:
+\[ \partial_j R(x) = \partial_j 
+\frac{\scalarprod{x}{Ax}}{\scalarprod{x}{x}} 
+= \frac{ \scalarprod{x}{x} \partial_j \scalarprod{x}{Ax} 
+- \scalarprod{x}{Ax} \partial_j 
+\scalarprod{x}{x} }{\scalarprod{x}{x}^2} \]
+\[ \partial_j \scalarprod{x}{x}  = \partial_j \sum_{k = 1}^n x_k^2
+= \ddxpartial{x_j} \sum_{k=1}^n x_k^2 = 2x_j \]
+\[ \partial_j \scalarprod{x}{Ax} 
+= \partial_j \sum_{l=1}^n \sum_{k=1}^n A_{lm}x_k 
+= \sum_{k=1}^n A_{jm} x_m + \sum_{l=1}^n x_lA_{lj} \]
+\[ = 2\sum_{l=1}^n A_{jl} x_l 
+= 2(Ax)_j \]
+\[ \Rightarrow \partial_j R(x) 
+= \frac{\abs{x}^2 (Ax)_j - \scalarprod{x}{Ax}2x_j}{\abs{x}^4} 
+\text{ stetig in } x\neq 0. \]
+\( \oversett{Satz 2}{\Rightarrow} x=u \) ist Maximum, d. h. \( \nabla R(x) = 0 \).
+\( \partial_j R(u) = 0 \;\forall j = 1,\ldots,n \).
+\[ \Rightarrow \abs{u}^2 2(Au)_j = \scalarprod{u}{Au}2u_j \]
+oder \( \abs{u}^2 Au = \scalarprod{u}{Au} u \)
+\[ \Rightarrow Au = \frac{\scalarprod{u}{Au}}{\abs{u}^2}u = \lambda u, 
+\lambda = \frac{\scalarprod{u}{Au}}{\abs{u}^2} \in \R. \]
+\[ x \in \R^n, x = x_1 u + \text{ Rest} = x_1 u + x^\bot \]
+\(V := \mathrm{Span}(u) = \set{tu : t \in \R}\)\\
+\( V^\bot := \set{y \in \R^n: \scalarprod{u}{y} = 0} \)\\
+\( \R^n = V \oplus V^+ \)
+\[ \Rightarrow Ax = x_1\underbrace{Au}_{=\lambda u} + Ax^\bot 
+= \underbrace{\lambda x_1 u}_{\in V} 
++ \underbrace{A(x^\bot)}_{\in V^\bot} \]
+Denn: ist \( v \in V^\bot: \scalarprod{u}{Av} = \scalarprod{Au}{v} 
+= \lambda \scalarprod{u}{v} = 0 \).\\
+Spalten wir \( \R^n = V \oplus V^\bot \) auf.\\
+\( A \) Blockstatur \gqq{\(=\)} 
+\[ \begin{pmatrix} \lambda_1 & 0\\ 0 & A\vert_{V^\bot} \end{pmatrix} 
+\begin{pmatrix} x_1 \\ x^\bot \end{pmatrix} \]
+\end{document} 
