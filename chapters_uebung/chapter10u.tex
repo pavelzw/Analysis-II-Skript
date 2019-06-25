@@ -1,0 +1,37 @@
+\documentclass[../ana2u.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{9}
+\section{Multilineare Abbildungen}
+\( \abb{D^2 f = D(Df)}{U}{\mathscr{L}(\R^n, \mathscr{L}(\R^n, \R^m))} \).\\
+Sei \(f\ k\)-mal differenzierbar. 
+\[ D^k f = D(D^{k-1} f) : U \rightarrow \mathscr{L}(\R^n, \mathscr{L}(\R^n), \ldots) \]
+Was ist das? (Handout)
+Das Schöne ist, man kann zeigen, dass 
+isometrisch isomorph zum Raum aller stetigen multilinearen 
+Abbildungen \( \underbrace{\R^n \times \ldots \times \R^n}_{k\text{-mal}} 
+\rightarrow \R^m \) ist.
+
+\begin{defi*}
+    Eine Funktion \(\abb{f}{\R^n\times \ldots \times \R^n}{\R}\) heißt \(k\)-linear,
+    wenn für jedes \(l \in \set{1,\ldots,k}\) und jede Wahl 
+    \(x_1, \ldots, x_{l-1}, x_l, x_{l+1}, \ldots, x_k \in \R^n\)
+    die Abbildung
+    \[ \abb{f(x_{l-1}, x_l, x_{l+1}, \ldots, x_k)}{\R^n}{\R} \]
+    linear ist.    
+\end{defi*}
+\begin{satz*}
+    Sei \( \abb{f}{\R^n \times \ldots \times \R^n}{\R}\ k \)-linear, 
+    dann ist \(f\) stetig auf \( \R^n \times \ldots \times \R^n \) 
+    und es gilt 
+    \[ \norm{ f(x_1, \ldots, x_k) } 
+    \leq \norm{f} \prod_{j=1}^k \norm{x_j}. \]
+\end{satz*}
+\begin{bsp}
+    2-lineare Funktion \(f\),
+    \begin{align*}
+        f(x_1+h_1, x_2+h_2) &= f(x_1, x_2+h_2) + f(h_1, x_1 +h_2)\\
+        &= f(x_1, x_2) + f(h_1, x_2) + f(x_1, h_2) + f(h_1, h_2)
+    \end{align*}
+\end{bsp}
+\end{document}
