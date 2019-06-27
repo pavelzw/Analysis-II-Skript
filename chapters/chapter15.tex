@@ -1,0 +1,34 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{14}
+\section{Taylor}
+\[ \abb{g}{[0,1]}{\R} \text{ (oder \(\R^m\))} \]
+\( g \) stetig differenzierbar auf \( (0,1) \) 
+\[ \Rightarrow g(1) - g(0) = \integralx{\ddx{s} g(s)}{0}{1}{s} \]
+\[ g(1) = g(0) + \underbrace{\integralx{\ddx{s}s g'(s)}{0}{1}{s}}
+_{\substack{[sg'(x)]_0^1 = \integralx{sg''(s)}{0}{1}{s} \\
+= g'(1) - \integralx{sg''(s)}{0}{1}{s}}} \]
+\[ = g(0) + g'(1) - \integralx{sg''(s)}{0}{1}{s} \]
+MIST.\\
+Besser: \( 1 = \ddx{s} (1 - s) \)
+\[ \Rightarrow g(1) = g(0) + \integralx{1 \cdot g'(s)}{0}{1}{s} \]
+\[ = g(0) + g'(0) + \integralx{(1-s)g''(s)}{0}{1}{s} \]
+mit
+\[ \integralx{1 \cdot g'(s)}{0}{1}{s}
+= \integralx{-(\ddx{s} (1-s))g'(s)}{0}{1}{s} = \underbrace{[-(1-s)g'(s)]_0^1}_{g'(0)}
++ \integralx{(1-s)g''(s)}{0}{1}{s} \]
+\[ g(1) = g(0) + g'(0) + \integralx{(1-s)g''(s)}{0}{1}{s} 
+= g(0) + g'(0) + \integralx{-\ddx{s} (\frac{1}{2} (1-s)^2) g''(s)}{0}{1}{s} \]
+\[ = g(0) + g'(0) + \frac{1}{2}g''(0) 
++ \frac{1}{2}\integralx{(1-s)^2 g'''(s)}{0}{1}{s} \]
+\[ \integralx{(1-s)^2 \underbrace{g'''(s)}_{g'''(s) - g'''(0) + g'''(0)}}{0}{1}{s} \]
+\[ = \integralx{(1-s)^2(g'''(s) - g'''(0)}{0}{1}{s} 
++ \underbrace{\integralx{(1-s)^2}{0}{1}{s} g'''(0) }_{=\frac{1}{2}} \]
+\[ \Rightarrow g(1) = g(0) 
++ g'(0) + \frac{1}{2}g''(0) 
++ \frac{1}{2\cdot 3} g'''(0) 
++ \frac{1}{2} \integralx{(1-s)^2(g'''(s) - g'''(0))}{0}{1}{s} \]
+Man nehme z.B.
+\[ g(t) = f(x+tv) \]
+\end{document}

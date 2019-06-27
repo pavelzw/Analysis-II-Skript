@@ -345,4 +345,96 @@ Spalten wir \( \R^n = V \oplus V^\bot \) auf.\\
 \( A \) Blockstatur \gqq{\(=\)} 
 \[ \begin{pmatrix} \lambda_1 & 0\\ 0 & A\vert_{V^\bot} \end{pmatrix} 
 \begin{pmatrix} x_1 \\ x^\bot \end{pmatrix} \]
-\end{document} 
+letztes Mal: \( \abb{f}{U}{\R}, \mathcal{C}^2 \) Funktion.
+\(\Rightarrow\)
+\begin{enumerate}
+    \item Hat \(f\) in \(x \in U\) ein lokales Minimum
+    \[ \Rightarrow \nabla f(x) = 0 \] 
+    und \(H(x)\) ist positiv semidefinit.
+    \item Ist \( \nabla f(x) = 0 \) 
+    und \(H(x)\) positiv definit (\(> 0\))
+    \( \Rightarrow x \) ist eine isoliertes Minimum.
+\end{enumerate}
+Analog für Maxima.\\
+Tod: 
+\[ f(x + v) = f(x) + Df(x)[v] + \frac{1}{2} \scalarprod{v}{H(x)v} 
++ \integralx{ (1 - t) (\scalarprod{v}{H(x + tv)v} 
+- \scalarprod{v}{H(x)v}) }{0}{1}{t}. \]
+Die erste Beobachtung:
+\[ \R^n \setminus \set{X} \ni x \mapsto R(x) \]
+hat ein Maximum.
+\[ R(x) = \frac{\scalarprod{x}{Ax}}{\abs{x}^2} 
+= \scalarprod{\frac{x}{\abs{x}}}{A\frac{x}{\abs{x}}} = R(\frac{x}{\abs{x}}). \]
+Zweite Beobachtung:
+Ist \(x \neq 0\) ein kritischer Punkt von \(R\), dann ist 
+\(x\) eine Eigenvektor von \(A\).
+\begin{bew}
+    Sei \(x \neq 0\) kritischer Punkt von \(R \Rightarrow D R(x) = 0\)
+    \[ \Rightarrow D_h R(x) = 0 \; \forall h \in \R^n \]
+    \[ 0 = D_hR(x) = D_h \frac{\scalarprod{x}{Ax}}{\scalarprod{x}{x}}
+    = \frac{ \scalarprod{x}{x} D_h(\scalarprod{x}{Ax}) 
+    - \scalarprod{x}{Ax} D_h(\scalarprod{x}{x}) }{\scalarprod{x}{x}^2} \]
+    \[ D(\scalarprod{x}{Ax}) = \ddxpartial{t} \scalarprod{x+th}{A(x+th)} \vert_{t=0} \]
+    \[ = \scalarprod{x}{Ah} + \scalarprod{h}{Ax} = 2 \scalarprod{h}{Ax} \]
+    \[ D_h(\scalarprod{x}{x}) = 2 \scalarprod{h}{x} \]
+    \[ \Rightarrow 0 = \abs{x}^2 2 \scalarprod{h}{Ax} - \scalarprod{x}{Ax}
+    2 \scalarprod{h}{x} \]
+    \[ \Rightarrow \scalarprod{h}{Ax} = \frac{\scalarprod{x}{Ax}}{\abs{x}^2}
+    \scalarprod{h}{x} = \scalarprod{h}{\frac{\scalarprod{x}{Ax}}{\abs{x}^2}x} \; \forall h \in \R^n  \]
+    \[ \Rightarrow Ax = \frac{\scalarprod{x}{Ax}}{\abs{x}^2}x = R(x)x = 2x \]
+    \( \Rightarrow A\) ist symmetrisch \(n \times n\) Matrix hat Eigenwert 
+    \(\lambda = \underset{x \neq 0}{\sup} R(x)\) und Eigenvektor \(u_1 \neq 0\),
+    o.B.d.A \(\abs{u} = 1\).    
+    \begin{align*}
+        V_1 = \mathrm{Span}(u_1) = \set{zx, z \in \R} \text{ Linie in }\R^n
+        V_1^\bot = \text{ orthogonales Komplement von } V_1 
+        = \set{y \in \R^n: \scalarprod{u}{y} = 0}
+    \end{align*}
+    \( P = \) orthogonale Projektion auf \(V_1 = |u_1 \rangle \langle u_1 | 
+    = u_1 \scalarprod{u_1}{\cdot} \)
+    \(Px = u_1 \scalarprod{u_1}{x}\)\\
+    \( \mathds{Q} = \mathds{1} - P = \) Projektion auf \(V_1^\bot\).\\
+    \(P + \mathds{Q} = \mathds{1}\) auf \(\R^n\).    
+    \begin{align*}
+        x = (P + \mathds{Q})X &= Px + \mathds{Q}x \\
+        &= u_1 \scalarprod{u_1}{x} + \mathds{Q}x \\
+        &= x_1 u_1 + \mathds{Q}x
+    \end{align*}
+    \[ \Rightarrow \mathds{Q} A x 
+    = \lambda_1 x_1 \mathds{Q} u_1 + \mathds{Q} A \mathds{Q} x
+    = \mathds{Q}A\mathds{Q}x \]
+    Insbesondere ist \(x \in V_1^\bot \Leftrightarrow \mathds{Q}x = x\)\\
+    \( A \mathds{Q}x = ? \)
+    \[ \scalarprod{u_1}{A\mathds{Q}x} = \scalarprod{Au_1}{\mathds{Q}}
+    = \lambda_1 \scalarprod{u_1}{\mathds{Q}x} = 0\]    
+    \[ \Rightarrow A\mathds{Q}x \in V_1^\bot \;\forall x \in \R^n. \]
+    \[ \Rightarrow Ax = \lambda_1 x_1 u_1 + A\mathds{Q}x
+    = \lambda_1 x_1 u_1 + \mathds{Q}A\mathds{Q}x \]
+    \[ \Rightarrow x = x_1 u_1 + x^\bot (x^\bot = \mathds{Q}x) \]
+    \[ \Rightarrow Ax = \lambda_1 x_1 u_1 + \mathds{Q}A\mathds{Q} x^\bot \]
+    \[ \abb{\mathds{Q} A \mathds{Q}}{V_1^\bot}{V_1^\bot} \]
+    mit \(\dim V_1^\bot = n-1\).
+    \[ x = x_1 u_1 + x^\bot \text{ \gqq{\(=\)} } 
+    \begin{pmatrix} x_1 \\ x^\bot \end{pmatrix} \]
+    \[ A(x_1u_1+x^\bot) \text{ \gqq{\(=\)} } A \begin{pmatrix}
+        x_1\\
+        x^\bot
+    \end{pmatrix} = \begin{pmatrix}
+        \lambda_1x_1\\
+        \mathds{Q}A\mathds{Q}x^\bot
+    \end{pmatrix} = \begin{pmatrix}
+        \lambda_1 & 0\\
+        0 & \mathds{Q}A\mathds{Q}
+    \end{pmatrix} \begin{pmatrix}
+        x_1\\
+        x^\bot
+    \end{pmatrix} \]
+    \( U = (u_1, u_2, \ldots, u_n) \) ist unitäre \(n \times n\) Matrix.
+    \[ AU = \begin{pmatrix}
+        Au_1 & Au_2 & \cdots & A u_n
+    \end{pmatrix} 
+    = \begin{pmatrix}
+        \lambda u_1 & \cdots & \lambda u_n
+    \end{pmatrix} \]
+\end{bew}
+\end{document}
