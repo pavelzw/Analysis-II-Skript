@@ -3,32 +3,149 @@
 \begin{document}
 \setcounter{section}{14}
 \section{Taylor}
-\[ \abb{g}{[0,1]}{\R} \text{ (oder \(\R^m\))} \]
-\( g \) stetig differenzierbar auf \( (0,1) \) 
-\[ \Rightarrow g(1) - g(0) = \integralx{\ddx{s} g(s)}{0}{1}{s} \]
-\[ g(1) = g(0) + \underbrace{\integralx{\ddx{s}s g'(s)}{0}{1}{s}}
-_{\substack{[sg'(x)]_0^1 = \integralx{sg''(s)}{0}{1}{s} \\
-= g'(1) - \integralx{sg''(s)}{0}{1}{s}}} \]
-\[ = g(0) + g'(1) - \integralx{sg''(s)}{0}{1}{s} \]
-MIST.\\
-Besser: \( 1 = \ddx{s} (1 - s) \)
-\[ \Rightarrow g(1) = g(0) + \integralx{1 \cdot g'(s)}{0}{1}{s} \]
-\[ = g(0) + g'(0) + \integralx{(1-s)g''(s)}{0}{1}{s} \]
-mit
-\[ \integralx{1 \cdot g'(s)}{0}{1}{s}
-= \integralx{-(\ddx{s} (1-s))g'(s)}{0}{1}{s} = \underbrace{[-(1-s)g'(s)]_0^1}_{g'(0)}
-+ \integralx{(1-s)g''(s)}{0}{1}{s} \]
-\[ g(1) = g(0) + g'(0) + \integralx{(1-s)g''(s)}{0}{1}{s} 
-= g(0) + g'(0) + \integralx{-\ddx{s} (\frac{1}{2} (1-s)^2) g''(s)}{0}{1}{s} \]
-\[ = g(0) + g'(0) + \frac{1}{2}g''(0) 
-+ \frac{1}{2}\integralx{(1-s)^2 g'''(s)}{0}{1}{s} \]
-\[ \integralx{(1-s)^2 \underbrace{g'''(s)}_{g'''(s) - g'''(0) + g'''(0)}}{0}{1}{s} \]
-\[ = \integralx{(1-s)^2(g'''(s) - g'''(0)}{0}{1}{s} 
-+ \underbrace{\integralx{(1-s)^2}{0}{1}{s} g'''(0) }_{=\frac{1}{2}} \]
-\[ \Rightarrow g(1) = g(0) 
-+ g'(0) + \frac{1}{2}g''(0) 
-+ \frac{1}{2\cdot 3} g'''(0) 
-+ \frac{1}{2} \integralx{(1-s)^2(g'''(s) - g'''(0))}{0}{1}{s} \]
-Man nehme z.B.
-\[ g(t) = f(x+tv) \]
+
+Motivation: Sei \( \abb{f}{(a,b)}{\R} \ k \)-mal stetig 
+differenzierbar.
+\( x \in (a,b). x + h \in (a,b). \)
+\[ f(x + h) = f(x) + \dots \]
+\[ \abb{g}{[0,1]}{\R}, t \mapsto f(x+th) = g(t) \]
+
+\begin{align*}
+    \Rightarrow f(x + h) - f(x) &= g(1) - g(0) 
+    = \integralx{g'(s)}{0}{1}{s} \\
+    &= \integralx{1 \cdot g'(s)}{0}{1}{s} = 
+    \integralx{ -\ddx{s} (1-s) g'(s) }{0}{1}{s}\\
+    &= \left[ -(1-s) g'(s) \right]_0^1 + \integralx{(1-s)g''(s)}{0}{1}{s}\\
+    &= g'(0) + \integralx{ (1-s)g''(s) }{0}{1}{s} \\    
+    &= g'(0) + \integralx{(\ddx{s}(-\frac{1}{2}(1-s)^2))g''(s)}{0}{1}{s}\\
+    &= g'(0) + \left[- \frac{1}{2}(1-s)^2 g''(s) \right]_0^1 
+    + \frac{1}{2}\integralx{ (1-s)^2 g'''(s)}{0}{1}{s} \\
+    &= g'(0) + \frac{1}{2} g''(0) + \frac{1}{2} 
+    \integralx{(1-s)^2 g'''(s)}{0}{1}{s}.
+\end{align*}
+\[ (1-s)^2 = -\frac{1}{3} \ddx{s}((1-s)^2) \]
+\begin{align*}
+    \integralx{(1-s)^2 g'''(s)}{0}{1}{s}{s} &=
+    -\frac{1}{3} \integralx{\ddx{s} ((1-s)^3)g'''(s)}{0}{1}{s}\\
+    &= \underbrace{\left[-\frac{1}{3}(1-s)^3g'''(s)\right]_0^1 }_{=\frac{1}{3}g'''(0)}
+    + \frac{1}{3} \integralx{(1-s)^3 g^{(4)}(s)}{0}{1}{s}
+\end{align*}
+Weitermachen mit Induktion. 
+\[ g(1) = g(0) + g'(0) + \frac{1}{2}g''(0) + \frac{1}{2 \cdot 3} g'''(0)
++ \cdots + \frac{1}{(k-1)!} g^{(k-1)}(0) 
++ \frac{1}{(k-1)!} \integralx{(1-s)^{k-1} g^{(k)}(s) }{0}{1}{s} \]
+\[ \integralx{(1-s)^{k-1} g^{(k)}(s) }{0}{1}{s} 
+= \integralx{(1-s)^{k-1} g^{(k)}(s) - g^{(k)}() }{0}{1}{s} 
++ \underbrace{\integralx{ (1-s)^{k-1} }{0}{1}{s}}_{=\frac{1}{k}} g^{(k)}(0). \]
+\[ \frac{1}{(k-1)!} \integralx{(1-s)^{k-1} g^{(k)}(s) }{0}{1}{s} 
+= \frac{1}{k!} g^{(k)}(0) + 
+\frac{1}{(k-1)!} \integralx{(1-s)^{k-1} (g^{(k)}(s) - g^{(k)}(0))}{0}{1}{s} \]
+\begin{lem}
+    Ist \( \abb{g}{[0,1]}{\R} (\text{ oder } \R^m) k\)-mal stetig differenzierbar.    
+    \[ \Rightarrow g(1) = 
+    g(0) + g^{(1)}(0) + \frac{1}{2} g^{(2)}(0) 
+    + \frac{1}{2 \cdot 3}g^{(3)}(0) + \cdots 
+    + \frac{1}{k!} g^{(k)}(0) + R_k(g) \]
+    mit der Integraldarstellung des Restglieds
+    \[ R_k(g) = \frac{1}{(k-1)!} \integralx{(1-s)^{k-1} 
+    (g^{(k)}(s) - g^{(k)}(0)) }{0}{1}{s}. \] 
+\end{lem}
+\begin{kor}
+    Sei \(\abb{f}{(a,b)}{\R} (\text{ oder } \R^m) \in \mathcal{C}^k \)\\
+    \( x+h \in (a,b), x \in (a,b) \)
+    \[ \Rightarrow f(x+h) = f(x) + f(x)h + \frac{1}{2}f^{(2)}h^2
+    + \frac{1}{2 \cdot 3}f^{(3)}h^3 + \ldots + \frac{1}{k!}f^{(k)}h^k + \text{Rest} \]
+    mit 
+    \[ \text{Rest } = \frac{h^k}{(k-1)!} 
+    \integralx{(1-s)^{k-1}(f^{(k)}(x + sh) - f^{(k)}(x))}{0}{1}{s} \]
+\end{kor}
+\begin{bew}
+    Setzen \( g(t) = f(x + th) \). \( g'(t) = f'(x + th) h \), 
+    \begin{align*}
+        g'(t) &= f'(x+th)h \\
+        g''(t) &= f''(x + th)h^2 \\
+        g^{(l)}(t) &= f^{(l)}(x + th)h^l
+    \end{align*}
+    \[ \oversett{Lem. 1}{\Rightarrow} f(x+th) = g(1) = f(x) + f'(x)h
+    + \frac{1}{2}f^{(2)}(x)h^2 + \ldots + \frac{1}{k!}f^{(k)}(x)h^k\]
+    \[ + \frac{1}{(k-1)!} \integralx{(1-s)^{(k-1)} 
+    (f^{(k)}(x+sh)h^k - f^{(k)}(x)h^k)}{0}{1}{s} \]
+\end{bew}
+Mehrere Dimensionen können verwirrend sein:
+\( U \subset R^n \) offen, \(x \in U: h \in \R^n, 
+\underbrace{[x,x+h]}_{\set{x+th, 0 \leq t \leq 1}} \subset U\)\\
+\(f \in \mathcal{C}^k(U, \R)\)\\
+\( \abb{g}{[0,1]}{\R} (\text{oder } \R^m), t \mapsto f(x+th) \)
+wie oben folgt:
+\[ \Rightarrow f(x+h) = g(0) + g'(0) + \frac{1}{2}g''(0) + \frac{1}{2 \cdot 3}g^{(3)}(0)
++ \ldots + \frac{1}{k!} \integralx{(1-s)^{k-1} (g^{(k)}(s)-g^{k}(0))}{0}{1}{s} \]
+Die wichtige Frage ist: \( g^{(l)}(0) =  \) ?
+\begin{align*}
+    g'(0) &= \ddx{t} f(x + th) \vert_{t=0} \\
+    &= D_h f(x) = Df(x)[h] \\
+    &= \sum_{l=1}^n \partial_l f(x) h_l.
+\end{align*}
+\begin{align*}
+    g'(t) &= \ddx{t} f(x + th) \\
+    &= D_h f(x + th) \\
+    &= Df(x + th)[h] \\
+    &= \sum_{l=1}^n \partial_l f(x + th) h_l.
+\end{align*}
+Sei \( \partial_l f =: \tilde{f}_l \).
+\( \Rightarrow g'(t) = \sum_{l=1}^n \tilde{f}_l (x + th) h_l \).
+\[ \Rightarrow g''(t) = \ddx{t} g'(t) 
+= \sum_{l=1}^n(\ddx{t} \tilde{f}_l(x+th))h_l
+= D_h\tilde{f}_l(x+th) = D\tilde{f}_l(x+th)[h]
+= \sum_{j=1}^n \underbrace{\partial_j \tilde{f}_l(x+th)}
+_{= \partial_j\partial_lf(x+th)} h_j \]
+\[ g''(t) = \sum_{j_2=1}^n \sum_{j_1=1}^n 
+\partial_{j_2} \partial_{j_1} f(x + th) h_{j_1} h_{j_2}. \]
+\[ \Rightarrow g'''(t) = \sum_{j_1,j_2 = 1}^n 
+\ddx{t} \partial_{j_2} \partial_{j_1} f(x + th) h_{j_1} h_{j_2} \]
+\[ = \sum_{j_3 = 1}^n\sum_{j_2 = 1}^n \sum_{j_1=1}^n \partial_{j_3} \partial_{j_2} \partial_{j_1}
+f(x + th) h_{j_1} h_{j_2} h_{j_3}. \]
+\[ g^{(k)}(t) = \sum_{j_k=1}^n \sum_{j_{k-1}=1}^n \ldots \sum_{j_{1}=1}^n 
+\partial_{j_k}\partial_{j_{k-1}}\ldots\partial_{j_1} f(x+th)h_{j_1}h_{j_2}\ldots h_{j_k} \]
+Beobachtung: 
+\[ \partial_5 \partial_3 \partial_1f  = \partial_1 \partial_3 \partial_5 f
+= \partial_3 \partial_5 \partial_1 f \text{ usw. (Schwarz)} \]
+Multiindexnotation:
+\[ N_0^n = \N_0 \times \ldots \times N_0 \text{k-mal} \]
+\( \alpha \in \N_0^n, \alpha =(\alpha_1, \ldots, \alpha_n), \alpha_j \in \N_0 \)
+\[ \abs{\alpha} := \sum_{j=1}^n \alpha_j \]
+\[ \alpha! := (\alpha_1!) \cdot (\alpha_1!) \cdots (\alpha_n!) \]
+\[ h \in \R^n: h^\alpha := h_1^{\alpha_1} \cdots h_n^{\alpha_n} \text{ (Monom)} \]
+\[ \partial^\alpha := \partial_1^{\alpha_1}\ldots \partial_n^{\alpha_n}
+= \partial_n^{\alpha_n}\ldots\partial_1^{\alpha_1} \]
+\[ h_j^0 = 1, \partial_j^0 = 1 \]
+\begin{satz}[Taylor in Multiindexnotation]
+    Sei \( U \subset \R^n \) offen, \( f \in \mathcal{C}^k(U), 
+    x \in U, [x,x+h] \subset U, h \in \R^n \).
+    \[ \Rightarrow f(x + h) = \sum_{\substack{\alpha \in \N_0^n \\ \abs{\alpha} \leq k}} 
+    \frac{ \partial^\alpha f(x) }{\alpha!} h^\alpha 
+    + R_k(f, x)(h) \]
+    mit 
+    \[R_k(f,x)(h) := \integralx{\frac{(1-t)^k}{(k-1)!} 
+    \sum_{\abs{\alpha} = k} 
+    (\partial^\alpha f(x+th)-\partial^\alpha f(x))h^\alpha}{0}{1}{t}\]   
+\end{satz}
+\begin{bew}[doch nicht so trivial]
+    \[ g^{(k)}(t) = \sum_{j_1,\ldots, j_k = 1}^n 
+    \partial_{j_k}\cdots \partial_{j_1} f(x+th)h_1^{j_1}\ldots h_k^{j_k} \]
+    Anzahl der Tupel \( (j_1, \ldots, j_k) \) 
+    in denen nach jeder der Koordinaten 
+    \( x_\nu \) genau \( \alpha_\nu \) mal differenzieren, 
+    \( \alpha = (\alpha_1, \ldots, \alpha_n) \) \\
+    \[ \text{Anzahl } = \binom{k}{\alpha_1} \binom{k - \alpha_1}{\alpha_2} \cdots 
+    \binom{k - (\alpha_1 + \cdots + \alpha_{n-1})}{\alpha_n}
+    = \frac{ k! }{\alpha_1! \cdots \alpha_n!} 
+    = \frac{k!}{\alpha!}. \]
+    \[ \Rightarrow g^{(k)}(t) = \sum_{j_1,\ldots,j_k = 1}^n 
+    \partial_{j_k}\cdots\partial_{j_1} f(x+th) 
+    \underbrace{h_{j_1}\cdots h_{j_k}}_{h_1^{\alpha_1}\cdots h_n^{\alpha_n} = h^\alpha} \]
+    \[ = \sum_{\substack{\alpha \in \N_0^n\\ \abs{\alpha}=k}} \frac{k!}{\alpha!}
+    \partial^\alpha f(x+th) h^\alpha. \]
+    \[ f(x + th) = \sum_{l=0}^k \frac{1}{k!} g^{(k)}(0) + \text{ Rest} \]
+    \[ = \sum_{l=0}^k \frac{1}{\alpha!} \partial^\alpha f(x) h^\alpha \]
+\end{bew}
 \end{document}
