@@ -1,0 +1,43 @@
+\documentclass[../ana2u.tex]{subfiles}
+\begin{document}
+\setcounter{section}{11}
+\section{Differenzieren von Integralen}
+\[ f(x) = \integralx{g(x,y)}{a(x)}{b(x)}{y} \tag{\(*\)} \]
+\[ a(x), b(x) \in \mathcal{C}^1(\R), 
+g \in \mathcal{C}^1(\R^2) \]
+
+\begin{beh}
+    \[ f'(x) = b'(x)g(x, b(x)) - a'(x)g(x,a(x))
+    + \integralx{\ddxpartial{x} g(x,y)}{a(x)}{b(x)}{y} \]
+\end{beh}
+\begin{bew}
+    Wir definieren 
+    \[ F(x_1, x_2, x_3) 
+    = \integralx{g(x_3, y)}{a(x_2)}{b(x_1)}{y}. \]
+    Dann gilt \( f(x) = F(x,x,x) \).\\
+    Unter der Annahme, dass \( F \ \mathcal{C}^1 \) ist, 
+    gilt
+    \[ g'(x) = \ddxpartialboth{F}{x_1}(x,x,x) 
+    + \ddxpartialboth{F}{x_2}(x,x,x) 
+    + \ddxpartialboth{F}{x_3}(x,x,x) \]
+    Wir betrachten zunächst \(\ddxpartialboth{F}{x_1}, 
+    \ddxpartialboth{F}{x_2}\).
+    Wir verwenden die \(1-\)Dimensionale Kettenregel und HDI
+    \[ F(x_1, x_2, x_3) = G(b(x_1), a(x_2),x_3) \]
+    mit 
+    \[ G(b,a,x_3) = \integralx{g(x_3y)}{a}{b}{y} \]
+    Somit
+    \[ \ddxpartialboth{F}{x_1}(x_1,x_2,x_3) 
+    = \ddxpartialboth{G}{b} \ddxpartialboth{b}{x_1} = b'(x_1)g(x_3, b(x_1)) \]
+    \[ \ddxpartialboth{F}{x_2}(x_1,x_2,x_3) = \ddxpartialboth{G}{a} \ddxpartialboth{a}{x_2} = -a'(x_2)g(x_3,a(x_2)) \]
+    Als Komposition stetiger Funktionen sind \(\ddxpartial{x_1}F, \ddxpartial{x_2}F\)
+    stetig.
+    Merke: \( x_1, x_2 \) sind fest, wenn wir 
+    \( \ddxpartial{F}{x_3} \) betrachten, also 
+    können wir die Notation vereinfachen.\\
+    Wir müssen also zeigen , dass
+    \[ \ddxpartial{x} \integralx{g(x,y)}{a}{b}{y} 
+    = \integralx{\ddxpartialboth{g}{x} (x,y)}{a}{b}{y} \]
+    und dass dies wieder eine stetige Funktion ist.
+\end{bew}
+\end{document}
