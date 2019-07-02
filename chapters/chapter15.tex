@@ -148,4 +148,51 @@ Multiindexnotation:
     \[ f(x + th) = \sum_{l=0}^k \frac{1}{k!} g^{(k)}(0) + \text{ Rest} \]
     \[ = \sum_{l=0}^k \frac{1}{\alpha!} \partial^\alpha f(x) h^\alpha \]
 \end{bew}
+Noch einmal Taylor: 
+\( f \in \mathcal{C}^k(U, \R) \) (oder \( \R^m \)) \\
+\(\abb{g}{[0,1]}{\R} (\R^m) k\)-mal stetig differenzierbar auf \((-\delta, 1+\delta)\)
+\[ g(1) = g(0)+\integralx{g'(s)}{0}{1}{s} = \underbrace{\ldots}_{k\text{-mal partiell int.}} \]
+\[ = g(0)+g'(0)+\frac{1}{2}g''(0) + \ldots + \frac{1}{k!} g^{(k)}(0) + \frac{1}{(k-1)!}
+\integralx{(1-s)^{k-1} (g^{(k)}(s)-g^{(k)}(0))}{0}{1}{s} \]
+Anwenden:
+Setzen \( g(t) := f(x + th) \)
+\[ \Rightarrow f(x+h) = \sum_{l=0}^k \frac{1}{l!} g^{(l)}(0) 
++ \frac{1}{(k-1)!} \integralx{(1-t)^{k-1} (g^{(k)}(s) - g^{(k)}(0)) }{0}{1}{s} \]
+\[ g^{(l)}(0) = \frac{d^l}{dt^l}g(0) = \frac{d^l}{dt^l} f(x+th) \vert_{t=0} \]
+\[ g^{(1)}(t) = \sum_{j=1}^n \partial_j f(x+th) h_j \]
+\[ g^{(2)}(t) = \sum_{j=1}^n \ddx{t} (\partial_j f(x+th)) h_j 
+= \sum_{j_1=1}^n \sum_{j_2 = 1}^n \partial_{j_2} 
+\partial_{j_1} f(x + th) h_{j_2} h_{j_1} \]
+\[ \Rightarrow \ldots g'^{(l)}(t) = \sum_{j_1=1,\ldots, j_l =1}^n 
+\partial_{j_l} \ldots \partial_{j_1} f(x+th) h_{j_1}\cdots h_{j_l} \]
+\[ \partial_j = \ddxpartial{x_j} \]
+Multiindizes: \(\alpha \in \N_0^n, \alpha = (\alpha_1, \ldots, \alpha_n)\)\\
+\( h \in \R^n, h^\alpha := h_1^{\alpha_1} \cdots h_n^{\alpha_n} \)\\
+\( \partial^\alpha := \partial_1^{\alpha_1} \cdots \partial_n^{\alpha_n} \)\\
+\[ \abs{\alpha} = \sum_{m=1}^n \alpha_m \]
+Angenommen \(\abs{\alpha} = l\) und \(\sum_{m=1}^n \alpha_m = l\)
+\[ = \sum_{\abs{\alpha} = l} \text{Faktor} \cdot \partial^\alpha f(x+th)h^\alpha \]
+Wie mache ich diesen Faktor?\\
+Anzahl der Tupel \((j_1, \ldots, j_n)\) (oder der Tupel \((\partial_{j_1}, \ldots, \partial_{j_n})\))
+in denen nach jeder der Koordinaten \(x_j\) genau \(\alpha_j-\) mal partiell differenzierbar wird.  
+\[ \binom{l}{\alpha_1}\binom{l-\alpha_1}{\alpha_2}\binom{l-\alpha_1-\alpha_2}{\alpha_3}
+\cdot \binom{l-(\alpha_1+\ldots+\alpha_{n-1})}{\alpha_n} \]
+\[ = \frac{l!}{\alpha_1!\cdots \alpha_n!} = \frac{l!}{\alpha!} \]
+\[ \alpha! = \alpha_1!\cdots \alpha_n!  \]
+\[ \Rightarrow g^{(l)}(0) = \sum_{\substack{\alpha \in \N_0^n \\ \abs{\alpha} = l}}
+\frac{l!}{\alpha!} \partial^\alpha f(x) h^\alpha \]
+\[ \Rightarrow f(x+h) = \sum_{l=0}^k \frac{1}{l!} g^{(l)}(0) 
++ \frac{1}{(k-1)!} \integralx{ (1-t)^{k-1} (g^{(k)}(s) - g^{(k)}(0)) }{0}{1}{s} \]
+\[ = \sum_{l=0}^k \sum_{\substack{\alpha \in \N_0^n \\ \abs{\alpha} = l}}
+\frac{\partial^l f(x)}{\alpha!}h^\alpha + \frac{1}{(k-1)!} k!
+\sum_{l=0}^k \sum_{\substack{\alpha \in \N_0^n \\ \abs{\alpha} = l}}
+\integralx{(1-t)^{k-1} (\partial^\alpha f(x+th)-\partial^\alpha f(x))(0))}{0}{1}{s} \]
+\[ \Rightarrow f(x + h) = \sum_{\substack{\alpha \in \N_0^n \\ \abs{\alpha} \leq k}} 
+\frac{ \partial^\alpha f(x) }{\alpha!} h^\alpha 
++ k \sum_{\abs{\alpha} = k} \frac{h^\alpha}{\alpha!} 
+\integralx{(1-s)^{k-1} (\partial^\alpha f(x + sh) - \partial^\alpha f(x)) }{0}{1}{s} \]
+\begin{bem}
+    Anzahl der Multiindizes mit \(\abs{\alpha} = l\) ist 
+    \[ \binom{l+n-1}{n-1} \]
+\end{bem}
 \end{document}
