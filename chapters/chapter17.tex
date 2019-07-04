@@ -1,0 +1,80 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{16}
+\section{Satz über implizite Funktionen (und inverse Funktionen)}
+Situation: Sei \(\R^n, \R^m\) und \(\abb{F}{\R^n \times \R^m}{\R^m}\) gegeben. 
+Angenommen, es existiert \(x_0 \in \R^n\), \(y_0 \in \R^m\):
+\[ F(x_0, y_0) = 0. \]
+Frage: Können wir die \( m \) Gleichungen lokal 
+(d. h. in der Nähe von \( x_0 \)) nach \(y\) 
+auflösen, d. h. gibt es eine Funktion 
+\( \abb{g}{\R^n}{\R^m} \) mit 
+\[ F(x, g(x)) = 0 \; \forall x \text{ nahe bei } x_0 \]
+\subsection*{Linearisierung} 
+\[ F(x,y) = \underbrace{F(x_0, y_0)}_{=0} + \underbrace{DF(x_0, y_0) \begin{pmatrix}
+    x - x_0 \\ y - y_0
+\end{pmatrix} }_{
+    = D_1 F(x_0, y_0)[x - x_0] + D_2 F(x_0, y_0)[y - y_0]
+}+ \text{ höhere Ordnungsterme}\]
+mit \\
+\( D_1 F = D_x F =  \) (verallgemeinerte) 
+partielle Ableitung nach \( x_1,\ldots, x_n \)\\
+\( D_2F = D_yF = \) (verallgemeinerte) 
+partielle Ableitung nach \(y_1, \ldots , y_n \)
+\[ A = \abb{D_1 F(x_0, y_0)}{\R^n}{\R^n} \text{ linear} \]
+\[ B = \abb{D_2 F(x_0, y_0)}{\R^m}{\R^m} \text{ linear} \]
+\( \Rightarrow \) linearer Fall: 
+\(0 = F(x, y) = A[x-x_0] + B[y-y_0]\)
+\[ \Rightarrow y = y_0 - B^{-1}A[x - x_0] \]
+ist die einzige Lösung, sofern \( B \) invertierbar ist.
+\begin{satz}[Satz über implizite Funktionen]
+    Gegeben \(\R^n, \R^m, U \subset \R^n \times \R^m\) offen, 
+    \((x_0, y_0) \in U\) und \(\abb{F}{U}{\R^m}\) stetig differenzierbar
+    in \(U\). Ist
+    \[ F(x_0, y_0) = c \in \R^m \]
+    und sind die verallgemeinerten partiellen Ableitungen von \(F\)
+    nach \(y\), also
+    \[ \abb{D_yF(x_0,y_0) = D_2F(x_0, y_0)}{\R^m}{\R^m} \]
+    invertierbar, dann existieren offene Umgebungen \(\R^n \supset U_1\)
+    von \(x_0\) und \(\R^m \supset U_2\) von \(y_0, U_1 \times U_2 \subset U\)
+    und eine differenzierbare Funktion \(\abb{g}{U_1}{U_2}\) mit 
+    \[F(x, g(x)) = c \; \forall x \in U_1\]
+    Ferner ist 
+    \[ D g(x) = -(D_2 F(x, g(x)))^{-1} \ D_1 F(x, g(x)) \]
+    für alle \( x\in U_1 \). Außerdem ist für \( x \in U_1, y \in U_2 \)
+    \[ F(x,y) = c \Leftrightarrow y = g(x). \]
+    D. h. \(g(x)\) ist die einzige Lösung der Gleichung
+    \[F(x, y) = c\]
+\end{satz}
+Für den Beweis brauchen wir eine leichte Verschärfung von
+Banach.
+\begin{lem}
+    Sei \( M \) ein vollständiger metrischer Raum und \( P \) 
+    (Parameterraum) ein weiterer metrischer Raum und für \( x\in P \)     
+    sei \(\abb{T_x}{M}{M}\) eine \(\alpha-\) Kontraktion mit \(\alpha < 1\)
+    wobei \(\alpha\) unabhängig von \(x\) ist. Dann exisitert für jedes \(x \in P\)
+    ein Fixpunkt \(y_x \in M\) von \(T_x\), d. h. 
+    \[ y_x = T_x(y_x) \]
+    Ferner: Ist für alle \(y \in M\) die Abbildung 
+    \(P \ni x \mapsto T_x(y)\) stetig, so ist
+    \( x \mapsto y_x \) stetig.
+\end{lem}
+\begin{bew}
+    Aus Satz 16.2 folgt \( \forall x \in P \) 
+    existiert \( y_x = T_x(y,x) \), also ein Fixpunkt.\\
+    Stetigkeit des Fixpunktes in dem Parameter \( x \): 
+    Seien \( x_1, x_2 \in P, y_1 = y_{x_1}, y_2 = y_{x_2}, 
+    T_1 = T_{x_1}, T_2 = T_{x_2} \).
+    \begin{align*}
+        d(y_{x_1}, y_{x_2}) &= d(y_1, y_2) \\
+        &= d(T_1(y_1), T_2(y_2)) \\
+        &\leq d(T_1(y_1), T_2(y_2)) + d(T_1(y_2), T_2(y_2)) \\
+        &\leq \alpha d(y_1, y_2) + d(T_1(y_2), y_2)
+    \end{align*}
+    und da \( 1-\alpha > 0 \), folgt 
+    \[ d(y_1, y_2) \leq \frac{1}{1-\alpha} d(T_1(y_2),y_2) 
+    \overset{x_1 \rightarrow x_2}{\longrightarrow} 0. \]
+    Also folgt die Stetigkeit.
+\end{bew}
+\end{document}
