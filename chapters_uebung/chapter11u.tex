@@ -5,7 +5,7 @@
 \section{Extrema}
 \( \abb{f}{\R^2}{\R}, (x,y) \mapsto (x^2 + 2y^2) e^{-(x^2 + y^2)} \).
 
-\begin{beh}[Die Mutter aller Extrema]
+\begin{beh}
     \(f\) besitzt ein globales Minimum in \((0,0)\), globales Maximum in
     \((0, \pm 1)\) und keine weiteren lokalen Extrema.
 \end{beh}
@@ -26,4 +26,109 @@
     Weiter: Wie sieht Hessematrix an diesen Punkten aus?
     \( \Rightarrow \) Minima, Maxima, indefinit etc.
 \end{bew}
+\begin{bsp}
+    \( \abb{f}{\R^2}{\R}, (x,y) \mapsto 2x^2 - 3xy^2 + y^4 \).\\
+    Wir betrachten Geraden \((x,y) = t(a,b)\)
+    für \(a, b \in \R\) durch den Nullpunkt.
+    \[ g(t) := f(x(t), y(t)) = 2a^2t^2-3ab^2t^3+b^4t^4 \]    
+    Es ist 
+    \begin{align*}
+        g'(t) &= 4a^2 t - 9 ab^2 t^2 + 4 b^4 t^3\\
+        g''(t) &= 4a^2 - 18ab^2 t + 12 b^4 t^2
+    \end{align*}
+    Extremum in \(0\)?
+    \[ g(0) = g'(0) = 0 \qquad g''(0) = 4a^2. \]
+    Also hat \(g\) in \(0\) ein lokales Minimum und damit auch die 
+    Einschränkung von \(f\) auf die Gerade.\\
+    Aber \(f\) hat in \((0,0)\) kein lokales Minimum.
+    \(f(0,0) = 0, f(x,y) = (y^2-x)(y^2-2x) \).\\
+    Somit liegen in jeder Umgebung des Nullpunkts sowohl Punkte mit
+    negativen als auch positiven Funktionswerten. 
+\end{bsp}
+\begin{bsp}
+    Sei \( D := \overline{U_1}(0,0) = \set{x : \norm{x}_2 \leq 1}, 
+    \abb{f}{D}{\R} \) definiert durch 
+    \( f(x,y) = x^3-x^2+xy^2+y^2 \).\\
+    Gibt es globale Extrema von \(f\) auf \(D\) und wenn ja,
+    welche Punkte sind dies?\\
+    Wir betrachten zunächst \( D^\circ = U_1(0,0) = \set{x : \norm{x}_2 < 1} \).
+    Auf \( D^\circ \) ist \(f\) offensichtlich zweimal stetig differenzierbar.\\
+    Die notwendige Bedingung für Extrema ist somit 
+    \[ (\nabla f)(x,y) = 0 \]
+    Für \((x,y) \in D \) gilt
+    \begin{align*}
+        f_x(x,y) &= 3x^2-2x+y^2\\
+        f_y(x,y) &= 2y(x+1)\\
+        f_xx(x,y) &= 6x-2
+        f_{xy}(x,y) = f_{yx}(x,y) &= 2y\\
+        f_{yy}(x,y) = 2(x+1)
+    \end{align*}    
+    Kritische Punkte von \(f\) sind gegeben durch 
+    Lösungen von 
+    \begin{align}
+        3x^2 - 2x + y^2 &= 0 \\
+        2x(x + 1) &= 0
+    \end{align}
+    Aus (2) folgt
+    \[ 2y(x+1) = 0 \Rightarrow y = 0 \vee x = -1. \]
+    Im Fall \(y=0\) folgt aus (1)
+    \[ 3x^2 - 2x = 0 \Rightarrow x = 0 \vee x = \frac{2}{3} \].
+    Im Fall \(x=-1\) folgt aus (1)
+    \[y^2 = -5\].
+    Somit sind alle Lösungen des Gleichungssystems (1), (2) 
+    gegeben durch 
+    \[ (x,y) \in \set{ (0,0), (\frac{2}{3}, 0) }. \]
+
+    Für \((x,y) \in D\) gilt
+    \[ H_f(x,y) = \begin{pmatrix}
+        6x-2 & 2y\\
+        2y & 2(x+1)
+    \end{pmatrix} \]
+    Insbesondere gilt also 
+    \[ H_f(0,0) = \begin{pmatrix}
+        -2 & 0 \\ 0 & 2
+    \end{pmatrix} \text{ (indefinit)}, \quad
+    H_f(\frac{2}{3}, 0) = \begin{pmatrix}
+        2 & 0 \\ 0 & \frac{10}{3}
+    \end{pmatrix}\text{ (pos. definit)}. \]
+    Also in \((\frac{2}{3}, 0)\) ein lokales Minimum von \(f\).
+    \[ f(\frac{3}{2}, 0) = -\frac{4}{27} \]
+    Es bleibt noch die Funktion auf \(\delta D\) zu prüfen.
+    Wir parametrisieren mit Hilfe der Funktion
+    \[ \abb{\varphi}{[0,2\pi]}{\delta D}; t \mapsto (\cos t, \sin t) \]
+    und betrachten
+    \[ \abb{F}{[0,2\pi]}{\R} \]
+    gegeben durch
+    \[ F(t) = f(\varphi(t)) = \cos^3 t-\cos^2 t + \cos t \sin^2 t + \sin^2 t 
+    = \cos t + \sin^2 t - \cos^2 t\]
+    offensichtlich ist \(F\) unendlich oft differenzierbar
+    \[ F'(t) = \sin t (4\cos 5 - 1) \]
+    \[ F''(t) = -\cos 5 + 4\cos^2 t - 4 \sin^2 t  \]
+    Es gilt also 
+    \[ F'(t) = 0 \Rightarrow \sin t = 0 \vee \cos t = \frac{1}{4} \]
+    Im Fall \( \sin t = 0 \) folgt 
+    \[ F''(t) = -\cos t + 4 = \begin{cases}
+        3, & t = 0\\
+        5, & t = \pi
+    \end{cases}. \]
+    \(F\) hat also in \(t = 0\) und \(t = \pi\) lokale Minima, wobei
+    \(F(0) = 0\) und \(F(\pi) = -2\) \\
+    Im Fall \(\cos t = \frac{1}{4}\) gilt
+    \[ F''(t) = - \frac{1}{4} + \frac{1}{4} - \frac{15}{4} 
+    = - \frac{15}{4} < 0 \]
+    Also hat \(F\) für die beiden \( \tilde{t} \in [0,2\pi] \) 
+    mit \( \cos \tilde{t} = \frac{1}{4} \) ein lokales Maxima und
+    \(F(\tilde{t}) = \frac{18}{16}\).\\
+    Da \(F\) stetig und \([0,2\pi]\) kompakt ist, nimmt \(F\) auf \([0,2\pi]\)
+    sein Minimum und Maximum an.
+    \[ \underset{t\in [0,2\pi]}{\max} F(t) = \frac{18}{16}, \quad
+    \underset{t\in [0,2\pi]}{\min} F(t) = -2. \]
+    Da auch \(f\) stetig ist und \(D\) kompakt ist, nimmt \(f\) auf \(D\)
+    sein globales Maximum und globales Minimum an.\\
+    Da jedes globale Maximum auch lokales Maximum ist, muss \(f\) sein 
+    globales Maximum auf \(\delta D\) annehmen 
+    (es gibt keine lokalen Maxima von \(f\) in \(D^\circ)\)).
+    \[ \max f(D) = \max f(\delta D) = \frac{18}{16} \]
+    \[ \min f(D) = -2 \]
+\end{bsp}
 \end{document}

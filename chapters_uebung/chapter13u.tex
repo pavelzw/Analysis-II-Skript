@@ -1,0 +1,48 @@
+\documentclass[../ana2u.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{12}
+\section{Taylor}
+
+Sei \(G\subset \R^n\) offen, \(x, \xi \in G, h:= x-\xi\)
+und \(\abb{f}{G}{\R} m\)-Mal stetig differenzierbar, dann heißt
+das Polynom
+\begin{align*}
+    T_m(x) &= T_m(\xi+h) \\
+    &= \sum_{\abs{\alpha} \leq m} 
+    \frac{D^\alpha f(\xi)}{\alpha!}(x-\xi)^\alpha \\
+    &= \sum_{k=0}^m \frac{1}{k!} f^{(k)}(\xi)(\underbrace{h, \ldots, h}_{k-\text{mal}})
+\end{align*}
+\[ \abb{f}{\R^3}{\R}, f(\vec{x}) = f(x,y,z) 
+:= \sin x \cos y\; e^z \]
+Entwicklungspunkt: \( (0,0) = \xi \).
+\( f \) ist auf \( \R^3 \) beliebig oft stetig differenzierbar.
+Es gilt \( f(0) = 0 \) also ist \(T_0(\vec{x}) = f(0) = 0\). \\
+Für das \(1.\) Taylorpolynom brauchen wir
+\[ \grad f(\vec{x}) = (\cos x \cos y, -\sin x \sin y, \sin x \cos y)^t e^z \]
+und \( \grad f(0) = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \).
+Also 
+\[ T_1(\vec{x}) = T_0(\vec{x}) + \scalarprod{\grad f(0)}{\vec{x}} = x \]
+Für die zweite Ableitung bzw. die Hessematrix erhält man 
+\[ H_f(0) = e^z
+\begin{pmatrix}
+    -\sin x \cos y & -\cos x \sin y & \cos x \cos y \\
+    -\cos x \sin y & -\sin x \cos y & -\sin x \sin y \\
+    \cos x \cos y & - \sin x \sin y & \sin x \cos y
+\end{pmatrix}(0,0,0) = \begin{pmatrix}
+    0 & 0 & 1\\
+    0 & 0 & 0\\
+    1 & 0 & 0
+\end{pmatrix} \]
+\[ T_2(\vec{x}) = \underbrace{T_0(\vec{x})}_{=0} + \underbrace{T_1(\vec{x})}_{=x} 
++ \frac{1}{2}(\vec{x})^t H_f(0) \vec{x} 
+= x + \frac{1}{2}\begin{pmatrix}
+    x & y & z
+\end{pmatrix} \begin{pmatrix}
+    0 & 0 & 1\\
+    0 & 0 & 0 \\
+    1 & 0 & 0
+\end{pmatrix} \begin{pmatrix}
+    x \\ y \\ z
+\end{pmatrix} = x + xz \]
+\end{document}

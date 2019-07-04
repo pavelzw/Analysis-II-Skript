@@ -1,0 +1,59 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{15}
+\section{Banachscher Fixpunktsatz}
+\( \abb{T}{M}{M} \) ist \(x\in M\) Fixpunkt (von \(T\)),
+falls \(x = T(x)\)
+\begin{defi}
+    Sei \(M\) ein metrischer Raum mit 
+    Metrik \(d\).\\
+    \( \abb{T}{M}{M}\) ist eine \( \alpha \)-Kontraktion, 
+    falls \( d(T(x), T(y)) \leq \alpha d(x, y) \;\forall x, y \in M \).
+\end{defi}
+\begin{satz}[Banachscher Fixpunktsatz]
+    Sei \( M \) ein vollständiger metrischer Raum, \( \abb{T}{M}{M} \) 
+    eine \( \alpha \)-Kontraktion (\( 0 \leq \alpha < 1 \)). Dann gibt 
+    es genau einen Fixpunkt \( x^* \) und man nehme irgendein \( x \in M \) 
+    \[ \Rightarrow x^* = \limes{n} T^n(x). \]
+    mit \( T^1(x) = T(x), T^{n+1}(x) = T(T^n(x)) \)
+    und a priori Fehlerabschätzung: 
+    \[ d(x^*, T^n(x)) \leq \frac{1}{1-\alpha} \alpha^n d(x, T(x)). \]
+\end{satz}
+\begin{bew}
+    1. Höchstens einen Fixpunkt:\\
+    Seien \( x_1^* = T(x_1^*), x_2^* = T(x_2^*) \) Fixpunkte. 
+    \[ \Rightarrow d(x_1^*, x_2^*) = d(T(x_1^*),T(x_2^*)) 
+    \leq \alpha d(x_1^*, x_2^*). \]
+    \[ \Rightarrow (1-\alpha) d(x_1^*, x_2^*) = 0 
+    \Rightarrow d(x_1^*, x_2^*) = 0 \Rightarrow x_1^* = x_2^*. \]
+    2. Es gibt einen Fixpunkt:\\
+    \(T\) ist Lipschitzstetig mit Konstante \(\alpha 
+    \Rightarrow T\) ist stetig.\\
+    Nimm \( x \in M \). \( x_0 = x, x_1 = T(x), x_{n+1} = T(T^n(x)) 
+    = T(x_n) \).
+    \(\Rightarrow\) Folge \((x_n)_n\) in \(M\).
+    Angenommen: Die Folge konvergiert, d. h. \( x^* := \limes{n} x_n \in M \) 
+    existiert.\\
+    \( x^* \leftarrow x_{n+1} = T(x_n) \Rightarrow x^* = x_{n+1} 
+    = \limes{n} T(x_n) = T(\limes{n}x_n) = T(x^*) \).\\
+    \( M \) vollständig. \( \Rightarrow (x_n)_n \) konvergiert 
+    \( \Leftrightarrow (x_n)_n \) Cauchyfolge.
+    \[ d(x_n, x_m) \leq d(x_n, x_{n+1}) + d(x_{n+1}, x_m) 
+    \leq d(x_n, x_{n+1}) + d(x_{n+1}, x_{m+1}) 
+    + d(x_{m+1}, x_m) \]
+    \[ \Rightarrow (1-\alpha) d(x_n, x_m) 
+    \leq d(x_{n+1}, x_n) + d(x_{m+1}, x_m) \]
+    \[ \Rightarrow d(x_n, x_m) 
+    \leq \frac{1}{1-\alpha} (d(x_{n+1}, x_n) + d(x_{m+1}, x_m)) \]   
+    \( \Rightarrow \) Brauche obere Schranke von 
+    \[d(x_{n+1}, x_n) = d(T(x_n), T(x_{n-1})) 
+    \leq \alpha d(x_n, x_{n-1}) \]
+    \[ \leq \alpha^2 d(x_{n-1}, x_{n-2}) 
+    = d(T(x_{n-1}), T(x_{n-2})) \]
+    \[ \leq \alpha^n d(x_1, x_0) = \alpha^n d(T(x), x) \]
+    \[ \Rightarrow d(x_n, x_m) \leq \frac{1}{1-\alpha}(\alpha^n + \alpha^m)d(T(x), x) \]
+    Wähle \( N \), sodass \( \frac{1}{1-\alpha}\alpha^N d(T(x), x) < \forall{\varepsilon}{2} \)
+    \[ \Rightarrow \frac{1}{1-\alpha} \alpha^n d(T(x), x) < \frac{\varepsilon}{2} \; \forall n \geq N. \]    
+\end{bew}
+\end{document} 
