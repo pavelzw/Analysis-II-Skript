@@ -56,4 +56,83 @@ falls \(x = T(x)\)
     Wähle \( N \), sodass \( \frac{1}{1-\alpha}\alpha^N d(T(x), x) < \forall{\varepsilon}{2} \)
     \[ \Rightarrow \frac{1}{1-\alpha} \alpha^n d(T(x), x) < \frac{\varepsilon}{2} \; \forall n \geq N. \]    
 \end{bew}
-\end{document} 
+\subsection*{Fehlerabschätzung}
+Sei \( x^* = T(x^*) \). 
+\begin{align*}
+    \Rightarrow d(x^*, x_{n+1}) &= d(T(x^*), T(x_n)) \\
+    &\leq \alpha d(x^*, x_n) \\
+    &\leq \alpha^2 d(x^*, x_{n-1}) \\
+    &\leq \ldots \leq \alpha^{n+1} \underbrace{d(x^*, x_0)}_{\text{nicht bekannt}}
+\end{align*}
+Etwas anders: 
+\begin{align*}
+    d(x^*, x_n) &\leq d(x^*, x_{n+1}) + d(x_{n+1}, x_n) \\
+    &= d(T(x^*), T(x_n)) + d(x_{n+1}, x_n)\\
+    &\leq \alpha d(x^*, x_n) + d(x_{n+1}, x_n).
+\end{align*}
+Da \(1- \alpha > 0\) ist, folgt
+\[ d(x^*, x_n) \leq \frac{1}{1-\alpha} d(x_{n+1}, x_n) \]
+A-posteriori Fehlerabschätzung.
+Da
+\begin{align*}
+    d(x_{n+1}, x_n) *\leq \alpha d(x_1, x_0) \\
+    &\leq \alpha^n d(T(x_0), x_0),
+\end{align*}
+folgt 
+\[ d(x^*, x_n) \leq \frac{\alpha^n}{1-\alpha} d(T(x_0),x_0) \]
+A-priori Fehlerabschätzung.
+\begin{bem}
+    Manchmal muss man \(\abb{T}{M}{M}\) auf die Teilmenge \(A \subset M\)
+    einschränken, um zu erreichen, das \(T\) eine Kontraktion ist. 
+    Aber es muss nicht gelten 
+    \[ \abb{T}{A}{A} \]    
+\end{bem}
+Frage: Ist \(a \in M\) und \(\overline{B_r}(a) = \set{x \in M: d(x,a) \leq r}\)
+Wann ist dann 
+\[ \abb{T}{\overline{B_r}(a)}{\overline{B_r}(a)} \text{?}\]
+Brauchen: \(\forall x \in \overline{B}_r(a) \) ist \(T(x) \in \overline{B}_r(a)\),
+d. h. \(d(T(x), a) \leq r\).
+\[ d(T(x), a) \leq \underbrace{d(T(x), T(a))}_{
+    \substack{\leq \alpha d(x, a) \\ \leq \alpha r}} + d(T(a), a) \]
+Also falls \( d(T(a), a) \leq (1 - \alpha)r \), folgt 
+\[ d(T(x), a) \leq \alpha r + (1-\alpha) r \leq r \]
+für alle \( x\in B_r(a) \).
+\subsection*{Anwendung}
+Sei \( \abb{f}{\R^m}{\R^n} \). Gibt es ein \( x^*: f(x^*) = 0 \)?\\
+Angenommen \( x \in \R: f(x) \neq 0 \). Wir suchen \( h\in\R^n \) 
+mit 
+\[ 0 \overset{!}{=} f(x+h) = f(x) + Df(x)[h] + o(\abs{h}) \]
+\[ \Rightarrow A(x)h = -f(x)  + o(\abs{h})\]
+Ist \(A\) invertierbare \(n \times n\)-Matrix, so folgt
+\[ h = -A(x)^{-1} f(x) + o(\abs{h}) \]
+\( \Rightarrow \) neuer Punkt 
+\[ x + h = x - A(x)^{-1} f(x) =: T(x) \]
+Iteriere. Sei \( x_0 \in \R^n, x_{n+1} := T(x_n) = x_n - A(x_0)^{-1} f(x_n) \).\\
+Brauchen \( A(x_n) = \abb{Df(x_n)}{\R^n}{\R^n} \) ist invertierbar.
+\subsection*{Vereinfachtes Newton-Verfahren}
+Sei \(A\) irgendwie invertierbare lineare Abbildung von 
+\( \R^n \rightarrow \R^n \).\\
+Setze \( T(x) := x - A^{-1} f(x) \) \((*)\) 
+und nehmen \( x_0 \in \R^n, x_{n+1} := T(x_n), n\in \N_0 \).
+\begin{satz}
+    Genügt die Funktion \(T\) einer Lipschitzbedingung
+    in einer offenen Kugel \( B_r(a) \) mit 
+    Lipschitzkonstante \( \alpha = \frac{1}{2} \) 
+    und ist \(\abs{A^{-1} f(a)} < \frac{r}{2}\), so hat \(f\)
+    in \(B_r(a)\) genau eine Nullstelle \(\xi\).    
+\end{satz}
+Nehmen \( x_0 \in B_r(a) \) und induktiv 
+\( x_{n+1} = T(x_n) \), dann ist für alle \( n \in \N_0 \ x_n \in B_r(a) \) 
+und \( \xi = \limes{n} x_n \) erfüllt \( f(\xi) = 0 \).
+\begin{bew}
+    Wir wenden Kontraktionsprinzip auf \( \abb{T}{\overline{B_s}(a)}{\overline{B_s}(a)} \) 
+    für ein \( 0 < s < r \), sodass \( \abs{x_0 - a} \leq s \) 
+    und \( \abs{ T(a) - a } = \abs{ A^{-1} f(a) \leq \frac{1}{2}s } \).
+    Dann ist für alle \(x \in \overline{B}_s(a)\) auch
+    \begin{align*}
+        \abs{T(x)-a} \leq \abs{T(x)-T(a)} + \abs{T(a)-a}\\
+        \leq \frac{1}{2} \abs{x-a} + \frac{1}{2}s \leq s
+    \end{align*}
+    \[ \Rightarrow T(x) \in \overline{B}_s(a). \]
+\end{bew}
+\end{document}
