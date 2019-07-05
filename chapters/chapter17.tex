@@ -60,6 +60,13 @@ Banach.
     \(P \ni x \mapsto T_x(y)\) stetig, so ist
     \( x \mapsto y_x \) stetig.
 \end{lem}
+Motivation:
+\( y = f(x) \). Inverse \( f^{-1}(x) \) ist implizit definit 
+\( x = f(y) \). \( F(x,y) = x - f^{-1}(y) = 0 \).\\
+Funktionssphäre in \( \R^3 \) ist Lösung von 
+\( F(x,y,z) = 0 \).
+\[ F(x,y,z) = x^2 + y^2 + z^2 - 1 \]
+\( F(x,y,z) = x^{27}y^5 - z^{16}x^9 + x^4 y^4 z^4 - 8xyz - 1 \).
 \begin{bew}
     Aus Satz 16.2 folgt \( \forall x \in P \) 
     existiert \( y_x = T_x(y,x) \), also ein Fixpunkt.\\
@@ -76,5 +83,155 @@ Banach.
     \[ d(y_1, y_2) \leq \frac{1}{1-\alpha} d(T_1(y_2),y_2) 
     \overset{x_1 \rightarrow x_2}{\longrightarrow} 0. \]
     Also folgt die Stetigkeit.
+\end{bew}
+\begin{bew}(von Satz 1)
+    Setze \(\abb{L = D_2F(x_0, y_0) = D_yF(x_0,y_0)}{\R^m}{\R^m}\) 
+    ist invertierbar. O. B. d. A. sei \( c = 0 \), sonst 
+    \( \tilde{F} := F(x,y) - c = 0 \).\\
+    Die Gleichung \( F(x,y) = c \) sei äquivalent zu 
+    \[ y = y - L^{-1}F(x,y) =: G(x,y) \]
+    \(\Rightarrow\) benötigen zu festem \(x\) einen Fixpunkt
+    der Abbildung \(y \mapsto G(x, y)\) (d. h. \( T_x := G(x, \cdot) \)).
+    Kontraktionseigenschaft von \(T_x\):\\
+    Da \(LL^{-1} = \id_{\R^m} =: \mathds{1}_{\R^m} \), folgt 
+    \begin{align*}
+        T_x(y_1)-T_x(y_2) &= G(x,y_1)-G(x,y_2) \\
+        &= y_1 -L^{-1}F(x,y_1) -y_2+L^{-1}F(x,y_2) \\
+        &= y_1 -y_2 - L^{-1}(F(x,y_1)-F(x,y_2)) \\
+        &= L^{-1}(L(y_1-y_2)-(F(x,y_1)-F(x,y_2)))
+    \end{align*}
+    Beachte:
+    \begin{align*}
+        F(x,y_1)-F(x,y_2)-L(y_1,y_2) 
+        &= F(x,y_1)-F(x,y_2) - D_2F(x_0,y_0)[y_1,y_2] \\
+        &= F(x,y_1)-F(x,y_2) - D_1F(x_0,y_0)[x-x]
+        -D_2F(x_0,y_0)[y_1-y_2]
+    \end{align*}
+    Seien jetzt \(\delta_1, \eta > 0\), sodass
+    \[ M := B_{\delta_1}^{\R^n}(x_0) \times B_\eta^{\R^m}(y_0) \subset U \]
+    Aus Korollar 11.3 folgt nun 
+    \begin{align*}
+        &\abs{ F(x,y_1) - F(x, y_2) - L(y_1 - y_2) } \\
+        &\leq \abs{ y_1 - y_2 } \underbrace{\underset{(x,y) \in M}{\sup} 
+        \norm{DF(x,y)-DF(x_0,y_0)}}_{(+)}
+        \overset{\delta_1, \eta \rightarrow 0}{\rightarrow} 0
+    \end{align*}
+    Wähle \( \delta_1, \eta > 0 \), sodass \( (+)_{\delta_1, \eta} 
+    \leq \frac{1}{2 \norm{L^{-1}}} \).\\
+    \( \forall x \in B_{\delta_1}(x_0), y \in B_{\eta}(y_0) \) ist 
+    \begin{align*}
+        \abs{ T_x(y_1) - T_x(y_2) } &= \abs{ G(x,y_1) - G(x,y_2) } \\
+        &\leq \norm{L^{-1}} \frac{1}{2 \norm{L^{-1}}} \abs{y_1 - y_2} \\
+        &= \frac{1}{2} \abs{y_1-y_2}
+    \end{align*}
+    Somit ist \(T_x\) eine \(\frac{1}{2}-\)Kontraktion für jedes
+    \(x \in B_{\delta_1}(x_0)\).\\
+    Gilt \( \abb{T_x}{\overline{B}_\eta^{\R^m} (y_0) }{\overline{B}_\eta(y_0)} \)?\\
+    Da \( G(x_0, y_0) = y_0 \)
+    \begin{align*}
+        \abs{ T_x(y) - y_0 } &= \abs{ G(x,y) - y_0 } \\
+        &= \abs{ G(x,y) - G(x_0, y_0) } \\
+        &\leq \underbrace{\abs{G(x,y)-G(x,y_0)}}_{\leq \frac{1}{2}\abs{y-y_0}} 
+        + \abs{G(x,y_0)-G(x_0,y_0)} 
+    \end{align*}
+    Wähle \(\delta_2 > 0\), sodass \(\abs{G(x,y_0)-G(x_0,y_0)} < \frac{\eta}{2}\)
+    für \(x \in B_{\delta_2}(x_0)\).\\
+    Sei \(\delta := \min \set{\delta_1, \delta_2} > 0\)
+    \begin{align*}
+        \Rightarrow \abs{T_x(y)-y_0} &< \frac{1}{2} \abs{y-y_0} + \frac{\eta}{2}\\
+        &\leq \eta
+    \end{align*}
+    \(\forall y \in \overline{B}_\eta(y_0), x \in \overline{B}_\delta(x_0)\)    
+    \[ \Rightarrow \abb{ T_x }{ \overline{B}_\eta(y_0) }{B_\eta(y_0) 
+    \subset \overline{B}_\eta(y_0)} \]
+    \[ \oversett{Lem. 2}{\Rightarrow} \forall x \in B_\delta(x_0) 
+    \; \exists ! y : y = y_x =: g(x) \in B_\eta(y_0) \]
+    \[ F(x,g(x)) = F(x,y_x) = 0 \]
+    Außerdem gilt \( \abb{g}{\overline{B}_\delta(x_0)}{\overline{B}_\eta(y_0)} \) 
+    ist stetig. \\
+    Es gilt sogar \(\abb{g}{\overline{B}_\delta(x_0)}{B_\eta(y_0}\) (siehe (\(*\))),
+    denn 
+    \[ \abs{g(x)-y_0} < \frac{1}{2}\abs{g(x)-y_0}+ \frac{\eta}{2} < \eta 
+    \; \forall x \in \overline{B}_\delta(x_0) \]
+    d. h. \(g(x) \in B_\eta(y_0) \; \forall x \in \overline{B}_\delta(x_0)\)\\
+    \( \Rightarrow \abb{ g }{B_\delta(x_0)}{B_\eta(y_0)} \) ist stetig 
+    und \( \forall y \in B_\eta(y_0) \) und \( \forall x \in B_\delta(x_0) \) 
+    gilt: 
+    \[ F(x,y) = 0 \Leftrightarrow y = g(x). \]
+    Setze \(U_1 := B_\delta(x_0) \subset \R^n, U_2 := B_\eta(y_0) \subset \R^m\).\\
+    Nun bleibt noch zu zeigen, dass 
+    \( \abb{g}{U_1}{U_2} \) stetig differenzierbar ist.\\
+    Sei \( (x_1, y_1) \in U_1 \times U_2 \), \( y_1 = g(x_1) \).\\
+    Da \(F\) differenzierbar ist in \( (x_1, y_1) \), folgt 
+    \[ F(x,y) = F(x_1, y_1) + DF(x_1, y_1)[\begin{pmatrix}
+        x - x_1 \\ y - y_1
+    \end{pmatrix}] 
+    + \varphi(x,y) (\abs{ x - x_1 }^2 + \abs{y - y_1}^2)^{\frac{1}{2}} \]
+    \[ = F(x_1,y_1) + D_1 F(x_1, y_1)[x - x_1]
+    + D_2 F(x_1, y_1)[y - y_1]
+    + \varphi(x,y)(\abs{x-x_1}^2 + \abs{y - y_1}^2)^{\frac{1}{2}} \]
+    mit \( \limesx{(x,y)}{(x_1, y_1)} \varphi(x,y) = 0 \).\\
+    Da \( (x,y) \mapsto D_2F(x,y) \) stetig und 
+    \( D_2 F(x_0, y_0) \) invertierbar ist, können wir 
+    \( \delta, \eta > 0 \) so klein wählen, dass 
+    \( \abb{D_2 F(x,y) }{\R^m}{\R^m} \) invertierbar ist 
+    für alle \( (x,y) \in B_\delta(x_0) \times B_\eta(y_0) \)
+    (siehe Lemma 3).\\
+    \(\Rightarrow L := D_2F(x_1,y_1)\) ist invertierbar für 
+    \((x_1,y_1) \in B_\delta(x_0) \times B_\eta(y_0)\).\\
+    Setze \( h = D_1F(x_1,y_1) \).\\
+    \[ \Rightarrow F(x,y) = F(x_1, y_1) + h[x-x_1] + L[y - y_1] 
+    + \varphi(x,y) (\abs{ x - x_1 }^2 + \abs{ y - y_1 }^2)^{1/2} \]
+    \[ \Rightarrow y = y_1 - L^{-1}h[x - x_1] - 
+    (\abs{ x - x_1 }^2 + \abs{y - y_1}^2)^{1/2} L^{-1}[\varphi(x,y)] \]
+    \[ \Rightarrow g(x) = g(x_1) - 
+    L^{-1}h[x-x_1] - \abs{\begin{pmatrix}
+        x-x_1 \\ y - y_1
+    \end{pmatrix}} L^{-1}[\varphi(x,y)] \tag{\(**\)} \]
+    \[ \overset{(**)}{\Rightarrow} \abs{g(x) - g(x_1)} 
+    \leq \norm{ L^{-1}h }\abs{ x - x_1 } + L^{-1}[\varphi(x,y)] 
+    \cdot ( \abs{x - x_1}^2 + \abs{ g(x) - g(x_1) }^2)^{1/2} \]
+    Da 
+    \begin{align*}
+        (\alpha^2+\beta^2)^{1/2} &\leq 2 \max (\alpha^2,\beta^2)^{1/2} = 2^{1/2} \max(\alpha, \beta) \\
+        &\leq \sqrt{2} (\alpha+\beta)
+    \end{align*}
+    \(\forall \alpha, \beta > 0\)\\
+    folgt 
+    \[ ( \abs{x - x_1}^2 + \abs{ g(x) - g(x_1) }^2 )^{1/2}
+    \leq \sqrt{2} \abs{ x - x_1 } + \sqrt{2} \abs{ g(x) - g(x_1) } \]
+    \[ \Rightarrow \abs{g(x)-g(x_1)} \leq \norm{L^{-1}h} \abs{x-x_1}+\abs{L^{-1}[\varphi(x,y)]} 
+    \sqrt{2} \abs{x-x_1} + \abs{L^{-1}[\varphi(x,y)]}\sqrt{2} \abs{g(x)-g(x_1)} \tag{***} \]
+    ACHTUNG! \( x \mapsto g(x) \) ist stetig und \( \varphi(x,y) \rightarrow 0 \) 
+    für \( x \rightarrow x_1, y \rightarrow y_1 \)
+    \[ \Rightarrow \varphi(x,y) \rightarrow 0, x \rightarrow x_1. \]
+    \[ \Rightarrow \abs{ L^{-1}[\varphi(x,y)] } \rightarrow 0 \text{ für } x \rightarrow x_1 \]
+    Also existiert \( \gamma > 0 \) mit \( B_\gamma(x_1) \subset 
+    B_\delta(x_0) \) und 
+    \[ \sqrt{2} \abs{L^{-1}[\varphi(x,y)]} \leq \frac{1}{2} 
+    \;\forall x \in B_\gamma(x_1) \]
+    \begin{align*}
+        \overset{(***)}{\Rightarrow} 
+        \abs{ g(x) - g(x_1) } &\leq 2 \norm{ L^{-1}h }\abs{x - x_1} 
+        + \abs{x - x_1} \\
+        &= (2 \norm{L^{-1} h} + 1)\abs{x-x_1} \;\forall x \in B_\gamma(x_1) \\
+        &= \beta\abs{x - x_1}
+    \end{align*}
+    d. h. \(g\) ist (lokal) Lipschitz-stetig.
+    \begin{align*}
+        \overset{(**)}{\Rightarrow} \abs{ g(x) - g(x_1) + L^{-1}h \abs{x - x_1} } 
+        &= \abs{ L^{-1}[\varphi(x,g(x))] } (\abs{ x - x_1 }^2 + \abs{ g(x) - g(x_1) }^2)^{1/2} \\
+        &\leq (1 + \beta^2)^{1/2} \abs{ L^{-1}[\varphi(x, g(x))] } \abs{x - x_1} 
+        \;\forall x \in B_\gamma(x_1)
+    \end{align*}
+    \( \Rightarrow \forall x \in B_\gamma(x_1), x \neq x_1 \)
+    \[ \abs{\frac{g(x)-g(x_1)+ L^{-1}h\abs{x-x_1}}{\abs{x-x_1}}}  \leq (1+\beta^2)^{1/2} 
+    \underbrace{\abs{L^{-1}[\varphi(x,y)]} }_{\rightarrow 0,\ x \rightarrow x_1} \]
+    \[ \Rightarrow \limesx{x}{x_1} \frac{g(x)-g(x_1)+L^{-1}h\abs{x-x_1}}{\abs{x-x_1}} = 0 \]
+    d. h. \(g\) ist differenzierbar in \(x_1\) und die Ableitung 
+    ist \( -L^{-1}h \), d. h. 
+    \[ Dg(x_1) = -L^{-1}h = -(D_y F(x,g(x)) )^{-1} D_x F(x,g(x))
+    = -(D_2 F(x,g(x)))^{-1}D_1 F(x, g(x)). \]
+    Somit ist \(g\) stetig differenzierbar und die obige Formel gilt für \(Dg\).
 \end{bew}
 \end{document}
