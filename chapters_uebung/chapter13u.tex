@@ -45,4 +45,210 @@ Für die zweite Ableitung bzw. die Hessematrix erhält man
 \end{pmatrix} \begin{pmatrix}
     x \\ y \\ z
 \end{pmatrix} = x + xz \]
+\begin{defi*}
+    Sei \( U \subset \R^2 \) eine offene Menge und 
+    \( \abb{f}{U}{\R}, (x,y) \mapsto f(x,y) \) eine 
+    stetig differenzierbare Funktion.\\
+    Die Höhenlinien von \(f\) sind 
+    \[ N_f(c) := 
+    \set{ (x,y) \in U: f(x,y) = c }, c \in \R. \]
+    Sei \( (a,b) \in U, f(a,b) = c \) und 
+    \[ \nabla f(a,b) \neq (0,0), \]
+    d. h. \(\ddxpartialboth{f}{y}(a,b) \neq 0 \) und/oder 
+    \(\ddxpartialboth{f}{x}(a,b) \neq 0\).\\
+    Sei nun \(F(x,y) := f(x,y) - c\).\\ Wir verwenden Satz 17.1
+    an und erhalten
+    \begin{enumerate}
+        \item Falls \( \ddxpartialboth{f}{y}(a,b) \neq 0 \), 
+        so existieren Intervalle \( I_1, I_2 \subset \R \) 
+        mit \( (a,b) \in I_2 \times I_2 \subset U \)
+        und eine stetig differenzierbare Funktion \(\abb{g}{I_1}{I_2}\),
+        sodass
+        \[ N_f(c)  \cap (I_1 \times I_2) 
+        = \set{(x,y) \in I_1 \times I_2: y = g(x)}\]
+        \item Falls \(ddxpartialboth{f}{x}(a,b) \neq 0\), 
+        so existieren Intervalle \(J_1, J_2 \subset \R \) mit
+        \((a,b) \in J_1 \times J_2 \subset U\) und stetig 
+        differenzierbare Funktion \(\abb{\psi}{J_2}{J_1}\), sodass
+        \[ N_f(c) \cap (J_1 \times J_2) = \set{(x,y) \in J_1 \times J_2: x = \psi(y)} \]
+    \end{enumerate}
+\end{defi*}
+\begin{bsp}
+    \(\abb{f}{\R^2}{\R}, f(x,y) := x^2 +y^2 \)\\
+    Es gilt \(\nabla f(x,y) = (2x, 2y)\)
+    d. h. der Gradient verschwindet nur in \( (x,y) = (0,0) \).\\
+    \[N_f(0) = \set{(x,y) \in \R^2 : x^2 + y^2 = 0} = \set{(0,0)} \]
+    ist keine Linie im eigentlichen Sinne.\\
+    Für \(c < 0\) ist \(N_f(c) = \emptyset\),
+    für \(c < 0\) ist \(N_f(c)\) ein Kreis mit Radius \(sqrt(c)\) \\
+    um den Nullpunkt.
+    \(N_f(c)\) lässt sich durch die Vereinigung der folgenden
+    vier Graphen beschreiben.
+    \begin{align*}
+        \Gamma_1 &:= \set{(x,y) \in \R^2: -\sqrt{c} < x < \sqrt{c}, y = \sqrt{c - x^2}} \\
+        \Gamma_2 &:= \set{(x,y) \in \R^2: -\sqrt{c} < x < \sqrt{c}, y = -\sqrt{c - x^2}} \\
+        \Gamma_3 &:= \set{(x,y) \in \R^2 : -\sqrt{c} < y < \sqrt{c}, x = \sqrt{c - y^2} } \\
+        \Gamma_4 &:= \set{(x,y) \in \R^2: -\sqrt{c} < y < \sqrt{c}, x = -\sqrt{c - y^2}}
+    \end{align*}    
+\end{bsp}
+\begin{bsp}
+    Sei \(\abb{f}{\R^2 \times \R^2}{R^2}, 
+    f(p,q,\lambda) = \lambda^2 + 2p\lambda + q = {(\lambda + p)}^2-(p^2 - q)\)\\
+    Sind interessiert an der Menge 
+    \(\set{(p,q, \lambda) \in \R^2 \times \R: f(p,q,\lambda) = 0}\)
+    \[ G^{\pm} = \set{p,q, \lambda^\pm(p,q): p^2 > q)}, 
+    \lambda^pm (p,q) = -p \pm \sqrt{p^2-q}\]
+    \[ (\overline{G^+} \cap \overline{G^-}) = \set{(p,y,\lambda): p^2 = q, \lambda = -p} \]
+    \[ N = G^+ \cup G^- \cup (\overline{G^+} \cap \overline{G^-}) \]    
+    Sei nun 
+    \[ \ddxpartialboth{f}{\lambda} (p_0, q_0, \lambda_0) 
+    = 2(\lambda_0 + p_0) \neq 0 \Leftrightarrow p_0^2 - q-0 > 0\]
+    Dann liegt \((p_0, q_0, \lambda_0)\) in einem der Graphen \(G^+\) bzw. \(G^-\)
+    und \(N\) ist in einer Umgebung \(U \times V\) als Graph von 
+    \(\lambda^+\) oder \(\lambda^-\) darstellbar (Satz 17.1)
+    Gilt hingegen 
+    \[\ddxpartialboth{f}{\lambda}(p_0,q_0,\lambda_0) = 2(p_0-\lambda_0) = 0\]
+    \[ \Leftrightarrow p_0^2 - q_0 = 0 \]
+    Hier macht Satz 17.1 keine Aussage! \\
+    In der Tat gilt, dass sich die Menge 
+    \(N\) in keiner Umgebung von \((p_0, q_0, \lambda_0)\) als Graph 
+    \(\lambda = \lambda(p,q)\) darstellen lässt:
+    \begin{enumerate}
+        \item Für \(p^2 < q\) hat die Gleichung überhaupt keine Lösung. 
+        \item Für \(p^2 = q\) gibt es genau eine Lösung.
+        \item Für \(p^2 > q\) existieren zwei Lösungen \(\lambda^\pm(p,q)\)
+    \end{enumerate}    
+\end{bsp}
+\subsection{Geometrische Anwendung des Satzes 17.1}
+Sei \(f \subset C^1(\R^2)\) und \(z_0 \in \R\), so kann i. A. die
+Niveaumenge
+\[ M = \set{(x,y) \in \R^2: f(x,y) = z_0} \]
+Punkte enthalten, die lokal nicht wie eine Linie aussehen 
+(z. B. Kreuzungspunkte oder isolierte Punkte).
+Ist aber \(Df(x,y) \neq 0\) für alle \((x,y) \in M\), so ist
+\(M\) nach Satz 17.1 in der Nähe jedes Punktes als
+\(C^1\)-Graph über \(x\)-Achse oder der \(y\)-Achse darstellbar
+und damit nicht wirklich eine Höhenlinie im strengen Sinne des Wortes.
+
+Teilmengen des \( \R^n \), die lokal aussehen wie ein Unterraum 
+heißen Unterraummannigfaltigkeiten.
+\begin{defi*}[Diffeomorphismus]
+    Eine Abbildung \( \abb{f}{U}{V} \) zwischen 
+    offenen Mengen \( U,V \subset \R^n \) Diffeomorphismus 
+    der Klasse \( C^r \), wobei \( r \in \N \cup \set{\infty} \), 
+    falls
+    \begin{center}
+        \( f \) bijektiv ist und sowohl \(f\) als auch 
+        \( f^{-1}\ r \)-mal differenzierbar sind.
+    \end{center}
+\end{defi*}
+\begin{bsp}
+    Sei \(I \subset \R\) ein offenes Intervall. Ist \(f \in C^1(I)\)
+    mit \(f' > 0\) auf ganz \(I\) (bzw. \(f' < 0\) auf ganz \(I\)),
+    so ist \(J := f(I)\) ein offenes Intervall und \(\abb{f}{I}{J}\) 
+    ist Diffeomorphismus.
+    Dies folgt, da 
+    \begin{itemize}
+        \item \( \abb{f}{I}{J} \) ist bijektiv, da 
+        streng monoton wachsend (bzw. fallend). Nach dem ZWS muss
+        \(J\) ein offenes Intervall sein.
+        \item Die Umkehrabbildung \(g = f^{-1}\) ist differenzierbar mit
+        \[ g' = \frac{1}{f' \circ g} \]
+        insbesondere ist \(g\) von der Klasse \(C^1\).
+        \end{itemize}
+\end{bsp}
+\begin{bsp}[Umkehrung]
+    Ist \(\abb{f}{I}{f(I)}\) ein \(C^1\)-Diffeomorphismus
+    mit Umkehrabbildung \(\abb{g}{f(I)}{I}\), so ergibt die Kettenregel
+    \[ g(f(x)) = x \Rightarrow g'(f(x))f'(x) = 1 \Rightarrow f'(x) \neq 0 \]     
+    Nach dem ZWS gilt entweder \(f' < 0\) auf
+    ganz \(I\) ofrt \( f' < 0 \) auf ganz \(I\).
+    Insbesondere ist \(f\) streng monoton.
+\end{bsp}
+\begin{bsp}[Gegenbeispiel]
+    \(\abb{f}{(-1, 1)}{(-1, 1)}; f(x) = x^3\) ist bijektiv, 
+    streng monoton wachsend und stetig differenzierbar.\\
+    Aber kein \(C^1\)-Diffeomorphismus, denn es gilt \(f'(0) = 0\)\\
+    Die Umkehrabbildung 
+    \[ \abb{g}{(-1,1)}{(-1,1)}, g(y) = \begin{cases}
+        \sqrt[3]{y}, &\text{für } y \geq 0 \\
+        \sqrt[3]{-y}, &\text{für } y < 0
+    \end{cases}\]
+    ist im Punkt \(y = 0\) nicht differenzierbar.
+\end{bsp}
+\begin{bsp}[Inversion]
+    Die Inversion an der Sphäre \(S^{n-1} = \set{x \in \R : \abs{x} = 1}\) ist der 
+    Diffeomorphismus
+    \[ \abb{f}{\R^n\setminus \set{0}}{\R^n \setminus \set{0}}; f(x) = \frac{x}{\abs{x}^2} \]
+    Die Abbildung \(f = f^-1\) ist von der Klasse \(C^\infty\). Die 
+    beschränkte Menge \(U = \set{x \in \R^n: 0 < \abs{x} < 1}\) wird auf die
+    unbeschänkte Menge
+    \[ V = \set{y \in \R^n: \abs{y} > 1} \]
+    abgebildet.
+\end{bsp}
+\begin{defi}[\(m\)-dimensionale Untermannigfaltigkeiten]
+    Sei \(1 \leq m \leq n \). Eine Menge \( M \subset \R^n \) 
+    heißt \(m\)-dimensionale Untermannigfaltigkeit des \(\R^n\) der 
+    Klasse \( C^r \), wobei \( r \in \N \cup \set{\infty} \), falls gilt
+    \begin{itemize}
+        \item zu jedem \(p \in M\) gibt es eine offene Umgebung \(\Omega \subset \R^n\)
+        und einen \(C^r\)-Diffeomorphismus \(\abb{\phi}{\Omega}{\phi(\Omega)}\) mit
+        \[ \phi(M \cap \Omega) = (\R^m \times \set{0}) \cap \phi(\Omega) \]
+    \end{itemize}
+\end{defi}
+\begin{bem}
+    Den Diffeomorphismus nennt man auch (lokale) 
+    Plättung von \( M \) oder auch Karte von \(M\).
+\end{bem}
+\begin{satz}[Untermannigfaltigkeitskriterium]
+    Sei \( M \subset \R^n \) und \( m + k = n \). Dann 
+    sind die folgenden Aussagen äquivalent.
+    \begin{enumerate}
+        \item \(M\) ist eine \(m\)-dimensionale Untermannigfaltigkeit der Klasse \(C^r\)
+        \item Niveaumengenkriterium: Zu jedem \(p \in M\) gibt es eine offene
+        Umgebung \(\Omega \subset \R^n\) und eine Funktion \(f \in C^r(\Omega, \R^k)\),
+        sodass 
+        \[ M \cap \Omega = f^{-1}(0) \]
+        und 
+        \[ \mathrm{rk} Df = k \text{ auf } \Omega \]
+        \item Graphenkriterium: Zu jedem \(p \in M\) gibt es eine offene
+        Umgebung \(U \times V \subset \R^m \times \R^k\) und
+        \(g \in C^r(U, V)\), sodass nach geeigneter 
+        Permutation der Koordinaten gilt:
+        \(M \cap (U \times V) = \set{(x, g(x)): x \in U}\)
+    \end{enumerate}
+\end{satz}
+\begin{bew}
+    1. \( \Rightarrow \) 2.: Nach 1. gibt es zu jedem \( p \in M \) 
+    eine lokale Plättung \( \abb{\phi}{\Omega}{\phi(\Omega)} \) der Klasse 
+    \( C^r \) mit \( p \in \Omega \).\\
+    Sei \(\abb{\pi^\bot}{\R^m \times \R^k}{\R^k}\) die Projektion auf den 
+    zweiten Faktor. Sei \( f := \pi^\bot \circ \phi \) und \( q \in \Omega \),
+    \begin{align*}
+        f(q) = 0 &\Leftrightarrow \phi(q) \in \R^m \times \set{0}\\
+        &\Leftrightarrow q \in \phi^{-1}(\R^m \times \set{0}) = M \cap \Omega
+    \end{align*}
+    Außerdem gilt: 
+    \[ \mathrm{rk} Df = \mathrm{rk}(\pi^\bot \circ D\phi) = k \]
+    und \(f \in C^r(\Omega, \R^k)\) \\
+    2. \( \Rightarrow \) 3.: Nach evtl. Permutation der Koordinaten 
+    ist \( Dg f(p) \) invertierbar, wobei \( (x,y) \in \R^n - \R^m \times \R^k \) 
+    und 3. folgt nun aus Satz 17.1.\\
+    3. \( \Rightarrow \) 1.: Es gelte die Graphendarstellung 
+    ohne Permutation der Koordinaten. Sei weiter \( \Omega = U \times V \) und 
+    \( \abb{\phi}{\Omega}{\phi(\Omega)}, 
+    \phi(x,y) = (x, y - g(x)) \).\\
+    Dann ist \( \phi \in C^r(\Omega, \R^m) \) injektiv 
+    und es gilt 
+    \[ D\phi(x,y) = \begin{pmatrix}
+        E_m & 0 \\
+        -Dg(x) & E_k
+    \end{pmatrix} (E_j = id \in \R^j). \]
+    \[ \Rightarrow \det D\phi(x,y) = 1 \;\forall (x,y) \in \Omega. \]
+    Also ist \(\abb{\phi}{\Omega}{\phi(\Omega)} \) ein Diffeomorphismus
+    der Klasse \(C^r\) nach dem Satz über inverse Funktionen. 
+    Da \((x,y) \in M \cap \Omega\) genau dann, wenn \(y = g(x)\),
+    also \(\phi(x,y) \in \R^k \times \set{0}\), ist die in 1. verlangte
+    lokale Plättung gefunden.
+\end{bew}
 \end{document}
