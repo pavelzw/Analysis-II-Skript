@@ -234,4 +234,162 @@ Funktionssphäre in \( \R^3 \) ist Lösung von
     = -(D_2 F(x,g(x)))^{-1}D_1 F(x, g(x)). \]
     Somit ist \(g\) stetig differenzierbar und die obige Formel gilt für \(Dg\).
 \end{bew}
+Brauchten im Beweis des Satzes über implizite Funktionen:
+\( A \in \mathcal{L}(\R^m, \R^m) \) invertierbar. 
+\( \Rightarrow \exists \) offene Umgebung \( U(A) \)
+so, dass \( \forall B \in U: B \) invertierbar.
+\begin{lem}
+    Sei \( \abb{A}{\R^m}{\R^m} \) linear und invertierbar und 
+    \( \abb{B}{\R^m}{\R^m} \) linear mit \(\norm{B-A} \leq 1\) (Operatornorm). \\
+    Dann ist \( B \) invertierbar!
+\end{lem}
+\begin{bem}
+    Erinnerung: Operatornorm \(   \)
+    \[\norm{A} := \underset{\substack{h \in \R^m \\ \abs{h} = 1}}{\sup} \abs{A h} 
+    = \underset{\substack{h \in \R^n \\ h \neq 0}}{\sup} \frac{ \abs{Ah} }{\abs{h}}
+    = \underset{\substack{h \in \R^m \\ \abs{h} \leq 1}}{\sup} \abs{A h} \]
+    \[ \norm{A} \leq \norm{A}_{HS} 
+    = \left( \sum_{j,k = 1}^n A_{j,k}^2 \right)^{1/2} \]
+\end{bem}
+\begin{bew}
+    1. Schritt: Ist \(C \in \mathcal{L}(\R^m, \R^m), \norm{C} \leq 1\)
+
+    \( \Rightarrow \mathds{1} - C \) ist invertierbar.\\
+    Idee: Geometrische Reihe zum Laufen bringen. \( \frac{1}{1-X} = \sum_{n=0}^\infty X^n \)
+    \[ C^0 := \mathds{1}, C^1 := C\]
+    \[ C^{n+1} := C C^n, n \in \N_0 \]
+    \[ S_l := \sum_{n=0}^l C^n \]
+    \[ (\mathds{1} - C)S_l = S_l - C S_l 
+    = S_l - C \sum_{n=0}^l C^{n+1} 
+    = \sum_{n=0}^l C^{n} - \sum_{n=0}^{l+1} C^n
+    = C^0 - C^{l+1} = \mathds{1} - C^{l+1}. \tag{\(*\)}\]
+    Genauso: \( S_l(\mathds{1} - C) = \mathds{1} - C^{l+1} \).\\
+    Beachte: \[A, B \in \mathcal{L}(\R^m, \R^m), 
+    \norm{A B} \leq \norm{A} \norm{B}. \]
+    \[\abs{ABh} \leq \norm{A} \abs{Bh} \leq \norm{B} \abs{h} \quad (h \in \R^m) \]
+    \[\Rightarrow \norm{C^n} = \norm{C C^{n-1}} \leq \norm{C} \norm{C^{n-1}}
+    \leq ... \leq \norm{C}^n\]
+    Sei \(h \in \R^m\). \( S_l h = \sum_{n=0}^l C^l h \).
+    Behauptung: absolut konvergente Reihe.\\
+    Betrachte \( \sum_{n=0}^l \abs{ C^n h } 
+    \leq \sum_{n=0}^l \norm{C}^n \abs{h} \) konvergiert für \( l \rightarrow \infty \).
+    \[ \sum_{n=0}^\infty \norm{C}^n \abs{h} \frac{1}{1 - \norm{C}} \abs{h} < \infty, 
+    \text{ da } \norm{C} < 1. \]
+    \( \Rightarrow \sum_{n=0}^\infty C^n h \) ist absolut konvergente Reihe in
+    \( \R^m \) für jedes \( h \in \R^m \).
+    Wir setzen \( S_\infty h := \sum{n=0}^\infty C^n h (h \in \R^m)\)
+    \[ \abs{ S_\infty h } \leq \sum_{n=0}^\infty \abs{ C^n h } 
+    \leq \frac{1}{1 - \norm{C}}\abs{h} < \infty. \]
+    \[ \Rightarrow \norm{S_\infty} = \underset{\abs{h} = 1}{\sup} 
+    \abs{ S_\infty h } \leq \frac{1}{1 - \norm{C}} < \infty, 
+    \text{ da } \norm{C} < 1. \]
+    \[ S_\infty(h_1 + h_2) 
+    = \limes{l} S_l(h_1 + h_2) 
+    = \limes{l} (S_l h_1 + S_l h_2)
+    = S_\infty h_1 + S_\infty h_2. \]
+    \[ \Rightarrow S_\infty \in \mathcal{L}(\R^m, \R^m). \]
+    Beh: \( S_\infty = (\mathds{1} -C)^{-1} \): 
+    \[ \overset{(*)}{\Rightarrow}  ( \mathds{1} - C)S_l h = (\mathds{1} - C^{l+1})h 
+    = h - C^{l+1}h \]
+    \[ S_l (\mathds{1} - C) h = h - C^{l+1}h \]
+    \( \mathds{1} - C \) stetig.
+    \[\Rightarrow \limes{l} (/mathds{1}-C) S_lh = (\mathds{1}-C) S_\infty h\]
+
+    \[ \limes{l} C^{l+1} h = 0, \text{ denn } \abs{C^{l+1}h} \leq \norm{C^{l+1}} 
+    \abs{h} \leq \norm{C}^{l+1} \abs{h} \rightarrow 0, l \rightarrow \infty. \]
+    \[ \Rightarrow (\mathds{1} - C) S_\infty h = h \;\forall h \in \R^m \]
+    Genauso \[S_\infty(\mathds{1}-C)h = \limes{l} S_l(\mathds{1}-C)h 
+    = \limes{l}(h-C^{l+1 h}) = h\]
+    \( \Rightarrow S_\infty \) ist das Inverse zu \( \mathds{1} - C \). 
+    \[ S_\infty = \sum_{n=0}^\infty C^n \text{ (Von Neumann Reihe)}. \]
+    
+    2. Schritt: Sei \( A \in \mathcal{L}(\R^m, \R^m) \) invertierbar.\\
+    \[ B \in \mathcal{L}(\R^m, \R^m), B = A - (A - B) 
+    = A (\mathds{1} - (\mathds{1} - A^{-1}B)) 
+    = A (\mathds{1}- \underbrace{(A^{-1}(A-B))}_{=: C})
+    = A(\mathds{1} - C). \]
+    Falls \( \mathds{1} - C \) invertierbar ist, dann ist 
+    \( A(\mathds{1} - C) \) invertierbar mit 
+    \( (A(\mathds{1} - C))^{-1} = (\mathds{1} - C)^{-1} A^{-1} \).
+    \[\Rightarrow \text{Ist } 1 > \norm{C} = \norm{A^{-1}(A-B)}\] 
+    \[ \norm{ A^{-1} (A - B) } \leq \norm{A^{-1}} \norm{A - B} \]
+    \( \Rightarrow \) In der offenen Umgebung \( U \) von \(A\)
+    \[ U = \set{ B \in \mathcal{L}(\R^m, \R^m) : \norm{ A^{-1} (A - B) } < 1 } \] 
+    ist B invertierbar.
+\end{bew}
+\begin{kor}
+    Sei \( U \subset \R^n \) offen. 
+    \[ \abb{A}{U}{\mathcal{L}(\R^m, \R^m)} \]
+    stetig und \( \abb{A(x_0)}{\R^m}{\R^m} \) invertierbar 
+    für ein \( x_0 \in U \). \( \Rightarrow \exists \) offene Umgebung 
+    \( \tilde{U} \subset U \) von \( x_0 \), sodass \( \forall x \in \tilde{U} \): 
+    \( A(x) \) ist invertierbar.
+\end{kor}
+\begin{bew}
+    Nach Lemma 3 \( \exists \) offene Umgebung 
+    \( \Omega \subset \mathcal{L}(\R^m, \R^m) \) 
+    von \( A(x_0) \), sodass jedes \( B \in \Omega \) invertierbar ist.\\
+    Setzen \( \tilde{U} := \set{x \in U: A(x) \subset \Omega} \).\\
+    \( \Rightarrow \forall x \in \tilde{U}\) ist \(\abb{A(x)}{\R^m}{\R^m}\) invertierbar.
+\end{bew}
+\begin{bem}
+    Ist \( A \in \mathcal{L}(\R^m, \R^m) \), so können wir 
+    \( A \) durch eine (\(m \times m\))-Matrix beschreiben.\\
+    \( A \) \gqq{\(=\)} \( (A_{j,l})_{j,l = 1,\ldots,m} \).
+    \[ \norm{A} \leq \norm{A}_{HS} 
+    = \left( \sum_{j,l = 1}^m \abs{A_{j,l}}^2 \right)^{1/2} \]
+    Ist \(U\ni x \rightarrow A(x) \in \mathcal{L}(\R^m \R^m)\)
+    \(\Rightarrow (A_{j,l}(x))_{j,l=1,\ldots,m}\) zugehörige Matrix.
+    ist stetig in \( x_0 \): \( \limesx{x}{x_0} \norm{A(x) - A(x_0)} = 0 \).\\
+    \[ \norm{ A(x) - A(x_0) }\leq \norm{ A(x) - A(x_0) }_{HS}
+    = \left( \sum_{j,l=1}^m (A_{j,l}(x) - A_{j,l}(x_0))^2 \right)^{1/2}. \]
+    \( \Rightarrow \) Ist für jedes \(j, l = 1,\ldots,m\) die Abb 
+    \(U \ni x \mapsto A_{j,l}(x)\) stetig,
+    so ist \( U \ni x \mapsto A(x) \) stetig.\\
+    Umgekehrt: Es gilt 
+    \[ \abs{ A_{j,l} } \leq \norm{A} \]
+    \[D_y F(x,y) = (\partial_{y_1} F(x,y), \partial_{y_2} F(x,y), \ldots, 
+    \partial_{y_m} F(x, y)) \]
+    \[ \abs{A_{j,k}} 
+    = \abs{ \scalarprod{e_j}{A e_k} } 
+    \leq \abs{e_j} \abs{A e_k} 
+    \leq \norm{A} \abs{e_k} = \norm{A}. \]
+\end{bem}
+\begin{satz}[Inverse Funktionen]
+    Sei \( y_0 \in V \subset \R^n \), \( V \) offen, 
+    \( f \in \mathcal{C}^1(v, \R^m) \). Ist \( Df (y_0) \) 
+    invertierbar.
+    Eine Umgebung U von \(x_0 := f(x_0) \) und eine \(\mathcal(C^1)\)-Funktion 
+    \(\abb{g}{U}{\R^n}\) mit
+    \[ f(g(x)) = x \;\forall x \in U. \]
+    Außerdem ist \( g(U) := \tilde{V} \subset V \) eine offene Umgebung
+    von \( y_0 \) und 
+    \( \abb{g}{U}{\tilde{V}} \) ist bijektiv.
+    \begin{bem}
+        Also: Ist \(f(y) = x\) und \(x \in U, y \in \tilde(V) \Leftrightarrow y = g(x)\)
+        \(g = f^{-1}\) d.h. g ist Inverse zu f
+    \end{bem}
+    Die Ableitung von \(g\) berechnet sich als 
+    \( Dg(x) = Df(y)^{-1} \) mit \( f(y) = x \)
+    \[ Df(g(x))^{-1} = (Df(f^{-1}(x)))^{-1}. \]
+\end{satz}
+\begin{bew}
+    Setzen \( F(x,y) := f(y) - x \).
+    \[ \Rightarrow F(x_0, y_0) = \underbrace{f(y_0)}_{=x_0} - x_0 = 0 \]
+    \[ D_y F(x,y) = D_2 F(x,y) = Df(y) \]
+    \[ D_y F(x_0, y_0) 
+    = \abb{Df(y_0)}{\R^n}{\R^n} \]
+    ist invertierbar.\\
+    Anwendung des Satzes über implizite Funktionen.\\
+    \( \exists \abb{g}{U}{\tilde{V}}, U \) offene Umgebung 
+    von \(y_0\), \(\tilde{V}\) offene Umgebung von \( x_0 = f(y_0) \)
+    mit \(0= F(x, g(x)) = f(g(x))-x\), d. h. \( x = f(g(x)) \;\forall x \in U \).
+
+    und \(g\) ist \(\mathcal{C}^1\).\\
+    Formel für \(Dg(x)\): Haben \(x = f(g(x)) \;\forall x\in U\).
+    \[ \Rightarrow \mathds{1}_n = D_x(x) = D(f(g(x))) 
+    = Df(g(x)) \circ D g(x) \]
+    \[ \Rightarrow D g(x) = D f(g(x))^{-1}(Df(g(x)) \circ Dg(x))
+    = (Df(y))^{-1} \mathds{1}_n = Df(y)^{-1}, g(x) = y. \]
+\end{bew}
 \end{document}
