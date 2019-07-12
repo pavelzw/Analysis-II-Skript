@@ -290,10 +290,10 @@ so, dass \( \forall B \in U: B \) invertierbar.
     \[ \Rightarrow S_\infty \in \mathcal{L}(\R^m, \R^m). \]
     Beh: \( S_\infty = (\mathds{1} -C)^{-1} \): 
     \[ \overset{(*)}{\Rightarrow}  ( \mathds{1} - C)S_l h = (\mathds{1} - C^{l+1})h 
-    = h - C^{l+1}h \]
+    = h - C^{l+1}h \]y
     \[ S_l (\mathds{1} - C) h = h - C^{l+1}h \]
     \( \mathds{1} - C \) stetig.
-    \[\Rightarrow \limes{l} (/mathds{1}-C) S_lh = (\mathds{1}-C) S_\infty h\]
+    \[\Rightarrow \limes{l} (\mathds{1}-C) S_lh = (\mathds{1}-C) S_\infty h\]
 
     \[ \limes{l} C^{l+1} h = 0, \text{ denn } \abs{C^{l+1}h} \leq \norm{C^{l+1}} 
     \abs{h} \leq \norm{C}^{l+1} \abs{h} \rightarrow 0, l \rightarrow \infty. \]
@@ -392,4 +392,94 @@ so, dass \( \forall B \in U: B \) invertierbar.
     \[ \Rightarrow D g(x) = D f(g(x))^{-1}(Df(g(x)) \circ Dg(x))
     = (Df(y))^{-1} \mathds{1}_n = Df(y)^{-1}, g(x) = y. \]
 \end{bew}
+Hatten Satz über implizite Funktionen 
+\( \Rightarrow \) Satz über inverse Funktionen
+(Sind sogar äquivalent).
+Haben Funktion \(U \subset \R^n, V \subset \R^m  \) offen, 
+\( (x_0, y_0) \in U \times V \), \( \abb{F}{U \times V}{\R^m} \)
+Möchte, eventuell nach verkleinern von \(V\) und \(U\), eine Funktion
+\[ \abb{g}{U}{V}; F(x, g(x)) = F(x_0, y_0) =: c \; \forall x \in U \]
+Satz über implizite Funktionen geht, falls \(F, \varphi^1\) und
+und \(\abb{D_y F(x_0, y_0)}{R^m}{R^m}\) ist invertierbar!\\
+Definiere \(f(x,y) := \begin{pmatrix} x \\ F(x,y)
+\end{pmatrix} \in \R^n \times \R^m = \R^{n \times m} \).
+\[ \abb{f}{U\times V}{\R^{m+n}} \; f(x_0, y_0) =  
+\begin{pmatrix} x \\ F(x,y)\end{pmatrix} = 
+\begin{pmatrix} x_0 \\ c\end{pmatrix} \; c:=F(x_0,y_0)\]
+\(f\) ist \(C^1\).\\
+Ableitung \[ Df(x,y) = \begin{pmatrix}
+    D_x x & D_0 x \\
+    D_x F(x,y) & D_y F(x,y)
+\end{pmatrix}  = \begin{pmatrix}
+    \mathds{1}_n & 0 \\
+    D_1F(x_0) & D_2(F(x,y))
+\end{pmatrix} \]
+\[ Df(x,y) = \begin{pmatrix} 
+    \partial_{x_1} f & \cdots & \partial_{x_n} f & \partial_{y_1}f & \cdots & \partial_{y_m}f
+\end{pmatrix}\]
+\[ Df(x_0, y_0) = \begin{pmatrix}
+    \mathds{1} & 0 \\
+    D_x F(x_0, y_0) & D_y F(x_0, y_0)
+\end{pmatrix} = \begin{pmatrix}
+    \mathds{1} & 0 \\
+    B & A
+\end{pmatrix} \]
+invertierbar \(\Leftrightarrow A\) ist invertierbar.
+\( u, h \in \R^n, w \in \R^m \)
+\[ \begin{pmatrix}
+    \mathds{1} & 0\\
+    B & A
+\end{pmatrix} \begin{pmatrix}
+    h \\
+    w
+\end{pmatrix} = \begin{pmatrix}
+    h \\
+    Bh + Aw
+\end{pmatrix} \overset{!}{=} \begin{pmatrix}
+    u \\ 
+    v
+\end{pmatrix}\]
+\(h = u \) und \( V = Bh + Aw = Bu + Aw \)
+\[ \Rightarrow Aw = v - Bu \]
+\[ w = A^{-1} v - A^{-1} Bu \]
+\[ \begin{pmatrix}
+    h \\ w
+\end{pmatrix} = \begin{pmatrix}
+    u \\ A^{-1} v - A^{-1} Bu
+\end{pmatrix} = \begin{pmatrix}
+    \mathds{1} & 0 \\ 
+    -A^{-1}B & A^{-1}
+\end{pmatrix}\begin{pmatrix}
+    u \\ v
+\end{pmatrix} \]
+\[ \Rightarrow \begin{pmatrix}
+    \mathds{1} & 0 \\
+    B & A
+\end{pmatrix}^{-1} = \begin{pmatrix}
+    \mathds{1} & 0 \\
+    -A^{-1}B & A^{-1}
+\end{pmatrix} \]
+\(\Rightarrow\) Ist \(D_yF(x_0, y_0)\) invertierbar, 
+so ist \( Df (x_0, y_0) \) invertierbar.
+\(\Rightarrow f\) hat lokal eine \(\mathca{C}^1\) Inverse \(g\).
+\(f(x,y) =\begin{pmatrix}
+    x \\
+    F(x,y)
+\end{pmatrix}\)
+\(u,v\) nahe bei \(f(x_0,y_0)\))\\
+\[ g(u,v) = \begin{pmatrix}
+    g_1(u,v) \\ g_2(u,v)
+\end{pmatrix} = \begin{pmatrix}
+    u \\
+    g_2(u,v)
+\end{pmatrix} \]
+Haben: 
+\[f(g(x,c)) = \begin{pmatrix}
+    x \\
+    c
+\end{pmatrix} = \begin{pmatrix}
+    x \\
+    F(x, g_2(x, c))
+\end{pmatrix} = f(x,g_2(x,c)) \]
+\( \Rightarrow F(x,g_2(x,c)) = c \)
 \end{document}
