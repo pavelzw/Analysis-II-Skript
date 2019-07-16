@@ -251,4 +251,209 @@ heißen Unterraummannigfaltigkeiten.
     also \(\phi(x,y) \in \R^k \times \set{0}\), ist die in 1. verlangte
     lokale Plättung gefunden.
 \end{bew}
+\begin{bsp}
+    Ein Käfer Hugo bewegt sich auf der reellen Achse. Die Temperatur 
+    als Funktion von Ort \(x\) und Zeit \(t\) ist gegeben durch
+    \[ T(t,x) = x^3t+x^2(t^2+t+1)+xt+6. \]
+    Zum Zeitpunkt \( t=1 \) sitzt der Käfer Hugo in \( x(1) = 2 \) 
+    bei einer Temperatur \(T(1,2) = 30\).\\
+    Frage: Hat der Käfer Hugo für \(t\) nahe bei \(1\) die Möglichkeit,
+    die Temperatur zu halten?\\
+    Antwort: Ja, denn sei \(f(t,x) = T(t,x) - 30\), dann ist
+    \(f \in \mathcal{C}^1(\R^2, \R) \) und \(f(1,2) = 0\).
+    \[ f_x(1,2) = T_x(1,2) = (3x^2t + 2x(t^2+t+1)+2t)\vert_{t=1, x=2} = 26 \neq 0. \]
+    Also nach dem Satz über implizite Funktionen gibt es nahe bei
+    \(t=1\) eine eindeutige differenzierbare Funktion \(x(t)\), sodass
+    \[ f(t, x(t)) = 0 \Leftrightarrow T(t, x(t)) = 30. \]
+    Wie schnell muss sich der Käfer Hugo bewegen?
+    \[ T(t,x(t)) = 30 \Rightarrow \ddx{t} T(t,x(t)) = 0 \]
+    \[ \oversett{Kettenregel}{\Rightarrow} T_t(t,x(t)) + x'(t)T_x(t,x(t)) = 0 \]
+    \[ \Rightarrow x'(t) = -\frac{T_t(t,x(t))}{T_x(t,x(t))} \]
+    Einsetzen von \(t=1\) ergibt 
+    \[ x'(1) = - \frac{T_t(1,2)}{T_x(1,2)} = - \frac{24}{26} = -\frac{12}{13}. \]
+\end{bsp}
+\begin{bsp}
+    Wir wollen zeigen, dass eine offene Umgebung \(I\) von \(O \in \R\)
+    existiert und Funktion \( g \in \mathcal{C}^1(I, \R) \)
+    mit \(g(0) = \pi\) welche die Gleichung
+    \[ xg(x)^2 + 2x^2 e^{g(x)} = \sin(g(x)) \]
+    für alle \(x \in I\) erfüllt.\\
+    Wir definieren \( \abb{F}{\R^2}{\R}, F(x,y) = xy^2 + 2x^2 e^y - \sin(y) \).\\
+    Dann gilt: \( F(0, \pi) = -\sin \pi = 0 \).\\
+    Es ist klar, dass \( F \) stetig partiell differenzierbar ist.
+    Es gilt 
+    \[ \partial_1 F(x,y) = y^2+4xe^y, \partial_2 F(x,y) = 2xy+tx^2e^y-\cos y \]
+    für alle \( (x,y) \in \R \).
+    \[ \partial_2 F(0, \pi) = -\cos \pi = 1 \neq 0. \]
+    Nach Satz 17.1 existiert eine Umgebung \(I\) von \(0\) 
+    und eine Funktion \( g \in \mathcal{C}^1(I,\R) \) mit 
+    \( g(0) = \pi \) und 
+    \[ 0 = F(x,g(x)) = xg(x)^2 + 2x^2 e^{g(x)} - \sin(g(x)) \]
+    für alle \(x \in I\).
+\end{bsp}
+\begin{bsp}[Umkehrsatz]
+    Wir wollen offene Umgebungen \(U \subset \R^2\) von \((2,5)\)
+    und \(V \subset \R^2\) von \((-1, 0)\) finden, sowie
+    eine stetig differenzierbare Funktion \( \abb{g}{U}{\R^2} \), 
+    sodass alle Lösungen von %irgendwo hier fehler?
+    \begin{align*}
+        x^2 + u y + e^v &= 0 \\
+        2x+u^2-uv &= 5
+    \end{align*}
+    in \(U \times V\) durch \((x, y, g(x,y))\) mit \((x,y) \in U\)
+    gegeben sind.\\
+    Lösung: Wir betrachten \( \abb{F}{\R^4}{\R^2} \)
+    \[ F(x,y,u,v) = \begin{pmatrix}
+        x^2+uy+e^v \\
+        2x+u^2-uv-5
+    \end{pmatrix} \tag{\(*\)}\]
+    Offensichtlich ist \(x,y,u,v\) Lösung von \((*)\), wenn
+    \(F(x,y,u,v) = 0\) ist.
+    \[ F(2,5,-1,0) = (0,0) \]
+    \(F\) ist partiell differenzierbar und 
+    \[ F'(x,y,u,v) = \begin{pmatrix}
+        2x & u & y & e^v \\
+        2 & 0 & 2u-v & -u
+    \end{pmatrix} \]
+    Also gilt 
+    \[ \ddxpartialboth{F}{(u,v)}(2,5,-1,0) = \begin{pmatrix}
+        5 & 1 \\ -2 & 1
+    \end{pmatrix}. \]
+    \[ \begin{vmatrix}
+        5 & 1 \\
+        -2 & 1
+    \end{vmatrix} = 7 \neq 0 \]
+    \(\Rightarrow \) Matrix ist invertierbar.
+    Das Inverse ist 
+    \[ \left( \ddxpartialboth{F}{(u,v)}(2,5,-1,0) \right)^{-1} 
+    = \frac{1}{7} \begin{pmatrix}
+        1 & -1 \\ 2 & 5
+    \end{pmatrix}. \]
+    Nach Satz 17.1 gibt es \(U \subset \R^2\) von \((2,5)\) und
+    \(V \subset \R^2\) von \((-1, 0)\) und stetig differenzierbare
+    Abbildungen \(\abb{g}{U}{V}\) mit \(g(2,5) = (-1, 0)\) und
+    \(F(x,y,g(x,y)) = 0\) für alle \((x,y) \in U\).
+    \[ g'(2,5) = - \left(
+        \ddxpartialboth{F}{(u,v)}(2,5,-1,0)
+    \right)^{-1} \cdot 
+    \ddxpartialboth{F}{(x,y)}(2,5,-1,0) 
+    = -\frac{1}{7}\begin{pmatrix}
+        1 & -1 \\ 2 & 5
+    \end{pmatrix} \cdot \begin{pmatrix}
+        4 & -1 \\ 2 & 0
+    \end{pmatrix} 
+    = -\frac{1}{7} \begin{pmatrix}
+        2 & -1 \\ 18 & -2
+    \end{pmatrix}. \]
+\end{bsp}
+\begin{bsp}
+    \[ \abb{f}{\R^2}{\R^2}, f(x,y) 
+    = \begin{pmatrix}
+        2\sin y + \arctan x \sin y \\
+        -e^x \cos y
+    \end{pmatrix}. \]
+    \begin{beh}
+        Zu jedem Punkt \( (x,y) \in \R^2 \) 
+        gibt es eine offene Umgebung \(U\), 
+        sodass \( \abb{f\vert_U}{U}{\R^2} \) 
+        injektiv ist. Aber \(f\) ist nicht injektiv.
+    \end{beh}
+    \begin{bew}
+    Als Komposition stetig partiell differenzierbarer 
+    Funktionen ist \(f\) stetig partiell differenzierbar 
+    (d. h. \( f \in \mathcal{C}^1(\R^2, \R^2) \))
+    Sei \((x,y) \in \R^2\) 
+    \[ Df(x,y) = \begin{pmatrix}
+        \frac{\sin y}{1+x^2} & (2+\arctan(x)) \cos y \\
+        -e^x \cos y & e^x \sin y
+    \end{pmatrix}. \]
+    Um zu zeigen, dass Ableitung invertierbar ist, betrachte die 
+    Determinante 
+    \[ \det DF(x,y) = \underbrace{\frac{e^x}{1+x^2}}_{>0} \sin^2 y 
+    + (2 + \underbrace{\arctan x}_{> - \frac{\pi}{2} > -2})e^x \cos^2 y \]
+    \[ \sin^2 y + \cos^2 y = 1 \Rightarrow \sin^2 y > 0 \text{ falls } \cos^2 y = 0 \]
+    \[ \cos^2 y > 0 \text{ falls } \sin^2 y = 0 \]
+    \( \Rightarrow DF(x,y) \) invertierbar für alle \( (x,y) \in \R^2 \).\\
+    Der Satz 17.6 (Inverse Funktionen) liefert die erste Behauptung.
+    \[ f(0,0) = (0, -1) = f(0, 2\pi) \]
+    \( \Rightarrow f \) ist nicht injektiv.
+    \end{bew}
+\end{bsp}
+Extrema unter Nebenbedingungen:\\
+Die Multiplikatorregel anders ausgedrückt: Hat \(\varphi\) in \(p\)
+ein lokales Extremum unter den \(k\) Nebenbedingungen \(f_j(x) = 0\)
+\( (j=1,\ldots, k) \), so gibt es \(\lambda = (\lambda_1, \ldots, \lambda_k)\in \R^k\)
+derart, dass der Gradient durch
+\[ H(x, \lambda) := \varphi(x) + \scalarprod{\lambda}{f(x)} \]
+definierte Lagrangesche Hilfsfunktion
+\[ \abb{H}{U \times \R^k}{\R} \]
+in \((p, \lambda)\) verschwindet.\\
+Also gilt
+\[ \nabla H(p, \lambda) 
+= \nabla \varphi(p) + \sum_{j=1}^k \lambda_j \nabla f_j(p) = 0 \]
+\begin{bsp}
+    \( S = \set{ (x,y,z) \in \R^3 : x^2 + y^2 = 1, y + z = 1 } \).\\
+    Sei \( \abb{f}{\R^3}{\R}, f(x,y,z) = x + 2y + z \).\\
+    Wir berechnen \( \min f(S) \).\\
+    Die Menge \(S\) ist abgeschlossen und beschränkt. Also nimmt \(f\)
+    sein Minimum in \(S\) an.\\
+    Nebenbedingungen:
+    \begin{align*}
+        x^2+y^2-1 &= 0 \\
+        y + z - 1 &= 0
+    \end{align*}
+    \[ g(x,y,z) = \begin{pmatrix}
+        x^2 + y^2 - 1 \\
+        y + z - 1
+    \end{pmatrix} \]
+    \[ Dg(x,y,z) = \begin{pmatrix}
+        2x & 2y & 0\\
+        0 & 1 & 1
+    \end{pmatrix} \]
+    hat Rang \(2\), falls \(x^2+y^2 \neq 0\).
+    \[ H(x,y,z,\lambda_1, \lambda_2) = f(x,y,z) 
+    + \lambda_1 (x^2 + y^2 - 1) + \lambda_2 (y + z - 1) \]
+    \(DH = 0 \Rightarrow\)
+    \begin{align*}
+        1+2\lambda_1x &= 0\\
+        2+2\lambda_1y + \lambda_2 &= 0\\
+        1+\lambda_2 &= 0\\
+        x^2+y^2-1 &= 0\\
+        y+z-1 &= 0
+    \end{align*}
+    \[ \Rightarrow \lambda_2 = -1 \]
+    \begin{align*}
+        1+2\lambda_1x &= 0\\
+        1+2\lambda_1y &= 0\\
+        x^2+y^2 &= 1\\
+        y+z &= 1
+    \end{align*}
+    \[ \Rightarrow x = y = \pm \frac{1}{\sqrt{2}}, z = 1 \mp \frac{1}{\sqrt{2}} \]
+    \(\Rightarrow\) 2 Lösungen: \((\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 1-\frac{1}{\sqrt{2}})\) 
+    und \((-\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 1+ \frac{1}{\sqrt{2}})\)
+    \[ f( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 1 - \frac{1}{\sqrt{2}} ) 
+    = 1 + \sqrt{2} \Rightarrow \max \]
+    \[ f( -\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 1 + \frac{1}{\sqrt{2}} ) 
+    = 1 - \sqrt{2} \Rightarrow \min \]
+    \[\Rightarrow \min f(S) = 1-\sqrt{2}\]
+\end{bsp}
+\begin{bsp}
+    Sei \(n \geq 2, f(x) = \sin x_1 + \ldots + \sin x_n\) für 
+    \(x_1 + \ldots + x_n = 2\pi, 0 \leq x_j \leq \pi\).\\
+    Frage: Was ist das Maximum von \(f\)?\\ 
+    Was ist \(f\)?\\
+    \(f\) ist der doppelte Flächeninhalt des in einem Kreis eingeschriebenen 
+    \(n\)-Ecks mit dem Zentriwinkeln \(x_1,\ldots, x_n\).\\
+    Der Bereich 
+    \( \Delta := \set{ x : \underbrace{g(x)}_{=x_1 + \ldots + x_n} = 2\pi, 0 \leq x_j \leq \pi } \) 
+    ist kompakt. \\
+    Da \(f\) stetig ist, wird ein Maximum angenommen.\\
+    Mit der Lagrangschen Hilfsfunktion müssen wir also 
+    \[ \nabla f(x) + \lambda\nabla g(x) 
+    = (\cos x_1, \ldots, \cos x_n) + \lambda (1, \ldots, 1) \overset{!}{=} 0 \]
+    \[ \Rightarrow \cos x_1 = \cdots = \cos x_n. \]
+    \[ \Rightarrow x_1 = \cdots = x_n, \text{ da } 0 \leq x_j \leq \pi. \]
+    Nebenbedingung: \(\sum_{i=0}^n x_i = 2\pi \Rightarrow x_j = \frac{2\pi}{n}\).\\
+    Also ist der Flächeninhalt maximal für das regelmäßige \(n\)-Eck.
+\end{bsp}
 \end{document}
