@@ -1,0 +1,165 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{18}
+\section{Kuurvenintegrale}
+\begin{defi}[\(\mathcal{C}^1\)-Kurve]
+    Ist \( I \subset \R \) Intervall, \( \gamma \in \mathcal{C}^1(I, \R^d) \)
+    so heißt \(\gamma \in \mathcal{C}^1\)-Kurve.
+\end{defi}
+\begin{bspe}\leavevmode
+    \begin{enumerate}
+    \item \( p, v \in \R^d, v \neq 0, \quad \gamma(t) = p + tv, t \in \R \).
+    \item \(\abb{\gamma}{\R}{\R^2} \gamma(t) = (r(\cos t, \sin t) \)
+    \item Schraubenlinie \( \abb{\gamma}{\R}{\R^3} t \mapsto \gamma(t) = (r \cos t, r \sin t, at) \).
+    \item Spirale \( \abb{\gamma}{\R}{\R^3}, t \mapsto \gamma(t) = e^{-t} (\cos t, \sin t) \)
+    \item \( \abb{\gamma}{I}{R^2}; t \mapsto \gamma(t) = (\cos t, \sin (2t))\)
+    \end{enumerate}
+\end{bspe}
+\begin{defi}[Bogenlänge]
+    Sei \(\abb{\gamma}{[a,b]}{\R^d}\ \mathcal{C}^1\)-Kurve
+    \[ L(\gamma) := \integralx{\abs{\gamma'(t)}}{a}{b}{t} \]
+    Bogenlänge (Länge der Kurve).\\
+    Zerlegung \(a = t_0 < t_1 < \ldots < t_N = b\)
+    \[ \sum_{j=1}^N \abs{\gamma(t_j) - \gamma(t_{j-1})} 
+    = \sum_{j=1}^N \abs{\gamma'(t_j)} (t_j - t_{j-1}) 
+    \approx \integralx{\abs{\gamma'(t)}}{a}{b}{t} \]
+\end{defi}
+\begin{bsp}
+    \( \gamma(t) = r (\cos t, \sin t), \quad 0 \leq t \leq 2\pi \).
+    \[ L(\gamma) = \integralx{\abs{\gamma'(t)}}{0}{2\pi}{t}
+    = \integralx{\abs{r \begin{pmatrix}
+        -\sin t \\ \cos t
+    \end{pmatrix}}}{0}{2\pi}{t} 
+    = r \integralx{}{0}{2\pi}{t} = 2\pi r. \]
+\end{bsp}
+\begin{bsp}
+    \(\gamma(t) = (r\cos t, r\sin t, at), 0 \leq t \leq 2 \pi \)
+    \[ \gamma'(t) = (-r\sin t, r\cos t, a) \]
+    \[ L(\gamma) = \integralx{\abs{\gamma'(t)}}{0}{2\pi}{t} 
+    = \integralx{\abs{ \begin{pmatrix}
+        -r \sin t \\ r \cos t \\ a
+    \end{pmatrix} }}{0}{2\pi}{t} 
+    = \integralx{(r^2 + a^2)^{1/2}}{0}{2\pi}{t} 
+    = 2\pi \sqrt{r^2 + a^2}. \]
+\end{bsp}
+\begin{defi}[Umparametrisierung]
+    Seien \(\abb{\gamma_j}{I_j}{\R^d}, j=1,2 \) zwei \(\mathcal{C}^1\)-Kurven
+    Dann heißt \(\gamma_2\) Umparametrisierung von \( \gamma_1 \),
+    falls es eine Bijektion \(\varphi \in \mathcal{C}^1(I_2, I_1)\)
+    mit \(\varphi' \neq 0 \) existiert mit 
+    \[ \gamma_2 = \gamma_1 \circ \varphi. \]
+    Die Bijektion \( \varphi \) heißt Parametertransformation.
+\end{defi}
+\begin{lem}
+    Sind \(\gamma_j \in \mathcal{C}^1(I_j, \R^d), j = 1,\ldots, \gamma_2\) Umparametrisierung  
+    von \( \gamma \), so ist 
+    \[ L(\gamma_1) = L(\gamma_2). \]
+\end{lem}
+\begin{bew}
+    Haben \( \gamma_2 = \gamma_1 \circ \varphi \), \( \varphi \in \mathcal{C}^1(I_2, I_1), 
+    \varphi' \neq 0 \).
+    \[ \gamma_2'(t) = (\gamma_1 \circ \varphi)' 
+    = \gamma_1'(\varphi(t)) \cdot \varphi'(t). \]
+    \[ \Rightarrow \abs{\gamma_2'(t)} 
+    = \abs{\gamma'_1(\varphi(t)) \cdot \varphi'(t)} 
+    = \pm \abs{\gamma'_1(\varphi(t))} \cdot \varphi'(t) \\
+    +: \varphi'> 0;\forall t \in I_2 \\
+    -: \varphi'< 0;\forall t \in I_2 \]
+    \begin{align*}
+        \Rightarrow L(\gamma_2) = \integralx{\abs{ \gamma_2'(t) }}{a_2}{b_2}{t}
+        &= \pm \integralx{\abs{\gamma_2'(\varphi(t))} \varphi'(t) }{a_2}{b_2}{t} \\
+        &= \pm \integralx{\abs{\gamma_1'(s)}}{\varphi(a_2)}{\varphi(b_2)}{s}
+    \end{align*}
+    \[ = \begin{cases}
+        \integralx{\abs{ \gamma_1'(s) }}{a_1}{b_1}{s}, & \varphi' > 0 \\
+        - \integralx{\abs{\gamma_1'(s)}}{b_1}{a_1}{s} 
+        = \integralx{\abs{\gamma_1'(s)}}{a_1}{b_1}{s}, & \varphi < 0 
+    \end{cases}\]
+\end{bew}
+\begin{defi}[Parametrisierung nach Bogenlänge]
+    Eine Kurve \(c \in \mathcal{C}^1(I, \R^d)\) heißt nach Bogenlänge
+    parametrisiert, falls
+    \[ \abs{c'(s)} = 1 \; \forall s \in I. \]
+    (Einheitsgeschwindigkeit)
+    \[ [a,b] \subset I: L(c \vert_{[a,b]}) = \integralx{\abs{c'(s)}}{a}{b}{s}
+    = b - a \]
+    d. h. \(c\) bildet \([a,b]\) längentreu nach \(\R^d\) ab.
+\end{defi}
+\begin{satz}[Parametrisierung nach Bogenlänge]
+    Sei \( \gamma \in \mathcal{C}^1([a,b],\R^d) \) eine Kurve 
+    mit Länge \(L = L(\gamma)\) und \(\gamma'(t) \neq 0 \; \forall t \in [a,b] \)
+    Dann gibt es eine \(\mathcal{C}^1\)-Bijektion \(\varphi\) 
+    mit \( \varphi' > 0 \) so, dass \(c = \gamma \circ \varphi\) nach 
+    Bogenlängeparametrisierung ist.
+\end{satz}
+\begin{bew}
+    Bogenlängefunktion
+    \(\abb{\sigma}{[a,b]}{0, L}; t \mapsto \integralx{\abs{\gamma'(s)}}{a}{t}{s}\)
+    \[ \Rightarrow \sigma'(t) = \abs{\gamma'(t)} > 0 \;\forall t. \]
+    \( \Rightarrow \sigma \) ist eine Bijektion der Klasse 
+    \(\mathcal{C}^1\).\\
+    Sei \(\varphi\) die Umkehrfunktion von \(\sigma\) (siehe Ana 1).
+    \[\abs{(\gamma \circ \varphi)'(s)} = \abs{\gamma'(\varphi(s))\varphi'(s)} 
+    = \abs{\gamma'(\varphi(s))} \varphi'(s) 
+    = \abs{\gamma'(\varphi(s))} \frac{1}{\sigma'(\varphi(s))} 
+    =  \abs{\gamma'(\varphi(s))} \frac{1}{\gamma'(\varphi(s))} = 1. \]
+\end{bew}
+\begin{bem}
+    \(\mathcal{C}^1\)-Kurven mit \(\gamma'(s) \neq 0 \; \forall s\)
+    heißen regulär.\\
+    Neilsche Parabel 
+    \( \abb{\gamma}{\R}{\R^2}; t \mapsto (t^2, t^3)\)\\
+    \(\gamma'(t) = (2t, 3t^2), \gamma(0) = (0, 0)\)
+\end{bem}
+\begin{defi}[Stückweise \(\mathcal{C}^1\)-Kurve]
+    \(\gamma \in \mathcal{C}([a,b], \R^d)\) heißt stückweise
+    \(\mathcal{C}^1\)-Kurve, falls eine Zerlegung
+    \(a = t_1 < t_1 < \ldots < t_N = b\) existiert so, dass
+    für \( I_k = [t_{k-1}, t_k]\)
+    \[ \gamma \vert_{I_k} \in \mathcal{C}^1(I_k, \R^d) \; \forall k = 1,\ldots,N \]
+\end{defi}
+\begin{notation}
+    \( \gamma \in P \mathcal{C}^1([a,b], \R^d)\)
+    piecewise continously diffentiable
+\end{notation}
+Setzen wir \(\gamma'(t_k):= 0, k = 1 \ldots N\) \\
+\( \Rightarrow \abb{\gamma'}{[a.b]}{\R^d} \) stückweise stetig 
+und somit (Riemann-)integrierbar.
+Und dasselbe für \( \abb{\abs{\gamma'} }{[a,b]}{\R} \).
+\(\Rightarrow \) Bogenlänge \(L(\gamma) = \integralx{\abs{\gamma'(s)}}{0}{b}{s}\)
+auch für \(\gamma \in P \mathcal{C}'([a,b], \R^d)\) erklärt
+und hängt nicht von Unterteilung ab.
+\begin{defi}[Linienintegral]
+    Ist \( F \in \mathcal{C}(U, \R^d) \), \(U \subset \R^d\) offen. 
+    \( \gamma \in P\mathcal{C}'([a,b], U) \), so heißt 
+    \[ \int_\gamma F\cdot d \vec{x} 
+    := \integralx{\scalarprod{ F(\gamma(t)) }{ \gamma'(t) } }{a}{b}{t} \]
+\end{defi}
+\(F\) Kraftfeld \(\integral{F}{\gamma}{1} = \) verrichtete Arbeit.
+\(\integralx{F(\gamma(t))\cdot \gamma'(t)}{0}{b}{t}\) Merkregel
+\begin{bsp}\leavevmode
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item \( \abb{F}{\R^3 \setminus \set{0}}{\R^3}, x \mapsto F(x) = -c \frac{x}{\abs{x}^3} \)
+        \item Winkelfeld in \( \R^2 \): 
+        \[ \abb{W}{\R^2 \setminus \set{0}}{\R^2}, W(x,y) 
+        := (\frac{-y}{x^2 + y^2} , \frac{x}{x^2 + y^2}) 
+        = \frac{1}{r^2} (-y, x) \]
+        \[ \abb{\gamma}{[a,b]}{\R^2 \setminus \set{0}} \quad 
+        \gamma(t) = r(t) (\cos(\theta(t)), \sin(\theta(t))), r, d \in \mathcal{C}^1([a,b]) \]
+        \[ \int_\gamma w d \vec{x} = \integralx{\scalarprod{w(\gamma{t})}{\gamma'(t)}}{a}{b}{t} \]
+        \[ = \integralx{\scalarprod{\frac{1}{r^3(t)} \begin{pmatrix}
+            -r(t) \sin \theta(t) \\
+            r(t) \cos \theta(t)
+        \end{pmatrix}}{r(t)\theta'(t) \begin{pmatrix}
+            -\sin \theta(t) \\
+            \cos \theta(t)
+        \end{pmatrix} + r'(t) \begin{pmatrix}
+            \cos \theta(t) \\
+            \sin \theta(t)
+        \end{pmatrix}}}{a}{b}{t} \]
+        \[ = \integralx{\theta'(t)}{a}{b}{t} = \theta(b) - \theta(a). \]
+    \end{enumerate}
+\end{bsp}
+\end{document}
