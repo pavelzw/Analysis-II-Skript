@@ -1,0 +1,178 @@
+\documentclass[../ana2u.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{13}
+\section{Blatt 13}
+\begin{bsp}[Aufgabe 62]
+    Sei \(K \subset R^d\) kompakt, \(\abb{f}{K}{K}\) mit
+    \[ d(f(x), f(y)) < d(x,y), \abb{d}{\R^d \times \R^d}{\R^d} \]
+    zu zeigen: \(f\) hat einen Fixpunkt.
+\end{bsp}
+\begin{bew}
+    Wir definieren \(h(x) := d(f(x), x)\). Wir nehmen an \(h(x) > 0\)
+    für alle \(x \in K\).\\
+    Da \(f\) stetig ist, ist auch \(h\) stetig. Somit nimmt h auf der kompakten
+    Menge \(K\) sein Minimum an. Sei \(\alpha := \underset{x \in K}{\min} h(x)\).
+    Dann gilt \(\alpha > 0\). Außerdem gibt es ein \(\tilde{x} \in K\) mit
+    \(h(\tilde{x}) = \alpha\).\\
+    Per Voraussetzung gilt
+    \[ d(f(f(\tilde{x})), f(\tilde{x})) < d(f(\tilde{x}), \tilde{x}) = h(\tilde{x}) 
+    = \alpha \text{\Lightning} \]
+    Dies widerspricht, dass \( \alpha \) das Minimum von \(h\) aud der Menge \(K\) ist.\\
+    Somit muss ein \( x \in K \) existieren, sodass \(h(x) = 0\) ist.
+\end{bew}
+\begin{bsp}[Aufgabe 63 (i)]
+    Seien \( k, l \in N, \abb{\gamma}{[0,1]}{\R^l} \) eine rektifizierbare Kurve, 
+    \( \abb{f}{\R^l}{\R^k} \) Lipschitzstetig mit Konstante \( C > 0 \).\\
+    Zu zeigen \( \abb{ f \circ g }{[0,1]}{\R^l} \) ist eine rektifizierbare Kurve 
+    mit \( L( f \circ g ) \leq C L(\gamma) \).
+\end{bsp}
+\begin{bew}
+    Sei \(n \in \N\) und \( Z = \set{t_0, t_1, \ldots, t_n} \) Zerlegung von \( [0,1] \)
+    \[ L(f \circ g, Z) = \sum_{k=1}^n \norm{ f(\gamma(t_k)) - f(\gamma(t_{k-1})) }_2 
+    \leq C \sum_{k=1}^n \norm{\gamma(t_k) - \gamma(t_{k-1})}_2 
+    = C L(\gamma, Z). \]
+    Bildet man das Supremum über alle Zerlegungen von \([0, 1]\) so erhält
+    man die Rektifizierbarkeit von \(f \circ g\) und die Abschätzung
+    \[L(f \circ g) \leq  CL(g)\]
+\end{bew}
+\begin{bsp}[Aufgabe 63 (ii)]
+    a) Sei \(\abb{\gamma}{[-1, 1]}{\R^2}, \gamma(t) = \begin{pmatrix}
+        t^2\\
+        t^3
+    \end{pmatrix}\) \\ 
+    b) \( \abb{\gamma}{[0,1]}{\R^3}, \gamma(t) = \begin{pmatrix} 
+        t^2 \cos t \\ 
+        t^2 \sin t \\ 
+        \frac{t^3}{3} 
+    \end{pmatrix} \)
+\end{bsp}
+\begin{bew}
+    a) \(\gamma\) ist stetig differenzierbar, somit rektifizierbar und mit der
+    Formel über die Ableitung können wir die Bogenlänge berechnen
+    \[ \gamma'(t) = \begin{pmatrix} 2t \\ 3t^2 \end{pmatrix} \]
+    und somit 
+    \[ \abs{\gamma}_2 = (4 t^2 + 9 t^4)^{1/2} \]
+    für alle \( t \in [-1,1] \).
+    \[ L(\gamma) = \integralx{\abs{\gamma(t)}_2 }{-1}{1}{t} 
+    = 2 \integralx{ t (4 + 9t^2)^{1/2} }{0}{1}{t} \]
+    \[ = \integralx{ (4 + 9s)^{1/2} }{0}{1}{s} = \frac{2}{27} (13^{3/2} - 8). \]
+    b) Auch hier ist \( \gamma \) rektifizierbar, da es stetig differenzierbar ist.
+    \[ \gamma'(t) = \begin{pmatrix}
+        2 t \cos t - t^2 \sin t \\
+        2 t \sin t + t^2 \cos t \\
+        t^2
+    \end{pmatrix} \]
+    und somit 
+    \[ \abs{\gamma(t)}_2 = (4t^2 + 2t^4)^{1/2} \] 
+    wobei wir verwendet haben, dass 
+    \[ \cos^2 t + \sin^2 t = 1. \]
+    \[ L(\gamma) = \integralx{\abs{\gamma(t)}_2}{0}{1}{t} = \integralx{t(4 + 2t^2)^{1/2}}{0}{1}{t} \]
+    \[ = \frac{1}{2} \integralx{(4 + 2s)^{1/2}}{0}{1}{s} 
+    = \sqrt{6} - \frac{4}{3} \]
+\end{bew}
+\begin{bsp}
+    \[ \gamma(t) := e^{-t} \begin{pmatrix} \cos t \\ \sin t \end{pmatrix}, \quad t \geq 0 \] 
+    ist stetig differenzierbar, somit rektifizierbar.
+    \begin{align*}
+        L(\gamma) = \integralx{ \abs{ \ddxpartial{t} e^{-t}(\cos t, \sin t)^T }_2 }{0}{\infty}{t}\\
+        &= \integral{ \sqrt{(-e^{-t})^2 (\sin^2 t + \cos^2 t)} }{0}{\infty}{t} \\
+        &= \integralx{e^{-t}}{0}{1}{t} = 1.
+    \end{align*}
+    Nun 
+    \[ \gamma(t) = g(t) \begin{pmatrix} \cos t \\ \sin t \end{pmatrix} \]
+    \( t \geq 0, g(t) > 0 \) für alle \( t \in [0,\infty) \)
+    \begin{enumerate}
+        \item Muss rektifizierbar sein. 
+        \item \(\integralx{\sqrt{\gamma'(t)^2}}{a}{b}{t}\)
+    \end{enumerate}
+    \(\Rightarrow g(t)\) stetig auf \([0, \infty)\) und \(\mathcal{C}^1\)
+    auf \(0, \infty\).\\
+    \(\abb{\gamma \in \mathcal{C}([a,b], \R^n)}{t}{L(\gamma\vert_{[a,t]})}\)
+    a) \[\abb{\gamma} {[0,4\pi]}{\R^3}, \gamma(t) := \begin{pmatrix}
+        \cos t \\ \sin t \\ \cosh t
+    \end{pmatrix} \]
+    b) \[\abb{\gamma}{[0,5]}{\R^2}, \tilde{gamma}(t) := \begin{pmatrix}
+        3t2 \\ 2t^3
+    \end{pmatrix} \]
+    Da \(\gamma\) und \(\tilde{\gamma}\) beide stetig diffbar sind ist die zugehörige Bogenlängenfunktion
+    \(\abb{S_\gamma}{0, 4\pi}{\R}\) bzw. \(\abb{S_{\tilde{\gamma}}}{[0,5]}{\R}\)    
+    \begin{align*}
+        S_\gamma(t) &= \integralx{\abs{\gamma'(\tau)}_2}{0}{1}{\tau} \\        
+        S_{\tilde{\gamma}}(t) &= \integralx{\abs{\tilde{\gamma}'(\tau)}_2}{0}{1}{\tau}
+    \end{align*}
+    Wegen \( \gamma'(\tau) = \begin{pmatrix} -\sin \tau \\ \cos \tau \\ \sinh \tau \end{pmatrix} \) für alle \( \tau \in [0,4\pi] \), 
+    \( \tilde{\gamma}'(t) = \begin{pmatrix} 6 \tau \\ 6 \tau^2 \end{pmatrix} \) für \( \tau \in [0,5] \).
+    \begin{align*}
+        \abs{\gamma'(t)}_2 &= \sqrt{ \sin^2 \tau + \cos^2 \tau + \sinh^2 \tau}\\
+        &= \sqrt{1 + \sinh^2 \tau} = \sqrt{\cosh^2 \tau}\\
+        &= \cosh \tau
+    \end{align*}
+    \[ S_\gamma (t) = \integralx{\cosh \tau}{0}{t}{\tau} 
+    = [\sinh \tau]_0^t = \sinh t. \]    
+    \[ \abs{ \tilde{\gamma}(\tau) }_2 = \sqrt{36 \tau^2 + 36 \tau^4} \]
+    \[ S_{\tilde{\gamma}}(t) = \integralx{\sqrt{36\tau^2 + 36\tau^4}}{0}{t}{\tau} = 2(1 + t^2)^{3/2} - 2. \]
+\end{bsp}
+\begin{bsp}
+    \begin{enumerate}
+        \item \( \abb{f}{\R^2}{\R^2}, f(x,y) = \begin{pmatrix} e^x \\ xy \end{pmatrix} \)
+        \item \( \abb{\gamma}{[0,2\pi]}{\R^2}; \gamma(t) = \begin{pmatrix} \cos t \\ \sin t \end{pmatrix} \)
+    \end{enumerate}
+    Berechne \( \int_\gamma f d\vec{x} \).
+\end{bsp}
+\begin{bew}
+    (i) Da \(f\) stetig und \(\gamma\) stetig differenzierbar ist mit 
+    \[ \gamma'(t) = \begin{pmatrix} -\sin t \\ \cos t \end{pmatrix} \]
+    gilt 
+    \[ \int_\gamma f(x,y)\; d(x,y) 
+    = \integralx{ f(\gamma(t)) \abs{ \gamma'(t) }_2 }{0}{2\pi}{t} \]
+    \[ = \integralx{ f(\cos t, \sin t) \begin{pmatrix} -\sin t \\ \cos t \end{pmatrix} }{0}{2\pi}{t} \]
+    \[ = \integralx{ -e^{\cos t} \sin t + \sin t \cos^2 t }{0}{2\pi}{t} \]
+    \[ = [e^{\cos t} - \frac{1}{3} \cos^3 t ]_0^{2\pi} 
+    = (e - \frac{1}{3}) - (e - \frac{1}{3}) = 0. \]
+    (ii) Sei \( \abb{f}{\R^3}{\R^3}, f(x,y,z) = \begin{pmatrix}  y\\-z\\x \end{pmatrix}\)
+    \(f\) ist stetig, \(\gamma\) stetig differenzierbar mit
+    \[ \gamma'(t) = \begin{pmatrix}
+        \sinh t\\
+        \cosh t\\
+        \sinh t
+    \end{pmatrix} \forall t \in [0, \ln 3] \]
+    Also gilt:
+    \begin{align*}
+        \int_\gamma f(x,y,z) \; d(x,y,z)
+        &= \integralx{ f(\sinh t, \cosh t, \sinh t) \begin{pmatrix} \cosh t \\ \sinh t \\ \cosh t \end{pmatrix} }{0}{\ln 3}{t}\\
+        &= \integralx{ \sinh t \cosh t }{0}{\ln 3}{t}\\
+        &= [t + \frac{1}{2}sinh^2(t)]^{ln(3)}\\
+        &= \ln 3 + \frac{1}{2} \left(\frac{3 - \frac{1}{3}}{2}\right)^2 = \ln 3 + \frac{8}{9}
+    \end{align*}
+\end{bew}
+\begin{bsp}
+    (iii) \[\abb{f}{\R^2}{\R^2}; f(x,y) := \begin{pmatrix} x^2y \\ -y \end{pmatrix} 
+    \abb{\gamma}{[0, 1]}{R^2}; \gamma(t) := \begin{pmatrix} t^2 \\ t^3 - 1 \end{pmatrix}\]
+    Da \(f\) stetig und \(\gamma\) stetig differenzierbar mit
+    \[ \gamma'(t) = \begin{pmatrix}
+        2t\\3t^2
+    \end{pmatrix} \forall t \in [0, 1] \]
+    Somit gilt 
+    \begin{align*}
+        \int_\gamma f(x,y) \; d(x,y) &= \integralx{ f(\gamma(t)) \gamma'(t) }{0}{1}{t}\\
+        &= \integralx{ f(t^2, t^3 - 1) \begin{pmatrix} 2t \\ 3t^2 \end{pmatrix} }{0}{1}{t} \\
+        &= \integralx{ t^4(t^3 - 1)2t - (t^3 - 1)3t^2 }{0}{1}{t} \\
+        &= \integralx{ 2t^8 - 5t^5 + 3t^2 }{0}{1}{t} \\
+        &= \left[ \frac{2}{9}t^9 - \frac{5}{6}t^6 + t^3 \right]_0^1 = \frac{7}{18}.
+    \end{align*}
+\end{bsp}
+\begin{bsp}[Aufgabe 67]
+    Besitzt \(f\) ein Potenzial?
+    \[ \abb{f}{\R^3}{\R^3}, f(x,y,z) = (y^2 + 2zx, z^2 + 2xy, x^2 + 2yz). \]
+    Die Frage ist, ob eine Funktion \( \abb{\Phi}{\R^3}{\R} \) existiert, sodass 
+    \[ \nabla \Phi(x,y,z) = f(x,y,z). \]
+    Dann ist \(\Phi\) ein Potenzial von \(f\).
+    \[ \Phi(x,y,z) = xy^2 + x^2 z + yz^2. \]
+    \[ \nabla \Phi(x,y,z) = \begin{pmatrix} y^2 + 2xz \\ z^2 + 2xy \\ x^2 + 2yz \end{pmatrix} \]
+    \[ f(x,y,z) = (y^2 + 2x^3 y x, 2y + z^3 x^2, y^2 + 3z^2 y x^2) \]
+    hat kein Potential, da 
+    \[ \partial_1 f_2(x,y,z) = 2xz^3 \neq 2y + 2xz^3 = \partial_2 f_1(x,y,z). \]
+    Also erfüllt \(f\) die Integrationsbedingung nicht und besitzt kein Potenzial.
+\end{bsp}
+\end{document}
