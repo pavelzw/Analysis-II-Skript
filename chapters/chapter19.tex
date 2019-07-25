@@ -450,9 +450,29 @@ ist kein Gradientenfeld.
 \end{satz}
 \begin{bew}
     b) \(\Rightarrow\) a) Satz 15\\
-    a) \(\Rightarrow\) b) Satz 20 \(\Rightarrow\) geschlossener Weg \( \gamma \in P \mathcal{C}^1([a,b], U) \).
-    \[ \Rightarrow \int_\gamma F \cdot d\vec{x} = 0 \]
-    da \( U \) einfach zusammenhängend ist.
-    \( \Rightarrow \exists \) Stammfunktion.
+    a) \(\Rightarrow\) b) Satz 20: \( \int_\gamma F \; d \vec{x} = 0 \) 
+    für geschlossenen Weg \( \gamma \in P \mathcal{C}^1([a,b], U) \)\\
+    \( \oversett{Satz 14}{\Rightarrow} F \) hat eine Stammfunktion \( \varphi \).
 \end{bew}
+\begin{bsp}
+    \( U \) ist sternförmig: \\
+    \( \exists x_0 \in U: \forall x \in U: [x_0, x] 
+    = \set{ (1-t)x_0 + tx, 0 \leq t \leq 1 } \subset U \)
+    \( \gamma \in P \mathcal{C^1([a,b], U) \) geschlossen.\\
+    \( \gamma(s,t) := (1-t)\gamma(s) + tx_0 \)\\
+    Sei \( F \in \mathcal{C}^1(U, \R^d), \partial_jF_l = \partial_l F_j 
+    \; \forall j, l = 1,\ldots, d\)\\
+    \(\oversett{Satz 22}{\Rightarrow} F\) hat Stammfunktion (d. h. es ist ein Gradientenfeld)\\
+    \(F\) in \(x \in U\), nehme \(\abb{\gamma_x}{[0,1]}{U}; t \mapsto (1-t)x_0 + tx.\)\\
+    Dann ist \( \varphi(x) := \int_{\gamma_x} F \; d\vec{x} 
+    = \integralx{\scalarprod{F(\gamma(t))}{\gamma'(t)}}{0}{1}{t} 
+    = \integralx{\scalarprod{F((1-t)x_0 + tx)}{x - x_0}}{0}{1}{t} \)\\
+    Tabelle: Eigenschaften von Kurvenintegralen\\
+    \(F\) Gradientenfeld \(\oversett{Satz 14}{\Leftrightarrow} \int_\gamma F dx\)
+    wegunabhängig \(\Leftrightarrow \int_{\tilde{\gamma}} F dx = 0 \forall \) geschlossene Wege \(\tilde{\gamma}\)\\
+    \( \oversett{Satz 15}{\Rightarrow} \partial_j F_l = \partial_l F_j 
+    \oversett{Satz 17}{\Leftrightarrow} \int_\gamma F d\vec{x} \) ist 
+    homotopieinvariant.
+\end{bsp}
+
 \end{document}

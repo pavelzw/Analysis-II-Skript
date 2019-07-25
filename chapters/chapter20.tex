@@ -1,0 +1,80 @@
+\documentclass[../ana2.tex]{subfiles}
+
+\begin{document}
+\setcounter{section}{19}
+\section{Etwas gewöhnliche Differentialgleichungen}
+Allgemein \( t \in \R, \abb{y}{I}{\R^d} \) oder 
+\( D \subset \R \times \R^d \times \ldots \times \R^d = R \times \R^{d(n+1)} \)
+\( \abb{F}{D}{\R^d} \).\\
+Dann heißt 
+\[ F(t, y(t), y'(t) \ldots, y^{(n)}(t)) = 0 \]
+gewöhnliche Differentialgleichung der Ordnung \(n\).
+\begin{bsp}[Newton]
+    \( m a = F \) (Kraft \(F\), Masse \(m\), Beschleunigung \(a\)).\\
+    \( x(t) \) Ort\\
+    \( \dot{x}(t) \) Geschwindigkeit \\
+    \( a(t) = \ddot{x}(t) \) Beschleunigung\\
+    Brauchen: Ort \(x(t_0)\), Geschwindigkeit \( \dot{x}(t_0) \)\\
+    \( x(t) \in \R^3\), oder \( \R^2, \R^6, \R^{3N} \) mit \(N\): Teilchenanzahl
+    \[G(t, x'') = x''(t) - \frac{F(t)}{m} = 0 \]
+\end{bsp}
+\begin{defi}
+    \(n, d \in \N, D \subset \R \times \R^d \times \ldots \times \R^d = \R \times \R^{dn}\).\\
+    \(\abb{f}{D}{\R^d}\)\\
+    Eine Gleichung der Form 
+    \[ y^{(n)}(t) = f(t, y(t), y'(t), \ldots, y^{(n-1)}(t)) \]
+    explizite Form der gewöhnlichen Differentialgleichung \(n\)-ter Ordnung.\\
+    Anfangsbedingung: \( y(t_0) = y_0, y'(t_0) = y'_0 
+    \ldots y^{(n-1)}(t_0) = y^{(n-1)}(t_0) \in \R^d \).\\
+    Ang. \( v(t) := (y(t), y'(t), \ldots, y^{(n-1)}(t)) = (v_1(t), \ldots, v_n(t)) \)\\
+    \[ v'(t) = (v'_1(t), \ldots, v'_n(t)) 
+    = (v_2(t), \ldots, v_n(t), f(t,v(t))) \]
+    Vektorwertige gewöhnliche Differentialgleichung erster Ordnung.\\
+\end{defi}
+\begin{bsp}
+    Newton 
+    \[ \ddot{x}(t) = \frac{1}{m}F(t, v(t)), v(t) = \dot{x_0}(t) \]
+    \[ \ddx{t} \begin{pmatrix}
+        x(t) \\ v(t)
+    \end{pmatrix} = \begin{pmatrix}
+        \dot{x}(t) \\ \dot{v}(t)
+    \end{pmatrix} = \begin{pmatrix}
+        v(t) \\ \ddot{x}(t)
+    \end{pmatrix} = \begin{pmatrix}
+        v(t) \\ \frac{1}{m} F(t, x(t))
+    \end{pmatrix} \]
+    z. B. suche differenzierbare Funktionen 
+    \[ \abb{y}{\R}{\R} \]
+    mit \( y'(t) = a y(t) \quad a \in \R \).\\
+    Z. B. \( y(t) = c e^{at} \) macht es (\(c \in \R\))!\\
+    Ang. \( y'= a y \).\\
+    \[ h(t) := y(t) e^{-at} = \frac{y(t)}{e^{at}} \]
+    \[ h'(t) = y'(t) e^{-at} + y(t)(-a e^{-at})
+    = ay(t) e^{-at} - ay(t) e^{-at} = 0 \]
+    \( \Rightarrow h \) ist konstant, d. h. 
+    \( y(t) e^{-at} = h(t) = h(0) 
+    = y(0) e^{-a 0} = y(0) \)
+    \[ \Rightarrow y(t) = y(0) e^{at} = c e^{at}. \]
+    z.B. \(y'(t) = a(t) y(t)\)\\
+    \(\Rightarrow\) jede Lösung ist von der Form
+    \[ y(t) = c \exp(A(t)), A(t) = \integralx{a(s)}{0}{t}{s} \]
+    Allgemeinere Situation:\\
+    \(\abb{y}{I}{\R^d}, y'(t) = f(t, y(t))\)\\
+    \( t_0 \in I, y(t_0) = y_0 \)\\
+    Sei \(U \subset \R^d, \abb{f}{I\times U}{\R^d}\).\\
+    Anfangswertproblem: \\
+    Frage: Welche Bedingungen sollte \(f\) erfüllen, damit
+    wir eine wenigstens lokal eindeutige Lösung haben?\\
+    D. h. \( \exists \delta > 0: t_0 \pm \delta \in I \)\\
+    Funktion \( \abb{y}{(t_0 - \delta, t_0 + \delta)}{U} \)
+    differenzierbar.
+    \[ y'(t) = f(t, y(t)) \;\forall t\in (t_0 - \delta, t_0 + \delta) \]
+    und \( y(t_0) = y_0 \).\\
+    Umschreiben: Angenommen \(\abb{y}{(t_0-\delta, t_0 + \delta)}{\R^d}\) ist Lösung. \((*)\)\\
+    \[ y(t) - y(t_0) = \integralx{\ddx{s}y(s)}{t_0}{t}{s} 
+    = \integralx{y'(s)}{t_0}{t}{s} 
+    = \integralx{f(s, y(s))}{t_0}{t}{s} \]
+    \[ \Rightarrow y(t) = y_0 + \integralx{f(s, y(s))}{t_0}{t}{s} \tag{\(**\)} \]
+    Fix\gqq{punkt}gleichung.
+\end{bsp}
+\end{document} 
