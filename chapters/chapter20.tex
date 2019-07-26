@@ -77,4 +77,129 @@ gewöhnliche Differentialgleichung der Ordnung \(n\).
     \[ \Rightarrow y(t) = y_0 + \integralx{f(s, y(s))}{t_0}{t}{s} \tag{\(**\)} \]
     Fix\gqq{punkt}gleichung.
 \end{bsp}
-\end{document} 
+
+\[ (*) \begin{cases}
+    y' = f(t,y) \\
+    t(t_0)
+\end{cases} \]
+\( \abb{y}{I}{\R^d} \) stetig diffenzierbar, 
+\( t_0 \in I, y_0 \in U \subset \R^d \)\\
+Integrieren von \( t_0 \) bis \(t\)
+\[ y(t) = y(t_0) + \integralx{y'(s)}{t_0}{t}{s} 
+= y_0 + \integralx{f(s, y(s))}{t_0}{t}{s} \tag{\(**\)} \]
+\begin{lem}
+    \(y\) ist stetig diffenzierbare Lösung von \((*) \Leftrightarrow y\)
+    ist stetig und Lösung von \((**)\)\\
+    \(\Rightarrow \) Raum in dem wir Lösungen suchen ist 
+    \(\mathcal{C}([t_0-\delta, t_0+\delta], U)\)
+    oder  \(\mathcal{C}([t_0, t_0+\delta], U)\)\\
+    O. B. d. A. \(t_0 \leq t \leq t_0 + \delta\)
+\end{lem}
+Fakt 1: \( h \in \mathcal{C}([t_0. t_0 + \delta], \R^d) \) 
+hat Norm 
+\[\norm{h}_\infty := \underset{t_0 \leq t \leq t_0 + \delta}{\sup} \abs{h(t)}, h(t) \in \R^d \]
+\[ = \norm{h}_{\infty, I} I = [t_0, t_0 + \delta] \]
+\begin{align*}
+    \forall t \in [t_0, t_0 + \delta] : \abs{h_1(t) + h_2(t)} &\leq \abs{h_1(t)} + \abs{h_2(t)}\\
+    &\leq \underset{t_0 \leq t \leq t_0 + \delta}{\sup} \abs{h_1(t)} 
+    + \underset{t_0 \leq t \leq t_0 + \delta}{\sup} \abs{h_2(t)}\\
+    &= \norm{h_1}_\infty + \norm{h_2}_\infty
+\end{align*}
+\[ \Rightarrow \norm{h_1 + h_2}_\infty \leq \norm{h_1}_\infty + \norm{h_2}_\infty \]
+ist vollständig normierter Vektorraum.
+\( y \in \mathcal{C}([t_0, t_0 + \delta], \R^d) \). Definiere 
+\[ G(y)(t) := y_0 + \integralx{f(s, y(s))}{t_0}{t}{s} \]
+\( G(y) \in \mathcal{C}([t_0, t_0 + \delta], \R^d) \) sofern alles gut geht.\\
+Angenommen \(U \subset \R^d\) offen, \( y_0 \in U \).
+\[ \Rightarrow r>0: \overline{B_r}(y_0) \subset B_{2r}(y_0) \subset U. \]
+Rechteck \(R := [t_0, t_0+\delta] \times \overline{B_r}(y_0) \subset I \times U\)\\
+\(\abb{f}{I\times U}{\R^d}\) stetig. 
+\[ M := \underset{(t,z) \in R}{\max} \abs{f(t,z)} < \infty. \]
+Angenommen \( y \in \mathcal{C}([t_0, t_0 + \delta], \overline{B_r}(y_0)) \)
+\[ \abs{G(y)(t) - y_0} = \abs{\integralx{f(s, y(s))}{t_0}{t}{s}} 
+\leq \integralx{\underbrace{\abs{f(s, y(s))}}_{\leq M}}{t_0}{t}{s} \leq M(t - t_0) \]
+
+Setzen \( \alpha := \min(\delta_0, \frac{r}{M}) \)
+\[ \Rightarrow \forall t_0 \leq t \leq \alpha : \abs{G(y)(t)- y_0} \leq 
+M(t - t_0) \leq M \frac{r}{m} = r \]
+\[ \Rightarrow \abb{ G }{ \mathcal{C}([t_0, t_0 + \alpha], \overline{B_r}(y_0)) }{ \mathcal{C}([t_0, t_0 + \alpha], \overline{B_r}(y_0)) } \]
+ersteres ist eine abgeschlossene Teilmenge von \( \mathcal{C}([t_0, t_0 + \alpha], \R^d) \).\\
+Große Frage: Ist dies eine Kontraktion? \( y_1, y_2 \in X_{t_0, \alpha} \)
+\[ \norm{G(y_1) - G(y_2) }_{\infty, [t_0, t_0 + \alpha]} \overset{!}{\leq} 
+L \norm{ y_1 - y }_{\infty, [t_0, t_0 + \alpha]} \text{ und } L < 1 \]
+\[ G(y_1)(t) - G(y_2)(t) 
+=\abs{ \integralx{f(s, y_1(s))}{t_0}{t}{s} - \integralx{f(s, y_2(s))}{t_0}{t}{s} } \]
+\[ = \integralx{\abs{ f(s,y_1(s)) - f(s, y_2(s)) }}{t_0}{t}{s} \]
+Zusatzbedingung: \( f \) ist (lokal) Lipschitzstetig in 2 Koordinaten.\\
+Brauchen \( \abs{ f(s,z_1) - f(s, z_2) } 
+\leq L\abs{z_1 - z_2} \;\forall t_0 \leq s \leq t_0 + \alpha, z_1, z_2 \in \overline{B_r}(y_0) \)
+\[ \Rightarrow \abs{G(y_1)(t) - G(y_2)(t)} 
+\leq L \integralx{ \abs{ y_1(s) - y_2(s) } }{t_0}{t}{s} 
+\leq L \norm{ y_1 - y_2 }_{\infty, [t_0, t_0 + \alpha]} 
+\cdot (t - t_0) 
+\leq \alpha L \norm{y_1 - y_2}_{\infty, [t_0, t_0 + \alpha]} \]
+\[ \Rightarrow \norm{G(y_1) - G(y_2)}_{\infty , [t_0, t_0 + \alpha]} 
+\leq \alpha L \norm{ y_1 - y_2 }_{\infty, [t_0, t_0 + \alpha]} \]
+Wähle \( \alpha = \min(\delta, \frac{r}{M}, \frac{1}{2L}) \)
+\[ \Rightarrow \alpha L \leq \frac{1}{2} 
+\Rightarrow \abb{G}{ \mathcal{C}([t_0, t_0 + \alpha], \overline{B_r}(y_0)) }{\mathcal{C}([t_0, t_0 + \alpha], \overline{B_r}(y_0))} \]
+ist eine Kontraktion.\\
+\( \oversett{Banach}{\Rightarrow} \exists! \) Funktion 
+\( y \in \mathcal{C}([t_0, t_0 + \alpha], \overline{B_r}(y_0)) : y = G(y) \)\\
+Frage: Braucht man die Lipschitzbedingung auf \(f\)?
+Antwort: Ja, sonst geht Eindeutigkeit verloren!
+\begin{bsp}
+    \(f(t, z) = \abs{z}^{1/2}, z \in \R \)\\
+    \[ f(s, z_1) - f(s, z_2) = \integralx{\ddx{s} f(t, (1-s)z_1 + s z_2)}{0}{1}{s} 
+    \leq \integralx{ \scalarprod{\nabla_z f(t, (1-s)z_1+sz_2)}{z_2 - z_1} }{0}{1}{s} \]
+    \[ \leq \underset{z \in B_r(y_0)}{\sup} \nabla_2 f(t,z) \abs{z_1 - z_2} \]
+    \[ \ddxpartialboth{f}{z} = \frac{1}{2\abs{z}^{1/2}} \] 
+    ist nicht Lipschitzstetig auf \(\R\).\\
+    \[ y' = c\abs{y}^{1/2}, 
+    y(0) = 0 \]
+    Z. B. \( y(t) = 0 \;\forall t \in \R \).\\
+    \( y(t) = t^{\alpha}, t \geq 0 \)
+    \[ y' = \alpha t^{\alpha - 1} 
+    \overset{!}{=} c t^{\alpha/2} \]
+    \[ \alpha - 1 = \frac{\alpha}{2}, \alpha = 2. \]
+    Aber auch 
+    \[ y(t) = \begin{cases}
+        0 & t < 0 \\
+        t^2 & t \geq 0
+    \end{cases} \] 
+    ist auch eine Lösung von \( y' = 2 \abs{y}^{1/2} \)
+    auch, \(y(t) = (\max(t, t_0))^2 \; t_0 \geq 0\)
+    \(\Rightarrow y'=2\abs{y}^{1/2} y(0) = 0\).
+\end{bsp}
+Stetige Abhängigkeit von den Daten\\
+\( t_0 \in \R \) est, Anfangsbedingung \( y(t_0) = y_0 \)\\
+Gr\o{}nwallargument: \( y_0, y_1 \) zwei Startwerte.\\
+\( \Rightarrow \) Lösung \( y_0(t), y_1(t) \) auf gemeinsamen Zeitintervall \( [t_0, t_0 + \alpha] \)
+\[ y_0(t) - y_1(t) = y_0 + \integralx{ f(s, y_0(s)) }{t_0}{t}{s} - (y_1 + \integralx{f(s, y_1(s))}{t_0}{t}{s}) \]
+\[ = y_0 - y_1 + \integralx{ (f(s, y_0(s)) - f(s, y_1(s))) }{t_0}{t}{s} \]
+\( \Rightarrow w(t) := \abs{ y_0(t) - y_1(t) } 
+\leq \abs{ y_0 - y_1 } 
++ \integralx{ \abs{ f(s, y_0(s)) - f(s, y_1(s)) } }{t_0}{t}{s} \)
+\[ \leq \abs{ y_0 - y_1 } + L \integral{ \abs{ y_0(s) - y_1(s) } }{t_0}{t}{s} \]
+\[= \abs{y_0 - 0} + L \integralx{w(s)}{t_0}{t}{s} \]
+O. B. d. A. \( t_0 = 0 \)\\
+Haben: \( 0 \leq w(t) \leq A + L \integralx{w(s)}{0}{t}{s} \)
+\(0 \leq t \leq \alpha > 0\)
+\[ \Rightarrow \dot{U}(t) = w(t) \leq A + L U(t) \]
+\[ \Rightarrow \dot{U}(t) - LU(t) \leq A. \]
+\( \alpha(t) = e^{-L t} \)\\
+\( \dot{\alpha}(t) -L \alpha \)
+\[ \ddx{t}(\alpha(t) U(t)) 
+= \alpha(t) \dot{U}(t) + \dot{\alpha}(t) U(t) 
+= \alpha(t) \dot{U}(t) - L \alpha(t) U(t)
+= \alpha(t) (\dot{U}(t) - LU(t)) 
+\leq A \alpha(t) = A e^{Lt} \]
+\[ \oversett{Integrieren}{\Rightarrow} \alpha(t) U(t) - \alpha(0) U(0) 
+= \integralx{ \ddx{s} (\alpha(s) U(s)) }{0}{t}{s} 
+\leq A \integralx{ e^{Ls} }{0}{t}{s} 
+= A \frac{1}{L} (1 - e^{Lt}) \]
+\[ \Rightarrow U(t) \leq \frac{A}{L}(e^{-Lt} - 1) \]
+\[ \Rightarrow w(t) \leq A + L U(t) \leq A + L \frac{A}{L} (e^{Lt} - 1) \]
+\[ \Rightarrow 0 \leq w(t) \leq A + A e^{Lt} - A = Ae^{Lt} \]
+\[ \Rightarrow \abs{ y_0(t) - y_1(t) } \leq \abs{ y_0(0) - y_1(0) }e^{Lt}. \]
+\end{document}
