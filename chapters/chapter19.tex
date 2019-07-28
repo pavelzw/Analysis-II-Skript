@@ -332,4 +332,146 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
     Nehme Pfad \( \gamma(t) = (\cos t, \sin t), 0 \leq t \leq 2\pi \)
     \[ \Rightarrow \int_\gamma w \; d\vec{x} = 2\pi \neq 0. \]
 \end{bsp}
+Haben gesehen: \(F\) ist Gradientenfeld. 
+\( F = \nabla \varphi, \abb{\varphi}{U}{\R}, U \subset \R^d \) 
+offen 
+\[ \Rightarrow \partial_j \partial_l \varphi = \partial_j F_l = 
+\partial_l F_j = \partial_l \partial_j \varphi. \] 
+wenn \( F \in \mathcal{C}^1, \varphi \in \mathcal{C}^2 \)\\
+Winkelvektorfeld \(\abb{W}{\R^2 \setminus \set{0}}{\R^2}; 
+(x,y) \mapsto (-\frac{y}{x^2+y^2}, \frac{x}{x^2+y^2})\)\\
+ist kein Gradientenfeld.
+\begin{bsp}[Aharonov-Bohm Vektorpotenzial]
+    \(\varphi(x,y) = \arccos \frac{x}{\sqrt{x^2+y^2}}\)
+    auf oberer Halbebene \(\set{(x,y): x \in \R, y > 0}\)
+\end{bsp}
+\begin{defi}[Homotopie (verbiegen von Pfaden)]
+    Sei \(U \subset \R^d\) offen. Eine Homotopie in \(U\)
+    zwischen Kurven \(\gamma_j \in \mathcal{C}([a,b], U), j=1,2,\ldots\)
+    ist eine Abbildung \(\gamma \in \mathcal{C}([a,b]\times [0,1], U)\) mit
+    \[ \gamma(\cdot, 0) = \gamma_0, \gamma(\cdot, 1) = \gamma_1 \].
+    Gilt \( \gamma_0(a) = \gamma_1(a) = p, 
+    \gamma_0(b) = \gamma_1(b) = q \) und gibt es eine Homotopie mit    
+    \(\gamma(a,t) = p \; \forall t \in [0,1]\) mit 
+    \(\gamma(b,t) = q \; \forall t \in [0,1]\), so heißen \(\gamma_0, \gamma_1\)
+    homotop mit festen Endpunkten. Gilt \(\gamma_0(a) = \gamma_0(b), \gamma_1(a) = \gamma_1(b)\)
+    und gibt es eine Homotopie mit \(\gamma(a, t) = \gamma(b,t) = \; \forall t \in [0,1]\)
+    so heißen \(\gamma_0, \gamma_1\) geschlossen homotop in \(U\).
+\end{defi}
+\begin{lem}
+    Sei \( U \subset \R^d, F \in \mathcal{C}^2(U, \R^d), 
+    \gamma \in \mathcal{C}^1([a,b] \times [0,1], U) \) und 
+    \( \partial_s \partial_t \gamma \in \mathcal{C}([a,b] \times [0,1], \R^2) \).
+    \[ \int_{\gamma(\cdot, 1)} F \; d \vec{x}
+    - \int_{\gamma(\cdot, 0)} 
+    = \int_{\gamma(b, \cdot)} F \; d \vec{x} - \int_{\gamma(a, \cdot)} \; d\vec{x} 
+    + \int_0^1 \int_a^b (\scalarprod{Df \circ \gamma[\ddxpartialboth{\gamma}{t}] }{ \ddxpartialboth{\gamma}{s} } 
+    - \scalarprod{ DF \circ \gamma[\ddxpartialboth{\gamma}{s}] }{ \ddxpartialboth{\gamma}{t} } ) \; ds\; dt \]
+\end{lem}
+\begin{bew}
+    Schwarz \( \partial_s \partial_t \gamma = \partial_t \partial_s \gamma \)
+    \begin{align*}
+        \ddxpartial{t} \int_{\gamma(\cdot, t)} F d\vec{x} 
+        &= \ddxpartial{t} \integralx{\scalarprod{F(\gamma(s,t))}{\ddxpartialboth{\gamma}{s}(s,t)}}{a}{b}{s}\\
+        &= \int_a^b \ddxpartial{t} \scalarprod{Df \circ \gamma[\ddxpartialboth{\gamma}{t}] }{ \ddxpartialboth{\gamma}{s}(s,t) } \; ds\\
+        &= \int_a^b \scalarprod{DF \circ \gamma [\ddxpartialboth{\gamma}{t}]}{\ddxpartialboth{\gamma}{s}} \; ds + [\scalarprod{F \circ \gamma}{\ddxpartialboth{\gamma}{t}}]_{s=a}^{s=b} 
+        - \int_a^b \scalarprod{ \ddxpartial{s} F(\gamma(s,t))}{\ddxpartialboth{\gamma}{t} } \; ds
+    \end{align*}
+    Integration bzgl. \(t \in [0,1]\) liefert die Formel.
+\end{bew}
+\begin{bem}
+    Bei festen Endpunkten: \(\Rightarrow \gamma(a,t), \gamma(b,t) \) sind konstant (in \(t\)).\\
+    Ist \(\gamma(a, \cdot) = \gamma(b, \cdot)\) Homotopie geschlossen\\
+    \(\Rightarrow\) aller wegintegrale heben sich gegenseitig weg.
+\end{bem}
+\begin{satz}[Fundamentalsatz der Algebra]
+    Jedes kopmlexe Polynom vom Grad \( n \geq 1 \) hat 
+    mindestens eine komplexe Nullstelle.
+\end{satz}
+\begin{bew}
+    Wir betrachten Winkelvektorfeld \( \abb{W}{\R^2 \setminus \set{0}}{\R^2} \) 
+    identifizieren \( \R^2 \) mit \( \C \).
+    \[ p(z) = z^n + \cdots a_{n-1} z^{n-1} + \cdots + a_1 z + a_0 \; a_j \in \C \]
+    \[ = z^n + q(z), \grad q \leq n - 1 \Rightarrow z^{-n} q(z) \rightarrow 0, \abs{z} \rightarrow \infty. \]
+    \(\Rightarrow R > 0\) groß genug ist 
+    \[ \abs{q(Re^{i \theta}) } leq \frac{1}{2} R^n, \theta \in [0, 2\pi] \]
+    \[ \abb{\gamma_0}{[0,2\pi]}{{p(Re^{i\theta})}} = (Re^{i\theta})^n + q(Re^{i\theta}) \]
+    Homotopie: \( \gamma(\theta, t) := (R e^{i\theta})^n + (1-t) q (R e^{i \theta}) \)
+    \[ \abs{ \gamma(\theta, t) } \geq \abs{ R e^{i\theta} }^n - (1-t) \abs{ q (R e^{i\theta}) } 
+    \geq R^n - \frac{1}{2} R^n \geq \frac{1}{2} \R^n > 0. \]
+    \( \oversett{Lemma 17}{\Rightarrow} \partial_j w_e = \partial_e w_j \oversett{!}{=} R^n \)
+    \[ \int_{\gamma_0} w d\vec{x} = \int_{\gamma(\cdot, 1)} w d\vec{x} = 2\pi n \]
+    Ang. \( p \) hat keine Nullstelle.
+    Homotopie: \( \tilde{\gamma} := p(p e^{i\theta}), 0 \leq p \leq R, \theta \in [0,2\pi] \)
+    \[ \tilde{\gamma}(\theta, 0) = p(0) = a_0 \]
+    \( \Rightarrow \int_{\tilde{\gamma(\cdot, R)}} w d\vec{x} 
+    = \int_{\tilde{\gamma}(\cdot, 0) } w d\vec{x} = 0 \) \Lightning.
+\end{bew}
+\begin{lem}[Affine Homotopie]
+    Sei \(U \subset \R^d \) offen, \( F \in \mathcal{C}^1(U, \R^d), \partial_j F_l = \partial_l F_j \)\\
+    Kennen \( \gamma_0, \gamma_1 \in P\mathcal{C}^1([a,b], U) \) affine Homotopie 
+    \[ \abb{\gamma}{[a,b] \times [0,1]}{\R^n}, \gamma(s,t) := (1-t)\gamma_0(s) + t \gamma_1(s) \]
+    Haben \(\gamma_0,\gamma_1\) dieselben Endpunkte oder sind geschlossen und 
+    \(\gamma([a,b]\times[0,1]) \subset U \)
+    \[ \Rightarrow \int_{\gamma_0} F d\vec{x} = \int_{\gamma_1} F d\vec{x} \]
+\end{lem}
+\begin{bew}
+    Sind \(\gamma_0, \gamma_1 \mathcal{C}^1 \Rightarrow\) folgt aus Lemma 17.\\
+    \(\gamma_0,\gamma_1 P \mathcal{C}^1([a,b], U)\)\\    
+    Beweis durch Bild!
+\end{bew}
+\begin{satz}[Homotopieinvarianz]
+    Sei \( U \subset \R^n \) offen, \( F \in \mathcal{C}^1(U, \R^d), 
+    \partial_j F_l = \partial_l F_j, \gamma_0, \gamma_1 \in P\mathcal{C}^1([a,b], U) \)
+    Homotopie in \( U \) mit festen Endpunkten (oder geschlossene Homotopie)
+    \[ \Rightarrow \int_{\gamma_0} F \; d\vec{x} = \int_{\gamma_1} F \; d\vec{x}. \]
+\end{satz}
+\begin{bew}
+    Skript. Ist \( \gamma \) genügend glatt \( \Rightarrow \) Lemma 19.
+\end{bew}
+\begin{defi}
+    Eine Menge \(U \subset \R^d\) heißt einfach zusammenhängend, wenn jede
+    geschlossene Kurve \(\gamma \in \mathcal{C}([a,b], U)\) in \(U\)
+    geschlossen homotop zu einer konstanten Kurve ist.
+\end{defi}
+\begin{bsp}
+    \(U\) ist sternförmig, wenn 
+    \( x_0 \in U: \forall x \in U, [x_0, x] \subset U \)
+    \[ [x_0, x] = (1-t) x + tx_0 \; 0 \leq t \leq 1 \]
+    \[ \gamma(s,t) = (1-t) \gamma(s) + t x_0 \]
+\end{bsp}
+\begin{satz}
+    Sei \( U \subset \R^d \) offen und einfach zusammenhängend. Dann sind für ein Vektorfeld 
+    \( F \in \mathcal{C}^1(U, \R^d) \) äquivalent:
+    \begin{enumerate}
+        \item \( \partial_j F_l = \partial_l F_j,\; l,j = 1,\ldots, d \).
+        \item \( F \) hat eine Stammfunktion.
+    \end{enumerate}
+\end{satz}
+\begin{bew}
+    b) \(\Rightarrow\) a) Satz 15\\
+    a) \(\Rightarrow\) b) Satz 20: \( \int_\gamma F \; d \vec{x} = 0 \) 
+    für geschlossenen Weg \( \gamma \in P \mathcal{C}^1([a,b], U) \)\\
+    \( \oversett{Satz 14}{\Rightarrow} F \) hat eine Stammfunktion \( \varphi \).
+\end{bew}
+\begin{bsp}
+    \( U \) ist sternförmig: \\
+    \( \exists x_0 \in U: \forall x \in U: [x_0, x] 
+    = \set{ (1-t)x_0 + tx, 0 \leq t \leq 1 } \subset U \)
+    \( \gamma \in P \mathcal{C^1([a,b], U) \) geschlossen.\\
+    \( \gamma(s,t) := (1-t)\gamma(s) + tx_0 \)\\
+    Sei \( F \in \mathcal{C}^1(U, \R^d), \partial_jF_l = \partial_l F_j 
+    \; \forall j, l = 1,\ldots, d\)\\
+    \(\oversett{Satz 22}{\Rightarrow} F\) hat Stammfunktion (d. h. es ist ein Gradientenfeld)\\
+    \(F\) in \(x \in U\), nehme \(\abb{\gamma_x}{[0,1]}{U}; t \mapsto (1-t)x_0 + tx.\)\\
+    Dann ist \( \varphi(x) := \int_{\gamma_x} F \; d\vec{x} 
+    = \integralx{\scalarprod{F(\gamma(t))}{\gamma'(t)}}{0}{1}{t} 
+    = \integralx{\scalarprod{F((1-t)x_0 + tx)}{x - x_0}}{0}{1}{t} \)\\
+    Tabelle: Eigenschaften von Kurvenintegralen\\
+    \(F\) Gradientenfeld \(\oversett{Satz 14}{\Leftrightarrow} \int_\gamma F dx\)
+    wegunabhängig \(\Leftrightarrow \int_{\tilde{\gamma}} F dx = 0 \forall \) geschlossene Wege \(\tilde{\gamma}\)\\
+    \( \oversett{Satz 15}{\Rightarrow} \partial_j F_l = \partial_l F_j 
+    \oversett{Satz 17}{\Leftrightarrow} \int_\gamma F d\vec{x} \) ist 
+    homotopieinvariant.
+\end{bsp}
 \end{document}
