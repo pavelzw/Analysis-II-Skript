@@ -52,8 +52,9 @@
     Die Bijektion \( \varphi \) heißt Parametertransformation.
 \end{defi}
 \begin{lem}
-    Sind \(\gamma_j \in \mathcal{C}^1(I_j, \R^d), j = 1,\ldots, \gamma_2\) Umparametrisierung  
-    von \( \gamma \), so ist 
+    Sind \(\gamma_j \in \mathcal{C}^1(I_j, \R^d), 
+    j \in \set{1,2}\ \gamma_2\) Umparametrisierung  
+    von \( \gamma_1 \), so ist 
     \[ L(\gamma_1) = L(\gamma_2). \]
 \end{lem}
 \begin{bew}
@@ -81,14 +82,14 @@
     Eine Kurve \(c \in \mathcal{C}^1(I, \R^d)\) heißt nach Bogenlänge
     parametrisiert, falls
     \[ \abs{c'(s)} = 1 \; \forall s \in I. \]
-    (Einheitsgeschwindigkeit)
-    \[ [a,b] \subset I: L(c \vert_{[a,b]}) = \integralx{\abs{c'(s)}}{a}{b}{s}
-    = b - a \]
-    d. h. \(c\) bildet \([a,b]\) längentreu nach \(\R^d\) ab.
+    Sei \( [a,b] \subset I \).
+    \[ L(c \vert_{[a,b]}) = \integralx{\abs{c'(s)}}{a}{b}{s}
+    = b - a. \]
+    D. h. \(c\) bildet \([a,b]\) längentreu nach \(\R^d\) ab.
 \end{defi}
 \begin{satz}[Parametrisierung nach Bogenlänge]
     Sei \( \gamma \in \mathcal{C}^1([a,b],\R^d) \) eine Kurve 
-    mit Länge \(L = L(\gamma)\) und \(\gamma'(t) \neq 0 \; \forall t \in [a,b] \)
+    mit Länge \(L = L(\gamma)\) und \(\gamma'(t) \neq 0 \; \forall t \in [a,b] \).
     Dann gibt es eine \(\mathcal{C}^1\)-Bijektion \(\varphi\) 
     mit \( \varphi' > 0 \) so, dass \(c = \gamma \circ \varphi\) nach 
     Bogenlängeparametrisierung ist.
@@ -121,7 +122,7 @@
 \end{defi}
 \begin{notation}
     \( \gamma \in P \mathcal{C}^1([a,b], \R^d)\)
-    piecewise continously diffentiable
+    piecewise continously differentiable
 \end{notation}
 Setzen wir \(\gamma'(t_k):= 0, k = 1 \ldots N\) \\
 \( \Rightarrow \abb{\gamma'}{[a.b]}{\R^d} \) stückweise stetig 
@@ -177,12 +178,12 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
     und \(a = t_0 < \ldots < t_N = b\) Zerlegung von \([a,b]\)
     \[\gamma_k := \gamma\vert_{[t_k1, t_k]}
     \Rightarrow \integralx{F}{\gamma}{}{\vec{x}}
-    = \sum_{k=1}^N\integralx{F}{\gamma}{}{\vec{x}}\]    
+    = \sum_{k=1}^N\integralx{F}{\gamma}{}{\vec{x}}.\]    
     c) Invarianz unter Umparametrisierung:\\
     Sind \(\gamma \in P\mathcal{C}^1(I,\R^d), \varphi \in \mathcal{C}^1(I_2, I_1)\)
     eine Parametertransformation, so gilt, je nach Vorzeichen von \(\varphi'\)
     \[ \int_{\gamma \circ \varphi} F \; d\vec{x} = \pm \int_\gamma F \; d\vec{x} \]
-    \(+: \varphi' > 0, -: \varphi' < 0\)
+    \(+: \varphi' > 0, -: \varphi' < 0\).
 \end{lem}
 \begin{bew}
     a) und b) folgen aus alten Eigenschaften des Integrals!
@@ -205,7 +206,7 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
 \begin{lem}
     Sei \(U \subset \R^d\) offen, \(F \in \mathcal{C}^1(U, \R^d), \gamma \in P\mathcal{C}^1([a,b], U)\)
     \[ \abs{\int_\gamma F d\vec{x}} \leq \norm{F \circ \gamma}_{\infty,[a,b]} L(\gamma) 
-    = \underset{t \in [a,b]}{\sup} \abs{F(\gamma(t))} L(\gamma)\]
+    = \underset{t \in [a,b]}{\sup} \abs{F(\gamma(t))} L(\gamma).\]
 \end{lem}
 \begin{bew}
     \begin{align*}
@@ -215,14 +216,15 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
     \end{align*}
 \end{bew}
 \begin{defi}[Gradientenfeld]
-    Sei \(U \subset \R^d\) offen. Das Vektorfeld \(F \subset \mathcal{C}(U,\R^d)\)
+    Sei \(U \subset \R^d\) offen. Das Vektorfeld \(F \in \mathcal{C}(U,\R^d)\)
     heißt Gradientenfeld (bzw. Konservativ),
     falls ein \(\varphi \in \mathcal{C}^1(U, \R)\) mit 
     \[ \nabla \varphi = F. \] 
-    \(\varphi\) heißt Stammfunktion oder Potential von \(F\).
+    \(\varphi\) heißt Stammfunktion oder Potential von \(F\). 
+    \( F(x) = \nabla \varphi (x) \).
 \end{defi}
 \begin{lem}[Stammfunktion ist eindeutig bis auf Konstante]
-    Ist \( U \subset \R^d \) wegweise zusammenhängend, so 
+    Ist \( U \subset \R^d \) wegezusammenhängend, so 
     ist eine Stammfunktion \( \varphi \) von \( F \in \mathcal{C}(U, \R) \) 
     bis auf eine additive Konstante eindeutig bestimmt.
 \end{lem}
@@ -243,18 +245,19 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
     Für \( F \in \mathcal{C}(U, \R^d) \) sind äquivalent
     \begin{enumerate}
         \item \( F \) ist Gradientenfeld.
-        \item \(\gamma \in P\mathcal{C}^1([a,b], U)\) ist 
-        \[ \int_\gamma F d\vec{x} = 0 \]
-        \item  Für je zwei Kurven \(\gamma_0 \circ \gamma_1 \in P\mathcal{C}^1([a,b],U)\)
-        mit \(\gamma_0(a) = \gamma_1(a), \gamma_0(b) = \gamma_1(b)\) ist    
-        \[ \int_{\gamma_1} F d\vec{x} = \int_{\gamma_2} F d\vec{x} \]
+        \item Für \(\gamma \in P\mathcal{C}^1([a,b], U)\) 
+        mit \(\gamma\) geschlossen ist 
+        \[ \int_\gamma F d\vec{x} = 0. \]
+        \item  Für je zwei Kurven \(\gamma_1, \gamma_2 \in P\mathcal{C}^1([a,b],U)\)
+        mit \(\gamma_1(a) = \gamma_2(a), \gamma_1(b) = \gamma_2(b)\) ist    
+        \[ \int_{\gamma_1} F d\vec{x} = \int_{\gamma_2} F d\vec{x}. \]
     \end{enumerate}
 \end{satz}
 \begin{bew}
     Zeigen \(a) \Rightarrow b) \Rightarrow c) \Rightarrow a) \)\\
     \(a) \Rightarrow b) \):\\
-    Ist \(F = \nabla \varphi, \varphi in \mathcal{C}^1(U,\R)\),
-    \(\gamma in P \mathcal{C}^1([a,b], U)\) abgeschlossen
+    Ist \(F = \nabla \varphi, \varphi \in \mathcal{C}^1(U,\R)\),
+    \(\gamma \in P \mathcal{C}^1([a,b], U)\) abgeschlossen
     \[ \ddxpartial{t}(\varphi(\gamma(t)) = D\varphi(\gamma(t))[\gamma'(t)]
     = \scalarprod{\nabla \varphi(\gamma(t))}{\gamma'(t)} \]
     \begin{align*}
@@ -273,7 +276,7 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
     \end{cases} \)    
     Sind \[\gamma_1, \gamma_2 \in P \mathcal{C}^1([a,b], U)
     \Rightarrow \gamma \in P \mathcal{C}^1([a,b], U)\]
-    \[0 = \int_gamma F ; d\vec{x} = \int_gamma_1 F ; d\vec{x} - \int_gamma_2 F ; d\vec{x} 
+    \[0 = \int_\gamma F ; d\vec{x} = \int_\gamma_1 F ; d\vec{x} - \int_\gamma_2 F ; d\vec{x} 
     \Rightarrow c)\]    
     \(c) \Rightarrow a)\):\\
      Sei \( x_0 \in U \) beliebig, aber fest, \( x \in U \)
@@ -303,9 +306,11 @@ in \(U \subset \R^d\) offen. \( \abb{\gamma}{[a,b]}{U} \).
     \[ \Rightarrow \nabla \varphi(x) = F(x) \;\forall x \in U. \]
 \end{bew}
 \begin{satz}[Rotationsfreiheit]
-    \( U \subset \R^d \) ist \( F \in \mathcal{C}(U, \R^d) \)
+    Für \( U \subset \R^d \) ist \( F \in \mathcal{C}(U, \R^d) \)
     ein Gradientenfeld.
-    \[ \Rightarrow \partial_l F_j = \partial_j F_l \text{ in } U \;\forall 1 \leq l,j \leq d. \]
+    \[ \Rightarrow \partial_l F_j 
+    = \partial_j F_l \text{ in } U 
+    \;\forall 1 \leq l,j \leq d. \]
 \end{satz}
 \begin{bew}
     \( F = \nabla \varphi \Rightarrow \varphi \in \mathcal{C}^2(U, \R) \)
@@ -345,28 +350,33 @@ ist kein Gradientenfeld.
     \(\varphi(x,y) = \arccos \frac{x}{\sqrt{x^2+y^2}}\)
     auf oberer Halbebene \(\set{(x,y): x \in \R, y > 0}\)
 \end{bsp}
-\begin{defi}[Homotopie (verbiegen von Pfaden)]
+\begin{defi}[Homotopie (Verbiegen von Pfaden)]
     Sei \(U \subset \R^d\) offen. Eine Homotopie in \(U\)
-    zwischen Kurven \(\gamma_j \in \mathcal{C}([a,b], U), j=1,2,\ldots\)
+    zwischen Kurven \(\gamma_1, \gamma_2 \in \mathcal{C}([a,b], U) \)
     ist eine Abbildung \(\gamma \in \mathcal{C}([a,b]\times [0,1], U)\) mit
-    \[ \gamma(\cdot, 0) = \gamma_0, \gamma(\cdot, 1) = \gamma_1 \].
-    Gilt \( \gamma_0(a) = \gamma_1(a) = p, 
-    \gamma_0(b) = \gamma_1(b) = q \) und gibt es eine Homotopie mit    
+    \[ \gamma(\cdot, 0) = \gamma_1, \gamma(\cdot, 1) = \gamma_2. \]
+    Gilt \( \gamma_1(a) = \gamma_2(a) = p, 
+    \gamma_1(b) = \gamma_2(b) = q \) und gibt es eine Homotopie mit    
     \(\gamma(a,t) = p \; \forall t \in [0,1]\) mit 
-    \(\gamma(b,t) = q \; \forall t \in [0,1]\), so heißen \(\gamma_0, \gamma_1\)
-    homotop mit festen Endpunkten. Gilt \(\gamma_0(a) = \gamma_0(b), \gamma_1(a) = \gamma_1(b)\)
-    und gibt es eine Homotopie mit \(\gamma(a, t) = \gamma(b,t) = \; \forall t \in [0,1]\)
-    so heißen \(\gamma_0, \gamma_1\) geschlossen homotop in \(U\).
+    \(\gamma(b,t) = q \; \forall t \in [0,1]\), so heißen \(\gamma_1, \gamma_2\)
+    homotop mit festen Endpunkten. Sind \( \gamma_1, \gamma_2 \)
+    geschlossen und gibt es eine Homotopie mit 
+    \(\gamma(a, t) = \gamma(b,t) \; \forall t \in [0,1]\),
+    so heißen \(\gamma_1, \gamma_2\) geschlossen homotop in \(U\).
 \end{defi}
 \begin{lem}
     Sei \( U \subset \R^d, F \in \mathcal{C}^2(U, \R^d), 
     \gamma \in \mathcal{C}^1([a,b] \times [0,1], U) \) und 
-    \( \partial_s \partial_t \gamma \in \mathcal{C}([a,b] \times [0,1], \R^2) \).
+    \( \partial_s \partial_t \gamma \in \mathcal{C}([a,b] \times [0,1], U) \).
     \[ \int_{\gamma(\cdot, 1)} F \; d \vec{x}
-    - \int_{\gamma(\cdot, 0)} 
-    = \int_{\gamma(b, \cdot)} F \; d \vec{x} - \int_{\gamma(a, \cdot)} \; d\vec{x} 
-    + \int_0^1 \int_a^b (\scalarprod{Df \circ \gamma[\ddxpartialboth{\gamma}{t}] }{ \ddxpartialboth{\gamma}{s} } 
-    - \scalarprod{ DF \circ \gamma[\ddxpartialboth{\gamma}{s}] }{ \ddxpartialboth{\gamma}{t} } ) \; ds\; dt \]
+    - \int_{\gamma(\cdot, 0)} F \; d\vec{x}
+    = \int_{\gamma(b, \cdot)} F \; d \vec{x} 
+    - \int_{\gamma(a, \cdot)} F \; d\vec{x} 
+    + \int_0^1 \int_a^b (\scalarprod{Df \circ \gamma
+    \left[\ddxpartialboth{\gamma}{t}\right] }{ \ddxpartialboth{\gamma}{s} } 
+    - \scalarprod{ DF \circ \gamma 
+    \left[\ddxpartialboth{\gamma}{s}\right] }{ \ddxpartialboth{\gamma}{t} } ) 
+    \; ds\; dt. \]
 \end{lem}
 \begin{bew}
     Schwarz \( \partial_s \partial_t \gamma = \partial_t \partial_s \gamma \)
@@ -382,10 +392,10 @@ ist kein Gradientenfeld.
 \begin{bem}
     Bei festen Endpunkten: \(\Rightarrow \gamma(a,t), \gamma(b,t) \) sind konstant (in \(t\)).\\
     Ist \(\gamma(a, \cdot) = \gamma(b, \cdot)\) Homotopie geschlossen\\
-    \(\Rightarrow\) aller wegintegrale heben sich gegenseitig weg.
+    \(\Rightarrow\) alle Wegintegrale heben sich gegenseitig weg.
 \end{bem}
 \begin{satz}[Fundamentalsatz der Algebra]
-    Jedes kopmlexe Polynom vom Grad \( n \geq 1 \) hat 
+    Jedes komplexe Polynom vom Grad \( n \geq 1 \) hat 
     mindestens eine komplexe Nullstelle.
 \end{satz}
 \begin{bew}
@@ -413,7 +423,7 @@ ist kein Gradientenfeld.
     \[ \abb{\gamma}{[a,b] \times [0,1]}{\R^n}, \gamma(s,t) := (1-t)\gamma_0(s) + t \gamma_1(s) \]
     Haben \(\gamma_0,\gamma_1\) dieselben Endpunkte oder sind geschlossen und 
     \(\gamma([a,b]\times[0,1]) \subset U \)
-    \[ \Rightarrow \int_{\gamma_0} F d\vec{x} = \int_{\gamma_1} F d\vec{x} \]
+    \[ \Rightarrow \int_{\gamma_0} F d\vec{x} = \int_{\gamma_1} F d\vec{x}. \]
 \end{lem}
 \begin{bew}
     Sind \(\gamma_0, \gamma_1 \mathcal{C}^1 \Rightarrow\) folgt aus Lemma 17.\\

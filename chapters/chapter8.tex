@@ -10,7 +10,7 @@ Frage: Wie definiert man Integral über \( [a,b), (a,b] \)
 oder \( (a,b) \)? (\( -\infty \leq a < b \leq \infty \))
 \begin{defi}
     Sei \(f\) eine Regelfunktion auf dem Intervall \(I\) 
-    mit Randpunkten 
+    mit Randpunkten \\
     \( a, b, -\infty \leq a < b \leq \infty \).
     \begin{enumerate}
         \item Ist \( I=[a,b) \), so definiert man im 
@@ -64,8 +64,8 @@ oder \( (a,b) \)? (\( -\infty \leq a < b \leq \infty \))
     = \frac{1}{s-1} (1 - \beta^{1-s}), s \neq 1. \]
     \[ \integral{\frac{1}{x^s}}{1}{\beta} 
     = \begin{cases}
-        \frac{1}{s-1}(1 - \beta^{1-s}), &s \neq -1.\\
-        \ln \beta, &s = -1.
+        \frac{1}{s-1}(1 - \beta^{1-s}), &s \neq 1.\\
+        \ln \beta, &s = 1.
     \end{cases} \]
     \[ \Rightarrow \limes{\beta} \int_1^\beta \frac{\dx}{x^s} \]
     existiert und hat den Wert 
@@ -279,7 +279,7 @@ Jetzt:
     \leq \integral{f(x)}{1}{\infty} + f(1). \]
 \end{bew}
 \begin{bsp}[Zeta Funktion]
-    \[ \zeta(s) := \sum_{k=1}1\infty \frac{1}{k^s} \]
+    \[ \zeta(s) := \sum_{k=1}^\infty \frac{1}{k^s} \]
     konvergiert für \(s>1\). \\
     Da
     \[ \integral{\frac{1}{x^s}}{1}{\infty} \text{ konvergiert}

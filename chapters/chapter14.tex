@@ -25,33 +25,33 @@
     in \(x \in U\) und sei in \(x\) differenzierbar.
     \[ \Rightarrow Df(x) = 0 \]
     (\(0\) ist die lineare Abbildung, die alles von \(\R^n)\) auf \(0 \in \R\)
-    abbildet).\\
-    Hatten \(Df(x)[h] = \scalarprod{\nabla f(x)}{h} \)\\
-    \( = \sum_{j=1}^n \partial_j f(x) h_j = (\partial_1 f(x), \ldots, \partial_n f(x)) \begin{pmatrix}
-        h_1\\
-        \vdots\\
-        h_n
-    \end{pmatrix} \)
-    Sei \(\abb{A}{\R^n}{\R}\) linear. \(e_1, \ldots, e_n\) Basis von \(\R^n\).
-    \[ h = \sum_{j = 1}^{n} h_j e_j \]
-    \[ \Rightarrow A[h] = A[\sum_{j = 1}^{n} h_j e_j ] = \sum_{j=1}^n A[e_j]h_j \]
-    \[ = (A[e_1], \ldots, A[e_n]) \begin{pmatrix}
-        h_1\\
-        \vdots\\
-        h_n
-    \end{pmatrix} = \scalarprod{v_A}{h} \]
-    mit \(v_A := \begin{pmatrix}
-        A[e_1]\\
-        \vdots\\
-        A[e_n]
-    \end{pmatrix}\)
-    \[ \Rightarrow Df(x) = 0 \Leftrightarrow \nabla f(x) = \begin{pmatrix}
-        0\\
-        \vdots\\
-        0
-    \end{pmatrix} \in \R^n \]
-    \[ \Leftrightarrow \partial_jf(x) = 0, j=1,\ldots,n \]
+    abbildet).
 \end{satz}
+Hatten \(Df(x)[h] = \scalarprod{\nabla f(x)}{h} \)\\
+\( = \sum_{j=1}^n \partial_j f(x) h_j = (\partial_1 f(x), \ldots, \partial_n f(x)) \begin{pmatrix}
+    h_1\\
+    \vdots\\
+    h_n
+\end{pmatrix} \)
+Sei \(\abb{A}{\R^n}{\R}\) linear. \(e_1, \ldots, e_n\) Basis von \(\R^n\).
+\[ h = \sum_{j = 1}^{n} h_j e_j \]
+\[ \Rightarrow A[h] = A[\sum_{j = 1}^{n} h_j e_j ] = \sum_{j=1}^n A[e_j]h_j \]
+\[ = (A[e_1], \ldots, A[e_n]) \begin{pmatrix}
+    h_1\\
+    \vdots\\
+    h_n
+\end{pmatrix} = \scalarprod{v_A}{h} \]
+mit \(v_A := \begin{pmatrix}
+    A[e_1]\\
+    \vdots\\
+    A[e_n]
+\end{pmatrix}\)
+\[ \Rightarrow Df(x) = 0 \Leftrightarrow \nabla f(x) = \begin{pmatrix}
+    0\\
+    \vdots\\
+    0
+\end{pmatrix} \in \R^n \]
+\[ \Leftrightarrow \partial_jf(x) = 0, j=1,\ldots,n \]
 \begin{bew}
     Sei \(x \in D \subset \R^n\) offen \(\Rightarrow \forall h \in \R^n \; 
     \exists \delta_1 > 0: x +th \in D \; \forall \abs{t} < \delta_1, t \in \R^n \) \\
@@ -83,7 +83,7 @@
     Ist \(f\) differenzierbar auf \(D\)
     \[ \Rightarrow g'(t) = \ddx{t} f(x+th) = D_hf(x+th) \]
     \[ g'(t) = D_h f(xk+th) \]
-    Angenommen\(g'\) ist wieder differenzierbar
+    Angenommen \(g'\) ist wieder differenzierbar
     \[ \Rightarrow g''(t) = \ddx{t} (D_hf(x+th)) = D_h(D_hf(x+th)) \]
     oder \( h = \sum_{j=1}^n h_j e_j \)
     \[ \Rightarrow g'(t) = D_hf(x+th) = Df(x+th)[h] \]
@@ -133,7 +133,7 @@ nach dem Satz von Schwarz.
     Sei \(U \subset \R^n\) offen, \(f \in \mathcal{C}^2(U)\), 
     dann gilt
     \[ \limesx{u}{0} \frac{f(x+u) - f(x) - Df(x)[h] - \frac{1}{2} 
-    \scalarprod{u}{H(x)}}{\abs{u}^2} = 0 \]
+    \scalarprod{u}{H(x)}}{\abs{u}^2} = 0. \]
 \end{lem}
 \begin{bew}
     Sei \(u \in \R^n, f \in \mathcal{C}^2(U), x+tu \in U 
