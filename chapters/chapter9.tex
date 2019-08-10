@@ -11,7 +11,7 @@ x_j \in \R \forall 1 \leq j \leq d} \]
 \[ \C^d = \set{z = (z_1, \ldots, z_d) : 
 z_j \in \R \forall 1 \leq j \leq d} \]
 \begin{defi}[Norm auf einen Vektorraum]
-    Eine Norm auf enen reellen oder komplexen Vektorraum
+    Eine Norm auf einen reellen oder komplexen Vektorraum
     ist eine Funktion: \( \abb{\norm{\cdot}}{X}{\R} \) mit
     \begin{description}
         \item[Positivität] \( \norm{x} \geq 0 \forall x\in X \) 
@@ -83,7 +83,7 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     Sei \(X\) ein metrischer Raum mit Metrik \(d\).
     \[ x_0 \in X, r > 0 \quad B_r(x_0) 
     := \set{ x\in X: d(x, x_0) < r } \] 
-    ist die offnee Kugel mit Radius \(r\) um \(x_0\).
+    ist die offene Kugel mit Radius \(r\) um \(x_0\).
     \[ \R^d: B_r(x_0) = \set{x \in \R^d: 
     \norm{x - x_0}_2 < r}. \]
 \end{defi}
@@ -112,7 +112,7 @@ z_j \in \R \forall 1 \leq j \leq d} \]
         offener Mengen ist offen.
         \item Die Vereinigung beliebig vielen offenen
         Mengen ist offen. 
-    \end{enumerate}    
+    \end{enumerate}
 \end{satz}
 \begin{bew}
     Etwas später.
@@ -139,7 +139,7 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     Sei \( X \) ein metrischer Raum, 
     \( x,y \in X, x\neq y \). 
     \[ \Rightarrow \exists \varepsilon > 0: 
-    B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset \]
+    B_\varepsilon(x) \cap B_\varepsilon(y) = \emptyset. \]
 \end{lem}
 \begin{bew}
     Ist \(x \neq y \Rightarrow L = d(x,y) > 0 \) \\
@@ -269,20 +269,6 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \( \Rightarrow \forall x \in U 
     \exists \varepsilon = \varepsilon_x > 0: 
     B_\varepsilon(x) \subset U \subset M \).
-\end{bew}
-\begin{satz*}\leavevmode
-    \begin{enumerate}
-        \item \( \inner M \) offen und 
-        \( U \subset M \) offen \( \Rightarrow U \subset \inner M \)
-        (d. h. \( \inner M = \bigcup_{\substack{U \subset M \\\text{offen}}} U \) 
-        größte offene Teilmenge von \(M\))
-        \item \( \overline{M} \) ist abgeschlossen und 
-        \( M \subset A \) abgeschlossen 
-        \( \Rightarrow \overline{M} \subset A \)
-        \item \( \delta M = \overline{M} \setminus \inner M \)
-    \end{enumerate}
-\end{satz*}
-\begin{bew}
     zu 2. \( \overline{M} = \set{x \in X: \forall \varepsilon > 0 
     \text{ ist } B_\varepsilon(x) \cap M \neq \emptyset} \) \\
     \( \overline{M}^C = \set{x \in X: \exists \varepsilon > 0: 
@@ -310,7 +296,7 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     \[ = \overline{M^C}. \]
 \end{bew}
 \begin{defi}[Häufungspunkte, isolierte Punkte]
-    Set \(X\) metrischer Raum, \( M \subset X \) \\
+    Sei \(X\) metrischer Raum, \( M \subset X \) \\
     Ein Punkt \( x \in X \) heißt Häufungspunkt von \(M\),
     falls 
     \[ \forall \varepsilon > 0: 
@@ -363,10 +349,10 @@ z_j \in \R \forall 1 \leq j \leq d} \]
         \( \Rightarrow (x_n)_n \) ist eine 
         Cauchyfolge.
         \item Bsp.: \( \R^d \) mit \( \norm{x}_2 = \abs{x} 
-        = \left( \sum_{j=1}^d \abs{x_j}^2 \right)^2) \)
+        = \left( \sum_{j=1}^d \abs{x_j}^2 \right)^{1/2} \)
         ist vollständig. \\
         \( \C^d \) mit \( \norm{z}_2 = \abs{z} 
-        = \left( \sum_{j=1}^d \abs{z_j}^2 \right)^2) \)
+        = \left( \sum_{j=1}^d \abs{z_j}^2 \right)^{1/2} \)
         ist vollständig.
         \item \( X \) eine Menge, 
         \( L^\infty(X) = L^\infty(X, \R) 
@@ -468,7 +454,7 @@ z_j \in \R \forall 1 \leq j \leq d} \]
     = \sqrt{d} \norm{x}_\infty. \]
 \end{bew}
 \begin{defi*}[Äquivalenz von Normen]
-    \( \norm{:}_a, \norm{.}_b \) sind äquivalent, wenn
+    \( \norm{\cdot}_a, \norm{\cdot}_b \) sind äquivalent, wenn
     \[ \exists c_1, c_2: c_1\norm{x}_a \leq \norm{x}_b 
     \leq c_2\norm{x}_a \; \forall x \]
 \end{defi*}
@@ -617,10 +603,10 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
 \begin{defi*}[total beschränkt]
     \(M\) ist total beschränkt: 
     \[ \forall \varepsilon > 0 \; 
-    \exists \text{ endlich viele } x1,\dots,x_n \in X:
+    \exists \text{ endlich viele } x_1,\dots,x_n \in X:
     M \subset \bigcup_{j=1}^n B_\varepsilon(x_j) \]
 \end{defi*}
-\begin{kor}[Bilden kompakter Mengen]
+\begin{kor}[Bilder kompakter Mengen]
     Sei \( \abb{f}{X}{Y} \) stetig, \( X, Y \) metrische Räume
     und \(X\) sei kompakt
     \( \Rightarrow \)
@@ -695,8 +681,8 @@ Was ist, wenn \(M \subset X, \abb{f}{M}{Y}\)?
     \(y_{n_k})_k \subset K, y_{n_k} \rightarrow x \in K, 
     k \rightarrow \infty\)    
     \[ \Rightarrow \underset{\rightarrow d(x_0, X)}{d(x_0, y_{n_k})} 
-    \rightarrow dist(x_0, K) \]
-    \[ \Rightarrow d(x_0, x) = dist(x_0, K). \]
+    \rightarrow \dist(x_0, K) \]
+    \[ \Rightarrow d(x_0, x) = \dist(x_0, K). \]
 \end{bew}
 \begin{satz}[Gleichmäßige Stetigkeit]
     Sei \( \abb{f}{X}{Y} \) stetig, 

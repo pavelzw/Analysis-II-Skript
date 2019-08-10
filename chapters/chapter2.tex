@@ -9,7 +9,7 @@ Erster Mittelwertsatz: \( f: [a,b] \rightarrow \R \)
 stetig und differenzierbar in \( (a,b) \).
 \[ \Rightarrow \exists a < \zeta < b : 
 f(b) - f(a) = f'(\zeta)(b-a). \]
-\begin{satz}{Zweiter Mittelwertsatz}
+\begin{satz}[Zweiter Mittelwertsatz]
     Seien \(\abb{f,g}{[a,b]}{\R} \) stetig und 
     differenzierbar auf \( (a,b) \).
     \[ \exists \zeta \in (a,b): g'(\zeta)(f(b) - f(a)) 
@@ -26,7 +26,7 @@ f(b) - f(a) = f'(\zeta)(b-a). \]
     = (f(b) - f(a))g'(\zeta) - f'(\zeta)(g(b) - g(a)) \).
 \end{bew}
 \begin{bem}
-    Ist \( g(x) = x \) so folgt der erste Mittelwertsatz
+    Ist \( g(x) = x \) so folgt der erste Mittelwertsatz.
 \end{bem}
 \begin{kor}
     Bedingung wie in Satz 1. 
@@ -36,7 +36,7 @@ f(b) - f(a) = f'(\zeta)(b-a). \]
     = \frac{f'(\zeta)}{g'(\zeta)} \]
     für ein \( a < \zeta < b \).
 \end{kor}
-\large{Die Regeln von l'Hospital}
+{\large{Die Regeln von l'Hospital}}
 Wir wissen: es existieren \( \limesx{x}{a} f(x) \) und 
 \( \limesx{x}{a} g(x) \neq 0 \), so existiert 
 \[ \limesx{x}{a} \frac{f(x)}{g(x)} 
@@ -99,7 +99,7 @@ Frage: Was ist, wenn \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) ?
     = \limesx{x}{a} \frac{1}{f(x)} \) fehlt noch.
 \end{bem}
 \begin{satz}[Zweiter Satz von l'Hospital]
-    Seien \( f,g : (a.b) \rightarrow \R \) differenzierbar,
+    Seien \( f,g : (a,b) \rightarrow \R \) differenzierbar,
     \( g(x) \neq 0 \;\forall x  \) (\(a = -\infty\) erlaubt). \\
     Ist \( \limesx{x}{a+} \frac{1}{g(x)} = 0 \), so folgt aus der 
     Existenz von 
@@ -108,7 +108,7 @@ Frage: Was ist, wenn \( \limesx{x}{a}g(x) = 0 = \limesx{x}{a}f(x) \) ?
     \[ \limesx{x}{a+} \frac{f(x)}{g(x)} \]
     und es gilt
     \[ \limesx{x}{a+} \frac{f(x)}{g(x)} 
-    = \limesx{x}{a+} \frac{f'(x)}{g'(x)} \]
+    = \limesx{x}{a+} \frac{f'(x)}{g'(x)}. \]
 \end{satz}
 \begin{bew}
     für \( a < x < y < b \)

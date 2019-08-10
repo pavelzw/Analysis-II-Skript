@@ -18,7 +18,7 @@
     \frac{\norm{Ax}_Y}{\norm{x}_X} 
     = \underset{\substack{u\in X\\ \norm{u}_X = 1}}{\sup}
     \norm{Au}_Y
-    \quad a \in \mathscr{L}(X,Y) \]
+    \quad A \in \mathscr{L}(X,Y) \]
 \end{bem}
 \begin{bem}
     Eine Funktion \(\abb{G}{U}{\mathscr{L}(X,Y)}\) ist 
@@ -91,7 +91,7 @@ gestalten.\\
 Seien \( d_1, \ldots, d_l \in \N \) mit
 \[ n = \sum_{j=1}^l d_j. \]
 Schreiben 
-\[ R^n = \R^{d_1} \times \ldots \times \R^{d_l} \]
+\[ \R^n = \R^{d_1} \times \ldots \times \R^{d_l} \]
 \( \Rightarrow h \in \R^n \) lässt sich schreiben
 als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
 \begin{defi}
@@ -109,7 +109,7 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
 \begin{bem}
     Ist \(U \subset \R^n\) offen und 
     \( x = (x_1, \ldots, x_l) 
-    \in \R^{d_1} \times \ldots \times \R^{d_l} \in U \),
+    \in \R^{d_1} \times \ldots \times \R^{d_l} \subset U \),
     so gibt es offene Mengen \( U_j \subset \R^{d_j} \) 
     mit \( x_j \in U_j, j = 1,\ldots, l \), sodass 
     der \gqq{Quader} \( \tilde{U} := U_1 \times \cdots \times U_l \subset U \) 
@@ -119,7 +119,7 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
     Notation wie Definition 2. \( U \subset \R^n \) 
     offen, \( x \in U, x = (x_1, \ldots, x_l)^t \in U, 
     x_j \in \R^{d_j}, 1 \leq j \leq l \).
-    Ist \(\abb{f}{U}{R^m}\) in \(x\) differenzierbar,
+    Ist \(\abb{f}{U}{\R^m}\) in \(x\) differenzierbar,
     so existieren alle (verallgemeinerten) partiellen 
     Ableitungen in \( x \) und für \( h \in \R^n, 
     h = (h_1, \ldots, h_l)^T, h_j \in \R^{d_j}, 1 \leq j \leq l \) 
@@ -161,7 +161,7 @@ als \( h = (h_1,\ldots, h_l), h_j \in \R^{d_j}, j=1,\ldots,l \).
 \end{satz}
 \begin{bew}
     \gqq{\( \Rightarrow \)} Lemma 3.\\
-    \gqq{\( \Leftrightarrow \)}: Es reicht den Fall, \( \R^n, \R^{d_1} \times \R^{d_2} \) 
+    \gqq{\( \Leftarrow \)}: Es reicht den Fall, \( \R^n, \R^{d_1} \times \R^{d_2} \) 
     zu betrachten. Der Allgemeine Fall folgt per Induktion. 
     Also sei \( x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \in \R^{d_1} \times \R^{d_2} \), 
     \( U_j \subset \R^{d_j}, j = 1,2 \) offen, \( x \in U_1 \times U_2 \). 

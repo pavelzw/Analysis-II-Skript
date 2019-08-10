@@ -20,7 +20,7 @@
         \item Niveaumengenkriterium: Zu \( p \in M \exists \) offene 
         Umgebung \( U \subset \R^n \) mit 
         \( f \in \mathcal{C}^r(U, \R^k) \), sodass
-        \[ M \cap U = f^{-1}(0) \]
+        \[ M \cap U = f^{-1}(\set{0}) \]
         und
         \[ \rk Df = k \text{ auf } U \]
         \item Graphenkriterium zu \(p \in M \; \exists \) offene
@@ -28,7 +28,7 @@
         \(g \in \mathcal{C}^r (U, V)\) so, dass
         nach einer Permutuation der Koordinaten gilt \(M \cap (U \times V) 
         = \set{x,g(x) : x \in U}\)
-    \end{enumerate}    
+    \end{enumerate}
 \end{satz}
 \begin{bew}
     Übung (oder Skript)
@@ -41,7 +41,7 @@
     \( S^m = f^{-1}(0) \)
 \end{bsp}
 \begin{defi}
-    \(E\) in Vektor \(v \in \R^n\) heißt Tangentialvektor von \(M \subset R^n\)
+    Ein Vektor \(v \in \R^n\) heißt Tangentialvektor von \(M \subset \R^n\)
     im Punkt \(p \in M\), falls
     es eine Abbildung \( \abb{\gamma}{(-\varepsilon, \varepsilon)}{M} \) mit 
     \[ \gamma(0) = p, \quad \gamma'(0) = v \]
@@ -51,11 +51,11 @@
 \begin{lem}
     Sei \( M \in \R^n \) eine \(m\)-dimensionale 
     \( \mathcal{C}^1 \) Untermannigfaltigkeit  und \(n = m + k\).
-    Ist \( p \in M \cap U = f^{-1}(0) \) für eine
+    Ist \( p \in M \cap U = f^{-1}(\set{0}) \) für eine
     Funktion \( f \in \mathcal{C}^1(U, \R^k) \) mit 
     \( \rk Df = k \) auf \(U\),
     so gilt 
-    \[ T_p M = \rk(Df(p))\].
+    \[ T_p M = \ker(Df(p)). \]
     Insbesondere ist \( T_p M \) ein \(m\)-dimensionaler 
     Vektorraum.
 \end{lem}
@@ -101,8 +101,8 @@
 \end{bew}
 \begin{satz}[Extrema mit Nebenbedingungen]
     Sei \( U \subset \R^n \) offen, \( f \in \mathcal{C}^1(U, \R^k) \) 
-    (\(k\) Nebenbedingungen) und \(\phi \in \mathds(C)^1(U, \R)\)
-    Gilt dann für ein \(p \in f`^{-1}(0)\)
+    (\(k\) Nebenbedingungen) und \(\phi \in \mathcal{C}^1(U, \R)\).
+    Gilt dann für ein \(p \in f^{-1}(\set{0})\)
     \begin{enumerate}
         \item \( \varphi(q) \geq \varphi(p) \;\forall q \in U \) mit
         \( f(q) = 0 \) (lokales Minimum unter Nebenbedingungen)
@@ -115,7 +115,7 @@
 \begin{bew}
     Nach Verkleinern von \(U\) ist \(\rk Df = k \) 
     auf \(U\) und \(M = f^{-1}(0)\) eine
-    \(m=n-k dim \mathcal(C)^1\) Untermannigfaltigkeit.
+    \(m=n-k \dim \mathcal(C)^1\) Untermannigfaltigkeit.
     \[ \abb{\gamma}{(-\varepsilon, \varepsilon)}{M}, \gamma(0) = p, \gamma'(0) = v \in T_pM \]
     \( \varphi \circ \gamma \) hat in \( t = 0 \) ein lokales Minimum.
     \[ \Rightarrow 0 = \ddx{t} \varphi(\gamma(t)) \vert_{t=0} 

@@ -90,15 +90,15 @@ einen Vektorraum (siehe Lemma 4).
         \item Linearität: \( \integral{(\alpha \varphi + \beta \psi)}{a}{b} 
         = \alpha \integral{\varphi}{a}{b} 
         + \beta \integral{\psi}{a}{b} \).
-        \item Beschränktheit: \( \abs{\integral{\varphi}{0}{b}}
-        \leq \integral{\abs{\varphi}}{0}{b} \leq (b-a) \cdot ||\psi||_\infty \). \\
+        \item Beschränktheit: \( \abs{\integral{\varphi}{a}{b}}
+        \leq \integral{\abs{\varphi}}{a}{b} \leq (b-a) \cdot ||\varphi||_\infty \). \\
         \( ||\varphi||_\infty 
         := \underset{x \in [a,b]}{\sup} \abs{\varphi(x)} \).
         \item Monotonie: Sind \( \varphi, \psi \) reell und 
         \( \varphi \leq \psi \).
         \[ \Rightarrow \integral{\varphi}{a}{b} 
         \leq \integral{\psi}{a}{b}. \]
-    \end{enumerate}    
+    \end{enumerate}
 \end{lem}
 \begin{bew}
     Seien \( Z_1, Z_2 \) Zerlegungen passend zu \( \varphi \) bzw. 
@@ -158,16 +158,17 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
     \end{enumerate}
     Wir bezeichnen den \( \C \)-Vektorraum der 
     Regelfunktionen mit \( R(I) \).
-    \begin{bspe}
-        \begin{enumerate}
-            \item Die stetigen Funktionen auf \( I \rightarrow \C \).
-            \item Die monotonen Funktionen \( I \rightarrow \R \).
-        \end{enumerate}      
-    \end{bspe}
-    Sind \( f,g \) Regelfunktionen, so sind auch 
-    \( \abs{f}, g\cdot f \) Regelfunktionen, sowie im 
-    reellen Fall auch \( \min\set{f,g}, \max\set{f,g} \).
 \end{defi}
+\begin{bspe}
+    \begin{enumerate}
+        \item Die stetigen Funktionen auf \( I \rightarrow \C \).
+        \item Die monotonen Funktionen \( I \rightarrow \R \).
+    \end{enumerate}
+\end{bspe}
+Sind \( f,g \) Regelfunktionen, so sind auch 
+\( \abs{f}, g\cdot f \) Regelfunktionen, sowie im 
+reellen Fall auch \( \min\set{f,g}, \max\set{f,g} \).
+
 \begin{satz}[Approximationssatz]
     Eine Funktion \( \abb{f}{[a,b]}{\C} \) ist 
     eine Regelfunktion genau dann, wenn 
@@ -258,7 +259,7 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
 \subsection{Integration von Regelfunktionen 
 über kompakten Intervallen}
 \begin{satzdefi}
-    Sei \( \abb{f}{[a,b]}{\C} \) eine Regelfunktion
+    Sei \( \abb{f}{[a,b]}{\C} \) eine Regelfunktion.
     \( \forall \) Folgen \( (\varphi_n)_n, \varphi_n \in T[a,b] \)
     mit \( ||f - \varphi_n||_\infty \rightarrow 0 \) existiert.
     \[ \integral{f(x)}{a}{b} 
@@ -413,7 +414,7 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
     \[ p \geq 0 \text{ (Gewichtsfunktion)}. \]
     Dann gilt: \( \exists \rho \in (a,b) \) mit 
     \[ \integral{f(x) p(x)}{a}{b} 
-    = f(\rho) \integral{p(x)}{a}{b}. \]    
+    = f(\rho) \integral{p(x)}{a}{b}. \]
 \end{satz}
 \begin{bew}
     Sei \( m = \min f \) auf \([a,b]\), \(M=\max f\) auf \([a,b]\)
@@ -424,7 +425,7 @@ Treppenfunktion \( \varphi_n \rightarrow f \) gleichmäßig.
     \[ \Rightarrow \exists \mu \in [m,M]: 
     \integral{fp}{a}{b} = \mu \integral{p}{a}{b} \]
     Weiter gilt, da \(f\) stetig ist, dass 
-    \(\rho \in [a,b]\) mit \( f(\xi) = \mu \).
+    \(\rho \in [a,b]\) mit \( f(\rho) = \mu \).
 \end{bew}
 
 

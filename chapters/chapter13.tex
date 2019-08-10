@@ -6,7 +6,7 @@
     \( U \subset \R^n \) offen, 
     dann schreiben wir \(f \in \mathcal{C}^1(U, \R^m)\), 
     falls alle partiellen Ableitungen \( \abb{\partial_jf}{U}{\R^m}, 
-    j = 1,\ldots, m \) stetig sind.\\
+    j = 1,\ldots, n \) stetig sind.\\
     \( \oversett{Satz 12.4}{\Leftrightarrow} 
     \abb{Df}{U}{\mathscr{L}(\R^n, \R^m)} \) 
     ist stetig (auf \(U\))
@@ -18,7 +18,7 @@ auf \((a,b)\).
 Dasselbe gilt, wenn \(f\) stückweise \(\mathcal{C}^1\)
 auf \([a,b]\), d.h. \(f\) ist stetig auf \([a,b]\) und
 \( \exists N \in \N, a = t_1 < t_2 < \ldots < t_N = b \),
-sodass \( f(t_j, t_{j+1}) \rightarrow \R \) ist stetig 
+sodass \( \abb{f}{(t_j, t_{j+1})}{\R} \) ist stetig 
 differenzierbar.\\
 \( \Rightarrow f(b)- f(a) = \sum_{j=2}^N (f(t_j) - f(t_{j-1}))
 = \sum_{j=2}^N \integralx{f'(s)}{t_{j-1}}{t_j}{s} 
@@ -33,7 +33,7 @@ Verallgemeinerung auf mehrere Dimensionen
 \end{lem}
 \begin{bew}
     Sei \( a = t_1 < t_2 < \dots < t_N = b \) Zerlegung von 
-    \( [a,b] \) mit \( \gamma(t_j, t_{j+1}) \rightarrow U \) 
+    \( [a,b] \) mit \( \abb{\gamma}{(t_j, t_{j+1})}{U} \) 
     ist \( \mathcal{C}^1 \)
     \[ \Rightarrow D \gamma(t)[1] = \ddx{t} \gamma(t) 
     = \dot{\gamma}(t) \]
@@ -86,7 +86,7 @@ Verallgemeinerung auf mehrere Dimensionen
 Bild: 
 %Bild
 
-In der Vorlesungs wurde die folgende Kette von Inmplikationen bewiesen:
+In der Vorlesungs wurde die folgende Kette von Implikationen bewiesen:
 \begin{align*}
     &\text{stetig partiell differenzierbar} \\
     &\Rightarrow \text{ Differenzierbarkeit} \\
@@ -95,7 +95,7 @@ In der Vorlesungs wurde die folgende Kette von Inmplikationen bewiesen:
 Die Umkehrung gilt im Allgemeinen nicht.
 \begin{lem}
     Sei \(U \subset \R^n \) offen und wegzusammenhängend. 
-    Dann gibt es zu \(x_0, x_1 \in U\) einen Polynomzug, d. h. 
+    Dann gibt es zu \(x_0, x_1 \in U\) einen Polygonzug, d. h. 
     ein stückweise linearen Weg \(\abb{\gamma}{[0,1]}{U}\) mit
     \(\gamma(0) = x_0, \gamma(1) = x_1\).
 \end{lem}
@@ -174,7 +174,7 @@ Die Umkehrung gilt im Allgemeinen nicht.
     \( \abb{f}{U}{\R^m} \) differenzierbar. Dann gilt
     \[ Df(x) = 0 \; \forall x \in U \Rightarrow f \text{ ist konstant} \]
 \end{satz}
-\begin{satz}
+\begin{bew}
     Seien \(x_0, x_1 \in U\). Nach Lemma 3 existiert ein Polygonzug
     \( \abb{\gamma}{[0,1]}{U} \) mit \( \gamma(0) = x_0 \), 
     \( \gamma(1) = x_1 \).
@@ -184,7 +184,7 @@ Die Umkehrung gilt im Allgemeinen nicht.
     = 0 \in \R^m. \]
     \( \Rightarrow f(x_1) = f(x_0) \). Da \( x_0, x_1 \) beliegbig sind, 
     folgt die Behauptung.
-\end{satz}
+\end{bew}
 \subsection{Zweite Ableitung}
 %\(U \subset \R^n\) offen, \(\abb{f}{U}{\R^m}\) differenzierbar.
 %\[ \Rightarrow \abb{Df}{U}{

@@ -52,17 +52,17 @@ Statistiche Mechanik: \( N \rightarrow \infty \).
 
 \begin{lem}
     Sei \( \abb{f}{(a,b)}{\R^m}, \) 
-    \[f(t) = \begin{array}{c}
+    \[f(t) = \begin{pmatrix}
         f_1(t)\\
         \vdots \\
         f_m(t)
-    \end{array}. \]
+    \end{pmatrix}. \]
     \( \abb{f_j}{(a,b)}{\R}, t_0 \in (a,b) \).
 
     \[ \text{Es existiert } f'(t_0) = \limesx{t}{t_0} \frac{f(t) - f(t_0)}{t - t_0} 
-    \text{ (Grenzwert in \( \R^3 \))} \]
+    \text{ (Grenzwert in \( \R^m \))} \]
     \[ \Leftrightarrow \abb{f_j}{(a,b)}{\R} 
-    \text{ ist in \(t_0\) differenzierbar} \forall j=1,\ldots,m. \]
+    \text{ ist in \(t_0\) differenzierbar } \forall j=1,\ldots,m. \]
 \end{lem}
 \begin{bew}
     Selbst nachdenken.
@@ -152,7 +152,7 @@ aber nicht in \( x \) stetig sind.
         0, &(x,y) = (0,0)
     \end{cases}. \]
 
-    \[ \partial_1 f(0,0) \partial_x f(0,0) 
+    \[ \partial_1 f(0,0) = \partial_x f(0,0) 
     = \limesx{t}{0} \frac{f(t,0) - f(0,0)}{t} 
     = \limesx{t}{0} \frac{0 - 0}{t} = 0 \]
     genauso \( \partial_2 f(0,0) = \partial_y f(0,0) = 0 \).
@@ -283,9 +283,9 @@ Taylor: \[ f(x) = f(x_0) + f'(x_0)(x - x_0) + \ldots \]
     = 0 \in \R^m. \]
     Mit der Substitution \( x = x_0 + h \), 
     erhält man die äquivalente Form 
-    \[ \limesx{h}{0} \frac{ f(x_0 + h) - f(x_0) - A(h) }{\abs{h}} = 0 \]
+    \[ \limesx{h}{0} \frac{ f(x_0 + h) - f(x_0) - A(h) }{\abs{h}} = 0. \]
 \end{defi}
-\begin{bem}
+\begin{bem}\leavevmode
     \begin{enumerate}
         \item \( \abs{h} = \left( \sum_{j=1}^n \abs{h_j}^2 \right)^{1/2} \) 
         euklidische Norm. Man kann jede Norm auf \( \R^n \) oder 
@@ -322,10 +322,10 @@ Taylor: \[ f(x) = f(x_0) + f'(x_0)(x - x_0) + \ldots \]
     Ist \( \abb{f}{U}{\R^m} \) in \( x_0 \in U \)
     differenzierbar, so gilt 
     \[ Df(\underbrace{x_0}_{\text{fest}})\underbrace{[h]}_{\text{linear}} 
-    = D_n f(x_0) 
+    = D_h f(x_0) 
     := \limesx{t}{0} \frac{f(x_0 + th) - f(x_0)}{t}. \]
 \end{satz}
-\begin{bsp}
+\begin{bsp}\leavevmode
     \begin{enumerate}
         \setcounter{enumi}{2}
         \item \( f(2) = z, \abb{f}{\C}{\C} \)
@@ -408,7 +408,7 @@ Definiere \( \varphi(x) := f(x)-f(x_0)-A(x-x_0), x \in U \)
     d. h. \( \forall x_0 \in U: \abb{Df (x_0)}{\R^n}{\R^n} \) linear.
 
 \end{bsp}
-\begin{bsp}[5]
+\begin{bsp}[5]\leavevmode
     \begin{enumerate}
         \item \( \mathscr{L}(\R^n, \R^m) \) ist ein reeller Vektorraum.
         \item hat auch eine natürliche Norm.
@@ -459,27 +459,14 @@ Sei in \( x \in U \) differenzierbar (im Sinne von Definition 5).
 \[ \oversett{Satz 6}{\Rightarrow} Df(x)[h] = D_hf(x) \; \forall h \in \R^n \]
 Sei \( b_1, b_2, \dots, b_n \) Basis für \( \R^n \)
 \[ \Rightarrow h = \sum_{j=1}^n c_j b_j, c_1, \ldots, c_n \in \R \text{ eindeutig.} \]
-\[ \begin{pmatrix}
-    b_1 &\cdots &b_n
-\end{pmatrix} \cdot \begin{pmatrix}
-    c_1 \\
-    \vdots \\
-    c_n
-\end{pmatrix} \]
+
 \[ \Rightarrow Df(x)[h] = Df(x)[\sum_{j=1}^n c_j b_j]
-= \sum_{j=1}^n  c_j \underbrace{Df(x)[b_j]}_{=D_{b_j}f(x)}
+= \sum_{j=1}^n  c_j Df(x)[b_j]
 = \sum_{j=1}^n D_{b_j} f(x)c_j \]
-\[ = (D_{b_1}f(x), \dots, D_{b_n}f(x))
-\begin{pmatrix}
-    c1 \\
-    c2 \\
-    \vdots \\
-    c_n
-\end{pmatrix} \]
 
 Sei \( e_1, e_2, \dots, e_n \) Standardbasis für \(\R^n\).\\
 \( h = \begin{pmatrix}
-    h1 \\
+    h_1 \\
     \vdots\\
     h_n
 \end{pmatrix} = \sum_{j=1}^n h_je_j \) \\
@@ -538,7 +525,7 @@ in \(x \in U\)
 \end{pmatrix}^T \]
 
 \begin{defi}
-    Wir nennen \( \grad f(x) := \nabla f(x) \begin{pmatrix}
+    Wir nennen \( \grad f(x) := \nabla f(x) = \begin{pmatrix}
         \partial_1 f(x) \\
         \vdots \\
         \partial_n f(x)
@@ -598,13 +585,13 @@ Wann gilt \gqq{\(=\)}?\\
         \frac{f(x) - f(x_0) - A(x - x_0)}{\abs{x - x_0}}, & x\in U \setminus \set{x_0}
     \end{cases} \]
     \[ \Rightarrow f(x) = f(x_0) + A(x - x_0) + \abs{x - x_0} \varepsilon(x) \]
-    Dann scharf hinschauen (mit Brille am besten).
+    Dann scharf hinschauen.
 \end{bew}
 Anwendung: Sei \( U \subset \R^n \) offen. \\
-Linearität: \( \abb{f,g}{U}{\R^m} \) differenzierbar in \(x_0 in U\)
+Linearität: \( \abb{f,g}{U}{\R^m} \) differenzierbar in \(x_0 \in U\)
 \( \Rightarrow \alpha f + \beta g \) ist differenzierbar in 
 \(x_0 \; \forall \alpha, \beta \in \R\) \\
-\( D(\alpha f + \beta f)(x_0) = \alpha Df(x_0) + \beta D_g(x_0) \)
+\( D(\alpha f + \beta f)(x_0) = \alpha Df(x_0) + \beta Dg(x_0) \)
 \begin{bew}
     \( A = Df (x_0), B = Dg(x_0) \)
     Haben (Lemma 8) 
@@ -623,7 +610,7 @@ Linearität: \( \abb{f,g}{U}{\R^m} \) differenzierbar in \(x_0 in U\)
     \[ \oversett{Lemma 8}{\Rightarrow} 
     D(\alpha f + \beta g)(x) = \alpha A + \beta B. \]
 \end{bew}
-Produktregel: Sei \( \abb{f}{U}{R^m}, \abb{g}{U}{\R} \)
+Produktregel: Sei \( \abb{f}{U}{\R^m}, \abb{g}{U}{\R} \)
 differenzierbar in \(x_0\) \\
 \( \Rightarrow  fg \) differenzierbar in \(x_0\): 
 \( D(fg)(x_0) = Df(x_0)g(x_0) + f(x_0)Dg(x_0) \)
@@ -647,7 +634,7 @@ differenzierbar in \(x_0\) \\
     \end{cases} \]
     Ähnlich: Quotientenregel \( \abb{f}{U}{\R^m}, \abb{g}{U}{\R} \)
     \[ g(x_0) \neq 0 \]
-    \[ D(\frac{f}{g})(x_0) 
+    \[ D\left(\frac{f}{g}\right)(x_0) 
     = \frac{D(f)(x_0) g(x_0) - D(g)(x_0) f(x_0)}{g(x_0)^2} \]
 \end{bew}
 \begin{satz}[Kettenregel]
@@ -656,16 +643,16 @@ differenzierbar in \(x_0\) \\
     mit \( U \subset \R^n, V \subset \R^m \)
     offen und \( f(U) \subset V \).
     Sind \(f\) in \(x_0\) und \(g\) in \(y_0 = f(x_0)\)
-    differenzierbar, so ist auch \(\abb{g \circ f}{U}{R^p}\)
+    differenzierbar, so ist auch \(\abb{g \circ f}{U}{\R^p}\)
     differenzierbar in \(x_0\) und es gilt die 
     Kettenregel 
-    \[ D(g\circ f)(x_0) = D g(f(x_0))Df(x_0) \]
-    Sind \( \abb{A = D_g(y_0)}{\R^m}{\R^p} \) und 
-    \[ B = \abb{Df(x_0)}{\R^n}{\R^m} \]
+    \[ D(g\circ f)(x_0) = D g(f(x_0))Df(x_0). \]
+    Sind \( \abb{A = Dg(y_0)}{\R^m}{\R^p} \) und 
+    \( B = \abb{Df(x_0)}{\R^n}{\R^m} \)
     die zugehörige Jacobimatrizen, so folgt 
-    \[ C := AB \]
+    \( C := AB \)
     wobei
-    \[ \abb{C}{\R^n}{\R^p} \] 
+    \( \abb{C}{\R^n}{\R^p} \) 
     die Jacobimatrix zu \( D(f \circ g)(x_0) \) ist.
 \end{satz}
 \begin{bew}
